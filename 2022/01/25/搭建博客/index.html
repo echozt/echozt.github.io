@@ -79,15 +79,29 @@
 
 
 
-<meta name="description" content="一口南瓜饼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://echozt.github.io/index.html">
+<meta name="description" content="本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。 1、搭建本地环境1.1下载并安装nodejs安装时一路默认即可。 测试：打开cmd,输入以下测试，出现版本号即表示成功 123node -vnpm -v   1.2下载并安装git安装时也一路默认即可。 测试：打开cmd,输入如下测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo + github 搭建博客">
+<meta property="og:url" content="https://echozt.github.io/2022/01/25/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一口南瓜饼">
+<meta property="og:description" content="本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。 1、搭建本地环境1.1下载并安装nodejs安装时一路默认即可。 测试：打开cmd,输入以下测试，出现版本号即表示成功 123node -vnpm -v   1.2下载并安装git安装时也一路默认即可。 测试：打开cmd,输入如下测">
 <meta property="og:locale">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643101941794.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643101879167.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643101993564.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643109815344.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643110032390.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643115680056.jpg">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643110559755.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643115705115.jpg">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643112419328.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643113293612.png">
+<meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643113614936.png">
+<meta property="article:published_time" content="2022-01-25T08:16:52.000Z">
+<meta property="article:modified_time" content="2022-01-25T13:31:12.723Z">
 <meta property="article:author" content="echozt">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643101941794.png">
 
 
 
@@ -117,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://echozt.github.io/"/>
+  <link rel="canonical" href="https://echozt.github.io/2022/01/25/搭建博客/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>hexo + github 搭建博客 | Hexo</title>
   
 
 
@@ -142,8 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,9 +249,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -268,9 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/01/25/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" itemprop="url">hexo + github 搭建博客</a></h1>
+          <h1 class="post-title" itemprop="name headline">hexo + github 搭建博客</h1>
         
 
         <div class="post-meta">
@@ -320,9 +331,7 @@
       
 
       
-        
-          
-            <p>本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。</p>
+        <p>本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。</p>
 <h1 id="1、搭建本地环境"><a href="#1、搭建本地环境" class="headerlink" title="1、搭建本地环境"></a>1、搭建本地环境</h1><h2 id="1-1下载并安装nodejs"><a href="#1-1下载并安装nodejs" class="headerlink" title="1.1下载并安装nodejs"></a>1.1下载并安装<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs</a></h2><p>安装时一路默认即可。</p>
 <p>测试：打开cmd,输入以下测试，出现版本号即表示成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
@@ -412,8 +421,6 @@
 
 
 
-          
-        
       
     </div>
     
@@ -430,131 +437,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://echozt.github.io/2022/01/24/first/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/01/24/first/" itemprop="url">first</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-24T18:14:23+08:00">
-                2022-01-24
-              </time>
+              <a href="/2022/01/24/first/" rel="next" title="first">
+                <i class="fa fa-chevron-left"></i> first
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -564,142 +468,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://echozt.github.io/2022/01/24/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/01/24/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-24T17:40:30+08:00">
-                2022-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -707,6 +480,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -727,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -789,6 +575,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">1、搭建本地环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85nodejs"><span class="nav-number">1.1.</span> <span class="nav-text">1.1下载并安装nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85git"><span class="nav-number">1.2.</span> <span class="nav-text">1.2下载并安装git</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81%E6%B3%A8%E5%86%8CGithub%E8%B4%A6%E6%88%B7%EF%BC%88%E5%B7%B2%E6%9C%89%E8%B4%A6%E6%88%B7%E7%9A%84%E5%8F%AF%E8%B7%B3%E8%BF%87%E6%AD%A4%E6%AD%A5%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">2、注册Github账户（已有账户的可跳过此步）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E8%BF%9B%E5%85%A5github%E5%AE%98%E7%BD%91%EF%BC%8C%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7%E5%8D%B3%E5%8F%AF"><span class="nav-number">2.1.</span> <span class="nav-text">2.1进入github官网，注册账号即可</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E6%B3%A8%E5%86%8C%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E8%BF%9E%E6%8E%A5github"><span class="nav-number">2.2.</span> <span class="nav-text">2.2注册完成后，连接github</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81%E6%B7%BB%E5%8A%A0%E5%8A%A0%E5%AF%86%E5%AF%86%E9%92%A5"><span class="nav-number">3.</span> <span class="nav-text">3、添加加密密钥</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E5%88%9B%E5%BB%BAssh%E5%AF%86%E9%92%A5"><span class="nav-number">3.1.</span> <span class="nav-text">3.1创建ssh密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E6%B7%BB%E5%8A%A0ssh%E5%AF%86%E9%92%A5%E5%88%B0github%E8%B4%A6%E6%88%B7"><span class="nav-number">3.2.</span> <span class="nav-text">3.2添加ssh密钥到github账户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3%E9%AA%8C%E8%AF%81%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.3.</span> <span class="nav-text">3.3验证连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81%E5%88%9B%E5%BB%BAgithub%E4%BB%93%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">4、创建github仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E3%80%81%E5%AE%89%E8%A3%85hexo"><span class="nav-number">5.</span> <span class="nav-text">5、安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1%E5%AE%89%E8%A3%85"><span class="nav-number">5.1.</span> <span class="nav-text">5.1安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2%E6%B5%8B%E8%AF%95"><span class="nav-number">5.2.</span> <span class="nav-text">5.2测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B9%B6%E5%AE%89%E8%A3%85%E6%89%80%E9%9C%80%E7%BB%84%E4%BB%B6%EF%BC%9A"><span class="nav-number">5.3.</span> <span class="nav-text">5.3初始化并安装所需组件：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%E3%80%81%E9%83%A8%E7%BD%B2hexo%E5%88%B0GitHub-Pages"><span class="nav-number">6.</span> <span class="nav-text">6、部署hexo到GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1%E5%AE%89%E8%A3%85git%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6hexo-deployer-git"><span class="nav-number">6.1.</span> <span class="nav-text">6.1安装git部署插件hexo-deployer-git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2%E4%BF%AE%E6%94%B9-config-yml%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">6.2.</span> <span class="nav-text">6.2修改_config.yml站点配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-3%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-number">7.</span> <span class="nav-text">6.3发布文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84hexo%E5%91%BD%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">常用的hexo命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -929,6 +731,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
