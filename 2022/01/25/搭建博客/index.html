@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。 1、搭建本地环境1.1下载并安装nodejs安装时一路默认即可。 测试：打开cmd,输入以下测试，出现版本号即表示成功 123node -vnpm -v   1.2下载并安装git安装时也一路默认即可。 测试：打开cmd,输入如下测">
+<meta name="description" content="本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo + github 搭建博客">
 <meta property="og:url" content="https://echozt.github.io/2022/01/25/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。 1、搭建本地环境1.1下载并安装nodejs安装时一路默认即可。 测试：打开cmd,输入以下测试，出现版本号即表示成功 123node -vnpm -v   1.2下载并安装git安装时也一路默认即可。 测试：打开cmd,输入如下测">
+<meta property="og:description" content="本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。">
 <meta property="og:locale">
 <meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643101941794.png">
 <meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643101879167.png">
@@ -98,7 +98,7 @@
 <meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643113293612.png">
 <meta property="og:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643113614936.png">
 <meta property="article:published_time" content="2022-01-25T08:16:52.000Z">
-<meta property="article:modified_time" content="2022-01-25T13:31:12.723Z">
+<meta property="article:modified_time" content="2022-01-25T13:48:30.940Z">
 <meta property="article:author" content="echozt">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="file://C:/Users/曾婷/Documents/Gridea/post-images/1643101941794.png">
@@ -332,6 +332,8 @@
 
       
         <p>本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。</p>
+<span id="more"></span>
+
 <h1 id="1、搭建本地环境"><a href="#1、搭建本地环境" class="headerlink" title="1、搭建本地环境"></a>1、搭建本地环境</h1><h2 id="1-1下载并安装nodejs"><a href="#1-1下载并安装nodejs" class="headerlink" title="1.1下载并安装nodejs"></a>1.1下载并安装<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs</a></h2><p>安装时一路默认即可。</p>
 <p>测试：打开cmd,输入以下测试，出现版本号即表示成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
@@ -418,8 +420,6 @@
 
 <p>此时，访问我们的GitHub域名，即：https://用户名.github.io 就可以看到hexo网站啦！</p>
 <h1 id="常用的hexo命令"><a href="#常用的hexo命令" class="headerlink" title="常用的hexo命令"></a>常用的hexo命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;name&quot;</span>         <span class="comment"># 新建文章</span></span><br><span class="line"></span><br><span class="line">hexo new page <span class="string">&quot;name&quot;</span>    <span class="comment"># 新建页面</span></span><br><span class="line"></span><br><span class="line">hexo g                  <span class="comment"># 生成页面</span></span><br><span class="line"></span><br><span class="line">hexo d                  <span class="comment"># 部署</span></span><br><span class="line"></span><br><span class="line">hexo g -d               <span class="comment"># 生成页面并部署</span></span><br><span class="line"></span><br><span class="line">hexo s                  <span class="comment"># 本地预览</span></span><br><span class="line"></span><br><span class="line">hexo clean              <span class="comment"># 清除缓存和已生成的静态文件</span></span><br><span class="line"></span><br><span class="line">hexo <span class="built_in">help</span>               <span class="comment"># 帮助</span></span><br><span class="line"></span><br><span class="line">hexo --debug            <span class="comment"># 调试模式</span></span><br></pre></td></tr></table></figure>
-
-
 
       
     </div>
