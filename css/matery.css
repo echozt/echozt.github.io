@@ -183,7 +183,7 @@ code {
 
 pre code {
     padding: 0;
-    color: #e8eaf6;
+    color: #e8eaf6;   
     background-color: #272822;
 }
 
@@ -241,11 +241,11 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #969696 0%, #808080 100%);
 }
 
 .text-color {
-    color: #0f9d58 !important;
+    color: #646464 !important;
 }
 
 .white-color {
@@ -875,7 +875,7 @@ article a {
 
 article a:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #4B4B4B;
     text-decoration: underline;
 }
 
@@ -1058,7 +1058,7 @@ article .article-tags .chip {
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 2px;
-    color: #42b983;
+    color: #4B4B4B;
     background: #fff;
     border: 1px solid;
     transition: all 0.6s ease-in-out;
@@ -1066,17 +1066,17 @@ article .article-tags .chip {
 
 #artDetail .tag_share .article-tag .chip:hover {
     color: #fff;
-    background: #42b983;
+    background: #4B4B4B;
 }
 
 #artDetail .post-cate {
     float: right;
-    color: #42b983;
+    color: #4B4B4B;
 }
 
 #artDetail .post-cate a {
     padding-right: 5px;
-    color: #42b983;
+    color: #4B4B4B;
     font-weight: 500;
 }
 
