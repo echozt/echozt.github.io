@@ -241,11 +241,12 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #969696 0%, #808080 100%);
+    background-image: linear-gradient(to right, #FFC0CB 0%, #7B68EE 100%);
+    opacity: 0.8 /*透明效果*/
 }
 
 .text-color {
-    color: #646464 !important;
+    color: #000000 !important;
 }
 
 .white-color {
@@ -257,7 +258,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to right, #FFC0CB 0%, #7B68EE 100%);
     opacity: 0.8;
 }
 
@@ -550,10 +551,10 @@ header .go-back i {
     height: 40vh !important;
 }
 
-.bg-cover:after {
+/*.bg-cover:after {
     -webkit-animation: rainbow 60s infinite;
     animation: rainbow 60s infinite;
-}
+}*/
 
 .bg-cover:before,
 .bg-cover:after {
@@ -942,7 +943,7 @@ article .article-tags .chip {
     font-weight: 400;
     height: 22px;
     line-height: 22px;
-    color: #fff;
+    color: #000;
     border-radius: 10px;
 }
 

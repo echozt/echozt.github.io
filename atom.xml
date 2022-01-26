@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>echozt</title>
+  
+  <subtitle>echozt&#39;s blog</subtitle>
+  <link href="https://echozt.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://echozt.github.io/"/>
+  <updated>2022-01-26T15:29:52.267Z</updated>
+  <id>https://echozt.github.io/</id>
+  
+  <author>
+    <name>echozt</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo + github 搭建博客</title>
+    <link href="https://echozt.github.io/posts/85e6.html"/>
+    <id>https://echozt.github.io/posts/85e6.html</id>
+    <published>2022-01-25T08:16:52.000Z</published>
+    <updated>2022-01-26T15:29:52.267Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="hexo" scheme="https://echozt.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://echozt.github.io/posts/3eeb.html"/>
+    <id>https://echozt.github.io/posts/3eeb.html</id>
+    <published>2022-01-24T09:40:30.237Z</published>
+    <updated>2022-01-26T13:03:39.057Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>
