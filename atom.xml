@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-01-28T09:37:44.888Z</updated>
+  <updated>2022-01-28T10:59:45.622Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/84ce.html"/>
     <id>https://echozt.github.io/posts/84ce.html</id>
     <published>2022-01-28T06:08:59.000Z</published>
-    <updated>2022-01-28T09:37:44.888Z</updated>
+    <updated>2022-01-28T10:59:45.622Z</updated>
     
     
     <summary type="html">&lt;p&gt;前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。&lt;/p&gt;</summary>
