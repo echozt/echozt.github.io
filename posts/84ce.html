@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>xss-labs题解 | echozt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss-labs题解">
+<meta property="og:url" content="https://echozt.github.io/posts/84ce.html">
+<meta property="og:site_name" content="echozt">
+<meta property="og:description" content="前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://echozt.github.io/posts/Users/曾婷/AppData/Roaming/marktext/images/2022-01-28-14-38-25-image.png">
+<meta property="og:image" content="https://echozt.github.io/posts/Users/曾婷/AppData/Roaming/marktext/images/2022-01-28-14-49-04-image.png">
+<meta property="og:image" content="https://echozt.github.io/posts/Users/曾婷/AppData/Roaming/marktext/images/2022-01-28-14-55-31-image.png">
+<meta property="article:published_time" content="2022-01-28T06:08:59.000Z">
+<meta property="article:modified_time" content="2022-01-28T09:37:44.888Z">
+<meta property="article:author" content="echozt">
+<meta property="article:tag" content="xss">
+<meta property="article:tag" content="靶场">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://echozt.github.io/posts/Users/曾婷/AppData/Roaming/marktext/images/2022-01-28-14-38-25-image.png">
+  
+    <link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">echozt</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://echozt.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-xss-labs题解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/84ce.html" class="article-date">
+  <time datetime="2022-01-28T06:08:59.000Z" itemprop="datePublished">2022-01-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      xss-labs题解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。</p>
+<span id="more"></span>
+
+<h1 id="基本流程："><a href="#基本流程：" class="headerlink" title="基本流程："></a>基本流程：</h1><p>先输入一个<script>alert('xss')</script>，然后查看网页源码，先猜想一下，再去查看原php文件，验证猜想或者找到解题的关键。</p>
+<p>提供一个直接查看源码的快捷方式：ctrl+U,</p>
+<p>或者直接在网址前面输入view-source:   （一样的意思）我个人还是喜欢直接按ctrl+U的方式，比较方便。</p>
+<h1 id="level-1"><a href="#level-1" class="headerlink" title="level 1"></a>level 1</h1><p>可以先查看第一关的源码，</p>
+<p>在level1.php中：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$str</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>直接将键盘的值传送给了后台</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解:"></a>题解:</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>成功进入第二关。</p>
+<h1 id="level-2"><a href="#level-2" class="headerlink" title="level 2"></a>level 2</h1><p>使用第一关的题解，发现没有成功，查看一下源码：</p>
+<p><img src="/posts/Users\曾婷\AppData\Roaming\marktext\images\2022-01-28-14-38-25-image.png"></p>
+<p>&lt;和&gt;都被编码成了html字符实体。</p>
+<p>在level2.php中：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">"&lt;h2 align=center>没有找到和"</span><span class="token punctuation">.</span><span class="token function">htmlspecialchars</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">"相关的结果.&lt;/h2>"</span><span class="token punctuation">.</span>'<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span><span class="token punctuation">></span></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>htmlspecialchars()函数对变量str进行处理之后显示到网页上。(即将&lt;和&gt;都被编码成了html字符实体）但value中并没有使用。</p>
+<h2 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h2><pre class="line-numbers language-php"><code class="language-php">"<span class="token operator">></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span><span class="token comment" spellcheck="true">//</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p> 闭合前面的，注释后面的。成功进入第三关。</p>
+<h1 id="level-3"><a href="#level-3" class="headerlink" title="level 3"></a>level 3</h1><p>使用第一关的题解，发现没有成功，查看一下源码：</p>
+<p><img src="/posts/Users\曾婷\AppData\Roaming\marktext\images\2022-01-28-14-49-04-image.png"></p>
+<p>在level3.php中：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">"&lt;h2 align=center>没有找到和"</span><span class="token punctuation">.</span><span class="token function">htmlspecialchars</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">"相关的结果.&lt;/h2>"</span><span class="token punctuation">.</span>"<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span><span class="token punctuation">></span></span></span>
+
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>keyword</span>  <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span><span class="token punctuation">"</span>.htmlspecialchars($str).<span class="token punctuation">"</span><span class="token punctuation">'</span></span><span class="token punctuation">></span></span></span>    
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>两处都使用了htmlspecialchars()函数，就不能使用带有&lt;或&gt;</p>
+<h2 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token string">'onfocus=javascript:alert('</span>xss'<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在使用之后，当使用鼠标点击该输入框时输入框被选中可以。</p>
+<h1 id="level-4"><a href="#level-4" class="headerlink" title="level 4"></a>level 4</h1><p>使用第一关的题解，发现没有成功，查看一下源码：</p>
+<p><img src="/posts/Users\曾婷\AppData\Roaming\marktext\images\2022-01-28-14-55-31-image.png"></p>
+<p>在level4.php中：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$str2</span><span class="token operator">=</span><span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string">">"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token shell-comment comment">#将变量中的>删除</span>
+
+<span class="token variable">$str3</span><span class="token operator">=</span><span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string">"&lt;"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token shell-comment comment">#将变量中的&lt;删除</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>不能使用带有&lt;或&gt;,还是可以使用第三关的题解。</p>
+<h2 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token string">'onfocus=javascript:alert('</span>xss'<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在使用之后，当使用鼠标点击该输入框时输入框被选中可以。</p>
+<h1 id="level-5"><a href="#level-5" class="headerlink" title="level 5"></a>level 5</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://echozt.github.io/posts/84ce.html" data-id="ckyy7pna00003z0uj5fsc16gt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss/" rel="tag">xss</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/posts/5a76.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于msfconsole的应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kali/" rel="tag">kali</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msfconsole/" rel="tag">msfconsole</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%BB%E5%87%BB/" rel="tag">攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E/" rel="tag">漏洞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/kali/" style="font-size: 10px;">kali</a> <a href="/tags/msfconsole/" style="font-size: 10px;">msfconsole</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/%E6%94%BB%E5%87%BB/" style="font-size: 10px;">攻击</a> <a href="/tags/%E6%B8%97%E9%80%8F/" style="font-size: 10px;">渗透</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E9%9D%B6%E5%9C%BA/" style="font-size: 10px;">靶场</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/posts/84ce.html">xss-labs题解</a>
+          </li>
+        
+          <li>
+            <a href="/posts/5a76.html">关于msfconsole的应用</a>
+          </li>
+        
+          <li>
+            <a href="/posts/85e6.html">hexo + github 搭建博客</a>
+          </li>
+        
+          <li>
+            <a href="/posts/3eeb.html">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 echozt<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
