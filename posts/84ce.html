@@ -8,7 +8,7 @@
     <meta name="description" content="前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。
 
 
-基本流程：先输入一个alert(&#39;xss&#39;)，然后查看">
+基本流程：先输入一个payload，然后查看网页源码，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -384,7 +384,7 @@
                 <p>前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。</p>
 <span id="more"></span>
 
-<h1 id="基本流程："><a href="#基本流程：" class="headerlink" title="基本流程："></a>基本流程：</h1><p>先输入一个<script>alert('xss')</script>，然后查看网页源码，先猜想一下，再去查看原php文件，验证猜想或者找到解题的关键。</p>
+<h1 id="基本流程："><a href="#基本流程：" class="headerlink" title="基本流程："></a>基本流程：</h1><p>先输入一个payload，然后查看网页源码，先猜想一下，再去查看原php文件，验证猜想或者找到解题的关键。</p>
 <p>提供一个直接查看源码的快捷方式：ctrl+U,</p>
 <p>或者直接在网址前面输入view-source:   （一样的意思）我个人还是喜欢直接按ctrl+U的方式，比较方便。</p>
 <h1 id="level-1"><a href="#level-1" class="headerlink" title="level 1"></a>level 1</h1><p>可以先查看第一关的源码，发现直接将值传递过去了</p>
