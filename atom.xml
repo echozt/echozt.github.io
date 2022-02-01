@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-02-01T11:20:29.737Z</updated>
+  <updated>2022-02-01T11:52:49.233Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -17,35 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>bnm</title>
-    <link href="https://echozt.github.io/posts/534c.html"/>
-    <id>https://echozt.github.io/posts/534c.html</id>
-    <published>2022-02-01T11:20:05.000Z</published>
-    <updated>2022-02-01T11:20:29.737Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;1.确保靶机和攻击机在同一个局域网，先查看攻击机的地址  &lt;/p&gt;
-&lt;p&gt;ifconfig  &lt;/p&gt;
-&lt;p&gt;攻击机地址为 192.168.0.10  &lt;/p&gt;
-&lt;img src=&quot;/posts/undefined/2.png&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>ms12-020-导致对方蓝屏</title>
     <link href="https://echozt.github.io/posts/c45f.html"/>
     <id>https://echozt.github.io/posts/c45f.html</id>
     <published>2022-01-30T13:56:17.000Z</published>
-    <updated>2022-02-01T02:20:26.158Z</updated>
+    <updated>2022-02-01T11:52:49.233Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇文章介绍关于msfconsole模块中ms12-020漏洞的解析。&lt;/p&gt;</summary>
@@ -91,7 +67,7 @@
     <link href="https://echozt.github.io/posts/5a76.html"/>
     <id>https://echozt.github.io/posts/5a76.html</id>
     <published>2022-01-27T07:00:33.000Z</published>
-    <updated>2022-01-30T14:11:57.614Z</updated>
+    <updated>2022-02-01T11:49:21.407Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇文章介绍关于msfconsole模块中ms08-067漏洞的一些实例应用。&lt;/p&gt;</summary>
