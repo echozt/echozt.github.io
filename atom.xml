@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-01-30T14:13:16.632Z</updated>
+  <updated>2022-02-01T02:20:26.158Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ms12-020(导致对方蓝屏)</title>
+    <title>ms12-020-导致对方蓝屏</title>
     <link href="https://echozt.github.io/posts/c45f.html"/>
     <id>https://echozt.github.io/posts/c45f.html</id>
     <published>2022-01-30T13:56:17.000Z</published>
-    <updated>2022-01-30T14:13:16.632Z</updated>
+    <updated>2022-02-01T02:20:26.158Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇文章介绍关于msfconsole模块中ms12-020漏洞的解析。&lt;/p&gt;</summary>
