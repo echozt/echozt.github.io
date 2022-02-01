@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>bnm</title>
+      <link href="/posts/534c.html"/>
+      <url>/posts/534c.html</url>
+      
+        <content type="html"><![CDATA[<p>1.确保靶机和攻击机在同一个局域网，先查看攻击机的地址  </p><p>ifconfig  </p><p>攻击机地址为 192.168.0.10  </p><img src="/posts/undefined/2.png" class>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ms12-020-导致对方蓝屏</title>
       <link href="/posts/c45f.html"/>
       <url>/posts/c45f.html</url>

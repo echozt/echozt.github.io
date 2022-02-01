@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-02-01T02:20:26.158Z</updated>
+  <updated>2022-02-01T11:20:29.737Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>bnm</title>
+    <link href="https://echozt.github.io/posts/534c.html"/>
+    <id>https://echozt.github.io/posts/534c.html</id>
+    <published>2022-02-01T11:20:05.000Z</published>
+    <updated>2022-02-01T11:20:29.737Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;1.确保靶机和攻击机在同一个局域网，先查看攻击机的地址  &lt;/p&gt;
+&lt;p&gt;ifconfig  &lt;/p&gt;
+&lt;p&gt;攻击机地址为 192.168.0.10  &lt;/p&gt;
+&lt;img src=&quot;/posts/undefined/2.png&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>ms12-020-导致对方蓝屏</title>
