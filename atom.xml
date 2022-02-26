@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-02-26T15:19:33.927Z</updated>
+  <updated>2022-02-26T15:23:47.918Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/1d0a.html"/>
     <id>https://echozt.github.io/posts/1d0a.html</id>
     <published>2022-02-26T14:37:08.000Z</published>
-    <updated>2022-02-26T15:19:33.927Z</updated>
+    <updated>2022-02-26T15:23:47.918Z</updated>
     
     
     <summary type="html">&lt;p&gt;这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。&lt;/p&gt;</summary>
@@ -29,14 +29,18 @@
     
     
     
+    <category term="bodgeit" scheme="https://echozt.github.io/tags/bodgeit/"/>
+    
+    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
+    
   </entry>
   
   <entry>
     <title>ms12-020-导致对方蓝屏</title>
-    <link href="https://echozt.github.io/posts/c45f.html"/>
-    <id>https://echozt.github.io/posts/c45f.html</id>
+    <link href="https://echozt.github.io/posts/12eb.html"/>
+    <id>https://echozt.github.io/posts/12eb.html</id>
     <published>2022-01-30T13:56:17.000Z</published>
-    <updated>2022-02-01T11:52:49.233Z</updated>
+    <updated>2022-02-26T15:24:15.060Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇文章介绍关于msfconsole模块中ms12-020漏洞的解析。&lt;/p&gt;</summary>
@@ -71,9 +75,9 @@
     
     
     
-    <category term="xss" scheme="https://echozt.github.io/tags/xss/"/>
-    
     <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
+    
+    <category term="xss" scheme="https://echozt.github.io/tags/xss/"/>
     
   </entry>
   
@@ -109,7 +113,7 @@
     <link href="https://echozt.github.io/posts/85e6.html"/>
     <id>https://echozt.github.io/posts/85e6.html</id>
     <published>2022-01-25T08:16:52.000Z</published>
-    <updated>2022-01-30T13:44:24.706Z</updated>
+    <updated>2022-02-26T15:24:56.486Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。&lt;/p&gt;</summary>
