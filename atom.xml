@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-02-26T15:23:47.918Z</updated>
+  <updated>2022-03-05T12:21:52.212Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,12 +21,14 @@
     <link href="https://echozt.github.io/posts/1d0a.html"/>
     <id>https://echozt.github.io/posts/1d0a.html</id>
     <published>2022-02-26T14:37:08.000Z</published>
-    <updated>2022-02-26T15:23:47.918Z</updated>
+    <updated>2022-03-05T12:21:52.212Z</updated>
     
     
     <summary type="html">&lt;p&gt;这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。&lt;/p&gt;</summary>
     
     
+    
+    <category term="靶场" scheme="https://echozt.github.io/categories/%E9%9D%B6%E5%9C%BA/"/>
     
     
     <category term="bodgeit" scheme="https://echozt.github.io/tags/bodgeit/"/>
@@ -67,12 +69,14 @@
     <link href="https://echozt.github.io/posts/84ce.html"/>
     <id>https://echozt.github.io/posts/84ce.html</id>
     <published>2022-01-28T06:08:59.000Z</published>
-    <updated>2022-01-28T16:30:30.162Z</updated>
+    <updated>2022-03-05T12:22:03.006Z</updated>
     
     
     <summary type="html">&lt;p&gt;前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。&lt;/p&gt;</summary>
     
     
+    
+    <category term="靶场" scheme="https://echozt.github.io/categories/%E9%9D%B6%E5%9C%BA/"/>
     
     
     <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
