@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-03-05T12:21:52.212Z</updated>
+  <updated>2022-03-26T06:20:03.823Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>upload文件上传靶场</title>
+    <link href="https://echozt.github.io/posts/1702.html"/>
+    <id>https://echozt.github.io/posts/1702.html</id>
+    <published>2022-03-26T05:23:40.000Z</published>
+    <updated>2022-03-26T06:20:03.823Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1、PASS-01——js绕过&quot;&gt;&lt;a href=&quot;#1、PASS-01——js绕过&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="靶场" scheme="https://echozt.github.io/categories/%E9%9D%B6%E5%9C%BA/"/>
+    
+    
+    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
+    
+    <category term="upload" scheme="https://echozt.github.io/tags/upload/"/>
+    
+  </entry>
   
   <entry>
     <title>bodgeit靶场</title>
