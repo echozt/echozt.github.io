@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-04-12T07:25:41.709Z</updated>
+  <updated>2022-04-13T15:51:18.616Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sql注入漏洞</title>
+    <link href="https://echozt.github.io/posts/b737.html"/>
+    <id>https://echozt.github.io/posts/b737.html</id>
+    <published>2022-04-13T15:15:01.000Z</published>
+    <updated>2022-04-13T15:51:18.616Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;打完65关的sql靶场，浅浅地整理了一下关于sql注入的知识点。主要是mysql数据库的。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="web漏洞" scheme="https://echozt.github.io/categories/web%E6%BC%8F%E6%B4%9E/"/>
+    
+    
+    <category term="sql注入" scheme="https://echozt.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    
+    <category term="web漏洞" scheme="https://echozt.github.io/tags/web%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>sqli靶场(54~65关)</title>
