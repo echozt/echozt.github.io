@@ -8,8 +8,8 @@
     <meta name="description" content="又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。
 
 
-前言单独整理了一份知识，这里就只讲我的靶场通关之路了。一些基本知识可以移步去到我的另一篇文章~
-union操作符：UNIO">
+前言第一部分就是union联合注入和盲注。
+我这里用的sqli靶场是https://github.com/Audi-1/s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -393,7 +393,9 @@ union操作符：UNIO">
                 <p>又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。</p>
 <span id="more"></span>
 
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>单独整理了一份知识，这里就只讲我的靶场通关之路了。一些基本知识可以移步去到我的另一篇文章~</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一部分就是union联合注入和盲注。</p>
+<p>我这里用的sqli靶场是<a target="_blank" rel="noopener" href="https://github.com/Audi-1/sqli-labs.git">https://github.com/Audi-1/sqli-labs.git</a> sqli-labs</p>
+<p>把第一部分打完，你真的就成功一大半了~</p>
 <h2 id="union操作符："><a href="#union操作符：" class="headerlink" title="union操作符："></a>union操作符：</h2><p>UNION操作符用于合并两个或多个SELECT语句的结果集。请注意，UNION内部的SELECT语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条SELECT语句中的列的顺序必须相同</p>
 <p>注释：默认地，UNION操作符选取不同的值。如果允许重复的值，请使用UNION ALL</p>
 <h2 id="Limit："><a href="#Limit：" class="headerlink" title="Limit："></a>Limit：</h2><p>Limit是指限定查询的条数。有三种方式：</p>
