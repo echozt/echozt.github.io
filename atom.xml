@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-04-13T15:51:18.616Z</updated>
+  <updated>2022-04-13T15:53:12.302Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/b737.html"/>
     <id>https://echozt.github.io/posts/b737.html</id>
     <published>2022-04-13T15:15:01.000Z</published>
-    <updated>2022-04-13T15:51:18.616Z</updated>
+    <updated>2022-04-13T15:53:12.302Z</updated>
     
     
     <summary type="html">&lt;p&gt;打完65关的sql靶场，浅浅地整理了一下关于sql注入的知识点。主要是mysql数据库的。&lt;/p&gt;</summary>
@@ -126,7 +126,7 @@
     <link href="https://echozt.github.io/posts/1702.html"/>
     <id>https://echozt.github.io/posts/1702.html</id>
     <published>2022-03-26T05:23:40.000Z</published>
-    <updated>2022-03-26T06:37:31.660Z</updated>
+    <updated>2022-04-15T04:57:38.007Z</updated>
     
     
     <summary type="html">&lt;p&gt;这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。文章最后还有一张我对于文件上传漏洞的总结哦。&lt;/p&gt;</summary>

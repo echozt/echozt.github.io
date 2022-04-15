@@ -398,7 +398,7 @@
 <h1 id="1、PASS-01——js绕过"><a href="#1、PASS-01——js绕过" class="headerlink" title="1、PASS-01——js绕过"></a>1、PASS-01——js绕过</h1><p>上传php后缀文件时，弹出不允许上传，查看源代码，发现这是前端js拦截。</p>
 <img src="/posts/1702/1.png" class>
 
-<p>那就先上传一个正常的11.jpg，然后用burp抓包将11.jpg改成22.php就可以啦。修改点击发送，发现已经上传成功啦。</p>
+<p>那就先上传一个正常的11.jpg，然后用burp抓包将11.jpg改成22.php，然后将图片的内容改成想要的PHP文件内容就可以啦。修改点击发送，发现已经上传成功啦。</p>
 <img src="/posts/1702/1_2.png" class>
 
 <h1 id="2、PASS-02——content-type检测绕过"><a href="#2、PASS-02——content-type检测绕过" class="headerlink" title="2、PASS-02——content-type检测绕过"></a>2、PASS-02——content-type检测绕过</h1><p>上传2.php时，提示文件类型不正确，查看源码，发现对content-type做了限制。</p>
