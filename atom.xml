@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-04-13T15:53:12.302Z</updated>
+  <updated>2022-04-23T16:31:48.280Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pikachu靶场</title>
+    <link href="https://echozt.github.io/posts/6011.html"/>
+    <id>https://echozt.github.io/posts/6011.html</id>
+    <published>2022-04-23T15:14:32.000Z</published>
+    <updated>2022-04-23T16:31:48.280Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;咱就是说，前一段时间，我的github被标记成机器人了。百度了一下，然后给那边发了封邮件，来来回回两次才总算弄好。我还不够勤快嘛，还把我标记了呜呜呜。&lt;/p&gt;
+&lt;p&gt;今天传的是前一段时间打的pikachu靶场。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="靶场" scheme="https://echozt.github.io/categories/%E9%9D%B6%E5%9C%BA/"/>
+    
+    
+    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
+    
+    <category term="pikachu" scheme="https://echozt.github.io/tags/pikachu/"/>
+    
+  </entry>
   
   <entry>
     <title>sql注入漏洞</title>
