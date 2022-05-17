@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-04-23T16:32:25.220Z</updated>
+  <updated>2022-05-17T13:02:33.580Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,76 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Apache Struts2远程代码执行漏洞(S2-016)</title>
+    <link href="https://echozt.github.io/posts/fd38.html"/>
+    <id>https://echozt.github.io/posts/fd38.html</id>
+    <published>2022-05-17T12:51:06.000Z</published>
+    <updated>2022-05-17T13:02:33.580Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;复现的是墨者的Apache Struts2的靶场，用的工具检测~~&lt;/p&gt;
+&lt;h1 id=&quot;原理：&quot;&gt;&lt;a href=&quot;#原理：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/categories/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="Apache Struts2" scheme="https://echozt.github.io/tags/Apache-Struts2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache Struts2远程代码执行漏洞(S2-015)</title>
+    <link href="https://echozt.github.io/posts/d38.html"/>
+    <id>https://echozt.github.io/posts/d38.html</id>
+    <published>2022-05-17T12:50:55.000Z</published>
+    <updated>2022-05-17T13:01:53.401Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;复现的是墨者的Apache Struts2的靶场，用了两种方式，手工和工具检测~~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/categories/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="Apache Struts2" scheme="https://echozt.github.io/tags/Apache-Struts2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache Shiro 1.2.4反序列化漏洞</title>
+    <link href="https://echozt.github.io/posts/9532.html"/>
+    <id>https://echozt.github.io/posts/9532.html</id>
+    <published>2022-05-17T12:42:48.000Z</published>
+    <updated>2022-05-17T12:49:42.308Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前几天复现了一下墨者平台的shiro靶场，本篇文章用的是工具检测的~~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/categories/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="Apache shiro" scheme="https://echozt.github.io/tags/Apache-shiro/"/>
+    
+  </entry>
   
   <entry>
     <title>pikachu靶场</title>
