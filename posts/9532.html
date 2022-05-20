@@ -400,17 +400,17 @@
 <p>(3)请求包中存在rememberMe=x时，响应包中存在rememberMe=deleteMe。（有时候服务器不会主动返回remeberMe=deleteMe，直接发包即可，将Cookie内容改为remember Me=1，若相应包有rememberMe=deleteMe，则基本可以确定⽹站是apache shiro搭建的。）</p>
 <p>(4) URL中有shiro字样</p>
 <p>将cookie内容改为remember Me=1情况：</p>
-<p> <img src="/posts/undefined/1.png" class></p>
-<h1 id="4-选择一个账户登录，勾选remember-me"><a href="#4-选择一个账户登录，勾选remember-me" class="headerlink" title="4.选择一个账户登录，勾选remember me"></a>4.选择一个账户登录，勾选remember me</h1><p> <img src="/posts/undefined/2.png" class></p>
-<h1 id="5-从请求的返回包判断出使用了shiro："><a href="#5-从请求的返回包判断出使用了shiro：" class="headerlink" title="5.从请求的返回包判断出使用了shiro："></a>5.从请求的返回包判断出使用了shiro：</h1><p> <img src="/posts/undefined/3.png" class></p>
+<p> <img src="/posts/9532/1.png" class></p>
+<h1 id="4-选择一个账户登录，勾选remember-me"><a href="#4-选择一个账户登录，勾选remember-me" class="headerlink" title="4.选择一个账户登录，勾选remember me"></a>4.选择一个账户登录，勾选remember me</h1><p> <img src="/posts/9532/2.png" class></p>
+<h1 id="5-从请求的返回包判断出使用了shiro："><a href="#5-从请求的返回包判断出使用了shiro：" class="headerlink" title="5.从请求的返回包判断出使用了shiro："></a>5.从请求的返回包判断出使用了shiro：</h1><p> <img src="/posts/9532/3.png" class></p>
 <h1 id="6-利用shiro工具检测"><a href="#6-利用shiro工具检测" class="headerlink" title="6.利用shiro工具检测"></a>6.利用shiro工具检测</h1><p>放入url，点击爆破密钥，存在密钥，得到密钥：</p>
-<p> <img src="/posts/undefined/4.png" class></p>
+<p> <img src="/posts/9532/4.png" class></p>
 <h1 id="7-然后命令执行找到一个key-txt"><a href="#7-然后命令执行找到一个key-txt" class="headerlink" title="7.然后命令执行找到一个key.txt"></a>7.然后命令执行找到一个key.txt</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ls</span> /
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <img src="/posts/undefined/5.png" class></p>
+<p> <img src="/posts/9532/5.png" class></p>
 <h1 id="8-查看key-txt，得到flag"><a href="#8-查看key-txt，得到flag" class="headerlink" title="8.查看key.txt，得到flag"></a>8.查看key.txt，得到flag</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> /key.txt
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/6.png" class>
+<img src="/posts/9532/6.png" class>
 
                 
             </div>
