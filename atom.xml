@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-05-17T13:03:02.153Z</updated>
+  <updated>2022-06-18T12:31:07.228Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>攻防世界-web-ICS-05</title>
+    <link href="https://echozt.github.io/posts/dbe4.html"/>
+    <id>https://echozt.github.io/posts/dbe4.html</id>
+    <published>2022-06-18T12:05:26.000Z</published>
+    <updated>2022-06-18T12:31:07.228Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天练习了一下攻防世界里面的web靶场，做了一个题目，叫ics-05，主要是关于preg_replace这个函数可能存在命令执行漏洞~~&lt;/p&gt;
+&lt;h1 id=&quot;先前介绍：&quot;&gt;&lt;a href=&quot;#先前介绍：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="ctf" scheme="https://echozt.github.io/categories/ctf/"/>
+    
+    
+    <category term="命令执行漏洞" scheme="https://echozt.github.io/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="web" scheme="https://echozt.github.io/tags/web/"/>
+    
+    <category term="php" scheme="https://echozt.github.io/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>Apache Struts2远程代码执行漏洞(S2-016)</title>
