@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-07-07T07:35:48.359Z</updated>
+  <updated>2022-07-08T09:08:58.299Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://echozt.github.io/posts/8409.html"/>
     <id>https://echozt.github.io/posts/8409.html</id>
     <published>2022-07-07T06:10:59.000Z</published>
-    <updated>2022-07-07T07:35:48.359Z</updated>
+    <updated>2022-07-08T09:08:58.299Z</updated>
     
     
-    <summary type="html">&lt;p&gt;这个靶场是一两个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。&lt;/p&gt;</summary>
     
     
     
@@ -42,7 +42,7 @@
     <link href="https://echozt.github.io/posts/dbe4.html"/>
     <id>https://echozt.github.io/posts/dbe4.html</id>
     <published>2022-06-18T12:05:26.000Z</published>
-    <updated>2022-06-18T12:44:17.344Z</updated>
+    <updated>2022-07-08T09:09:22.725Z</updated>
     
     
     <summary type="html">&lt;p&gt;今天练习了一下攻防世界里面的web靶场，做了一个题目，叫ics-05，主要是关于preg_replace这个函数可能存在命令执行漏洞~~&lt;/p&gt;</summary>
