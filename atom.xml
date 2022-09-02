@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-07-08T09:08:58.299Z</updated>
+  <updated>2022-09-02T11:16:22.584Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>截获微信公众号，小程序数据包</title>
+    <link href="https://echozt.github.io/posts/621a.html"/>
+    <id>https://echozt.github.io/posts/621a.html</id>
+    <published>2022-09-02T10:52:13.000Z</published>
+    <updated>2022-09-02T11:16:22.584Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;    前一段时间有在做捕获微信公众号数据包的测试，然后顺便下载了个模拟器，想着琢磨一下小程序和app的拦截使用，整理了一下笔记，下面是关于在模拟器和本机电脑上拦截微信公众号，小程序，APP数据包的做法。&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    
+    <category term="fiddle" scheme="https://echozt.github.io/tags/fiddle/"/>
+    
+    <category term="模拟器" scheme="https://echozt.github.io/tags/%E6%A8%A1%E6%8B%9F%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>dvwa靶场题解</title>
