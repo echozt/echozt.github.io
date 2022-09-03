@@ -43,11 +43,11 @@
   </entry>
   
   <entry>
-    <title>dvwa靶场题解</title>
+    <title>dvwa靶场</title>
     <link href="https://echozt.github.io/posts/8409.html"/>
     <id>https://echozt.github.io/posts/8409.html</id>
     <published>2022-07-07T06:10:59.000Z</published>
-    <updated>2022-09-03T09:24:38.667Z</updated>
+    <updated>2022-09-03T14:07:14.882Z</updated>
     
     
     <summary type="html">&lt;p&gt;这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。&lt;/p&gt;</summary>
@@ -353,11 +353,11 @@
   </entry>
   
   <entry>
-    <title>xss-labs题解</title>
+    <title>xss靶场</title>
     <link href="https://echozt.github.io/posts/84ce.html"/>
     <id>https://echozt.github.io/posts/84ce.html</id>
     <published>2022-01-28T06:08:59.000Z</published>
-    <updated>2022-03-05T12:22:03.006Z</updated>
+    <updated>2022-09-03T14:05:08.942Z</updated>
     
     
     <summary type="html">&lt;p&gt;前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。&lt;/p&gt;</summary>
