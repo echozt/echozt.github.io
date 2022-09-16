@@ -26,26 +26,27 @@
 <meta property="og:image" content="https://echozt.github.io/posts/621a/1.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/1_2.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/1_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/1_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/1_5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/1_6.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/2.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/2_2.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/2_3.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/2_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/2_5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/2_6.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/2_7.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/2_8.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/2_9.png">
-<meta property="og:image" content="https://echozt.github.io/posts/621a/2_10.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/3_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/3_3.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/4.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/4_2.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/4_3.png">
 <meta property="og:image" content="https://echozt.github.io/posts/621a/4_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/4_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/4_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/5_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/6_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/6_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/621a/6_4.png">
 <meta property="article:published_time" content="2022-09-02T10:52:13.000Z">
-<meta property="article:modified_time" content="2022-09-05T12:40:23.799Z">
+<meta property="article:modified_time" content="2022-09-16T10:52:05.912Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="fiddler">
 <meta property="article:tag" content="模拟器">
@@ -226,7 +227,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.4k 字
+      2.5k 字
     </span>
   
 
@@ -263,91 +264,93 @@
               <p>    前一段时间有在做捕获微信公众号数据包的测试，然后顺便下载了个模拟器，想着琢磨一下小程序和app的拦截使用，整理了一下笔记，下面是关于在模拟器和本机电脑上拦截微信公众号，小程序，APP数据包的做法。</p>
 <span id="more"></span>
 
-<h1 id="1、在夜神模拟器上拦截微信公众号或小程序数据包"><a href="#1、在夜神模拟器上拦截微信公众号或小程序数据包" class="headerlink" title="1、在夜神模拟器上拦截微信公众号或小程序数据包"></a>1、在夜神模拟器上拦截微信公众号或小程序数据包</h1><h2 id="step-1-配置网络"><a href="#step-1-配置网络" class="headerlink" title="step 1 配置网络"></a>step 1 配置网络</h2><p>    打开夜神模拟器——找到WLAN设置——长按那个网络——点击修改网络：</p>
+<h1 id="1、在本地电脑上拦截微信公众号数据包"><a href="#1、在本地电脑上拦截微信公众号数据包" class="headerlink" title="1、在本地电脑上拦截微信公众号数据包"></a>1、在本地电脑上拦截微信公众号数据包</h1><p>    在本地电脑上可以通过下面这种方式拦截公众号的数据包，但是拦截不到小程序的数据包。</p>
+<h2 id="step-1-设置代理服务器"><a href="#step-1-设置代理服务器" class="headerlink" title="step 1 设置代理服务器"></a>step 1 设置代理服务器</h2><p>    打开默认浏览器的Internet选项——点击”连接“——选择”局域网设置”</p>
 <img src="/posts/621a/1.png" srcset="/img/loading.gif" lazyload class>
 
-<p>    将代理改为手动，ip为电脑任一内网ip地址（不清楚可以在cmd中使用ipconfig命令查看，我这里设置为192.168.187.1），端口自己设置为任一没被占用的端口（我这里设置为8888），点击保存：</p>
+<p>    打开代理服务器，配置一个地址和端口：</p>
 <img src="/posts/621a/1_2.png" srcset="/img/loading.gif" lazyload class>
 
-<h2 id="step-2-配置burp代理"><a href="#step-2-配置burp代理" class="headerlink" title="step 2 配置burp代理"></a>step 2 配置burp代理</h2><p>    在burp中，proxy——options——添加代理（添加的和上一步在夜神模拟器网络中的ip和端口一致）</p>
+<h2 id="step-2-burp配置"><a href="#step-2-burp配置" class="headerlink" title="step 2 burp配置"></a>step 2 burp配置</h2><p>    在burp中的proxy——options——添加代理（添加和上一步代理服务器一样的ip和端口即可）</p>
 <img src="/posts/621a/1_3.png" srcset="/img/loading.gif" lazyload class>
 
-<h2 id="step-3-下载证书并安装"><a href="#step-3-下载证书并安装" class="headerlink" title="step 3 下载证书并安装"></a>step 3 下载证书并安装</h2><p>    其实前面两步完成之后，已经可以用burp拦截到模拟器中公众号数据包了，但是无法访问浏览器，而且拦截小程序的数据包还有点问题，所以还是乖乖把证书下载吧。</p>
-<p>    在本机上访问之前配置的ip:端口（我这里为192.168.187.1:8888），下载burp证书：</p>
-<img src="/posts/621a/1_4.png" srcset="/img/loading.gif" lazyload class>
-
-<p>    将证书的后缀der修改为cer，然后拖拽到夜神模拟器上面：</p>
-<img src="/posts/621a/1_5.png" srcset="/img/loading.gif" lazyload class>
-
-<p>    在夜神模拟器中，进入设置——安全——从SD卡安装——选择刚刚证书的位置，证书名称任意取。第一次安装的时候可能需要设置pin码，自己任意设置即可。</p>
-<img src="/posts/621a/1_6.png" srcset="/img/loading.gif" lazyload class>
-
-<p>    此时，打开burp，在模拟器里面访问微信的公众号或者小程序即可抓取到数据包啦。如果此时还是拦截不到数据包，建议换成低版本的Android再试试，我改成Android 5之后就能正常抓包了，之前用Android 7硬是抓不到小程序包，真难受。</p>
-<h1 id="2、在本地电脑上拦截微信公众号或小程序数据包"><a href="#2、在本地电脑上拦截微信公众号或小程序数据包" class="headerlink" title="2、在本地电脑上拦截微信公众号或小程序数据包"></a>2、在本地电脑上拦截微信公众号或小程序数据包</h1><h2 id="2-1-在本地电脑上拦截公众号数据包"><a href="#2-1-在本地电脑上拦截公众号数据包" class="headerlink" title="2.1 在本地电脑上拦截公众号数据包"></a>2.1 在本地电脑上拦截公众号数据包</h2><p>    在本地电脑上也可以通过下面这种方式拦截公众号的数据包，但是拦截不到小程序的数据包。</p>
-<h3 id="step-1-设置代理服务器"><a href="#step-1-设置代理服务器" class="headerlink" title="step 1 设置代理服务器"></a>step 1 设置代理服务器</h3><p>    打开默认浏览器的Internet选项——点击”连接“——选择”局域网设置”</p>
+<h1 id="2、-在本地电脑上拦截微信小程序数据包"><a href="#2、-在本地电脑上拦截微信小程序数据包" class="headerlink" title="2、 在本地电脑上拦截微信小程序数据包"></a>2、 在本地电脑上拦截微信小程序数据包</h1><p>    拦截小程序的数据包，可以通过fiddle来拦截。同样，用fiddle也可以拦截到公众号的数据包。但是注意哦，只能使用旧版（3.6版本）的电脑微信，3.7版本的不行。然后建议先删除电脑上WMPFRuntime文件夹下的内容，再用管理员身份重新运行微信。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">C:\Users\Administrator\AppData\Roaming\Tencent\WeChat\XPlugin\Plugins\WMPFRuntime
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="step-1-配置fiddler捕获HTTPS会话和端口连接设置"><a href="#step-1-配置fiddler捕获HTTPS会话和端口连接设置" class="headerlink" title="step 1 配置fiddler捕获HTTPS会话和端口连接设置"></a>step 1 配置fiddler捕获HTTPS会话和端口连接设置</h2><p>    先下载并安装<a target="_blank" rel="noopener" href="https://www.telerik.com/download/fiddler">Fiddler</a>，安装完成之后，打开fiddler，然后点击Tools——Options——HTTPS——勾选Decrypt HTTPS traffic——选择Yes——点击OK，完成配置。</p>
 <img src="/posts/621a/2.png" srcset="/img/loading.gif" lazyload class>
 
-<p>    打开代理服务器，配置一个地址和端口：</p>
+<h2 id="step-2-设置fiddler代理"><a href="#step-2-设置fiddler代理" class="headerlink" title="step 2 设置fiddler代理"></a>step 2 设置fiddler代理</h2><p>    点击Tools——Options——Connections——设置端口——勾选Allow remote computers to connect——点击OK，设置代理完成——重启fiddler配置生效。</p>
 <img src="/posts/621a/2_2.png" srcset="/img/loading.gif" lazyload class>
 
-<h3 id="step-2-burp配置"><a href="#step-2-burp配置" class="headerlink" title="step 2 burp配置"></a>step 2 burp配置</h3><p>    在burp中的proxy——options——添加代理（添加和上一步代理服务器一样的ip和端口即可）</p>
-<img src="/posts/621a/2_3.png" srcset="/img/loading.gif" lazyload class>
-
-<h2 id="2-2-在本地电脑上拦截小程序数据包"><a href="#2-2-在本地电脑上拦截小程序数据包" class="headerlink" title="2.2 在本地电脑上拦截小程序数据包"></a>2.2 在本地电脑上拦截小程序数据包</h2><p>    拦截小程序的数据包，可以通过fiddle来拦截。同样，用fiddle也可以拦截到公众号的数据包。</p>
-<h3 id="step-1-配置fiddler捕获HTTPS会话和端口连接设置"><a href="#step-1-配置fiddler捕获HTTPS会话和端口连接设置" class="headerlink" title="step 1 配置fiddler捕获HTTPS会话和端口连接设置"></a>step 1 配置fiddler捕获HTTPS会话和端口连接设置</h3><p>    先下载并安装<a target="_blank" rel="noopener" href="https://www.telerik.com/download/fiddler">Fiddler</a>，安装完成之后，打开fiddler，然后点击Tools——Options——HTTPS——勾选Decrypt HTTPS traffic——选择Yes——点击OK，完成配置</p>
-<img src="/posts/621a/2_4.png" srcset="/img/loading.gif" lazyload class>
-
-<h3 id="step-2-设置fiddler代理"><a href="#step-2-设置fiddler代理" class="headerlink" title="step 2 设置fiddler代理"></a>step 2 设置fiddler代理</h3><p>    点击Tools——Options——Connections——设置端口——勾选Allow remote computers to connect——点击OK，设置代理完成——重启fiddler配置生效。</p>
-<img src="/posts/621a/2_5.png" srcset="/img/loading.gif" lazyload class>
-
-<h3 id="step-3-配置微信代理"><a href="#step-3-配置微信代理" class="headerlink" title="step 3 配置微信代理"></a>step 3 配置微信代理</h3><p>    打开电脑微信的登录界面，右上角有个设置的图标，进去之后，打开使用代理。</p>
+<h2 id="step-3-配置微信代理"><a href="#step-3-配置微信代理" class="headerlink" title="step 3 配置微信代理"></a>step 3 配置微信代理</h2><p>    打开电脑微信的登录界面，右上角有个设置的图标，进去之后，打开使用代理。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">地址：可以为环回地址127.0.0.1，或者为下面的fiddler中提到的online中圈出来的地址。
 
 端口：一定要注意和第二步中connections中设置的端口号一致。
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/621a/2_6.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/621a/2_3.png" srcset="/img/loading.gif" lazyload class>
 
-<img src="/posts/621a/2_7.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/621a/2_4.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    连接成功，打开小程序即可拦截到数据包。</p>
-<h2 id="2-3-fiddler和burp串联使用"><a href="#2-3-fiddler和burp串联使用" class="headerlink" title="2.3 fiddler和burp串联使用"></a>2.3 fiddler和burp串联使用</h2><p>    fiddler拦截数据包挺快的，但是我还是感觉用burp比较顺手呀，正好它们可以串联使用。</p>
-<h3 id="step-1-配置burp"><a href="#step-1-配置burp" class="headerlink" title="step 1 配置burp"></a>step 1 配置burp</h3><p>    打开burp，配置一个代理，这里我设置为127.0.0.1:7777（注意这里设置的端口号不要和fiddle中connections中的端口号（一般默认为8888）一致。我试了一下，虽然能将fiddler的包同步到burp，但fiddler中没有显示抓包流量，而且无法访问浏览器。）</p>
-<img src="/posts/621a/2_8.png" srcset="/img/loading.gif" lazyload class>
+<h1 id="3、-fiddler和burp串联使用"><a href="#3、-fiddler和burp串联使用" class="headerlink" title="3、 fiddler和burp串联使用"></a>3、 fiddler和burp串联使用</h1><p>    fiddler拦截数据包挺快的，但是我还是感觉用burp比较顺手呀，正好它们可以串联使用。</p>
+<h2 id="step-1-配置burp"><a href="#step-1-配置burp" class="headerlink" title="step 1 配置burp"></a>step 1 配置burp</h2><p>    打开burp，配置一个代理，这里我设置为127.0.0.1:7777（注意这里设置的端口号不要和fiddle中connections中的端口号（一般默认为8888）一致。我试了一下，虽然能将fiddler的包同步到burp，但fiddler中没有显示抓包流量，而且无法访问浏览器。）</p>
+<img src="/posts/621a/3.png" srcset="/img/loading.gif" lazyload class>
 
-<h3 id="step-2-配置fiddler"><a href="#step-2-配置fiddler" class="headerlink" title="step 2 配置fiddler"></a>step 2 配置fiddler</h3><p>    在fiddler中的Tools——Options——Gateway——选择Manual Proxy Configuration配置与第一步相同的地址和端口，这里为127.0.0.1:7777</p>
-<img src="/posts/621a/2_9.png" srcset="/img/loading.gif" lazyload class>
+<h2 id="step-2-配置fiddler"><a href="#step-2-配置fiddler" class="headerlink" title="step 2 配置fiddler"></a>step 2 配置fiddler</h2><p>    在fiddler中的Tools——Options——Gateway——选择Manual Proxy Configuration配置与第一步相同的地址和端口，这里为127.0.0.1:7777</p>
+<img src="/posts/621a/3_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    然后再次打开该窗口，点击show current gateway info可以测试是否连接成功，这样就是成功：</p>
-<img src="/posts/621a/2_10.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/621a/3_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    此时，通过fiddler的包也转发到了burp中的Proxy——HTTP history中。而且可以在burp中拦截到数据包了。</p>
-<h1 id="3、fiddler抓取模拟器上的APP数据包"><a href="#3、fiddler抓取模拟器上的APP数据包" class="headerlink" title="3、fiddler抓取模拟器上的APP数据包"></a>3、fiddler抓取模拟器上的APP数据包</h1><h2 id="step-1-在模拟器配置网络"><a href="#step-1-在模拟器配置网络" class="headerlink" title="step 1 在模拟器配置网络"></a>step 1 在模拟器配置网络</h2><p>    跟之前设置模拟器的网络一样，进入WLAN，修改网络。</p>
+<h1 id="4、在夜神模拟器上用burp拦截微信公众号或小程序数据包"><a href="#4、在夜神模拟器上用burp拦截微信公众号或小程序数据包" class="headerlink" title="4、在夜神模拟器上用burp拦截微信公众号或小程序数据包"></a>4、在夜神模拟器上用burp拦截微信公众号或小程序数据包</h1><h2 id="step-1-配置网络"><a href="#step-1-配置网络" class="headerlink" title="step 1 配置网络"></a>step 1 配置网络</h2><p>    打开夜神模拟器——找到WLAN设置——长按那个网络——点击修改网络：</p>
+<img src="/posts/621a/4.png" srcset="/img/loading.gif" lazyload class>
+
+<p>    将代理改为手动，ip为电脑任一内网ip地址（不清楚可以在cmd中使用ipconfig命令查看，我这里设置为192.168.187.1），端口自己设置为任一没被占用的端口（我这里设置为8888），点击保存：</p>
+<img src="/posts/621a/4_2.png" srcset="/img/loading.gif" lazyload class>
+
+<h2 id="step-2-配置burp代理"><a href="#step-2-配置burp代理" class="headerlink" title="step 2 配置burp代理"></a>step 2 配置burp代理</h2><p>    在burp中，proxy——options——添加代理（添加的和上一步在夜神模拟器网络中的ip和端口一致）</p>
+<img src="/posts/621a/4_3.png" srcset="/img/loading.gif" lazyload class>
+
+<h2 id="step-3-下载证书并安装"><a href="#step-3-下载证书并安装" class="headerlink" title="step 3 下载证书并安装"></a>step 3 下载证书并安装</h2><p>    其实前面两步完成之后，已经可以用burp拦截到模拟器中公众号数据包了，但是无法访问浏览器，而且拦截小程序的数据包还有点问题，所以还是乖乖把证书下载吧。</p>
+<p>    在本机上访问之前配置的ip:端口（我这里为192.168.187.1:8888），下载burp证书：</p>
+<img src="/posts/621a/4_4.png" srcset="/img/loading.gif" lazyload class>
+
+<p>    将证书的后缀der修改为cer，然后拖拽到夜神模拟器上面：</p>
+<img src="/posts/621a/4_5.png" srcset="/img/loading.gif" lazyload class>
+
+<p>    在夜神模拟器中，进入设置——安全——从SD卡安装——选择刚刚证书的位置，证书名称任意取。第一次安装的时候可能需要设置pin码，自己任意设置即可。</p>
+<img src="/posts/621a/4_6.png" srcset="/img/loading.gif" lazyload class>
+
+<p>    此时，打开burp，在模拟器里面访问微信的公众号或者小程序即可抓取到数据包啦。如果此时还是拦截不到数据包，建议换成低版本的Android再试试，我改成Android 5之后就能正常抓包了，之前用Android 7硬是抓不到小程序包，真难受。</p>
+<h1 id="5、fiddler抓取模拟器上的APP数据包"><a href="#5、fiddler抓取模拟器上的APP数据包" class="headerlink" title="5、fiddler抓取模拟器上的APP数据包"></a>5、fiddler抓取模拟器上的APP数据包</h1><h2 id="step-1-在模拟器配置网络"><a href="#step-1-在模拟器配置网络" class="headerlink" title="step 1 在模拟器配置网络"></a>step 1 在模拟器配置网络</h2><p>    跟之前设置模拟器的网络一样，进入WLAN，修改网络。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">地址：本地地址或ipv4地址。
 
 端口：需和在fiddler中connections的端口一致。
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/621a/3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/621a/5.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="step-2-安装fiddler证书"><a href="#step-2-安装fiddler证书" class="headerlink" title="step 2 安装fiddler证书"></a>step 2 安装fiddler证书</h2><p>    在模拟器中下载证书（访问上一步配置的地址:端口），然后还是在模拟器中打开设置——安全——从SD卡安装证书——找到刚刚下载的证书——任意为证书取名即可。</p>
+<img src="/posts/621a/5_2.png" srcset="/img/loading.gif" lazyload class>
 
-
-<p>    此时，通过fiddler已经能拦截到微信公众号，小程序，app等的数据包啦。</p>
-<h1 id="4、Xposed框架-JustTrustMe模块绕过SSL-Pinning"><a href="#4、Xposed框架-JustTrustMe模块绕过SSL-Pinning" class="headerlink" title="4、Xposed框架+JustTrustMe模块绕过SSL Pinning"></a>4、Xposed框架+JustTrustMe模块绕过SSL Pinning</h1><p>    当APP是HTTPS时，则单纯的使用Burpsuite无法抓取数据包，原因是APP启用了SSL Pinning(又叫做“SSL证书绑定”)。把这个框架安装了防止之后有数据包抓取不到。</p>
+<p>此时，通过fiddler已经能拦截到微信公众号，小程序，app等的数据包啦。</p>
+<h1 id="6、Xposed框架-JustTrustMe模块绕过SSL-Pinning"><a href="#6、Xposed框架-JustTrustMe模块绕过SSL-Pinning" class="headerlink" title="6、Xposed框架+JustTrustMe模块绕过SSL Pinning"></a>6、Xposed框架+JustTrustMe模块绕过SSL Pinning</h1><p>    当APP是HTTPS时，则单纯的使用Burpsuite无法抓取数据包，原因是APP启用了SSL Pinning(又叫做“SSL证书绑定”)。把这个框架安装了防止之后有数据包抓取不到。</p>
 <h2 id="step-1-安装Xposed框架"><a href="#step-1-安装Xposed框架" class="headerlink" title="step 1 安装Xposed框架"></a>step 1 安装Xposed框架</h2><p>    注意：只有 <strong>安卓5</strong> 和 7020及以后模拟器版本的 <strong>安卓7 32位</strong> 支持xposed框架。</p>
-<p>在应用商店搜到到Xposed，下载完成之后，选择Version 89，选择install：</p>
-<img src="/posts/621a/4.png" srcset="/img/loading.gif" lazyload class>
+<p>    在应用商店搜到到Xposed，下载完成之后，选择Version 89，选择install：</p>
+<img src="/posts/621a/6.png" srcset="/img/loading.gif" lazyload class>
 
-<img src="/posts/621a/4_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/621a/6_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    然后重启模拟器，再次打开Xposed框架，完成后会提示框架已经激活：</p>
-<img src="/posts/621a/4_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/621a/6_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="step-2-安装JustTrustMe"><a href="#step-2-安装JustTrustMe" class="headerlink" title="step 2 安装JustTrustMe"></a>step 2 安装JustTrustMe</h2><p>    在github上面可搜索到：<a target="_blank" rel="noopener" href="https://github.com/Fuzion24/JustTrustMe/releases">JustTrustMe</a></p>
 <p>    安装完成之后，进入Xposed，点击左上角，选择模块，勾选JustTrustMe</p>
-<img src="/posts/621a/4_4.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/621a/6_4.png" srcset="/img/loading.gif" lazyload class>
 
-<p>安装完成之后，重启模拟器，APP的HTTPS数据包就可以抓取到了。</p>
-
+<p>    安装完成之后，重启模拟器，APP的HTTPS数据包就可以抓取到了。</p>
+<h1 id><a href="#" class="headerlink" title></a></h1>
             </div>
             <hr>
             <div>
