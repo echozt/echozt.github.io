@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-09-16T10:52:05.912Z</updated>
+  <updated>2022-09-18T08:43:21.442Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>buuctf之misc部分题解</title>
+    <link href="https://echozt.github.io/posts/c662.html"/>
+    <id>https://echozt.github.io/posts/c662.html</id>
+    <published>2022-09-18T08:03:43.000Z</published>
+    <updated>2022-09-18T08:43:21.442Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;00x0前言&quot;&gt;&lt;a href=&quot;#00x0前言&quot; class=&quot;headerlink&quot; title=&quot;00x0前言&quot;&gt;&lt;/a&gt;00x0前言&lt;/h1&gt;&lt;p&gt;    我个人感觉杂项就是压缩包与图片的花样式折腾。最近在做buuctf的misc，浅浅地记录下我的题解吧。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="ctf" scheme="https://echozt.github.io/categories/ctf/"/>
+    
+    
+    <category term="misc" scheme="https://echozt.github.io/tags/misc/"/>
+    
+    <category term="ctf" scheme="https://echozt.github.io/tags/ctf/"/>
+    
+  </entry>
   
   <entry>
     <title>截获微信公众号，小程序数据包</title>
@@ -52,11 +73,11 @@
     <category term="综合靶场" scheme="https://echozt.github.io/categories/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/"/>
     
     
-    <category term="dvwa" scheme="https://echozt.github.io/tags/dvwa/"/>
-    
     <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
     
     <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="dvwa" scheme="https://echozt.github.io/tags/dvwa/"/>
     
   </entry>
   
@@ -324,11 +345,11 @@
     <category term="综合靶场" scheme="https://echozt.github.io/categories/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/"/>
     
     
+    <category term="bodgeit" scheme="https://echozt.github.io/tags/bodgeit/"/>
+    
     <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
     
     <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="bodgeit" scheme="https://echozt.github.io/tags/bodgeit/"/>
     
   </entry>
   
