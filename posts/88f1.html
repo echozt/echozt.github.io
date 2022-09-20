@@ -16,22 +16,37 @@
   <meta name="author" content="echozt">
   <meta name="keywords" content="网络安全，计算机，渗透">
   
-    <meta name="description" content="分享知识，记录生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://echozt.github.io/archives/2022/02/index.html">
+    <meta name="description" content="关于判断zip文件是否进行了伪加密的方法，以及如何解除伪加密。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断zip文件伪加密">
+<meta property="og:url" content="https://echozt.github.io/posts/88f1.html">
 <meta property="og:site_name" content="echozt">
-<meta property="og:description" content="分享知识，记录生活">
+<meta property="og:description" content="关于判断zip文件是否进行了伪加密的方法，以及如何解除伪加密。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/1.png">
+<meta property="article:published_time" content="2022-09-20T05:39:55.000Z">
+<meta property="article:modified_time" content="2022-09-20T05:48:19.129Z">
 <meta property="article:author" content="echozt">
-<meta property="article:tag" content="网络安全，计算机，渗透">
+<meta property="article:tag" content="misc">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="伪加密">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://echozt.github.io/posts/undefined/1.png">
   
   
-  <title>归档 - echozt</title>
+  <title>判断zip文件伪加密 - echozt</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -65,7 +80,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -161,14 +176,46 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/33.png') no-repeat center center;
+         style="background: url('/img/default2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="判断zip文件伪加密">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      echozt
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-20 13:39" pubdate>
+        2022年9月20日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      701 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -181,40 +228,120 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 20 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/posts/1d0a.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">bodgeit靶场</span>
-      <time style="float: right;">02-26</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">判断zip文件伪加密</h1>
+            
+            <div class="markdown-body">
+              <p>关于判断zip文件是否进行了伪加密的方法，以及如何解除伪加密。</p>
+<span id="more"></span>
 
+<h1 id="step-1-winhex查看zip压缩包"><a href="#step-1-winhex查看zip压缩包" class="headerlink" title="step 1 winhex查看zip压缩包"></a>step 1 winhex查看zip压缩包</h1><p>    将可能进行了伪加密的压缩包用winhex打开，首先了解一下基本的zip包的构造：</p>
+<p>（1）压缩源文件数据区标识：即当头文件是504B0304时，则表示文件类型为zip压缩包。</p>
+<p>（2）第一个全局方式位标记：即下图中在数据区标识后两位的0900，这个是判断文件有无加密。</p>
+<p>（3）压缩源文件目录区标识：即下图中出现的504B0102。</p>
+<p>（4）第二个全局方式位标记：即下图中在目录区标识后四位的0900，这个是判断文件是否进行了伪加密。压缩源文件目录结束标识：即为504B0506时，标识目录区结束。</p>
+<img src="/posts/undefined/1.png" srcset="/img/loading.gif" lazyload class>
 
+<h1 id="step-2-判断是否为伪加密"><a href="#step-2-判断是否为伪加密" class="headerlink" title="step 2 判断是否为伪加密"></a>step 2 判断是否为伪加密</h1><ul>
+<li>无加密</li>
+</ul>
+<p>        o 压缩源文件数据区的全局加密应当为00 00</p>
+<p>        o 且压缩源文件目录区的全局方式位标记应当为00 00</p>
+<ul>
+<li>伪加密</li>
+</ul>
+<p>        o 压缩源文件数据区的全局加密应当为00 00</p>
+<p>        o 且压缩源文件目录区的全局方式位标记应当为09 00</p>
+<ul>
+<li>真加密</li>
+</ul>
+<p>        o 压缩源文件数据区的全局加密应当为09 00</p>
+<p>        o 压缩源文件目录区的全局方式位标记应当为09 00</p>
+<h1 id="step-3-修改数据"><a href="#step-3-修改数据" class="headerlink" title="step 3 修改数据"></a>step 3 修改数据</h1><p>    如果判断出文件为伪加密，按照step 2的描述，只需要将压缩源文件目录区的全局方式位标记由09 00改成00 00，并保存修改即可。这样伪加密的文件就会自动解密。</p>
+<p>    也可以使用工具，将进行了伪加密的文件使用工具zipcenop可直接解除加密。</p>
+<p>    我一般不怎么看十六进制数据，因为之前遇到过一个题目，它的两个标识位都为09 09，按理来说应该是真加密，但好巧不巧，它就是伪加密。所以题目没给密码提示时，我会直接将加密的压缩先用zipcenop检测一下，如果是则自动解除加密了，如果不是就的确是真加密了。</p>
 
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ctf/">ctf</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/misc/">misc</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BC%AA%E5%8A%A0%E5%AF%86/">伪加密</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/c662.html">
+                        <span class="hidden-mobile">buuctf之misc部分题解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -319,6 +446,19 @@
 
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
