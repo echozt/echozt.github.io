@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-09-20T05:48:19.129Z</updated>
+  <updated>2022-09-20T06:04:19.052Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于ctf的misc相关工具汇总</title>
+    <link href="https://echozt.github.io/posts/387a.html"/>
+    <id>https://echozt.github.io/posts/387a.html</id>
+    <published>2022-09-20T05:52:45.000Z</published>
+    <updated>2022-09-20T06:04:19.052Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h1&gt;&lt;p&gt;    做了一些些关于misc的题目，个人总结了一些挺好用的工具。这些工具都可以去github搜索并下载。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="misc" scheme="https://echozt.github.io/tags/misc/"/>
+    
+    <category term="ctf" scheme="https://echozt.github.io/tags/ctf/"/>
+    
+    <category term="winhex" scheme="https://echozt.github.io/tags/winhex/"/>
+    
+    <category term="foremost" scheme="https://echozt.github.io/tags/foremost/"/>
+    
+    <category term="stegsolve" scheme="https://echozt.github.io/tags/stegsolve/"/>
+    
+    <category term="ARCHPR" scheme="https://echozt.github.io/tags/ARCHPR/"/>
+    
+    <category term="ZipCenOp" scheme="https://echozt.github.io/tags/ZipCenOp/"/>
+    
+  </entry>
+  
+  <entry>
     <title>判断zip文件伪加密</title>
     <link href="https://echozt.github.io/posts/88f1.html"/>
     <id>https://echozt.github.io/posts/88f1.html</id>
     <published>2022-09-20T05:39:55.000Z</published>
-    <updated>2022-09-20T05:48:19.129Z</updated>
+    <updated>2022-09-20T05:48:39.779Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于判断zip文件是否进行了伪加密的方法，以及如何解除伪加密。&lt;/p&gt;</summary>
@@ -450,23 +481,6 @@
     <category term="漏洞" scheme="https://echozt.github.io/tags/%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="kali" scheme="https://echozt.github.io/tags/kali/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo + github 搭建博客</title>
-    <link href="https://echozt.github.io/posts/85e6.html"/>
-    <id>https://echozt.github.io/posts/85e6.html</id>
-    <published>2022-01-25T08:16:52.000Z</published>
-    <updated>2022-02-26T15:24:56.486Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本篇文章介绍了使用hexo+github创建博客的主要流程。我也是在考虑各方因素之后，选择了github.io的方式。优点嘛，就是免费加开源yyds！好了，进入正题。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="hexo" scheme="https://echozt.github.io/tags/hexo/"/>
     
   </entry>
   
