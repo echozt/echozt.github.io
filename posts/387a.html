@@ -23,11 +23,11 @@
 <meta property="og:site_name" content="echozt">
 <meta property="og:description" content="0x00 前言    做了一些些关于misc的题目，个人总结了一些挺好用的工具。这些工具都可以去github搜索并下载。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/1.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/387a/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/387a/2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/387a/3.png">
 <meta property="article:published_time" content="2022-09-20T05:52:45.000Z">
-<meta property="article:modified_time" content="2022-09-20T06:04:19.052Z">
+<meta property="article:modified_time" content="2022-09-25T04:47:41.067Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="misc">
 <meta property="article:tag" content="ctf">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="ARCHPR">
 <meta property="article:tag" content="ZipCenOp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://echozt.github.io/posts/undefined/1.png">
+<meta name="twitter:image" content="https://echozt.github.io/posts/387a/1.png">
   
   
   <title>关于ctf的misc相关工具汇总 - echozt</title>
@@ -265,13 +265,13 @@ pause
 <p>    保存，然后将txt文件的后缀改为bat</p>
 <h2 id="step-2-粘贴快捷方式"><a href="#step-2-粘贴快捷方式" class="headerlink" title="step 2 粘贴快捷方式"></a>step 2 粘贴快捷方式</h2><p>    复制step 1创建的这个bat文件，打开sento文件夹（一般在电脑的C:\Users\你的用户名\AppData\Roaming\Microsoft\Windows\SendTo位置），右键，选择“粘贴快捷方式”。</p>
 <p>    可以改成自己想要的名字，然后就可以看到这个快捷方式出现在鼠标右键中的“发送到”这个选项里面啦，以后只需要点击相应文件，右键即可：</p>
-<p> <img src="/posts/undefined/1.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/387a/1.png" srcset="/img/loading.gif" lazyload class></p>
 <h1 id="0x03-stegsolve"><a href="#0x03-stegsolve" class="headerlink" title="0x03 stegsolve"></a>0x03 stegsolve</h1><p>    另一个文件分离的神器。前面介绍的foremost，我感受到的它只能分离出图片中隐写了压缩包的。但是文件隐写还有可能在一张图片里面包含另一种图片，包含文本，其他等等，而这些可以靠stegsolve分离出来。</p>
 <p>    一般就是在最下面的左右滑动键中，查看图片。常用的功能是analyse中data extract，也就是数据提取的意思。</p>
-<p> <img src="/posts/undefined/2.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/387a/2.png" srcset="/img/loading.gif" lazyload class></p>
 <p>    比如一张图片里面可能隐写了其他内容，在打开图片的时候，选择data extract，然后勾选red，green，blue中的000，也就是表示2的0次方，然后选择preview预览文件的数据。可以通过判断文件类型，来选择保存的时候后缀名。</p>
 <p>    比如下面下面这个就是png类型，点击save bin，然后文件名为任意后缀为png的名字即可。</p>
-<p> <img src="/posts/undefined/3.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/387a/3.png" srcset="/img/loading.gif" lazyload class></p>
 <h1 id="0x04-ARCHPR"><a href="#0x04-ARCHPR" class="headerlink" title="0x04 ARCHPR"></a>0x04 ARCHPR</h1><p>    这个工具就是暴力破解压缩包的密码。当题目给了一个加密的压缩包（真加密的那种），然后有给出密码的提示，比如四位数字等。这时候就可以利用这个工具直接暴力破解出密码。</p>
 <h1 id="0x05-ZipCenOp"><a href="#0x05-ZipCenOp" class="headerlink" title="0x05 ZipCenOp"></a>0x05 ZipCenOp</h1><p>    这个工具就是检测zip伪加密然后解除伪加密的。一般题目中给了一个加密的压缩包，然后又没有给任何密码提示，那么很有可能是进行了伪加密。</p>
 <p>    关于判断zip文件伪加密的方法，可直接看一下我的这篇文章：<a href="https://echozt.github.io/posts/88f1.html">判断zip文件伪加密 - echozt</a></p>
