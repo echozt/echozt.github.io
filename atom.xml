@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-10-07T09:42:58.672Z</updated>
+  <updated>2022-10-07T09:43:44.743Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/31a8.html"/>
     <id>https://echozt.github.io/posts/31a8.html</id>
     <published>2022-10-07T08:27:34.000Z</published>
-    <updated>2022-10-07T09:42:58.672Z</updated>
+    <updated>2022-10-07T09:43:44.743Z</updated>
     
     
       
@@ -167,7 +167,7 @@
     <link href="https://echozt.github.io/posts/dbe4.html"/>
     <id>https://echozt.github.io/posts/dbe4.html</id>
     <published>2022-06-18T12:05:26.000Z</published>
-    <updated>2022-07-08T09:09:22.725Z</updated>
+    <updated>2022-10-07T09:45:25.384Z</updated>
     
     
     <summary type="html">&lt;p&gt;今天练习了一下攻防世界里面的web靶场，做了一个题目，叫ics-05，主要是关于preg_replace这个函数可能存在命令执行漏洞~~&lt;/p&gt;</summary>
@@ -177,9 +177,9 @@
     <category term="ctf" scheme="https://echozt.github.io/categories/ctf/"/>
     
     
-    <category term="命令执行漏洞" scheme="https://echozt.github.io/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"/>
+    <category term="web漏洞" scheme="https://echozt.github.io/tags/web%E6%BC%8F%E6%B4%9E/"/>
     
-    <category term="web" scheme="https://echozt.github.io/tags/web/"/>
+    <category term="命令执行漏洞" scheme="https://echozt.github.io/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="php" scheme="https://echozt.github.io/tags/php/"/>
     
