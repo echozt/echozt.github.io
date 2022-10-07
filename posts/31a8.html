@@ -16,15 +16,15 @@
   <meta name="author" content="echozt">
   <meta name="keywords" content="网络安全，计算机，渗透">
   
-    <meta name="description" content="00x1 xss分类1、反射型     反射型 XSS，非持久化，需要欺骗用户自己去点击链接才能触发 XSS 代码 2、存储型    存储型 XSS，持久化，代码是存储在服务器中的数据库里，如在个人信息或发表文章等地方，可以插入代码，如果插入的数据没有过滤或过滤不严，那么这些恶意代码没有经过过滤将储存到数据库中，用户访问该页面的时候，没有进行编码过滤输出到浏览器上，就会触发代码执行，造成 xss">
+    <meta name="description" content="对于xss漏洞一些基本的总结~~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xss漏洞详解">
 <meta property="og:url" content="https://echozt.github.io/posts/31a8.html">
 <meta property="og:site_name" content="echozt">
-<meta property="og:description" content="00x1 xss分类1、反射型     反射型 XSS，非持久化，需要欺骗用户自己去点击链接才能触发 XSS 代码 2、存储型    存储型 XSS，持久化，代码是存储在服务器中的数据库里，如在个人信息或发表文章等地方，可以插入代码，如果插入的数据没有过滤或过滤不严，那么这些恶意代码没有经过过滤将储存到数据库中，用户访问该页面的时候，没有进行编码过滤输出到浏览器上，就会触发代码执行，造成 xss">
+<meta property="og:description" content="对于xss漏洞一些基本的总结~~">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-07T08:27:34.000Z">
-<meta property="article:modified_time" content="2022-10-07T09:43:44.743Z">
+<meta property="article:modified_time" content="2022-10-07T09:48:11.520Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="Web漏洞">
 <meta property="article:tag" content="xss">
@@ -238,7 +238,10 @@
             <h1 style="display: none">xss漏洞详解</h1>
             
             <div class="markdown-body">
-              <h1 id="00x1-xss分类"><a href="#00x1-xss分类" class="headerlink" title="00x1 xss分类"></a>00x1 xss分类</h1><h3 id="1、反射型"><a href="#1、反射型" class="headerlink" title="1、反射型"></a>1、反射型</h3><p>     反射型 XSS，非持久化，需要欺骗用户自己去点击链接才能触发 XSS 代码</p>
+              <p>对于xss漏洞一些基本的总结~~</p>
+<span id="more"></span>
+
+<h1 id="00x1-xss分类"><a href="#00x1-xss分类" class="headerlink" title="00x1 xss分类"></a>00x1 xss分类</h1><h3 id="1、反射型"><a href="#1、反射型" class="headerlink" title="1、反射型"></a>1、反射型</h3><p>     反射型 XSS，非持久化，需要欺骗用户自己去点击链接才能触发 XSS 代码</p>
 <h3 id="2、存储型"><a href="#2、存储型" class="headerlink" title="2、存储型"></a>2、存储型</h3><p>    存储型 XSS，持久化，代码是存储在服务器中的数据库里，如在个人信息或发表文章等地方，可以插入代码，如果插入的数据没有过滤或过滤不严，那么这些恶意代码没有经过过滤将储存到数据库中，用户访问该页面的时候，没有进行编码过滤输出到浏览器上，就会触发代码执行，造成 xss 攻击。</p>
 <h3 id="3、DOM型"><a href="#3、DOM型" class="headerlink" title="3、DOM型"></a>3、DOM型</h3><p>    DOM，全称 Document Object Model，是一个平台和语言都中立的接口，可以使程序和脚本能够动态访问和更新文档的内容、结构以及样式。DOM 型 XSS 其实是一种特殊类型的反射型 XSS，它是基于 DOM 文档对象模型的。</p>
 <h1 id="00x2-xss测试语句"><a href="#00x2-xss测试语句" class="headerlink" title="00x2 xss测试语句"></a>00x2 xss测试语句</h1><p>    在测试时，应该输入一些标签如&lt;、&gt;输入后查看网页源代码是否过滤标签，如果没过滤，很大可能存在 xss 漏洞。</p>
