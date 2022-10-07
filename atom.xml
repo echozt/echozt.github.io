@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-09-25T04:47:41.067Z</updated>
+  <updated>2022-10-07T09:42:58.672Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>xss漏洞详解</title>
+    <link href="https://echozt.github.io/posts/31a8.html"/>
+    <id>https://echozt.github.io/posts/31a8.html</id>
+    <published>2022-10-07T08:27:34.000Z</published>
+    <updated>2022-10-07T09:42:58.672Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;00x1-xss分类&quot;&gt;&lt;a href=&quot;#00x1-xss分类&quot; class=&quot;headerlink&quot; title=&quot;00x1 xss分类&quot;&gt;&lt;/a&gt;00x1 xss分类&lt;/h1&gt;&lt;h3 id=&quot;1、反射型&quot;&gt;&lt;a href=&quot;#1、反射型&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="专项靶场" scheme="https://echozt.github.io/categories/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/"/>
+    
+    
+    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="xss" scheme="https://echozt.github.io/tags/xss/"/>
+    
+  </entry>
   
   <entry>
     <title>关于ctf的misc相关工具汇总</title>
@@ -257,7 +284,7 @@
     <link href="https://echozt.github.io/posts/b737.html"/>
     <id>https://echozt.github.io/posts/b737.html</id>
     <published>2022-04-13T15:15:01.000Z</published>
-    <updated>2022-09-05T12:36:54.287Z</updated>
+    <updated>2022-10-07T08:21:53.742Z</updated>
     
     
     <summary type="html">&lt;p&gt;打完65关的sql靶场，浅浅地整理了一下关于sql注入的知识点。主要是mysql数据库的。&lt;/p&gt;</summary>
@@ -454,33 +481,6 @@
     <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="xss" scheme="https://echozt.github.io/tags/xss/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ms08-067的相关应用</title>
-    <link href="https://echozt.github.io/posts/5a76.html"/>
-    <id>https://echozt.github.io/posts/5a76.html</id>
-    <published>2022-01-27T07:00:33.000Z</published>
-    <updated>2022-02-11T11:20:20.600Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本篇文章介绍关于msfconsole模块中ms08-067漏洞的一些实例应用。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="msfconsole" scheme="https://echozt.github.io/categories/msfconsole/"/>
-    
-    
-    <category term="渗透" scheme="https://echozt.github.io/tags/%E6%B8%97%E9%80%8F/"/>
-    
-    <category term="msfconsole" scheme="https://echozt.github.io/tags/msfconsole/"/>
-    
-    <category term="攻击" scheme="https://echozt.github.io/tags/%E6%94%BB%E5%87%BB/"/>
-    
-    <category term="漏洞" scheme="https://echozt.github.io/tags/%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="kali" scheme="https://echozt.github.io/tags/kali/"/>
     
   </entry>
   

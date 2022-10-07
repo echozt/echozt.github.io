@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://echozt.github.io/posts/b737/1.png">
 <meta property="article:published_time" content="2022-04-13T15:15:01.000Z">
-<meta property="article:modified_time" content="2022-09-05T12:36:54.287Z">
+<meta property="article:modified_time" content="2022-10-07T08:21:53.742Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="sql注入">
 <meta property="article:tag" content="web漏洞">
@@ -206,7 +206,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.4k 字
+      4.5k 字
     </span>
   
 
@@ -245,7 +245,7 @@
 
 <!--more-->
 
-<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>● 字段table_schema记录库名，table_name记录表名，column_name记录字段名</p>
+<h1 id="00x1-MySQL"><a href="#00x1-MySQL" class="headerlink" title="00x1 MySQL"></a>00x1 MySQL</h1><p>● 字段table_schema记录库名，table_name记录表名，column_name记录字段名</p>
 <p>● 在 mysql5 版本以后，mysql 默认在数据库中存放在一个叫 infomation_schema 里面</p>
 <p>● 这个库里面有很多表重点是这三个表 columns 、tables、schemata</p>
 <pre class="line-numbers language-bash"><code class="language-bash">columns  存储该用户创建的所有数据库的库名、表名和字段名。
@@ -254,7 +254,7 @@ tables   表字段table_schema 、table_name 分别记录着库名和表名
 
 schemata 表字段schema_name 记录着库的信息
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="常用函数："><a href="#常用函数：" class="headerlink" title="常用函数："></a>常用函数：</h1><ol>
+<h1 id="00x2-常用函数："><a href="#00x2-常用函数：" class="headerlink" title="00x2 常用函数："></a>00x2 常用函数：</h1><ol>
 <li><p>version()——MySQL 版本</p>
 </li>
 <li><p>user()——数据库用户名</p>
@@ -266,13 +266,13 @@ schemata 表字段schema_name 记录着库的信息
 <li><p>@@version_compile_os——操作系统版本</p>
 </li>
 </ol>
-<h1 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h1><h3 id="1、sql注入原理"><a href="#1、sql注入原理" class="headerlink" title="1、sql注入原理"></a>1、sql注入原理</h3><p>● 参数用户可控</p>
+<h1 id="00x3-sql注入"><a href="#00x3-sql注入" class="headerlink" title="00x3 sql注入"></a>00x3 sql注入</h1><h3 id="1、sql注入原理"><a href="#1、sql注入原理" class="headerlink" title="1、sql注入原理"></a>1、sql注入原理</h3><p>● 参数用户可控</p>
 <p>● 参数带入数据库查询</p>
 <h3 id="2、判断是否存在注入"><a href="#2、判断是否存在注入" class="headerlink" title="2、判断是否存在注入"></a>2、判断是否存在注入</h3><p>● 数字型注入：/1 和 /0回显不一样。或者传入id=1 and 1=1 和id=1 and 1=2回显不一样等等</p>
 <p>● 字符型注入：’ 和 ‘’ 回显不一样，单数的和双数的单引号回显规不规律</p>
 <h3 id="3、注释符"><a href="#3、注释符" class="headerlink" title="3、注释符"></a>3、注释符</h3><p>● 单行注释：减减加(–+)，减减空格(– )，#</p>
 <p>● 多行注释：/<em>……</em>/</p>
-<h1 id="sql注入分类"><a href="#sql注入分类" class="headerlink" title="sql注入分类"></a>sql注入分类</h1><h2 id="1、union联合注入"><a href="#1、union联合注入" class="headerlink" title="1、union联合注入"></a>1、union联合注入</h2><p>含义：联合查询注入是联合两个表进行注入攻击，使用关键词 union select 对两个表进行联合查询。两个表的字段数要相同，不然会出现报错。</p>
+<h1 id="00x4-sql注入分类"><a href="#00x4-sql注入分类" class="headerlink" title="00x4 sql注入分类"></a>00x4 sql注入分类</h1><h2 id="1、union联合注入"><a href="#1、union联合注入" class="headerlink" title="1、union联合注入"></a>1、union联合注入</h2><p>含义：联合查询注入是联合两个表进行注入攻击，使用关键词 union select 对两个表进行联合查询。两个表的字段数要相同，不然会出现报错。</p>
 <h4 id="●-Limit"><a href="#●-Limit" class="headerlink" title="● Limit"></a>● Limit</h4><p>Limit是指限定查询的条数。有三种方式：</p>
 <h5 id="方式一：limit-参数1"><a href="#方式一：limit-参数1" class="headerlink" title="方式一：limit 参数1"></a>方式一：limit 参数1</h5><p>参数1可从1开始，往后递增，表示要查询几条数据。</p>
 <p>例如，limit 1 表示限定查询一条语句。</p>
@@ -376,7 +376,17 @@ schemata 表字段schema_name 记录着库的信息
 <p> Big5和GBK字符集有可能会存在宽字节注入，utf-8和gb2312没有。Mysql在使用GBK编码时，会认为两个字符为一个汉字。</p>
 <h4 id="思路一："><a href="#思路一：" class="headerlink" title="思路一："></a>思路一：</h4><p>%df吃掉\  原因在于urldecode(‘)=%5c%27,而我们在前面添加%df，就形成了%df%5c%27,mysql在GBK编码中前两个字当做一个汉字，此时%27就会作为一个单独的字符，也就是’</p>
 <h4 id="思路二："><a href="#思路二：" class="headerlink" title="思路二："></a>思路二：</h4><p>将&#39;中的\过滤掉。可以构造%**%5c%5c%27，后面的%5c会被前面的%5c给注释掉。</p>
-<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p>最后放张上面知识的思维导图版吧</p>
+<h1 id="00x5-sql注入防御"><a href="#00x5-sql注入防御" class="headerlink" title="00x5 sql注入防御"></a>00x5 sql注入防御</h1><ul>
+<li><p>1.使用安全的API，避免使用解释器  </p>
+</li>
+<li><p>2.对输入的特殊的字符进行ESCAPE转义处理  </p>
+</li>
+<li><p>3.使用白名单来规范化的输入验证方法  </p>
+</li>
+<li><p>4.使用预编译</p>
+</li>
+</ul>
+<h1 id="00x6-思维导图"><a href="#00x6-思维导图" class="headerlink" title="00x6 思维导图"></a>00x6 思维导图</h1><p>最后放张上面知识的思维导图版吧</p>
 <img src="/posts/b737/1.png" srcset="/img/loading.gif" lazyload class>
 
             </div>
