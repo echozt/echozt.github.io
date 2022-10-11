@@ -16,25 +16,25 @@
   <meta name="author" content="echozt">
   <meta name="keywords" content="网络安全，计算机，渗透">
   
-    <meta name="description" content="apk应用完整性即移动客户端程序安装后，在每次启动时都会对自身文件进行完整性进行校验。防止攻击者通过反编译的方法在客户端程序中植入自己的木马，客户端程序如果没有⾃校验机制的话，攻击者可能会通过篡改客户端程序窃取手机用户的隐私信息。 完整性校验步骤，下面使用两种方法： 方法一：自定义修改（一般用方法一就好了，简单方便一点） 1、修改apk的后缀名为zip；2、修改logo图片，直接在该zip">
+    <meta name="description" content="apk应用完整性即移动客户端程序安装后，在每次启动时都会对自身文件进行完整性进行校验。防止攻击者通过反编译的方法在客户端程序中植入自己的木马，客户端程序如果没有⾃校验机制的话，攻击者可能会通过篡改客户端程序窃取手机用户的隐私信息。 完整性校验步骤，下面使用两种方法： 方法一：自定义修改（一般用方法一就好了，简单方便一点） 1、修改apk的后缀名为zip； 2、修改logo图片，直接在该zi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="app应用完整性校验">
 <meta property="og:url" content="https://echozt.github.io/posts/642b.html">
 <meta property="og:site_name" content="echozt">
-<meta property="og:description" content="apk应用完整性即移动客户端程序安装后，在每次启动时都会对自身文件进行完整性进行校验。防止攻击者通过反编译的方法在客户端程序中植入自己的木马，客户端程序如果没有⾃校验机制的话，攻击者可能会通过篡改客户端程序窃取手机用户的隐私信息。 完整性校验步骤，下面使用两种方法： 方法一：自定义修改（一般用方法一就好了，简单方便一点） 1、修改apk的后缀名为zip；2、修改logo图片，直接在该zip">
+<meta property="og:description" content="apk应用完整性即移动客户端程序安装后，在每次启动时都会对自身文件进行完整性进行校验。防止攻击者通过反编译的方法在客户端程序中植入自己的木马，客户端程序如果没有⾃校验机制的话，攻击者可能会通过篡改客户端程序窃取手机用户的隐私信息。 完整性校验步骤，下面使用两种方法： 方法一：自定义修改（一般用方法一就好了，简单方便一点） 1、修改apk的后缀名为zip； 2、修改logo图片，直接在该zi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/1.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/642b/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/642b/2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/642b/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/642b/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/642b/5.png">
 <meta property="article:published_time" content="2022-10-11T02:34:19.000Z">
-<meta property="article:modified_time" content="2022-10-11T02:43:52.196Z">
+<meta property="article:modified_time" content="2022-10-11T02:54:14.537Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="app安全测试">
 <meta property="article:tag" content="apktools">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://echozt.github.io/posts/undefined/1.png">
+<meta name="twitter:image" content="https://echozt.github.io/posts/642b/1.png">
   
   
   <title>app应用完整性校验 - echozt</title>
@@ -247,30 +247,34 @@
               <p>    apk应用完整性即移动客户端程序安装后，在每次启动时都会对自身文件进行完整性进行校验。防止攻击者通过反编译的方法在客户端程序中植入自己的木马，客户端程序如果没有⾃校验机制的话，攻击者可能会通过篡改客户端程序窃取手机用户的隐私信息。</p>
 <p>完整性校验步骤，下面使用两种方法：</p>
 <h1 id="方法一：自定义修改"><a href="#方法一：自定义修改" class="headerlink" title="方法一：自定义修改"></a>方法一：自定义修改</h1><p>（一般用方法一就好了，简单方便一点）</p>
-<h4 id="1、修改apk的后缀名为zip；"><a href="#1、修改apk的后缀名为zip；" class="headerlink" title="1、修改apk的后缀名为zip；"></a>1、修改apk的后缀名为zip；</h4><h4 id="2、修改logo图片，直接在该zip里面修改，不要将zip解压（注意图片名字不要变）；"><a href="#2、修改logo图片，直接在该zip里面修改，不要将zip解压（注意图片名字不要变）；" class="headerlink" title="2、修改logo图片，直接在该zip里面修改，不要将zip解压（注意图片名字不要变）；"></a>2、修改logo图片，直接在该zip里面修改，不要将zip解压（注意图片名字不要变）；</h4><h4 id="3、再将原先的zip改回apk后缀名（一定要是原来的zip，不能将第一步的zip解压修改图片后再重新压缩，一定要是在该zip里面直接修改！原因大概就是如果你是解压后再修改图片，再压缩回去的话，那文件就变了）；"><a href="#3、再将原先的zip改回apk后缀名（一定要是原来的zip，不能将第一步的zip解压修改图片后再重新压缩，一定要是在该zip里面直接修改！原因大概就是如果你是解压后再修改图片，再压缩回去的话，那文件就变了）；" class="headerlink" title="3、再将原先的zip改回apk后缀名（一定要是原来的zip，不能将第一步的zip解压修改图片后再重新压缩，一定要是在该zip里面直接修改！原因大概就是如果你是解压后再修改图片，再压缩回去的话，那文件就变了）；"></a>3、再将原先的zip改回apk后缀名（一定要是原来的zip，不能将第一步的zip解压修改图片后再重新压缩，一定要是在该zip里面直接修改！原因大概就是如果你是解压后再修改图片，再压缩回去的话，那文件就变了）；</h4><h4 id="4、在安卓上测试能否打开该apk。（若成功安装，则存在问题；安装失败则说明该app的完整性校验没有问题）"><a href="#4、在安卓上测试能否打开该apk。（若成功安装，则存在问题；安装失败则说明该app的完整性校验没有问题）" class="headerlink" title="4、在安卓上测试能否打开该apk。（若成功安装，则存在问题；安装失败则说明该app的完整性校验没有问题）"></a>4、在安卓上测试能否打开该apk。（若成功安装，则存在问题；安装失败则说明该app的完整性校验没有问题）</h4><h1 id="方法二：Apktools-windows签名工具"><a href="#方法二：Apktools-windows签名工具" class="headerlink" title="方法二：Apktools+windows签名工具"></a>方法二：Apktools+windows签名工具</h1><p>    大致简化来说就是：反编译apk文件——&gt;修改源码或资源文件——&gt;重新打包（如果打包失败，则存在问题）——&gt;创建自己的证书——&gt;对打包的apk进行签名——&gt;签名成功后，放到安卓机上是否可以成功安装。如果成功安装，则存在问题。</p>
-<h3 id="step-1-反编译apk文件"><a href="#step-1-反编译apk文件" class="headerlink" title="step 1 反编译apk文件"></a>step 1 反编译apk文件</h3><p>这里用工具Apktools反编译apk文件。</p>
-<p>将apk文件放到apktools目录下，进入apktools输入以下命令：</p>
+<p>1、修改apk的后缀名为zip；</p>
+<p>2、修改logo图片，直接在该zip里面修改，不要将zip解压（注意图片名字不要变）；</p>
+<p>3、再将原先的zip改回apk后缀名（一定要是原来的zip，不能将第一步的zip解压修改图片后再重新压缩，一定要是在该zip里面直接修改！原因大概就是如果你是解压后再修改图片，再压缩回去的话，那文件就变了）；</p>
+<p>4、在安卓上测试能否打开该apk。（若成功安装，则存在问题；安装失败则说明该app的完整性校验没有问题）</p>
+<h1 id="方法二：Apktools-windows签名工具"><a href="#方法二：Apktools-windows签名工具" class="headerlink" title="方法二：Apktools+windows签名工具"></a>方法二：Apktools+windows签名工具</h1><p>    大致简化来说就是：反编译apk文件——&gt;修改源码或资源文件——&gt;重新打包（如果打包失败，则存在问题）——&gt;创建自己的证书——&gt;对打包的apk进行签名——&gt;签名成功后，放到安卓机上是否可以成功安装。如果成功安装，则存在问题。</p>
+<h3 id="step-1-反编译apk文件"><a href="#step-1-反编译apk文件" class="headerlink" title="step 1 反编译apk文件"></a>step 1 反编译apk文件</h3><p>    这里用工具Apktools反编译apk文件。</p>
+<p>    将apk文件放到apktools目录下，进入apktools输入以下命令：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">apktools d xxx.apk
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <img src="/posts/undefined/1.png" srcset="/img/loading.gif" lazyload class></p>
-<p>反编译成功，会生成同名的文件夹。</p>
+<p> <img src="/posts/642b/1.png" srcset="/img/loading.gif" lazyload class></p>
+<p>    反编译成功，会生成同名的文件夹。</p>
 <h3 id="step-2-修改源码或资源文件"><a href="#step-2-修改源码或资源文件" class="headerlink" title="step 2 修改源码或资源文件"></a>step 2 修改源码或资源文件</h3><p>    这里一般是修改app的logo图片，这样能够明显看出来变化。可以替换掉原先的logo图片，注意图片名字不要变。</p>
-<h3 id="step-3-重新打包"><a href="#step-3-重新打包" class="headerlink" title="step 3 重新打包"></a>step 3 重新打包</h3><p>使用工具Apktools进行打包，命令如下：</p>
+<h3 id="step-3-重新打包"><a href="#step-3-重新打包" class="headerlink" title="step 3 重新打包"></a>step 3 重新打包</h3><p>    使用工具Apktools进行打包，命令如下：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">apktool b xxx -o xxx.apk
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>    如果出现以下这种情况，就是打包失败，说明该app的完整性校验没有问题。就不需要看下面的步骤了。</p>
-<p> <img src="/posts/undefined/2.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/642b/2.png" srcset="/img/loading.gif" lazyload class></p>
 <h3 id="step-4-创建自己的证书"><a href="#step-4-创建自己的证书" class="headerlink" title="step 4 创建自己的证书"></a>step 4 创建自己的证书</h3><p>    打包成功之后，先创建一个自己的证书，命令如下：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">keytool -genkeypair -keystore 密钥库名 -alias 密钥别名 -validity 天数 - keyalg RSA
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>    对于下面那些问题自己随便命名就好了：</p>
-<p> <img src="/posts/undefined/3.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/642b/3.png" srcset="/img/loading.gif" lazyload class></p>
 <p>    使用以下命令可查看创建的证书：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">keytool -list -v keystore 证书名字
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <img src="/posts/undefined/4.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/642b/4.png" srcset="/img/loading.gif" lazyload class></p>
 <h3 id="step-5-对打包的apk进行签名"><a href="#step-5-对打包的apk进行签名" class="headerlink" title="step 5 对打包的apk进行签名"></a>step 5 对打包的apk进行签名</h3><p>    这里使用的windows签名工具是360Signer，打开工具，将我们刚刚创建证书的信息填进去，然后点击一键签名。</p>
-<p> <img src="/posts/undefined/5.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/642b/5.png" srcset="/img/loading.gif" lazyload class></p>
 <p>    签名成功之后，在模拟器的安卓机上面安装该程序。如果该apk安装失败，则该app的完整性校验没有问题；如果安装成功，则说明该apk的完整性校验存在问题。</p>
 
             </div>
