@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-10-07T09:55:49.186Z</updated>
+  <updated>2022-10-11T02:43:52.196Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>app应用完整性校验</title>
+    <link href="https://echozt.github.io/posts/642b.html"/>
+    <id>https://echozt.github.io/posts/642b.html</id>
+    <published>2022-10-11T02:34:19.000Z</published>
+    <updated>2022-10-11T02:43:52.196Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;    apk应用完整性即移动客户端程序安装后，在每次启动时都会对自身文件进行完整性进行校验。防止攻击者通过反编译的方法在客户端程序中植入自己的木马，客户端程序如果没有⾃校验机制的话，攻击者可能会通过篡改客户端程序窃取手机用户的隐私信息。&lt;/p&gt;
+&lt;p&gt;完整性校验步骤，下面</summary>
+        
+      
+    
+    
+    
+    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="app安全测试" scheme="https://echozt.github.io/tags/app%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="apktools" scheme="https://echozt.github.io/tags/apktools/"/>
+    
+  </entry>
   
   <entry>
     <title>xss漏洞详解</title>
@@ -113,23 +141,25 @@
   </entry>
   
   <entry>
-    <title>截获微信公众号，小程序数据包</title>
+    <title>截获微信公众号，小程序，APP数据包</title>
     <link href="https://echozt.github.io/posts/621a.html"/>
     <id>https://echozt.github.io/posts/621a.html</id>
     <published>2022-09-02T10:52:13.000Z</published>
-    <updated>2022-09-16T10:52:05.912Z</updated>
+    <updated>2022-10-11T02:31:11.430Z</updated>
     
     
     <summary type="html">&lt;p&gt;    前一段时间有在做捕获微信公众号数据包的测试，然后顺便下载了个模拟器，想着琢磨一下小程序和app的拦截使用，整理了一下笔记，下面是关于在模拟器和本机电脑上拦截微信公众号，小程序，APP数据包的做法。&lt;/p&gt;</summary>
     
     
     
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
     
     <category term="fiddler" scheme="https://echozt.github.io/tags/fiddler/"/>
     
     <category term="模拟器" scheme="https://echozt.github.io/tags/%E6%A8%A1%E6%8B%9F%E5%99%A8/"/>
+    
+    <category term="android抓包" scheme="https://echozt.github.io/tags/android%E6%8A%93%E5%8C%85/"/>
     
   </entry>
   
@@ -452,29 +482,6 @@
     <category term="漏洞" scheme="https://echozt.github.io/tags/%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="kali" scheme="https://echozt.github.io/tags/kali/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xss靶场</title>
-    <link href="https://echozt.github.io/posts/84ce.html"/>
-    <id>https://echozt.github.io/posts/84ce.html</id>
-    <published>2022-01-28T06:08:59.000Z</published>
-    <updated>2022-09-05T12:47:25.069Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;前些时间把xss-labs的靶场练习了一下，其实如果想练习靶场的话，可以是从xss先开始的，sqli练习的我还停留在第四关。xss总共20关，还是好理解一点的，下面是我的一些理解。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="专项靶场" scheme="https://echozt.github.io/categories/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/"/>
-    
-    
-    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="xss" scheme="https://echozt.github.io/tags/xss/"/>
     
   </entry>
   
