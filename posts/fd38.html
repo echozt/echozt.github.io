@@ -16,19 +16,19 @@
   <meta name="author" content="echozt">
   <meta name="keywords" content="网络安全，计算机，渗透">
   
-    <meta name="description" content="复现的是墨者的Apache Struts2的靶场，用的工具检测~~ 原理：问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上Ognl表达式会被服务器执行。 漏洞原因：action的值redirect和redirectAction没有正确过滤，导致可以执行任意代码，如系统命令、上传、下载文件等。 Struts2的DefaultActionMapper支持一种方法">
+    <meta name="description" content="复现的是墨者的Apache Struts2的靶场，用的工具检测~~ 原理：问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上OGNL表达式会被服务器执行。 漏洞原因：action的值redirect和redirectAction没有正确过滤，导致可以执行任意代码，如系统命令、上传、下载文件等。 Struts2的DefaultActionMapper支持一种方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Struts2远程代码执行漏洞(S2-016)">
 <meta property="og:url" content="https://echozt.github.io/posts/fd38.html">
 <meta property="og:site_name" content="echozt">
-<meta property="og:description" content="复现的是墨者的Apache Struts2的靶场，用的工具检测~~ 原理：问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上Ognl表达式会被服务器执行。 漏洞原因：action的值redirect和redirectAction没有正确过滤，导致可以执行任意代码，如系统命令、上传、下载文件等。 Struts2的DefaultActionMapper支持一种方法">
+<meta property="og:description" content="复现的是墨者的Apache Struts2的靶场，用的工具检测~~ 原理：问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上OGNL表达式会被服务器执行。 漏洞原因：action的值redirect和redirectAction没有正确过滤，导致可以执行任意代码，如系统命令、上传、下载文件等。 Struts2的DefaultActionMapper支持一种方法">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://echozt.github.io/posts/fd38/1.png">
 <meta property="og:image" content="https://echozt.github.io/posts/fd38/2.png">
 <meta property="og:image" content="https://echozt.github.io/posts/fd38/3.png">
 <meta property="og:image" content="https://echozt.github.io/posts/fd38/4.png">
 <meta property="article:published_time" content="2022-05-17T12:51:06.000Z">
-<meta property="article:modified_time" content="2022-05-17T13:03:02.153Z">
+<meta property="article:modified_time" content="2022-10-12T05:03:08.310Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="框架漏洞">
 <meta property="article:tag" content="Apache Struts2">
@@ -244,7 +244,7 @@
             
             <div class="markdown-body">
               <p>复现的是墨者的Apache Struts2的靶场，用的工具检测~~</p>
-<h1 id="原理："><a href="#原理：" class="headerlink" title="原理："></a><strong>原理</strong>：</h1><p>问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上Ognl表达式会被服务器执行。</p>
+<h1 id="原理："><a href="#原理：" class="headerlink" title="原理："></a><strong>原理</strong>：</h1><p>问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上OGNL表达式会被服务器执行。</p>
 <h1 id="漏洞原因："><a href="#漏洞原因：" class="headerlink" title="漏洞原因："></a><strong>漏洞原因</strong>：</h1><p>action的值redirect和redirectAction没有正确过滤，导致可以执行任意代码，如系统命令、上传、下载文件等。</p>
 <p>Struts2的DefaultActionMapper支持一种方法，可以使用”action:”, “redirect:” , “redirectAction:”对输入信息进行处理，从而改变前缀参数，这样操作的目的是方便表单中的操作。在2.3.15.1版本以前的struts2中，没有对”action:”, “redirect:” , “redirectAction:”等进行处理，导致ongl表达式可以被执行。</p>
 <h1 id="影响版本："><a href="#影响版本：" class="headerlink" title="影响版本："></a><strong>影响版本</strong>：</h1><p>Struts 2.0.0 – 2.3.15</p>
