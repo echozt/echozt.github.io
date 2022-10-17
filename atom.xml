@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-10-12T08:44:32.813Z</updated>
+  <updated>2022-10-12T08:45:13.499Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/f6c8.html"/>
     <id>https://echozt.github.io/posts/f6c8.html</id>
     <published>2022-10-12T08:36:04.000Z</published>
-    <updated>2022-10-12T08:44:32.813Z</updated>
+    <updated>2022-10-12T08:45:13.499Z</updated>
     
     
     <summary type="html">&lt;p&gt;验证网站是否存在log4j2漏洞的方法~~&lt;/p&gt;</summary>
@@ -42,7 +42,7 @@
     <link href="https://echozt.github.io/posts/4554.html"/>
     <id>https://echozt.github.io/posts/4554.html</id>
     <published>2022-10-12T07:23:47.000Z</published>
-    <updated>2022-10-12T08:42:47.722Z</updated>
+    <updated>2022-10-12T08:45:13.494Z</updated>
     
     
     <summary type="html">&lt;p&gt;验证网站是否存在fastjson漏洞的方法~~&lt;/p&gt;</summary>
@@ -63,17 +63,10 @@
     <link href="https://echozt.github.io/posts/642b.html"/>
     <id>https://echozt.github.io/posts/642b.html</id>
     <published>2022-10-11T02:34:19.000Z</published>
-    <updated>2022-10-11T02:54:14.537Z</updated>
+    <updated>2022-10-12T08:48:23.436Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;    apk应用完整性即移动客户端程序安装后，在每次启动时都会对自身文件进行完整性进行校验。防止攻击者通过反编译的方法在客户端程序中植入自己的木马，客户端程序如果没有⾃校验机制的话，攻击者可能会通过篡改客户端程序窃取手机用户的隐私信息。&lt;/p&gt;
-&lt;p&gt;完整性校验步骤，下面</summary>
-        
-      
+    <summary type="html">&lt;p&gt;对于app应用完整性校验的一些方法~~&lt;/p&gt;</summary>
     
     
     
@@ -459,7 +452,7 @@
     <link href="https://echozt.github.io/posts/1702.html"/>
     <id>https://echozt.github.io/posts/1702.html</id>
     <published>2022-03-26T05:23:40.000Z</published>
-    <updated>2022-09-05T12:49:10.531Z</updated>
+    <updated>2022-10-17T05:21:26.627Z</updated>
     
     
     <summary type="html">&lt;p&gt;这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。文章最后还有一张我对于文件上传漏洞的总结哦。&lt;/p&gt;</summary>
