@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-10-12T08:45:13.499Z</updated>
+  <updated>2022-10-24T02:05:57.765Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/f6c8.html"/>
     <id>https://echozt.github.io/posts/f6c8.html</id>
     <published>2022-10-12T08:36:04.000Z</published>
-    <updated>2022-10-12T08:45:13.499Z</updated>
+    <updated>2022-10-24T02:05:57.765Z</updated>
     
     
     <summary type="html">&lt;p&gt;验证网站是否存在log4j2漏洞的方法~~&lt;/p&gt;</summary>
@@ -42,7 +42,7 @@
     <link href="https://echozt.github.io/posts/4554.html"/>
     <id>https://echozt.github.io/posts/4554.html</id>
     <published>2022-10-12T07:23:47.000Z</published>
-    <updated>2022-10-12T08:45:13.494Z</updated>
+    <updated>2022-10-24T02:11:48.207Z</updated>
     
     
     <summary type="html">&lt;p&gt;验证网站是否存在fastjson漏洞的方法~~&lt;/p&gt;</summary>
@@ -298,7 +298,7 @@
     <link href="https://echozt.github.io/posts/9532.html"/>
     <id>https://echozt.github.io/posts/9532.html</id>
     <published>2022-05-17T12:42:48.000Z</published>
-    <updated>2022-05-20T15:45:00.123Z</updated>
+    <updated>2022-10-24T01:58:46.419Z</updated>
     
     
     <summary type="html">&lt;p&gt;前几天复现了一下墨者平台的shiro靶场，本篇文章用的是工具检测的~~&lt;/p&gt;</summary>

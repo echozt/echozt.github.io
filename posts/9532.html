@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/9532/5.png">
 <meta property="og:image" content="https://echozt.github.io/posts/9532/6.png">
 <meta property="article:published_time" content="2022-05-17T12:42:48.000Z">
-<meta property="article:modified_time" content="2022-05-20T15:45:00.123Z">
+<meta property="article:modified_time" content="2022-10-24T01:58:46.419Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="框架漏洞">
 <meta property="article:tag" content="Apache shiro">
@@ -211,7 +211,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      667 字
+      694 字
     </span>
   
 
@@ -260,6 +260,7 @@
 <h1 id="5-从请求的返回包判断出使用了shiro："><a href="#5-从请求的返回包判断出使用了shiro：" class="headerlink" title="5.从请求的返回包判断出使用了shiro："></a>5.从请求的返回包判断出使用了shiro：</h1><p> <img src="/posts/9532/3.png" srcset="/img/loading.gif" lazyload class></p>
 <h1 id="6-利用shiro工具检测"><a href="#6-利用shiro工具检测" class="headerlink" title="6.利用shiro工具检测"></a>6.利用shiro工具检测</h1><p>放入url，点击爆破密钥，存在密钥，得到密钥：</p>
 <p> <img src="/posts/9532/4.png" srcset="/img/loading.gif" lazyload class></p>
+<p>然后点击爆破利用链及回显，发现构造链即可进行功能利用。</p>
 <h1 id="7-然后命令执行找到一个key-txt"><a href="#7-然后命令执行找到一个key-txt" class="headerlink" title="7.然后命令执行找到一个key.txt"></a>7.然后命令执行找到一个key.txt</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ls</span> /
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p> <img src="/posts/9532/5.png" srcset="/img/loading.gif" lazyload class></p>
