@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-10-24T02:16:02.698Z</updated>
+  <updated>2022-10-25T09:11:11.163Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常见文件解析漏洞</title>
+    <link href="https://echozt.github.io/posts/7351.html"/>
+    <id>https://echozt.github.io/posts/7351.html</id>
+    <published>2022-10-25T07:53:54.000Z</published>
+    <updated>2022-10-25T09:11:11.163Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前段时间在复习文件解析漏洞，有些知识的确得记清呀~~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="web漏洞原理总结" scheme="https://echozt.github.io/categories/web%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="文件上传" scheme="https://echozt.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    <category term="解析漏洞" scheme="https://echozt.github.io/tags/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>log4j2代码执行漏洞</title>
@@ -444,29 +467,6 @@
     <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="sql注入" scheme="https://echozt.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>upload文件上传靶场</title>
-    <link href="https://echozt.github.io/posts/1702.html"/>
-    <id>https://echozt.github.io/posts/1702.html</id>
-    <published>2022-03-26T05:23:40.000Z</published>
-    <updated>2022-10-17T05:21:26.627Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。文章最后还有一张我对于文件上传漏洞的总结哦。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="专项靶场" scheme="https://echozt.github.io/categories/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/"/>
-    
-    
-    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="upload" scheme="https://echozt.github.io/tags/upload/"/>
     
   </entry>
   
