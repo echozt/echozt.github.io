@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/d38/5.png">
 <meta property="og:image" content="https://echozt.github.io/posts/d38/6.png">
 <meta property="article:published_time" content="2022-05-17T12:50:55.000Z">
-<meta property="article:modified_time" content="2022-10-12T05:01:22.463Z">
+<meta property="article:modified_time" content="2022-10-27T02:48:28.335Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="框架漏洞">
 <meta property="article:tag" content="Apache Struts2">
@@ -251,7 +251,7 @@
 <h1 id="漏洞简介："><a href="#漏洞简介：" class="headerlink" title="漏洞简介："></a><strong>漏洞简介</strong>：</h1><p>开源应用框架Apache Struts存在远程代码执行漏洞（CVE-2021-31805），攻击者可构造恶意的OGNL表达式触发漏洞，实现远程代码执行。</p>
 <h1 id="特征："><a href="#特征：" class="headerlink" title="特征："></a><strong>特征</strong>：</h1><p>查看被测应用系统的源码，URL 接口地址以 “.action” “.do” 结尾或地址中包含“!”符号，或者在被测应用的服务器上查看应用所在目录/WEB-INF/lib/下 的 jar 文件，若存在 struts2-core-2.<em>.**.jar 或 xwork-core- 2.</em>.**.jar 格式的 jar 文件，则需检测是否存在 Struts2 远程代码执行漏洞。</p>
 <h1 id="受影响版本为："><a href="#受影响版本为：" class="headerlink" title="受影响版本为："></a><strong>受影响版本为</strong>：</h1><p>Apache Struts 2.0.0~2.5.29。</p>
-<h1 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h1><h2 id="1、在url后面添加-1-2-action："><a href="#1、在url后面添加-1-2-action：" class="headerlink" title="1、在url后面添加${1+2}.action："></a>1、在url后面添加${1+2}.action：</h2><pre class="line-numbers language-http"><code class="language-http">访问http://124.70.71.251:45344/$&amp;#123;1+2&amp;#125;.action
+<h1 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h1><h2 id="1、在url后面添加-1-2-action："><a href="#1、在url后面添加-1-2-action：" class="headerlink" title="1、在url后面添加${1+2}.action："></a>1、在url后面添加${1+2}.action：</h2><pre class="line-numbers language-py"><code class="language-py">访问http://124.70.71.251:45344/$&#123;1+2&#125;.action
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>发现存在回显</p>
 <p>  <img src="/posts/d38/1.png" srcset="/img/loading.gif" lazyload class></p>
