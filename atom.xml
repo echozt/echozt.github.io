@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-10-25T09:11:42.164Z</updated>
+  <updated>2022-11-09T07:04:28.097Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>weblogic SSRF漏洞</title>
+    <link href="https://echozt.github.io/posts/537d.html"/>
+    <id>https://echozt.github.io/posts/537d.html</id>
+    <published>2022-11-09T06:45:33.000Z</published>
+    <updated>2022-11-09T07:04:28.097Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;00x1漏洞描述&quot;&gt;&lt;a href=&quot;#00x1漏洞描述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/categories/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    
+    <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="weblogic" scheme="https://echozt.github.io/tags/weblogic/"/>
+    
+    <category term="SSRF" scheme="https://echozt.github.io/tags/SSRF/"/>
+    
+  </entry>
   
   <entry>
     <title>常见文件解析漏洞</title>
@@ -44,7 +73,7 @@
     <link href="https://echozt.github.io/posts/f6c8.html"/>
     <id>https://echozt.github.io/posts/f6c8.html</id>
     <published>2022-10-12T08:36:04.000Z</published>
-    <updated>2022-10-24T02:16:02.698Z</updated>
+    <updated>2022-11-09T06:50:31.725Z</updated>
     
     
     <summary type="html">&lt;p&gt;验证网站是否存在log4j2漏洞的方法~~&lt;/p&gt;</summary>
@@ -56,6 +85,8 @@
     
     <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
     
+    <category term="代码执行" scheme="https://echozt.github.io/tags/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
+    
     <category term="log4j2" scheme="https://echozt.github.io/tags/log4j2/"/>
     
   </entry>
@@ -65,7 +96,7 @@
     <link href="https://echozt.github.io/posts/4554.html"/>
     <id>https://echozt.github.io/posts/4554.html</id>
     <published>2022-10-12T07:23:47.000Z</published>
-    <updated>2022-10-24T02:18:57.631Z</updated>
+    <updated>2022-11-09T06:51:08.786Z</updated>
     
     
     <summary type="html">&lt;p&gt;验证网站是否存在fastjson漏洞的方法~~&lt;/p&gt;</summary>
@@ -76,6 +107,8 @@
     
     
     <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="反序列化" scheme="https://echozt.github.io/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
     
     <category term="fastjson" scheme="https://echozt.github.io/tags/fastjson/"/>
     
@@ -272,7 +305,7 @@
     <link href="https://echozt.github.io/posts/fd38.html"/>
     <id>https://echozt.github.io/posts/fd38.html</id>
     <published>2022-05-17T12:51:06.000Z</published>
-    <updated>2022-10-12T05:03:08.310Z</updated>
+    <updated>2022-11-09T06:51:34.300Z</updated>
     
     
       
@@ -293,6 +326,8 @@
     
     <category term="Apache Struts2" scheme="https://echozt.github.io/tags/Apache-Struts2/"/>
     
+    <category term="代码执行" scheme="https://echozt.github.io/tags/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
+    
   </entry>
   
   <entry>
@@ -300,7 +335,7 @@
     <link href="https://echozt.github.io/posts/d38.html"/>
     <id>https://echozt.github.io/posts/d38.html</id>
     <published>2022-05-17T12:50:55.000Z</published>
-    <updated>2022-10-27T02:48:28.335Z</updated>
+    <updated>2022-11-09T06:51:58.202Z</updated>
     
     
     <summary type="html">&lt;p&gt;复现的是墨者的Apache Struts2的靶场，用了两种方式，手工和工具检测~~&lt;/p&gt;</summary>
@@ -314,6 +349,8 @@
     
     <category term="Apache Struts2" scheme="https://echozt.github.io/tags/Apache-Struts2/"/>
     
+    <category term="代码执行" scheme="https://echozt.github.io/tags/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
+    
   </entry>
   
   <entry>
@@ -321,7 +358,7 @@
     <link href="https://echozt.github.io/posts/9532.html"/>
     <id>https://echozt.github.io/posts/9532.html</id>
     <published>2022-05-17T12:42:48.000Z</published>
-    <updated>2022-10-24T01:58:46.419Z</updated>
+    <updated>2022-11-09T06:51:22.985Z</updated>
     
     
     <summary type="html">&lt;p&gt;前几天复现了一下墨者平台的shiro靶场，本篇文章用的是工具检测的~~&lt;/p&gt;</summary>
@@ -334,6 +371,8 @@
     <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="Apache shiro" scheme="https://echozt.github.io/tags/Apache-shiro/"/>
+    
+    <category term="反序列化" scheme="https://echozt.github.io/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
     
   </entry>
   
@@ -433,29 +472,6 @@
     
     
     <summary type="html">&lt;p&gt;第二部分来啦~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="专项靶场" scheme="https://echozt.github.io/categories/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/"/>
-    
-    
-    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="sql注入" scheme="https://echozt.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sqli靶场(1~22关)</title>
-    <link href="https://echozt.github.io/posts/bb32.html"/>
-    <id>https://echozt.github.io/posts/bb32.html</id>
-    <published>2022-04-08T15:45:48.000Z</published>
-    <updated>2022-09-05T12:33:48.858Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。&lt;/p&gt;</summary>
     
     
     

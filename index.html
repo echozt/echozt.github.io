@@ -199,6 +199,63 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/posts/537d.html" target="_self">
+          <img src="/img/2.jpg" srcset="/img/loading.gif" lazyload alt="weblogic SSRF漏洞">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/537d.html" target="_self">
+          weblogic SSRF漏洞
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/posts/537d.html" target="_self">
+          
+          00x1漏洞描述    weblogic中存在SSRF漏洞，利用该漏洞可以发送任意HTTP请求，进而攻击内网中redis、fastcgi等脆弱组件。 00x2 影响版本    weblogic 10.0.2-10.3.6版本 00x3 漏洞复现    这里使用的是vulfocus[https:&#x2F;&#x2F;vulfocus.cn&#x2F;#&#x2F;dashboard]的weblogic靶场。     启动靶场，是404的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-09 14:45" pubdate>
+              2022-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/">框架漏洞</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/">框架漏洞</a>
+            
+              <a href="/tags/weblogic/">weblogic</a>
+            
+              <a href="/tags/SSRF/">SSRF</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/posts/7351.html" target="_self">
           <img src="/img/2.jpg" srcset="/img/loading.gif" lazyload alt="常见文件解析漏洞">
         </a>
@@ -299,6 +356,8 @@
             
               <a href="/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/">框架漏洞</a>
             
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/">代码执行</a>
+            
               <a href="/tags/log4j2/">log4j2</a>
             
           </div>
@@ -353,6 +412,8 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/">框架漏洞</a>
+            
+              <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a>
             
               <a href="/tags/fastjson/">fastjson</a>
             
@@ -813,61 +874,6 @@
               <a href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">命令执行漏洞</a>
             
               <a href="/tags/php/">php</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/fd38.html" target="_self">
-          <img src="/img/2.jpg" srcset="/img/loading.gif" lazyload alt="Apache Struts2远程代码执行漏洞(S2-016)">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/posts/fd38.html" target="_self">
-          Apache Struts2远程代码执行漏洞(S2-016)
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/posts/fd38.html" target="_self">
-          
-          复现的是墨者的Apache Struts2的靶场，用的工具检测~~ 原理：问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上OGNL表达式会被服务器执行。 漏洞原因：action的值redirect和redirectAction没有正确过滤，导致可以执行任意代码，如系统命令、上传、下载文件等。 Struts2的DefaultActionMapper支持一种方法
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-17 20:51" pubdate>
-              2022-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/">框架漏洞</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/">框架漏洞</a>
-            
-              <a href="/tags/Apache-Struts2/">Apache Struts2</a>
             
           </div>
         
