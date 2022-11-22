@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-11-22T08:26:53.336Z</updated>
+  <updated>2022-11-22T08:28:02.372Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/7071.html"/>
     <id>https://echozt.github.io/posts/7071.html</id>
     <published>2022-11-22T07:58:22.000Z</published>
-    <updated>2022-11-22T08:26:53.336Z</updated>
+    <updated>2022-11-22T08:28:02.372Z</updated>
     
     
     <summary type="html">&lt;p&gt;绕过单向认证又多了一种尝试方式呢&lt;/p&gt;</summary>
@@ -249,11 +249,11 @@
   </entry>
   
   <entry>
-    <title>Xposed框架+JustTrustMe模块绕过SSL Pinning</title>
+    <title>Xposed+JustTrustMe绕过SSL Pinning</title>
     <link href="https://echozt.github.io/posts/b480.html"/>
     <id>https://echozt.github.io/posts/b480.html</id>
     <published>2022-09-02T10:58:23.000Z</published>
-    <updated>2022-11-22T08:27:23.449Z</updated>
+    <updated>2022-11-22T08:31:18.766Z</updated>
     
     
     <summary type="html">&lt;p&gt;单向认证绕过方式GET之一&lt;/p&gt;</summary>
@@ -272,11 +272,11 @@
   </entry>
   
   <entry>
-    <title>截获微信公众号，小程序，APP数据包</title>
+    <title>截获Android端数据包</title>
     <link href="https://echozt.github.io/posts/621a.html"/>
     <id>https://echozt.github.io/posts/621a.html</id>
     <published>2022-09-02T10:52:13.000Z</published>
-    <updated>2022-11-22T08:26:48.012Z</updated>
+    <updated>2022-11-22T08:33:20.713Z</updated>
     
     
     <summary type="html">&lt;p&gt;    前一段时间有在做捕获微信公众号数据包的测试，然后顺便下载了个模拟器，想着琢磨一下小程序和app的拦截使用，整理了一下笔记，下面是关于在模拟器和本机电脑上拦截微信公众号，小程序，APP数据包的做法。&lt;/p&gt;</summary>
