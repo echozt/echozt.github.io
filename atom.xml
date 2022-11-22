@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-11-09T07:04:28.097Z</updated>
+  <updated>2022-11-22T08:26:53.336Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -17,20 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>frida+objection绕过SSL Pinning</title>
+    <link href="https://echozt.github.io/posts/7071.html"/>
+    <id>https://echozt.github.io/posts/7071.html</id>
+    <published>2022-11-22T07:58:22.000Z</published>
+    <updated>2022-11-22T08:26:53.336Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;绕过单向认证又多了一种尝试方式呢&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="frida" scheme="https://echozt.github.io/tags/frida/"/>
+    
+    <category term="objection" scheme="https://echozt.github.io/tags/objection/"/>
+    
+    <category term="android抓包" scheme="https://echozt.github.io/tags/android%E6%8A%93%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>weblogic SSRF漏洞</title>
     <link href="https://echozt.github.io/posts/537d.html"/>
     <id>https://echozt.github.io/posts/537d.html</id>
     <published>2022-11-09T06:45:33.000Z</published>
-    <updated>2022-11-09T07:04:28.097Z</updated>
+    <updated>2022-11-15T09:31:26.494Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;00x1漏洞描述&quot;&gt;&lt;a href=&quot;#00x1漏洞描述&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;关于weblogic的ssrf漏洞验证~~&lt;/p&gt;</summary>
     
     
     
@@ -232,11 +249,34 @@
   </entry>
   
   <entry>
+    <title>Xposed框架+JustTrustMe模块绕过SSL Pinning</title>
+    <link href="https://echozt.github.io/posts/b480.html"/>
+    <id>https://echozt.github.io/posts/b480.html</id>
+    <published>2022-09-02T10:58:23.000Z</published>
+    <updated>2022-11-22T08:27:23.449Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;单向认证绕过方式GET之一&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="Xpose" scheme="https://echozt.github.io/tags/Xpose/"/>
+    
+    <category term="JustTrustMe" scheme="https://echozt.github.io/tags/JustTrustMe/"/>
+    
+    <category term="app单向认证绕过" scheme="https://echozt.github.io/tags/app%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>截获微信公众号，小程序，APP数据包</title>
     <link href="https://echozt.github.io/posts/621a.html"/>
     <id>https://echozt.github.io/posts/621a.html</id>
     <published>2022-09-02T10:52:13.000Z</published>
-    <updated>2022-10-11T02:31:11.430Z</updated>
+    <updated>2022-11-22T08:26:48.012Z</updated>
     
     
     <summary type="html">&lt;p&gt;    前一段时间有在做捕获微信公众号数据包的测试，然后顺便下载了个模拟器，想着琢磨一下小程序和app的拦截使用，整理了一下笔记，下面是关于在模拟器和本机电脑上拦截微信公众号，小程序，APP数据包的做法。&lt;/p&gt;</summary>
@@ -246,11 +286,11 @@
     <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
     
+    <category term="android抓包" scheme="https://echozt.github.io/tags/android%E6%8A%93%E5%8C%85/"/>
+    
     <category term="fiddler" scheme="https://echozt.github.io/tags/fiddler/"/>
     
-    <category term="模拟器" scheme="https://echozt.github.io/tags/%E6%A8%A1%E6%8B%9F%E5%99%A8/"/>
-    
-    <category term="android抓包" scheme="https://echozt.github.io/tags/android%E6%8A%93%E5%8C%85/"/>
+    <category term="burpsuite" scheme="https://echozt.github.io/tags/burpsuite/"/>
     
   </entry>
   
@@ -437,50 +477,6 @@
     
     
     <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="sql注入" scheme="https://echozt.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sqli靶场(38~53关)</title>
-    <link href="https://echozt.github.io/posts/7e37.html"/>
-    <id>https://echozt.github.io/posts/7e37.html</id>
-    <published>2022-04-11T15:18:29.000Z</published>
-    <updated>2022-09-05T12:34:18.346Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;第三部分主要是堆叠注入。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="专项靶场" scheme="https://echozt.github.io/categories/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/"/>
-    
-    
-    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="sql注入" scheme="https://echozt.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sqli靶场(23~37关)</title>
-    <link href="https://echozt.github.io/posts/fb8a.html"/>
-    <id>https://echozt.github.io/posts/fb8a.html</id>
-    <published>2022-04-09T16:03:14.000Z</published>
-    <updated>2022-09-05T12:34:05.492Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;第二部分来啦~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="专项靶场" scheme="https://echozt.github.io/categories/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/"/>
-    
-    
-    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="sql注入" scheme="https://echozt.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
     
