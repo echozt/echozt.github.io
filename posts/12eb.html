@@ -28,13 +28,11 @@
 <meta property="og:image" content="https://echozt.github.io/posts/12eb/12.png">
 <meta property="og:image" content="https://echozt.github.io/posts/12eb/13.png">
 <meta property="article:published_time" content="2022-01-30T13:56:17.000Z">
-<meta property="article:modified_time" content="2022-02-26T15:24:15.060Z">
+<meta property="article:modified_time" content="2022-12-02T07:08:14.924Z">
 <meta property="article:author" content="echozt">
-<meta property="article:tag" content="渗透">
-<meta property="article:tag" content="msfconsole">
-<meta property="article:tag" content="攻击">
-<meta property="article:tag" content="漏洞">
-<meta property="article:tag" content="kali">
+<meta property="article:tag" content="metasploit">
+<meta property="article:tag" content="操作系统漏洞">
+<meta property="article:tag" content="ms12-020">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://echozt.github.io/posts/12eb/10.png">
   
@@ -249,7 +247,7 @@
               <p>本篇文章介绍关于msfconsole模块中ms12-020漏洞的解析。</p>
 <span id="more"></span>
 
-<h1 id="实验背景："><a href="#实验背景：" class="headerlink" title="实验背景："></a>实验背景：</h1><p>都是在虚拟机下进行的啦，靶机采用的是winxpens3，确保所用的靶机有相关的漏洞才能攻击成功哦。并且攻击机和靶机要处在同一局域网下才行哒，建议开启仅主机模式哦。还有一点，有些命令无效，可能是因为模式为普通用户模式，在命令前面使用sudo就好了，或者切换为root（su root)</p>
+<h1 id="实验背景："><a href="#实验背景：" class="headerlink" title="实验背景："></a>实验背景：</h1><p>    都是在虚拟机下进行的啦，靶机采用的是winxpens3，确保所用的靶机有相关的漏洞才能攻击成功哦。并且攻击机和靶机要处在同一局域网下才行哒，建议开启仅主机模式哦。还有一点，有些命令无效，可能是因为模式为普通用户模式，在命令前面使用sudo就好了，或者切换为root（su root)</p>
 <h1 id="实验环境："><a href="#实验环境：" class="headerlink" title="实验环境："></a>实验环境：</h1><p>攻击机：kali ip地址：192.168.127.139</p>
 <p>靶机：winxpens3 ip地址：192.168.127.138</p>
 <h1 id="ms12-020（导致对方蓝屏）"><a href="#ms12-020（导致对方蓝屏）" class="headerlink" title="ms12-020（导致对方蓝屏）"></a>ms12-020（导致对方蓝屏）</h1><h2 id="1、配置命令"><a href="#1、配置命令" class="headerlink" title="1、配置命令"></a>1、配置命令</h2><p>确定靶机的3389端口打开</p>
@@ -292,7 +290,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/msfconsole/">msfconsole</a>
+                      <a class="hover-with-bg" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a>
                     
                   </div>
                 
@@ -300,15 +298,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+                      <a class="hover-with-bg" href="/tags/metasploit/">metasploit</a>
                     
-                      <a class="hover-with-bg" href="/tags/msfconsole/">msfconsole</a>
+                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E/">操作系统漏洞</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%94%BB%E5%87%BB/">攻击</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
-                    
-                      <a class="hover-with-bg" href="/tags/kali/">kali</a>
+                      <a class="hover-with-bg" href="/tags/ms12-020/">ms12-020</a>
                     
                   </div>
                 

