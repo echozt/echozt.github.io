@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-12-06T08:48:29.193Z</updated>
+  <updated>2022-12-06T08:49:07.035Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/7e0e.html"/>
     <id>https://echozt.github.io/posts/7e0e.html</id>
     <published>2022-12-06T08:18:17.000Z</published>
-    <updated>2022-12-06T08:48:29.193Z</updated>
+    <updated>2022-12-06T08:49:07.035Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于rsync服务未授权漏洞的几种利用方式~~&lt;/p&gt;</summary>
