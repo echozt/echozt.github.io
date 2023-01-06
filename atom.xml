@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2022-12-06T08:49:07.035Z</updated>
+  <updated>2022-12-17T07:28:44.389Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次惨痛教训</title>
+    <link href="https://echozt.github.io/posts/2f6a.html"/>
+    <id>https://echozt.github.io/posts/2f6a.html</id>
+    <published>2022-12-17T06:10:03.000Z</published>
+    <updated>2022-12-17T07:28:44.389Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;事情的起因是这样的，前两天晚上，我可能是突发奇想，决定把我电脑的中文用户名改成拼音的，那样在cmd里面加载出来也好看一点。所以我就直接百度，按照教程直接在注册表里面把名字改了。这一改问题就大了。。。&lt;/p&gt;
+&lt;p&gt;改完之后，重启我的电脑出现的是这个界面：&lt;/p&gt;
+&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>rsync未授权访问漏洞利用</title>
@@ -459,30 +482,6 @@
     <category term="Apache shiro" scheme="https://echozt.github.io/tags/Apache-shiro/"/>
     
     <category term="反序列化" scheme="https://echozt.github.io/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pikachu靶场</title>
-    <link href="https://echozt.github.io/posts/6011.html"/>
-    <id>https://echozt.github.io/posts/6011.html</id>
-    <published>2022-04-23T15:14:32.000Z</published>
-    <updated>2022-10-06T07:58:20.334Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;咱就是说，前一段时间，我的github被标记成机器人了。百度了一下，然后给那边发了封邮件，来来回回两次才总算弄好。我还不够勤快嘛，还把我标记了呜呜呜。&lt;/p&gt;
-&lt;p&gt;今天传的是前一段时间打的pikachu靶场。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="综合靶场" scheme="https://echozt.github.io/categories/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/"/>
-    
-    
-    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="pikachu" scheme="https://echozt.github.io/tags/pikachu/"/>
     
   </entry>
   
