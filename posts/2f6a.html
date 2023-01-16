@@ -24,8 +24,14 @@
 <meta property="og:description" content="事情的起因是这样的，前两天晚上，我可能是突发奇想，决定把我电脑的中文用户名改成拼音的，那样在cmd里面加载出来也好看一点。所以我就直接百度，按照教程直接在注册表里面把名字改了。这一改问题就大了。。。 改完之后，重启我的电脑出现的是这个界面：   当时我就不敢动了，然后我又开始找原因，找了各种办法，看网上有人说他们可行，但我真的反正没成功。 先说一下，我最后成功地经验吧。 上面那种情况，电脑是自动登">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://echozt.github.io/posts/2f6a/1.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/2f6a/6.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/2f6a/2.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/2f6a/3.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/2f6a/4.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/2f6a/5.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/2f6a/7.jpg">
 <meta property="article:published_time" content="2022-12-17T06:10:03.000Z">
-<meta property="article:modified_time" content="2022-12-17T07:28:44.389Z">
+<meta property="article:modified_time" content="2023-01-16T06:43:15.161Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="网络安全，计算机，渗透">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +252,7 @@
 <p>当时我就不敢动了，然后我又开始找原因，找了各种办法，看网上有人说他们可行，但我真的反正没成功。</p>
 <p>先说一下，我最后成功地经验吧。</p>
 <p>上面那种情况，电脑是自动登录在一个临时账户里面的，你原来的账户还在。这个时候，千万千万不要乱修改，不然就会像我一样，之前的数据彻底没了。如果你直接在这个临时账户里面修改任何东西，等到重启之后它是不会保存的，所以就没有用。</p>
-
+<img src="/posts/2f6a/6.jpg" srcset="/img/loading.gif" lazyload class>
 
 <p>这个时候应该先创建一个具有管理员权限的账户：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">net user username password /add        //这里的username自己任意取名，password也是自己设置的密码
@@ -261,19 +267,19 @@ net localgroup administrators username /add  //这里的username为上一步创�
 <p>接着来到文件夹C:/users，在里面找到把临时账户Temp重命名为你之前的中文用户名。如果显示什么该文件夹在其它程序已打开不能修改之类的，就先切换为原来有问题的账户，先注销，再回来操作，应该就能修改了。</p>
 <p>这两边都修改完毕之后，账户数据应该就回来了。也不会弹提示框了。</p>
 <p>我还是要介绍下我的失败经历。其间，我还尝试了系统还原，刚好我电脑有记录到两三天之前的一个节点，于是我怀着兴冲冲的希望去还原，结果是失败的：</p>
-
+<img src="/posts/2f6a/2.jpg" srcset="/img/loading.gif" lazyload class>
 
 <p>然后啊，我还是想把希望放在这个上面，于是又去找这个参数错误的解决办法，查到说是在安全模式下去还原，于是新的错误又出现了：</p>
-
+<img src="/posts/2f6a/3.jpg" srcset="/img/loading.gif" lazyload class>
 
 <p>上面明显提示说是磁盘容量不够，然后我去问了一下别人，系统还原大概需要预留多少磁盘，结果告诉我要50g，但我最多给出20到30g呀，而且我还为此清理了下c盘，好像把还原节点直接清理掉了，这下这个希望彻底破灭了</p>
-
+<img src="/posts/2f6a/4.jpg" srcset="/img/loading.gif" lazyload class>
 
 <p>于是我还去闲鱼找那种收费可以远程解决问题的人，不找还好，麻烦更大了。第一个人该说不说，还是有跟我之前尝试过的方法差不多的，但是我看他的操作还没有我熟练（虽然我也是计算机专业的）。第二个人就更别说了，直接把我C:/users下面的文件给覆盖了，我看着他远程，明明有个提示说会覆盖，我还没来得及阻止，他直接就点了确定，我真的服了啊，结果直接电脑桌面都没了，进都进不去了。</p>
-
+<img src="/posts/2f6a/5.jpg" srcset="/img/loading.gif" lazyload class>
 
 <p>这个情况，真的还不如最开始的呢，没办法，和我朋友开始一起想办法，强制关机三次，进入到安全模式，里面是一片白的，因为我桌面都没了呜呜呜</p>
-
+<img src="/posts/2f6a/7.jpg" srcset="/img/loading.gif" lazyload class>
 
 <p>幸好还能操作快捷键，我当时也是在这里命令提示符里创建新用户的，就应该早点创建的。在我一顿操作下，才恢复好的。太可怕了，以后有事先用虚拟机尝试，再也不乱玩注册表了，差点电脑都要重装系统了。</p>
 
@@ -281,6 +287,13 @@ net localgroup administrators username /add  //这里的username为上一步创�
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9B%B6%E7%A2%8E/">零碎</a>
+                    
+                  </div>
                 
                 
               </div>
