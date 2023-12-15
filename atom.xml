@@ -274,7 +274,7 @@
     <link href="https://echozt.github.io/posts/387a.html"/>
     <id>https://echozt.github.io/posts/387a.html</id>
     <published>2022-09-20T05:52:45.000Z</published>
-    <updated>2023-12-14T08:13:34.921Z</updated>
+    <updated>2023-12-15T01:42:33.799Z</updated>
     
     
     <summary type="html">&lt;p&gt;一些些好用的misc工具分享&lt;/p&gt;</summary>
@@ -372,10 +372,10 @@
     <link href="https://echozt.github.io/posts/621a.html"/>
     <id>https://echozt.github.io/posts/621a.html</id>
     <published>2022-09-02T10:52:13.000Z</published>
-    <updated>2022-11-22T08:33:20.713Z</updated>
+    <updated>2023-12-15T01:54:37.822Z</updated>
     
     
-    <summary type="html">&lt;p&gt;    前一段时间有在做捕获微信公众号数据包的测试，然后顺便下载了个模拟器，想着琢磨一下小程序和app的拦截使用，整理了一下笔记，下面是关于在模拟器和本机电脑上拦截微信公众号，小程序，APP数据包的做法。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt; 关于在安卓模拟器和本机电脑上拦截微信公众号、小程序、APP数据包方法。&lt;/p&gt;</summary>
     
     
     
@@ -441,17 +441,10 @@
     <link href="https://echozt.github.io/posts/fd38.html"/>
     <id>https://echozt.github.io/posts/fd38.html</id>
     <published>2022-05-17T12:51:06.000Z</published>
-    <updated>2022-12-06T08:47:35.855Z</updated>
+    <updated>2023-12-15T01:57:25.688Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;复现的是墨者的Apache Struts2的靶场，用的工具检测~~&lt;/p&gt;
-&lt;h1 id=&quot;原理：&quot;&gt;&lt;a href=&quot;#原理：&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;复现的是墨者的Apache Struts2的靶场，用的工具检测~~&lt;/p&gt;</summary>
     
     
     

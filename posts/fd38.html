@@ -393,7 +393,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>复现的是墨者的Apache Struts2的靶场，用的工具检测~~</p>
+                <p>复现的是墨者的Apache Struts2的靶场，用的工具检测~~<span id="more"></span></p>
 <h1 id="原理："><a href="#原理：" class="headerlink" title="原理："></a><strong>原理</strong>：</h1><p>问题主要出在对于特殊URL处理中，redirect与redirectAction后面跟上OGNL表达式会被服务器执行。</p>
 <h1 id="漏洞原因："><a href="#漏洞原因：" class="headerlink" title="漏洞原因："></a><strong>漏洞原因</strong>：</h1><p>action的值redirect和redirectAction没有正确过滤，导致可以执行任意代码，如系统命令、上传、下载文件等。</p>
 <p>Struts2的DefaultActionMapper支持一种方法，可以使用”action:”, “redirect:” , “redirectAction:”对输入信息进行处理，从而改变前缀参数，这样操作的目的是方便表单中的操作。在2.3.15.1版本以前的struts2中，没有对”action:”, “redirect:” , “redirectAction:”等进行处理，导致ongl表达式可以被执行。</p>
@@ -995,7 +995,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">44.3k</span>
+                        class="white-color">44.4k</span>
             
             
             

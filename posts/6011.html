@@ -6,8 +6,8 @@
     <meta name="google-site-verification" content="D6LSxgzz99gvhBMd-R2qefCf-eA74itvEMoxOYzUlSo" />
     <meta charset="utf-8">
     <meta name="keywords" content="pikachu靶场, 网络安全，计算机，渗透">
-    <meta name="description" content="咱就是说，前一段时间，我的github被标记成机器人了。百度了一下，然后给那边发了封邮件，来来回回两次才总算弄好。我还不够勤快嘛，还把我标记了呜呜呜。
-今天传的是前一段时间打的pikachu靶场。
+    <meta name="description" content="今天传的是前一段时间打的pikachu靶场。
+咱就是说，前一段时间，我的github被标记成机器人了。百度了一下，然后给那边发了封邮件，来来回回两次才总算弄好。我还不够勤快嘛，还把我标记了呜呜呜。
 
 
 1、Burte Force(暴力破解)">
@@ -395,9 +395,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>咱就是说，前一段时间，我的github被标记成机器人了。百度了一下，然后给那边发了封邮件，来来回回两次才总算弄好。我还不够勤快嘛，还把我标记了呜呜呜。</p>
-<p>今天传的是前一段时间打的pikachu靶场。</p>
-<span id="more"></span>
+                <p>今天传的是前一段时间打的pikachu靶场。<span id="more"></span></p>
+<p>咱就是说，前一段时间，我的github被标记成机器人了。百度了一下，然后给那边发了封邮件，来来回回两次才总算弄好。我还不够勤快嘛，还把我标记了呜呜呜。</p>
+<!--more-->
 
 <h1 id="1、Burte-Force-暴力破解"><a href="#1、Burte-Force-暴力破解" class="headerlink" title="1、Burte Force(暴力破解)"></a>1、Burte Force(暴力破解)</h1><h2 id="1-1-基于表单的暴力破解"><a href="#1-1-基于表单的暴力破解" class="headerlink" title="1.1 基于表单的暴力破解"></a>1.1 基于表单的暴力破解</h2><p>用burp暴力破解，截取到包，然后发送给Intruder（测试器），由于用户名和密码都不知道，所以攻击类型选择Clusterbomb（集中炸弹）模式。在payloads中分别载入用户名和密码的字典。</p>
 <p>最后发现用户名为admin，密码为123456。</p>
@@ -443,7 +443,7 @@
 <p>  <img src="/posts/6011/1_17.png" class></p>
 <p>成功得到密码为123456。</p>
 <h1 id="2、Cross-Site-Scripting-XSS跨站脚本漏洞"><a href="#2、Cross-Site-Scripting-XSS跨站脚本漏洞" class="headerlink" title="2、Cross-Site Scripting(XSS跨站脚本漏洞)"></a>2、Cross-Site Scripting(XSS跨站脚本漏洞)</h1><h2 id="2-1-反射型XSS-get"><a href="#2-1-反射型XSS-get" class="headerlink" title="2.1 反射型XSS(get)"></a>2.1 反射型XSS(get)</h2><p>输入好像受到了限制，点击submit，发现可以直接在url后面输入：</p>
-<pre class="line-numbers language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span> 
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>script<span class="token operator">></span>alert<span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>/script<span class="token operator">></span> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p> <img src="/posts/6011/2.png" class></p>
 <p>成功出现弹窗：</p>
@@ -746,10 +746,10 @@ copy 2.jpg/b+2.php/a 3.jpg
 <p>看到上面图片的目录，退出登录，在不登录的情况下，可以直接访问目录成功</p>
 <pre class="line-numbers language-bash"><code class="language-bash">http://192.168.56.1:8099/pikachu/vul/infoleak/abc.php
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="12、PHP反序列化漏洞"><a href="#12、PHP反序列化漏洞" class="headerlink" title="12、PHP反序列化漏洞"></a>12、PHP反序列化漏洞</h1><p>浅浅地说一下，可以先看一下基本的序列化和反序列化的语法~</p>
+<h1 id="12、PHP反序列化漏洞"><a href="#12、PHP反序列化漏洞" class="headerlink" title="12、PHP反序列化漏洞"></a>12、PHP反序列化漏洞</h1><p>浅浅地说一下，可以先看一下基本的序列化和反序列化的语法。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload：
 
-O:1:<span class="token string">"S"</span>:1:<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;s:4:"test";s:29:"&lt;script>alert('xss')&lt;/script>";&amp;#125;</span>
+O:1:<span class="token string">"S"</span>:1:<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;s:4:"test";s:29:"&lt;script>alert('123')&lt;/script>";&amp;#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>此时会弹出弹窗：</p>
 <p> <img src="/posts/6011/12.png" class></p>
@@ -1418,7 +1418,7 @@ php://filter/read<span class="token operator">=</span>convert.base64-encode/reso
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">44.3k</span>
+                        class="white-color">44.4k</span>
             
             
             
