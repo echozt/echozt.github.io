@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/4684/7.png">
 <meta property="og:image" content="https://echozt.github.io/posts/4684/8.png">
 <meta property="article:published_time" content="2024-01-11T08:48:50.000Z">
-<meta property="article:modified_time" content="2024-01-11T09:08:33.226Z">
+<meta property="article:modified_time" content="2024-01-16T03:29:11.175Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="反编译">
 <meta name="twitter:card" content="summary_large_image">
@@ -248,9 +248,11 @@
             <div class="markdown-body">
               <p>对于微信小程序包的解密与反编译<span id="more"></span></p>
 <h1 id="1、定位小程序缓存路径"><a href="#1、定位小程序缓存路径" class="headerlink" title="1、定位小程序缓存路径"></a>1、定位小程序缓存路径</h1><p>        Applet目录下以wx开头的文件（微信小程序id）就代表小程序：</p>
-<p> <img src="/posts/4684/1.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/1.png" srcset="/img/loading.gif" lazyload class>
+
 <p>        可根据对应的修改日期确定进入的是哪个小程序，或者直接全部删除缓存，重新进入小程序，新生成的即为所找寻的对应小程序。我们进入文件夹里面，其实里面就是一个文件，这就是我们小程序的源码，但是是加密的，我们需要对其解密。</p>
-<p> <img src="/posts/4684/2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/2.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="2、使用工具解密源码"><a href="#2、使用工具解密源码" class="headerlink" title="2、使用工具解密源码"></a>2、使用工具解密源码</h1><blockquote>
 <p>解密与反编译工具：<a target="_blank" rel="noopener" href="https://github.com/superBiuBiuMan/wechatMiniAppReverse">https://github.com/superBiuBiuMan/wechatMiniAppReverse</a></p>
 </blockquote>
@@ -258,21 +260,26 @@
 <pre class="line-numbers language-bash"><code class="language-bash">pc_wxapkg_decrypt.exe -wxid 微信小程序id -in 要解密的wxapkg路径 -out 解密后的路径
 <span class="token punctuation">(</span>微信小程序id即为第一步中以wx开头的文件夹名<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p> <img src="/posts/4684/3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/3.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="3、反编译解密包"><a href="#3、反编译解密包" class="headerlink" title="3、反编译解密包"></a>3、反编译解密包</h1><p>        利用第二步的工具反编译，进入2.second文件夹。</p>
 <h2 id="3-1安装依赖"><a href="#3-1安装依赖" class="headerlink" title="3.1安装依赖"></a>3.1安装依赖</h2><p>        切换到nodejs目录，这里作者把所需的依赖都打包到这个node_modules.zip压缩包了，解压使用即可，这里注意是解压到同名文件夹下面：</p>
-<p> <img src="/posts/4684/4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/4.png" srcset="/img/loading.gif" lazyload class>
+
 <p>        然后这里还少了个cheerio依赖，自行安装即可：</p>
-<p> <img src="/posts/4684/5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/5.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="3-2反编译"><a href="#3-2反编译" class="headerlink" title="3.2反编译"></a>3.2反编译</h2><pre class="line-numbers language-bash"><code class="language-bash">反编译命令：
 node .\wuWxapkg.js D:\1_tools\Android\wechatMiniAppReverse-main\2.second\wxapkg\1.wxapkg
 （路径改为自己第二步解密后的源码路径）
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/4684/6.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/6.png" srcset="/img/loading.gif" lazyload class>
+
 <p>        成功反编译，在路径下生成同名文件夹：</p>
-<p> <img src="/posts/4684/7.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/7.png" srcset="/img/loading.gif" lazyload class>
+
 <p>        打开即为反编译后的内容：</p>
-<p> <img src="/posts/4684/8.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/4684/8.png" srcset="/img/loading.gif" lazyload class>
 
             </div>
             <hr>
@@ -306,6 +313,12 @@ node .\wuWxapkg.js D:\1_tools\Android\wechatMiniAppReverse-main\2.second\wxapkg\
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/5e15.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在Ubuntu上安装Docker Desktop</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

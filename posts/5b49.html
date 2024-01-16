@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/5b49/7.png">
 <meta property="og:image" content="https://echozt.github.io/posts/5b49/8.png">
 <meta property="article:published_time" content="2024-01-02T01:26:39.000Z">
-<meta property="article:modified_time" content="2024-01-02T03:34:13.187Z">
+<meta property="article:modified_time" content="2024-01-16T03:30:37.266Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="retire.js">
 <meta property="article:tag" content="jquery">
@@ -251,18 +251,22 @@
 <h1 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><p>        在 jquery 的诸多发行版本中，存在着 DOM型XSS 漏洞，易被攻击者利用。</p>
 <h2 id="1-2-漏洞成因"><a href="#1-2-漏洞成因" class="headerlink" title="1.2 漏洞成因"></a>1.2 漏洞成因</h2><p>        漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致 LOCATION.HASH 跨站漏洞。</p>
 <h1 id="2、扫描插件——retire-js"><a href="#2、扫描插件——retire-js" class="headerlink" title="2、扫描插件——retire.js"></a>2、扫描插件——retire.js</h1><p>        这里强烈推荐我觉得很好用的一个插件：retire.js。我一般是作为火狐的插件使用，这样在浏览网页时会自动检测到jquery的版本信息。</p>
-<p> <img src="/posts/5b49/1.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/1.png" srcset="/img/loading.gif" lazyload class>
+
 <p>        会显示jquery的版本以及对应的jquery的网址，以及可能存在哪些CVE的漏洞。</p>
-<p> <img src="/posts/5b49/2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/2.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="3、验收jquery历史漏洞版本环境"><a href="#3、验收jquery历史漏洞版本环境" class="headerlink" title="3、验收jquery历史漏洞版本环境"></a>3、验收jquery历史漏洞版本环境</h1><p>版本漏洞检测网站：<a target="_blank" rel="noopener" href="http://research.insecurelabs.org/jquery/test/">http://research.insecurelabs.org/jquery/test/</a>  </p>
 <p>jQuery 版本漏洞验证网站：<a target="_blank" rel="noopener" href="https://jsbin.com/?html,js,output">https://jsbin.com/?html,js,output</a></p>
 <h2 id="3-1-CVE-2020-11022、CVE-2020-11023"><a href="#3-1-CVE-2020-11022、CVE-2020-11023" class="headerlink" title="3.1 CVE-2020-11022、CVE-2020-11023"></a>3.1 CVE-2020-11022、CVE-2020-11023</h2><pre class="line-numbers language-bash"><code class="language-bash">在线验证网站：https://vulnerabledoma.in/jquery_htmlPrefilter_xss.html
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>使用方式：</p>
 <p>（1）将网址中head头部中的script标签的src内容替换为待验证的jquery网址。</p>
-<p> <img src="/posts/5b49/3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/3.png" srcset="/img/loading.gif" lazyload class>
+
 <p>（2）然后尝试点击三个poc的任意一个Append via .html()按钮，存在漏洞则会出现弹窗。</p>
-<p> <img src="/posts/5b49/4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/4.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="3-2-CVE-2012-6708"><a href="#3-2-CVE-2012-6708" class="headerlink" title="3.2 CVE-2012-6708"></a>3.2 CVE-2012-6708</h2><pre class="line-numbers language-bash"><code class="language-bash">在Console窗口输入：
 <span class="token punctuation">$(</span><span class="token string">"element[attribute='&lt;img src=123 οnerrοr=alert(123)>'"</span><span class="token punctuation">)</span>
 若存在漏洞，则会出现弹窗。
@@ -272,14 +276,18 @@
 <h2 id="3-4-CVE-2012-6708、CVE-2011-4969、CVE-2015-9251"><a href="#3-4-CVE-2012-6708、CVE-2011-4969、CVE-2015-9251" class="headerlink" title="3.4 CVE-2012-6708、CVE-2011-4969、CVE-2015-9251"></a>3.4 CVE-2012-6708、CVE-2011-4969、CVE-2015-9251</h2><pre class="line-numbers language-bash"><code class="language-bash">jQuery-with-XSS-master：https://github.com/mahp/jQuery-with-XSS
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>可以验证这三个漏洞：</p>
-<p> <img src="/posts/5b49/5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/5.png" srcset="/img/loading.gif" lazyload class>
+
 <p>使用方式：</p>
 <p>（1）下载好这个验证poc之后，可编辑test.html的第九行代码，将代码中的src后的链接改为自己要验证的js地址链接。</p>
-<p> <img src="/posts/5b49/6.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/6.png" srcset="/img/loading.gif" lazyload class>
+
 <p>（2）保存之后，用浏览器打开可以看到三个demo，依次点击，若出现弹窗则证明被验证成功。</p>
-<p> <img src="/posts/5b49/7.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/7.png" srcset="/img/loading.gif" lazyload class>
+
 <p>（3）页面中的test version（测试版本）链接中，可查看对应 jQuery 版本存在的 bug 编号。</p>
-<p> <img src="/posts/5b49/8.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/5b49/8.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="4、修复建议"><a href="#4、修复建议" class="headerlink" title="4、修复建议"></a>4、修复建议</h1><ul>
 <li><p>暂时隐藏 jQuery 版本信息，避免被攻击者识别出版本号。  </p>
 </li>

