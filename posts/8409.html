@@ -1,401 +1,304 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
 
 
 <head>
-    <meta name="google-site-verification" content="D6LSxgzz99gvhBMd-R2qefCf-eA74itvEMoxOYzUlSo" />
-    <meta charset="utf-8">
-    <meta name="keywords" content="dvwa靶场, 网络安全，计算机，渗透">
-    <meta name="description" content="这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ccccff">
+  <meta name="author" content="echozt">
+  <meta name="keywords" content="网络安全，计算机，渗透">
+  
+    <meta name="description" content="这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dvwa靶场">
+<meta property="og:url" content="https://echozt.github.io/posts/8409.html">
+<meta property="og:site_name" content="echozt">
+<meta property="og:description" content="这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/2_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/3_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/3_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/5_9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/6_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/6_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/6_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/6_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/6_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/7_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/7_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/7_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/7_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/7_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/8_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/8_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/8_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/8_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/9_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/9_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/9_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/10.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/10_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/10_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/11.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/11_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/11_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/11_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/12.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/12_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/12_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/12_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/12_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/12_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13_7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/8409/13_8.png">
+<meta property="article:published_time" content="2022-07-07T06:10:59.000Z">
+<meta property="article:modified_time" content="2024-01-16T02:52:34.850Z">
+<meta property="article:author" content="echozt">
+<meta property="article:tag" content="靶场">
+<meta property="article:tag" content="Web漏洞">
+<meta property="article:tag" content="dvwa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://echozt.github.io/posts/8409/1.png">
+  
+  
+  <title>dvwa靶场 - echozt</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
-前言我把dvwa靶场的三个等级low，medium，high每关都做出了相应的题解，应该看起来会清晰一点。
-我这里引用的dvwa靶场">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
-    <title>dvwa靶场 | echozt</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"echozt.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
-
-
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">echozt</span>
-                </a>
-            </div>
-            
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>echozt&#39;s blog</strong>
+    </a>
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <div class="logo-name">echozt</div>
-        <div class="logo-desc">
-            
-            分享知识，记录生活
-            
-        </div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        
-    </ul>
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="dvwa靶场">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      echozt
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-07 14:10" pubdate>
+        2022年7月7日 下午
+      </time>
+    </span>
+  
 </div>
 
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
 
-        </div>
+  
 
-        
-    </nav>
-
-</header>
-
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">dvwa靶场</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+  
 </div>
 
-
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E9%9D%B6%E5%9C%BA/">
-                                <span class="chip bg-color">靶场</span>
-                            </a>
-                        
-                            <a href="/tags/Web%E6%BC%8F%E6%B4%9E/">
-                                <span class="chip bg-color">Web漏洞</span>
-                            </a>
-                        
-                            <a href="/tags/dvwa/">
-                                <span class="chip bg-color">dvwa</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/" class="post-category">
-                                综合靶场
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
             
+          </div>
 
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-07
-                </div>
-                
-
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
-                </div>
-                
-
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
+          
         </div>
-        <hr class="clearfix">
+      </div>
+    </div>
+  </header>
 
-        
+  <main>
+    
+      
 
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <p>这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。</p>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">dvwa靶场</h1>
+            
+            <div class="markdown-body">
+              <p>这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。</p>
 <span id="more"></span>
 
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我把dvwa靶场的三个等级low，medium，high每关都做出了相应的题解，应该看起来会清晰一点。</p>
@@ -404,7 +307,7 @@
 
 <h1 id="1、Burte-Force"><a href="#1、Burte-Force" class="headerlink" title="1、Burte Force"></a>1、Burte Force</h1><h2 id="low"><a href="#low" class="headerlink" title="low"></a>low</h2><p>使用burp暴力破解，得到账户名密码为：admin/password</p>
 <p>然后尝试登录，登录成功</p>
-<img src="/posts/8409/1.png" class>
+<img src="/posts/8409/1.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h2><p>和low一样</p>
 <h2 id="high"><a href="#high" class="headerlink" title="high"></a>high</h2><p>和low一样</p>
@@ -412,26 +315,26 @@
 <pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1 <span class="token operator">|</span> <span class="token function">hostname</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>即可得到主机名，可命令执行得到其他敏感信息。</p>
-<img src="/posts/8409/2.png" class>
+<img src="/posts/8409/2.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-1"><a href="#medium-1" class="headerlink" title="medium"></a>medium</h2><p>和low一样</p>
 <h2 id="high-1"><a href="#high-1" class="headerlink" title="high"></a>high</h2><p>执行命令</p>
 <pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1 <span class="token operator">||</span> <span class="token function">hostname</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>即可得到主机名，可命令执行得到其他敏感信息。</p>
-<img src="/posts/8409/2_2.png" class>
+<img src="/posts/8409/2_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="3、CSRF"><a href="#3、CSRF" class="headerlink" title="3、CSRF"></a>3、CSRF</h1><h2 id="low-2"><a href="#low-2" class="headerlink" title="low"></a>low</h2><p>用burp抓包分析，没有设置token，也不需要输入原来密码，通过get请求来提交修改信息的，可以直接修改密码，然后复制url，只要受害者点击该url密码就会被修改。</p>
-<img src="/posts/8409/3.png" class>
+<img src="/posts/8409/3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>将密码改为222，复制url:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">http://127.0.0.1:8099/dvwa/vulnerabilities/csrf/?password_new<span class="token operator">=</span>222<span class="token operator">&amp;</span>password_conf<span class="token operator">=</span>222<span class="token operator">&amp;</span>Change<span class="token operator">=</span>Change
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>当点击此链接时，密码被修改：</p>
-<img src="/posts/8409/3_2.png" class>
+<img src="/posts/8409/3_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>后来有了另一种思路，一般csrf看Referer和origin字段，如果去掉这两个字段响应还一样，而且没加什么验证的手段，则可能存在csrf漏洞，此时可以在burp生成poc，验证一下：</p>
-<img src="/posts/8409/3_3.png" class>
+<img src="/posts/8409/3_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-2"><a href="#medium-2" class="headerlink" title="medium"></a>medium</h2><p>和low一样</p>
 <h2 id="high-2"><a href="#high-2" class="headerlink" title="high"></a>high</h2><p>和low一样</p>
@@ -439,38 +342,38 @@
 <p>当尝试输入：</p>
 <p>file4.php</p>
 <p>发现了一个隐藏的文件：</p>
-<img src="/posts/8409/4.png" class>
+<img src="/posts/8409/4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-3"><a href="#medium-3" class="headerlink" title="medium"></a>medium</h2><p>和low一样</p>
 <h2 id="high-3"><a href="#high-3" class="headerlink" title="high"></a>high</h2><p>和low一样</p>
 <h1 id="5、File-Upload"><a href="#5、File-Upload" class="headerlink" title="5、File Upload"></a>5、File Upload</h1><h2 id="low-4"><a href="#low-4" class="headerlink" title="low"></a>low</h2><p>尝试上传php后缀文件，比如1.php文件，发现上传成功：</p>
-<img src="/posts/8409/5.png" class>
+<img src="/posts/8409/5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>可以看到文件的路径暴露出来了，然后利用第4关的文件上传漏洞，可以访问到：</p>
-<img src="/posts/8409/5_2.png" class>
+<img src="/posts/8409/5_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-4"><a href="#medium-4" class="headerlink" title="medium"></a>medium</h2><p>当尝试上传php后缀时，发现上传不成功</p>
-<img src="/posts/8409/5_3.png" class>
+<img src="/posts/8409/5_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>用burp抓包分析，看到显示了Content-Type</p>
-<img src="/posts/8409/5_4.png" class>
+<img src="/posts/8409/5_4.png" srcset="/img/loading.gif" lazyload class>
 
 <p>修改Content-Type为允许的：<br>将内容改为image/png，发现上传成功：</p>
-<img src="/posts/8409/5_5.png" class>
+<img src="/posts/8409/5_5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>使用蚁剑连接，连接成功：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">url:
 http://127.0.0.1:8099/dvwa/hackable/uploads/shell.php
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<img src="/posts/8409/5_6.png" class>
+<img src="/posts/8409/5_6.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-4"><a href="#high-4" class="headerlink" title="high"></a>high</h2><p>制作一句话木马：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">copy 2.jpg/b+55.php/a 66.jpg
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/8409/5_7.png" class>
+<img src="/posts/8409/5_7.png" srcset="/img/loading.gif" lazyload class>
 
 <p>上传66.jpg，成功，可以看到路径：</p>
-<img src="/posts/8409/5_8.png" class>
+<img src="/posts/8409/5_8.png" srcset="/img/loading.gif" lazyload class>
 
 <p>然后利用第2关的命令注入，将66.jpg改成66.php</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">||</span> ren <span class="token punctuation">..</span>\<span class="token punctuation">..</span>\hackable\uploads\66.jpg 66.php
@@ -479,7 +382,7 @@ http://127.0.0.1:8099/dvwa/hackable/uploads/shell.php
 <pre class="line-numbers language-bash"><code class="language-bash">url:
 http://127.0.0.1:8099/dvwa/hackable/uploads/66.php
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<img src="/posts/8409/5_9.png" class>
+<img src="/posts/8409/5_9.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="6、SQL-Injection"><a href="#6、SQL-Injection" class="headerlink" title="6、SQL Injection"></a>6、SQL Injection</h1><h2 id="low-5"><a href="#low-5" class="headerlink" title="low"></a>low</h2><p>本关存在字符型注入，当输入单引号时，会出现报错信息，可以利用报错注入；输入正常的用户id时会有回显，也可以利用union联合注入。</p>
 <p>下面我采用的是报错注入：</p>
@@ -487,24 +390,24 @@ http://127.0.0.1:8099/dvwa/hackable/uploads/66.php
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>（此处就是通过构造一个在数据库中不存在的函数info()使其报错，就会出现数据库名）</p>
 <p>可以看到数据库名为dvwa</p>
-<img src="/posts/8409/6.png" class>
+<img src="/posts/8409/6.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="6-2获得数据库用户名"><a href="#6-2获得数据库用户名" class="headerlink" title="6.2获得数据库用户名"></a>6.2获得数据库用户名</h3><p>此时，可以将info()替换成报错函数，查询出其他信息，如数据库用户名：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">'or+updatexml(1,concat(0x7e,user(),0x7e),1)+'</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>得到数据库用户名为root@localhost</p>
-<img src="/posts/8409/6_2.png" class>
+<img src="/posts/8409/6_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-5"><a href="#medium-5" class="headerlink" title="medium"></a>medium</h2><p>中级的是一个下拉列表，则可能存在数字型的注入。<br>用burp抓包，构造id=2+and+1=1和id=2+and+1=2，结果不一样。<br>一样也采用报错注入：</p>
 <h3 id="6-1获得数据库用户名"><a href="#6-1获得数据库用户名" class="headerlink" title="6.1获得数据库用户名"></a>6.1获得数据库用户名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：id<span class="token operator">=</span>2+and+info<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>得到数据库名为dvwa</p>
-<img src="/posts/8409/6_3.png" class>
+<img src="/posts/8409/6_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="6-2获得数据库用户名-1"><a href="#6-2获得数据库用户名-1" class="headerlink" title="6.2获得数据库用户名"></a>6.2获得数据库用户名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：id<span class="token operator">=</span>2+and+updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,concat<span class="token punctuation">(</span>user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">)</span> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>得到数据库用户名为root@localhost</p>
-<img src="/posts/8409/6_4.png" class>
+<img src="/posts/8409/6_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-5"><a href="#high-5" class="headerlink" title="high"></a>high</h2><p>输入奇数个单引号和输入偶数个单引号回显不一样，可以采用基于布尔型的盲注。</p>
 <h3 id="6-1获得数据库用户名-1"><a href="#6-1获得数据库用户名-1" class="headerlink" title="6.1获得数据库用户名"></a>6.1获得数据库用户名</h3><p>获得数据库名的第一个字母</p>
@@ -513,10 +416,10 @@ http://127.0.0.1:8099/dvwa/hackable/uploads/66.php
 1<span class="token string">'and+substr(user(),1,1)='</span>a
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>当字母等于’r’时，即回显正确时，会出现如下图，可依次类推其他字母。</p>
-<img src="/posts/8409/6_5.png" class>
+<img src="/posts/8409/6_5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>其余不正确的字母都是没有回显：</p>
-<img src="/posts/8409/6_6.png" class>
+<img src="/posts/8409/6_6.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="7、SQL-Injection-Blind"><a href="#7、SQL-Injection-Blind" class="headerlink" title="7、SQL Injection(Blind)"></a>7、SQL Injection(Blind)</h1><h2 id="low-6"><a href="#low-6" class="headerlink" title="low"></a>low</h2><p>采用盲注，发现输入奇数的单引号和偶数的单引号回显不一样，是字符型的注入：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">构造payload：
@@ -524,10 +427,10 @@ http://127.0.0.1:8099/dvwa/hackable/uploads/66.php
 1<span class="token string">'and+substr(user(),1,1)='</span>a
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>当字母为’r’时，回显是存在，说明数据库用户名第一个字母为’r’</p>
-<img src="/posts/8409/7.png" class>
+<img src="/posts/8409/7.png" srcset="/img/loading.gif" lazyload class>
 
 <p>当其他不正确的字母时，回显是不存在：</p>
-<img src="/posts/8409/7_2.png" class>
+<img src="/posts/8409/7_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-6"><a href="#medium-6" class="headerlink" title="medium"></a>medium</h2><p>采用盲注，发现输入id=1/1和id=1/0回显不一样，是数字型的注入:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload：
@@ -535,44 +438,44 @@ http://127.0.0.1:8099/dvwa/hackable/uploads/66.php
 1+and+ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>user<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>114
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>当第一个字母的ascii码值为114，即对应字母’r’时，出现存在信息，说明数据库用户名第一个字母为’r’，可依次类推其他字母。</p>
-<img src="/posts/8409/7_3.png" class>
+<img src="/posts/8409/7_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>当字母不正确时，会出现不存在的回显：</p>
-<img src="/posts/8409/7_4.png" class>
+<img src="/posts/8409/7_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-6"><a href="#high-6" class="headerlink" title="high"></a>high</h2><p>采用盲注，本关为基于字符型的注入</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload：
 1<span class="token string">'and+substr(user(),1,1)='</span>a
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>当字母等于’r’时，即回显正确时，会出现存在，可依次类推其他字母。</p>
-<img src="/posts/8409/7_5.png" class>
+<img src="/posts/8409/7_5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>其余不正确的字母都是回显不存在：</p>
-<img src="/posts/8409/7_6.png" class>
+<img src="/posts/8409/7_6.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="8、Weak-Session-IDs"><a href="#8、Weak-Session-IDs" class="headerlink" title="8、Weak Session IDs"></a>8、Weak Session IDs</h1><h2 id="low-7"><a href="#low-7" class="headerlink" title="low"></a>low</h2><p>当用户登录后，在服务器就会创建一个会话(session)，叫做会话控制，接着访问页面的时候就不用登录，只需要携带session去访问。</p>
 <p>sessionID作为特定用户访问站点所需要的唯一内容。如果能够计算或轻易猜到该sessionID，则攻击者将可以轻易获取访问权限，无需录直接进入特定用户界面，进而进行其他操作。</p>
 <p>用burp抓包，可以看到cookie，将cookie复制放到hackbar中验证一下：</p>
-<img src="/posts/8409/8.png" class>
+<img src="/posts/8409/8.png" srcset="/img/loading.gif" lazyload class>
 
 <p>当删掉这个phpsessid中的某个值时，会退出登录，是完整的时，则在登录状态： </p>
-<img src="/posts/8409/8_2.png" class>
+<img src="/posts/8409/8_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-7"><a href="#medium-7" class="headerlink" title="medium"></a>medium</h2><p>用burp抓包，查看cookie。<br>是基于时间戳生成dvwaSesion的，在网上找到一个转换时间戳工具</p>
-<img src="/posts/8409/8_3.png" class>
+<img src="/posts/8409/8_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>转换之后，放到hackbar中</p>
-<img src="/posts/8409/8_4.png" class>
+<img src="/posts/8409/8_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-7"><a href="#high-7" class="headerlink" title="high"></a>high</h2><p>burp抓包发现，dvwaSesion值很像md5加密，使用md5解密，发现是对从零开始的整数进行加密。</p>
-<img src="/posts/8409/8_5.png" class>
+<img src="/posts/8409/8_5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>构造payload使用火狐的hackbar提交即可。</p>
 <h1 id="9、XSS-DOM"><a href="#9、XSS-DOM" class="headerlink" title="9、XSS(DOM)"></a>9、XSS(DOM)</h1><h2 id="low-8"><a href="#low-8" class="headerlink" title="low"></a>low</h2><p>页面有一个选择框，任意选择一个时。是get型的，在url中可以看到选择的类型，</p>
 <pre class="line-numbers language-bash"><code class="language-bash">构造payload：<span class="token operator">&lt;</span>script<span class="token operator">></span>alert<span class="token punctuation">(</span>/xss/<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>成功出现弹窗。</p>
-<img src="/posts/8409/9.png" class>
+<img src="/posts/8409/9.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-8"><a href="#medium-8" class="headerlink" title="medium"></a>medium</h2><p>这里的话要闭合select标签</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload：
@@ -585,97 +488,97 @@ http://127.0.0.1:8099/dvwa/hackable/uploads/66.php
 
 <span class="token operator">&lt;</span>/select<span class="token operator">></span><span class="token operator">&lt;</span>iframe onload<span class="token operator">=</span>alert<span class="token punctuation">(</span>1<span class="token punctuation">)</span> height<span class="token operator">=</span><span class="token string">"0"</span> width<span class="token operator">=</span><span class="token string">"0"</span> /<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/8409/9_2.png" class>
+<img src="/posts/8409/9_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-8"><a href="#high-8" class="headerlink" title="high"></a>high</h2><p>采用了白名单，采用#可以绕过后台效验</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 <span class="token comment" spellcheck="true">#&lt;/select>&lt;img src=111 onerror=alert(/xss/)></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/8409/9_3.png" class>
+<img src="/posts/8409/9_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>这里我发现在edge浏览器中可以直接弹出弹窗，而在火狐中不能，于是我在火狐中使用hackbar尝试了一下，发现可以成功：</p>
-<img src="/posts/8409/9_4.png" class>
+<img src="/posts/8409/9_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="10、XSS-Reflected"><a href="#10、XSS-Reflected" class="headerlink" title="10、XSS(Reflected)"></a>10、XSS(Reflected)</h1><h2 id="low-9"><a href="#low-9" class="headerlink" title="low"></a>low</h2><pre class="line-numbers language-bash"><code class="language-bash">payload：<span class="token operator">&lt;</span>script<span class="token operator">></span>alert<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/8409/10.png" class>
+<img src="/posts/8409/10.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-9"><a href="#medium-9" class="headerlink" title="medium"></a>medium</h2><pre class="line-numbers language-bash"><code class="language-bash">payload:<span class="token operator">&lt;</span>a href<span class="token operator">=</span>javascript:alert<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token operator">></span>xss<span class="token operator">&lt;</span>/a<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>点击下面的超链接即可出现弹窗。</p>
-<img src="/posts/8409/10_2.png" class>
+<img src="/posts/8409/10_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-9"><a href="#high-9" class="headerlink" title="high"></a>high</h2><pre class="line-numbers language-bash"><code class="language-bash">payload：<span class="token operator">&lt;</span>img src<span class="token operator">=</span>111 onerror<span class="token operator">=</span>alert<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/8409/10_3.png" class>
+<img src="/posts/8409/10_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="11、XSS-Stored"><a href="#11、XSS-Stored" class="headerlink" title="11、XSS(Stored)"></a>11、XSS(Stored)</h1><h2 id="low-10"><a href="#low-10" class="headerlink" title="low"></a>low</h2><p>这是一个留言框，在第二个内容框中输入payload：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>script<span class="token operator">></span>alert<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>存储型的payload会一直有效，当你再次输入一个正常的留言时，也会弹出弹窗。</p>
-<img src="/posts/8409/11.png" class>
+<img src="/posts/8409/11.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-10"><a href="#medium-10" class="headerlink" title="medium"></a>medium</h2><p>在第二个输入框多次尝试无果，换到第一个输入框，发现有长度限制，用burp抓包，在第一个变量名处输入payload：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>SCRIPT<span class="token operator">></span>alert<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token operator">&lt;</span>/SCRIPT<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/8409/11_2.png" class>
+<img src="/posts/8409/11_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>放包，看到页面成功出现弹窗：</p>
-<img src="/posts/8409/11_3.png" class>
+<img src="/posts/8409/11_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-10"><a href="#high-10" class="headerlink" title="high"></a>high</h2><p>用burp抓包，在第一个输入框的变量后面尝试，payload为：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>img src<span class="token operator">=</span>111 onerror<span class="token operator">=</span>alert<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>放包，看到页面成功出现弹窗。</p>
-<img src="/posts/8409/11_4.png" class>
+<img src="/posts/8409/11_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="12、CSP-Bypass"><a href="#12、CSP-Bypass" class="headerlink" title="12、CSP Bypass"></a>12、CSP Bypass</h1><h2 id="low-11"><a href="#low-11" class="headerlink" title="low"></a>low</h2><p>CSP，即内容安全策略。开发者在开发过程中设置了一个类似于白名单的策略，要信任某个页面，哪些外部资源可以执行，哪些不可以，这可以从根本上防御XSS。</p>
 <p>分析页面源码，可以看到设置的白名单：</p>
-<img src="/posts/8409/12.png" class>
+<img src="/posts/8409/12.png" srcset="/img/loading.gif" lazyload class>
 
 <p>点进一个白名单的链接，构造恶意的payload，可以看到生成了一个链接</p>
-<img src="/posts/8409/12_2.png" class>
+<img src="/posts/8409/12_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>将链接复制到输入框中，可以产生弹窗</p>
 <p>听说由于这个网站是国外的，所以访问比较慢，有可能不会出现弹窗，我就是那个有可能中的一个，没关系，原理知道是这个就行啦。</p>
 <h2 id="medium-11"><a href="#medium-11" class="headerlink" title="medium"></a>medium</h2><p>这里csp限制了nonce,而nonce-source，仅允许特定的内联脚本块。如源码中：nonce-TmV2ZXIgZ29pbmcgdG8gZ2l2ZSB5b3UgdXA=’</p>
-<img src="/posts/8409/12_3.png" class>
+<img src="/posts/8409/12_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>所以这里可以设置payload：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>script nonce<span class="token operator">=</span>TmV2ZXIgZ29pbmcgdG8gZ2l2ZSB5b3UgdXA<span class="token operator">=</span><span class="token operator">></span>alert<span class="token punctuation">(</span>111<span class="token punctuation">)</span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>即可成功出现弹窗：</p>
-<img src="/posts/8409/12_4.png" class>
+<img src="/posts/8409/12_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-11"><a href="#high-11" class="headerlink" title="high"></a>high</h2><p>先看一下csp头部信息，只有script-src ‘self’;即只允许本界面加载JavaScript执行。<br>查看服务器端的源代码，因为生成的script标签中src指向source/jsonp.php?callback=solveNum，然后将它加入到dom节点中。但是我们一般无法修改服务器上的jsonp.php文件，但是可以看到源码中会接收include参数，因此可以利用include参数作为注入点。</p>
-<img src="/posts/8409/12_5.png" class>
+<img src="/posts/8409/12_5.png" srcset="/img/loading.gif" lazyload class>
 
 <pre class="line-numbers language-bash"><code class="language-bash">构造payload：
 include<span class="token operator">=</span><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"source/jsonp.php?callback=alert(333);"</span><span class="token operator">></span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>成功出现弹窗：</p>
-<img src="/posts/8409/12_6.png" class>
+<img src="/posts/8409/12_6.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="13、JavaScript"><a href="#13、JavaScript" class="headerlink" title="13、JavaScript"></a>13、JavaScript</h1><h2 id="low-12"><a href="#low-12" class="headerlink" title="low"></a>low</h2><p>这里的规则是成功提交success算成功。</p>
 <p>在这里输入success和ChangeMe，都显示不对。通过用burp抓包，对比两个的请求包，可以发现它们的token是一样的。</p>
-<img src="/posts/8409/13.png" class>
+<img src="/posts/8409/13.png" srcset="/img/loading.gif" lazyload class>
 
 <p>所以猜测token可能是前端生成的。查看源码发现的确是在前端生成，且是将rot13加密的结果进行md5加密的结果作为token的值。</p>
 <p>首先在控制台查看正确的token值:</p>
-<img src="/posts/8409/13_2.png" class>
+<img src="/posts/8409/13_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>然后替换掉原来success中错误的，可以看到成功完成：</p>
-<img src="/posts/8409/13_3.png" class>
+<img src="/posts/8409/13_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="medium-12"><a href="#medium-12" class="headerlink" title="medium"></a>medium</h2><p>在这里，输入success和ChangeMe都错误，用burp抓包，分析两者的token区别。同样可以看到token值一样。</p>
-<img src="/posts/8409/13_4.png" class>
+<img src="/posts/8409/13_4.png" srcset="/img/loading.gif" lazyload class>
 
 <p>此关中生成token的方式是：“XX”+phrase变量的值+“XX”字符串反转。<br>可以看到ChangeMe的token为：token=XXeMegnahCXX<br>所以只需将success的token改为：token=XXsseccusXX</p>
-<img src="/posts/8409/13_5.png" class>
+<img src="/posts/8409/13_5.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="high-12"><a href="#high-12" class="headerlink" title="high"></a>high</h2><p>在这里，同样用burp分别抓包，分析两者的token值，发现一样：</p>
-<img src="/posts/8409/13_6.png" class>
+<img src="/posts/8409/13_6.png" srcset="/img/loading.gif" lazyload class>
 
 <p>查看源代码发现，这里的token加密引入了一个js文件。<br>先用还原工具（<a target="_blank" rel="noopener" href="http://deobfuscatejavascript.com/#%EF%BC%89%E5%B0%86%E6%BA%90%E4%BB%A3%E7%A0%81%E8%BF%98%E5%8E%9F%EF%BC%8C%E6%89%BE%E5%88%B0%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%EF%BC%9A">http://deobfuscatejavascript.com/#）将源代码还原，找到关键代码：</a></p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">function</span> do_something<span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
@@ -702,843 +605,248 @@ token_part_1<span class="token punctuation">(</span><span class="token string">"
 <pre class="line-numbers language-bash"><code class="language-bash">token_part_1<span class="token punctuation">(</span><span class="token string">"ABCD"</span>,44<span class="token punctuation">)</span>
 token_part_2<span class="token punctuation">(</span><span class="token string">"XX"</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<img src="/posts/8409/13_7.png" class>
+<img src="/posts/8409/13_7.png" srcset="/img/loading.gif" lazyload class>
 
 <p>最后点击submit即可成功：</p>
-<img src="/posts/8409/13_8.png" class>
+<img src="/posts/8409/13_8.png" srcset="/img/loading.gif" lazyload class>
 
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
                 
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">echozt</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://echozt.github.io/posts/8409.html">https://echozt.github.io/posts/8409.html</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">echozt</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
-                        <div class="article-tag">
-                            
-                                <a href="/tags/%E9%9D%B6%E5%9C%BA/">
-                                    <span class="chip bg-color">靶场</span>
-                                </a>
-                            
-                                <a href="/tags/Web%E6%BC%8F%E6%B4%9E/">
-                                    <span class="chip bg-color">Web漏洞</span>
-                                </a>
-                            
-                                <a href="/tags/dvwa/">
-                                    <span class="chip bg-color">dvwa</span>
-                                </a>
-                            
-                        </div>
+                      <a class="hover-with-bg" href="/categories/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/">综合靶场</a>
                     
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">谢谢大佬的赞赏</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/posts/621a.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="截获Android端数据包">
-                        
-                        <span class="card-title">截获Android端数据包</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                             关于在安卓模拟器和本机电脑上拦截微信公众号、小程序、APP数据包方法。
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-02
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-category">
-                                    Android渗透测试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
+                  </div>
                 
-                <div class="card-action article-tags">
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
-                    <a href="/tags/android%E6%8A%93%E5%8C%85/">
-                        <span class="chip bg-color">android抓包</span>
-                    </a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a>
                     
-                    <a href="/tags/fiddler/">
-                        <span class="chip bg-color">fiddler</span>
-                    </a>
+                      <a class="hover-with-bg" href="/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a>
                     
-                    <a href="/tags/burpsuite/">
-                        <span class="chip bg-color">burpsuite</span>
-                    </a>
+                      <a class="hover-with-bg" href="/tags/dvwa/">dvwa</a>
                     
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/621a.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">截获Android端数据包</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/dbe4.html">
+                        <span class="hidden-mobile">攻防世界-web-ICS-05</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
                 </div>
-                
+              
             </div>
+
+            
+          </article>
         </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/dbe4.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="攻防世界-web-ICS-05">
-                        
-                        <span class="card-title">攻防世界-web-ICS-05</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            今天练习了一下攻防世界里面的web靶场，做了一个题目，叫ics-05，主要是关于preg_replace这个函数可能存在命令执行漏洞~~
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-18
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/ctf/" class="post-category">
-                                    ctf
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">web漏洞</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">命令执行漏洞</span>
-                    </a>
-                    
-                    <a href="/tags/php/">
-                        <span class="chip bg-color">php</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
         </div>
-        
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-</article>
-
+  </div>
 </div>
-
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('100')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: echozt<br />'
-            + '文章作者: echozt<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h1, h2'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h1, h2').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
     
 
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
+  </main>
 
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
     
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="/libs/aplayer/Meting.min.js"></script>
-
     
 
-    <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2022-2024</span>
-            
-            <a href="/about" target="_blank">echozt</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">46.5k</span>
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            
-            <br>
-
-            <!-- 运行天数提醒. -->
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/echozt" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
 
 
+  
 
-    <a href="mailto:1732973548@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-    </div>
+  
 </footer>
 
-<div class="progress-bar"></div>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+<!-- Plugins -->
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+  <script  src="/js/local-search.js" ></script>
 
-    
 
-    
 
-    <!-- 雪花特效 -->
-    
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
-    <!-- 鼠标星星特效 -->
-    
 
-     
-        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
-        <script src="/libs/others/TencentCaptcha.js"></script>
-        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
-    
 
-    <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
-    <!--腾讯兔小巢-->
-    
-    
-    <script type="text/javascript" color="0,0,255"
-        pointColor="0,0,255" opacity='0.7'
-        zIndex="-1" count="99"
-        src="/libs/background/canvas-nest.js"></script>
-    
 
-    
 
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
 
-    <!--单击显示文字-->
-    <script type="text/javascript" src="/js/click_show_text.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
 </body>
-
 </html>
