@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2024-01-16T02:44:25.927Z</updated>
+  <updated>2024-02-21T07:52:06.534Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>proxifier代理拦截数据包</title>
+    <link href="https://echozt.github.io/posts/9828.html"/>
+    <id>https://echozt.github.io/posts/9828.html</id>
+    <published>2024-02-21T07:43:02.000Z</published>
+    <updated>2024-02-21T07:52:06.534Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;若有的客户端不支持直接设置代理，则可通过proxifier来拦截其数据包。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="proxifier" scheme="https://echozt.github.io/tags/proxifier/"/>
+    
+    <category term="burpsuite" scheme="https://echozt.github.io/tags/burpsuite/"/>
+    
+    <category term="客户端PC抓包" scheme="https://echozt.github.io/tags/%E5%AE%A2%E6%88%B7%E7%AB%AFPC%E6%8A%93%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>在Ubuntu上安装Docker Desktop</title>
@@ -447,32 +470,9 @@
     
     <category term="android抓包" scheme="https://echozt.github.io/tags/android%E6%8A%93%E5%8C%85/"/>
     
-    <category term="fiddler" scheme="https://echozt.github.io/tags/fiddler/"/>
-    
     <category term="burpsuite" scheme="https://echozt.github.io/tags/burpsuite/"/>
     
-  </entry>
-  
-  <entry>
-    <title>dvwa靶场</title>
-    <link href="https://echozt.github.io/posts/8409.html"/>
-    <id>https://echozt.github.io/posts/8409.html</id>
-    <published>2022-07-07T06:10:59.000Z</published>
-    <updated>2024-01-16T02:52:34.850Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;这个靶场是几个月前开始的，然后中间可能因为有各种事情拖沓，还剩了一点，终于把它全部弄完啦，真不容易啊。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="综合靶场" scheme="https://echozt.github.io/categories/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/"/>
-    
-    
-    <category term="靶场" scheme="https://echozt.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
-    
-    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="dvwa" scheme="https://echozt.github.io/tags/dvwa/"/>
+    <category term="fiddler" scheme="https://echozt.github.io/tags/fiddler/"/>
     
   </entry>
   
