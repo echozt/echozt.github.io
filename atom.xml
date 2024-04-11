@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2024-04-11T03:45:53.023Z</updated>
+  <updated>2024-04-11T09:16:41.765Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -17,18 +17,18 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Burp拦截手机app数据包</title>
-    <link href="https://echozt.github.io/posts/ed48.html"/>
-    <id>https://echozt.github.io/posts/ed48.html</id>
-    <published>2024-04-11T03:37:51.000Z</published>
-    <updated>2024-04-11T03:45:53.023Z</updated>
+    <title>burp拦截手机app数据包</title>
+    <link href="https://echozt.github.io/posts/ad17.html"/>
+    <id>https://echozt.github.io/posts/ad17.html</id>
+    <published>2024-04-11T09:11:10.000Z</published>
+    <updated>2024-04-11T09:16:41.765Z</updated>
     
     
     <summary type="html">&lt;p&gt;有时候呢，有些app在模拟器打不开，只能使用本机，所以需要拦截到本机的app数据。&lt;/p&gt;</summary>
     
     
     
-    <category term="客户端" scheme="https://echozt.github.io/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
     
     <category term="抓包" scheme="https://echozt.github.io/tags/%E6%8A%93%E5%8C%85/"/>
