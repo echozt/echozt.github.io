@@ -397,26 +397,26 @@
             <div id="articleContent">
                 <p>若有的客户端不支持直接设置代理，则可通过proxifier来拦截其数据包。<span id="more"></span></p>
 <h1 id="1、设置burp代理"><a href="#1、设置burp代理" class="headerlink" title="1、设置burp代理"></a>1、设置burp代理</h1><p>设置burp代理，这里为127.0.0.1:8080</p>
-<img src="/posts/undefined/1.png" class>
+<img src="/posts/9828/1.png" class>
 
 <h1 id="2、在proxifier中添加代理服务器"><a href="#2、在proxifier中添加代理服务器" class="headerlink" title="2、在proxifier中添加代理服务器"></a>2、在proxifier中添加代理服务器</h1><p>打开proxifier——配置文件——代理服务器，设置与步骤1相同地址端口的代理。</p>
-<img src="/posts/undefined/2.png" class>
+<img src="/posts/9828/2.png" class>
 
 <p>设置好之后，可点击检查验证一下是否正常。</p>
-<img src="/posts/undefined/3.png" class>
+<img src="/posts/9828/3.png" class>
 
 <h1 id="3、在proxifier中添加代理规则"><a href="#3、在proxifier中添加代理规则" class="headerlink" title="3、在proxifier中添加代理规则"></a>3、在proxifier中添加代理规则</h1><p>这里根据实际情况添加目标应用程序名称（我发现在任务管理器里面找名称更准确哈）。 </p>
 <h2 id="3-1拦截客户端PC（exe文件）数据包"><a href="#3-1拦截客户端PC（exe文件）数据包" class="headerlink" title="3.1拦截客户端PC（exe文件）数据包"></a>3.1拦截客户端PC（exe文件）数据包</h2><p>打开任务管理器，运行客户端程序，找到应用，打开文件所在位置，即可找到文件名称，例如Foxmail客户端名称为Foxmail.exe：</p>
-<img src="/posts/undefined/4.png" class>
+<img src="/posts/9828/4.png" class>
 
 <p>然后在proxifier——配置文件——代理规则，点击添加代理规则。规则名称任意取名，应用程序为Foxmail.exe，动作选择步骤2添加的代理服务器。</p>
-<img src="/posts/undefined/5.png" class>
+<img src="/posts/9828/5.png" class>
 
 <p>打开应用程序，即可拦截到数据包：</p>
-<img src="/posts/undefined/6.png" class>
+<img src="/posts/9828/6.png" class>
 
 <h2 id="3-2拦截微信小程序数据包"><a href="#3-2拦截微信小程序数据包" class="headerlink" title="3.2拦截微信小程序数据包"></a>3.2拦截微信小程序数据包</h2><p>步骤跟3.1一样的，这里可以看到应用程序名称为WeChatAppEx.exe：</p>
-<img src="/posts/undefined/7.png" class>
+<img src="/posts/9828/7.png" class>
 
                 
             </div>
@@ -664,56 +664,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/9828.html">
+                <a href="/posts/ed48.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="proxifier代理拦截数据包">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Burp拦截手机app数据包">
                         
-                        <span class="card-title">proxifier代理拦截数据包</span>
+                        <span class="card-title">Burp拦截手机app数据包</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            若有的客户端不支持直接设置代理，则可通过proxifier来拦截其数据包。
+                            有时候呢，有些app在模拟器打不开，只能使用本机，所以需要拦截到本机的app数据。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/" class="post-category">
+                                    客户端
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/proxifier/">
-                        <span class="chip bg-color">proxifier</span>
-                    </a>
-                    
-                    <a href="/tags/burpsuite/">
-                        <span class="chip bg-color">burpsuite</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AFPC%E6%8A%93%E5%8C%85/">
-                        <span class="chip bg-color">客户端PC抓包</span>
+                    <a href="/tags/%E6%8A%93%E5%8C%85/">
+                        <span class="chip bg-color">抓包</span>
                     </a>
                     
                 </div>
@@ -1011,7 +1001,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">46.8k</span>
+                        class="white-color">47.2k</span>
             
             
             
