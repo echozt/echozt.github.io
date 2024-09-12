@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2024-04-11T09:17:20.167Z</updated>
+  <updated>2024-09-12T06:58:45.026Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iptables防火墙配置</title>
+    <link href="https://echozt.github.io/posts/fbfd.html"/>
+    <id>https://echozt.github.io/posts/fbfd.html</id>
+    <published>2024-09-12T06:44:21.000Z</published>
+    <updated>2024-09-12T06:58:45.026Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于iptables的过滤表的常见命令规则&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="iptables" scheme="https://echozt.github.io/tags/iptables/"/>
+    
+    <category term="防火墙" scheme="https://echozt.github.io/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+  </entry>
   
   <entry>
     <title>burp拦截手机app数据包</title>
@@ -446,29 +467,6 @@
     <category term="misc" scheme="https://echozt.github.io/tags/misc/"/>
     
     <category term="ctf" scheme="https://echozt.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Xposed+JustTrustMe绕过SSL Pinning</title>
-    <link href="https://echozt.github.io/posts/b480.html"/>
-    <id>https://echozt.github.io/posts/b480.html</id>
-    <published>2022-09-02T10:58:23.000Z</published>
-    <updated>2022-11-22T08:31:18.766Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;单向认证绕过方式GET之一&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-    <category term="Xpose" scheme="https://echozt.github.io/tags/Xpose/"/>
-    
-    <category term="JustTrustMe" scheme="https://echozt.github.io/tags/JustTrustMe/"/>
-    
-    <category term="app单向认证绕过" scheme="https://echozt.github.io/tags/app%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87/"/>
     
   </entry>
   
