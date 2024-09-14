@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2024-09-12T06:58:45.026Z</updated>
+  <updated>2024-09-14T08:35:44.817Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -17,11 +17,80 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Windows文件共享安全</title>
+    <link href="https://echozt.github.io/posts/89b0.html"/>
+    <id>https://echozt.github.io/posts/89b0.html</id>
+    <published>2024-09-14T08:17:38.000Z</published>
+    <updated>2024-09-14T08:35:44.817Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;常见Windows共享命令使用&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="信息安全工程师" scheme="https://echozt.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    
+    <category term="Windows安全基础" scheme="https://echozt.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88/Windows%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="net" scheme="https://echozt.github.io/tags/net/"/>
+    
+    <category term="共享命令" scheme="https://echozt.github.io/tags/%E5%85%B1%E4%BA%AB%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows日志安全</title>
+    <link href="https://echozt.github.io/posts/d5aa.html"/>
+    <id>https://echozt.github.io/posts/d5aa.html</id>
+    <published>2024-09-14T08:17:21.000Z</published>
+    <updated>2024-09-14T08:31:15.184Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Windows日志安全相关&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="信息安全工程师" scheme="https://echozt.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    
+    <category term="Windows安全基础" scheme="https://echozt.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88/Windows%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="Windows日志" scheme="https://echozt.github.io/tags/Windows%E6%97%A5%E5%BF%97/"/>
+    
+    <category term="Windows日志事件ID" scheme="https://echozt.github.io/tags/Windows%E6%97%A5%E5%BF%97%E4%BA%8B%E4%BB%B6ID/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows账户安全</title>
+    <link href="https://echozt.github.io/posts/4960.html"/>
+    <id>https://echozt.github.io/posts/4960.html</id>
+    <published>2024-09-14T03:20:39.000Z</published>
+    <updated>2024-09-14T03:24:58.589Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Windows账户的创建、删除、隐藏账号等&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="信息安全工程师" scheme="https://echozt.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    
+    <category term="Windows安全基础" scheme="https://echozt.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88/Windows%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="net" scheme="https://echozt.github.io/tags/net/"/>
+    
+    <category term="隐藏账号" scheme="https://echozt.github.io/tags/%E9%9A%90%E8%97%8F%E8%B4%A6%E5%8F%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iptables防火墙配置</title>
     <link href="https://echozt.github.io/posts/fbfd.html"/>
     <id>https://echozt.github.io/posts/fbfd.html</id>
     <published>2024-09-12T06:44:21.000Z</published>
-    <updated>2024-09-12T06:58:45.026Z</updated>
+    <updated>2024-09-14T03:25:13.781Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于iptables的过滤表的常见命令规则&lt;/p&gt;</summary>
@@ -392,81 +461,6 @@
     <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="xss" scheme="https://echozt.github.io/tags/xss/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于ctf的misc相关工具汇总</title>
-    <link href="https://echozt.github.io/posts/387a.html"/>
-    <id>https://echozt.github.io/posts/387a.html</id>
-    <published>2022-09-20T05:52:45.000Z</published>
-    <updated>2024-01-16T03:28:15.491Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;一些些好用的misc工具分享&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="misc" scheme="https://echozt.github.io/tags/misc/"/>
-    
-    <category term="ctf" scheme="https://echozt.github.io/tags/ctf/"/>
-    
-    <category term="winhex" scheme="https://echozt.github.io/tags/winhex/"/>
-    
-    <category term="foremost" scheme="https://echozt.github.io/tags/foremost/"/>
-    
-    <category term="stegsolve" scheme="https://echozt.github.io/tags/stegsolve/"/>
-    
-    <category term="ARCHPR" scheme="https://echozt.github.io/tags/ARCHPR/"/>
-    
-    <category term="ZipCenOp" scheme="https://echozt.github.io/tags/ZipCenOp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>判断zip文件伪加密</title>
-    <link href="https://echozt.github.io/posts/88f1.html"/>
-    <id>https://echozt.github.io/posts/88f1.html</id>
-    <published>2022-09-20T05:39:55.000Z</published>
-    <updated>2022-09-20T05:48:39.779Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;关于判断zip文件是否进行了伪加密的方法，以及如何解除伪加密。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="ctf" scheme="https://echozt.github.io/categories/ctf/"/>
-    
-    
-    <category term="misc" scheme="https://echozt.github.io/tags/misc/"/>
-    
-    <category term="ctf" scheme="https://echozt.github.io/tags/ctf/"/>
-    
-    <category term="伪加密" scheme="https://echozt.github.io/tags/%E4%BC%AA%E5%8A%A0%E5%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>buuctf之misc部分题解</title>
-    <link href="https://echozt.github.io/posts/c662.html"/>
-    <id>https://echozt.github.io/posts/c662.html</id>
-    <published>2022-09-18T08:03:43.000Z</published>
-    <updated>2024-01-16T02:49:52.459Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;还是misc类型深得我心&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="ctf" scheme="https://echozt.github.io/categories/ctf/"/>
-    
-    
-    <category term="misc" scheme="https://echozt.github.io/tags/misc/"/>
-    
-    <category term="ctf" scheme="https://echozt.github.io/tags/ctf/"/>
     
   </entry>
   
