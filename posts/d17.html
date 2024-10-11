@@ -1,0 +1,1414 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta name="google-site-verification" content="D6LSxgzz99gvhBMd-R2qefCf-eA74itvEMoxOYzUlSo" />
+    <meta charset="utf-8">
+    <meta name="keywords" content="sqlzoo练习题之select_from_world, 网络安全，计算机，渗透">
+    <meta name="description" content="关于sqlzoo中的select_from_world表的练习题~
+00. 前言
+练习地址：https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial
+使用的为sqlzoo的MySQL库。
+表名：w">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>sqlzoo练习题之select_from_world | echozt</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">echozt</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">echozt</div>
+        <div class="logo-desc">
+            
+            分享知识，记录生活
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">sqlzoo练习题之select_from_world</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/sqlzoo/">
+                                <span class="chip bg-color">sqlzoo</span>
+                            </a>
+                        
+                            <a href="/tags/round/">
+                                <span class="chip bg-color">round</span>
+                            </a>
+                        
+                            <a href="/tags/left/">
+                                <span class="chip bg-color">left</span>
+                            </a>
+                        
+                            <a href="/tags/like/">
+                                <span class="chip bg-color">like</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/mysql/" class="post-category">
+                                mysql
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-10-07
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.8k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>关于sqlzoo中的select_from_world表的练习题~<span id="more"></span></p>
+<h1 id="00-前言"><a href="#00-前言" class="headerlink" title="00. 前言"></a>00. 前言</h1><blockquote>
+<p>练习地址：<a target="_blank" rel="noopener" href="https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial">https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial</a></p>
+<p>使用的为sqlzoo的MySQL库。</p>
+<p>表名：world</p>
+<p>字段名：name、continent、population、gdp</p>
+</blockquote>
+<img src="/posts/undefined/0.png" class>
+
+<h1 id="01-Introduction"><a href="#01-Introduction" class="headerlink" title="01.Introduction"></a>01.Introduction</h1><p><strong>Read the notes about this table.</strong> Observe the result of running this SQL command to show the name, continent and population of all countries.</p>
+<p>阅读有关此表的注释。观察运行此SQL命令的结果，以显示所有国家的名称、大陆和人口。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,continent,population
+from world
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/1.png" class>
+
+<h1 id="2-Large-Countries"><a href="#2-Large-Countries" class="headerlink" title="2.Large Countries"></a>2.Large Countries</h1><p><strong>How to use WHERE to filter records.</strong> Show the name for the countries that have a population of at least 200 million. 200 million is 200000000, there are eight zeros.</p>
+<p>如何使用WHERE来筛选记录。显示人口至少为2亿的国家的名字。2亿是200000000，有八个零。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name 名字
+from world
+where population<span class="token operator">>=</span>200000000
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/2.png" class>
+
+<h1 id="3-Per-capita-GDP"><a href="#3-Per-capita-GDP" class="headerlink" title="3.Per capita GDP"></a><mark>3.Per capita GDP</mark></h1><p>Give the <strong>name</strong> and the <strong>per capita GDP</strong> for those countries with a <strong>population</strong> of at least 200 million.<br>HELP:How to calculate per capita GDP（per capita GDP is the GDP divided by the population GDP/population）</p>
+<p>请给出人口至少2亿的国家的名字和人均国内生产总值。</p>
+<p>帮助：如何计算人均国内生产总值（人均GDP=GDP/人口）</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,gdp/population 人均gdp
+from world
+where population<span class="token operator">>=</span>200000000
+
+别名：可以用as，也可以直接空格。
+<span class="token keyword">select</span> 字段名 as 别名
+注意：as可以省略。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/3.png" class>
+
+<h1 id="4-South-America-In-millions"><a href="#4-South-America-In-millions" class="headerlink" title="4.South America In millions"></a>4.South America In millions</h1><p>Show the <strong>name</strong> and <strong>population</strong> in millions for the countries of the <strong>continent</strong> ‘South America’. Divide the population by 1000000 to get population in millions.</p>
+<p>显示南美洲国家的名字和人口(百万)。将人口除以1000000得到百万人口。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,population/1000000 人口（百万）
+from world
+where continent<span class="token operator">=</span><span class="token string">'South America'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/4.png" class>
+
+<h1 id="5-France-Germany-Italy"><a href="#5-France-Germany-Italy" class="headerlink" title="5.France, Germany, Italy"></a><mark>5.France, Germany, Italy</mark></h1><p>Show the <strong>name</strong> and <strong>population</strong> for France, Germany, ltaly</p>
+<p>显示法国，德国，意大利的名称和人口</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,population
+from world
+where name <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'france'</span>,<span class="token string">'germany'</span>,<span class="token string">'italy'</span><span class="token punctuation">)</span>
+
+关于in的用法:
+in会筛选出字段值中所有与括号内数据相等的行。
+表示在这个范围内的数据都算。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/5.png" class>
+
+<h1 id="6-United"><a href="#6-United" class="headerlink" title="6.United"></a><mark>6.United</mark></h1><p>Show the countries which have a <strong>name</strong> that includes the word ‘United’</p>
+<p>显示名称中包含“United”字样的国家</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name
+from world
+where name like <span class="token string">'%United%'</span>
+
+模糊查询like的用法：
+<span class="token keyword">select</span> 字段名 from 表名 where 字段名 like <span class="token string">'通配符+字符'</span>
+- 占位符
+% 零个或单个或多个字符
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/6.png" class>
+
+<h1 id="7-Two-ways-to-be-big"><a href="#7-Two-ways-to-be-big" class="headerlink" title="7.Two ways to be big"></a>7.Two ways to be big</h1><p>Two ways to be big: A country is <strong>big</strong> if it has an area of more than 3 milion sq km or it has apopulation of more than 250 million.<br>Show the countries that are big by area or big by population. Show <strong>name</strong>, <strong>population</strong> and <strong>area</strong>.</p>
+<p>大国的两种方式：一个国家的面积超过300万平方公里，或者人口超过2.5亿，这个国家就是大国。<br>列出面积大或人口多的国家。列出名称、人口和面积。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,population,area
+from world
+where area<span class="token operator">></span>3000000 or population<span class="token operator">></span>250000000
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/7.png" class>
+
+<h1 id="8-One-or-the-other-but-not-both"><a href="#8-One-or-the-other-but-not-both" class="headerlink" title="8.One or the other (but not both)"></a>8.One or the other (but not both)</h1><p>Exclusive OR (XOR). Show the countries that are big by area (more than 3 million) or big by population (more than 250 million) but not both. Show <strong>name</strong>, <strong>population</strong> and <strong>area</strong>.</p>
+<ul>
+<li><p>Australia has a big area but a small population, it should be <strong>included</strong>.</p>
+</li>
+<li><p>Indonesia has a big population but a small area, it should be <strong>included</strong>.</p>
+</li>
+<li><p>China has a big population and big area, it should be <strong>excluded</strong>.</p>
+</li>
+<li><p>United Kingdom has a small population and a small area, it should be <strong>excluded</strong>.</p>
+</li>
+</ul>
+<p>显示按面积大小(超过300万)或人口大小(超过2.5亿)的国家，但不能同时显示这两个国家。显示名称、人口和面积。</p>
+<ul>
+<li><p>澳大利亚面积大，人口少，应该算进去。</p>
+</li>
+<li><p>印度尼西亚人口多，面积小，应该包括在内。</p>
+</li>
+<li><p>中国人口多，面积大，应该被排除在外。</p>
+</li>
+<li><p>英国人口少，面积小，应该被排除在外。</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,population,area
+from world
+where <span class="token punctuation">(</span>area<span class="token operator">></span>3000000 and population<span class="token operator">&lt;=</span>250000000<span class="token punctuation">)</span> or <span class="token punctuation">(</span>area<span class="token operator">&lt;=</span>3000000 and population<span class="token operator">></span>250000000<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/8.png" class>
+
+<h1 id="9-Rounding"><a href="#9-Rounding" class="headerlink" title=" 9.Rounding"></a><mark> 9.Rounding</mark></h1><p>Show the <strong>name</strong> and <strong>population</strong> in millions and the GDP in billions for the countries of the <strong>continent</strong> ‘South America’. Use the <strong>ROUND</strong> function to show the values to two decimal places.For South America show population in millions and GDP in billions both to 2 decimal places.</p>
+<p>显示南美洲国家的名字和人口(以百万计)以及国内生产总值(以十亿计)。使用ROUND函数将值显示到小数点后两位。南美洲的人口以百万计，国内生产总值以十亿计，二个小数位。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,round<span class="token punctuation">(</span>population/1000000,2<span class="token punctuation">)</span> 人口（百万）,round<span class="token punctuation">(</span>gdp/1000000000,2<span class="token punctuation">)</span> gdp（十亿）
+from world
+where continent<span class="token operator">=</span><span class="token string">'South America'</span>
+
+round函数用法：
+round<span class="token punctuation">(</span>f,p<span class="token punctuation">)</span>返回四舍五入到小数点后p位的f。
+例1：round<span class="token punctuation">(</span>7878.89,0<span class="token punctuation">)</span> -<span class="token operator">></span> 7878
+例2：round<span class="token punctuation">(</span>7878.89,1<span class="token punctuation">)</span> -<span class="token operator">></span> 7878.9
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/9.png" class>
+
+<h1 id="10-Trillion-dollar-economies"><a href="#10-Trillion-dollar-economies" class="headerlink" title="10.Trillion dollar economies"></a><mark>10.Trillion dollar economies</mark></h1><p>Show the <strong>name</strong> and <strong>per-capita GDP</strong> for those countries with a GDP of at least one trillion (1000000000000; that is 12 zeros). Round this value to the nearest 1000.<br>Show per-capita GDP for the trillion dollar countries to the nearest $1000.</p>
+<p>请列出国内生产总值至少1万亿(1000000000000;即12个零)的国家名称和人均国内生产总值，将这个数值绕到最近的1000。<br>显示万亿美元国家人均国内生产总值至最接近1000美元。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,round<span class="token punctuation">(</span>gdp/population,-3<span class="token punctuation">)</span>
+from world
+where gdp<span class="token operator">></span>1000000000000
+
+round函数用法：
+round<span class="token punctuation">(</span>f,p<span class="token punctuation">)</span>返回四舍五入到小数点后p位的f。
+小数位数可以是负数，这将四舍五入到最接近的10（当p为-1时）或100（当p为-2时）或1000（当p为-3时）等。
+例：round<span class="token punctuation">(</span>7878.89,-3<span class="token punctuation">)</span> -<span class="token operator">></span> 7000
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/10.png" class>
+
+<h1 id="11-Name-and-capital-have-the-same-length"><a href="#11-Name-and-capital-have-the-same-length" class="headerlink" title="11.Name and capital have the same length"></a><mark>11.Name and capital have the same length</mark></h1><p>Greece has capital Athens.<br>Each of the strings ‘Greece’, and ‘Athens’ has 6 characters.Show the <strong>name</strong> and <strong>capital</strong> where the name and the capital have the same number of characters.<br>You can use the <strong>LENGTH</strong> function to find the number of characters in a string.</p>
+<p>Greece有首都Athens。Greece和Athens都有6个字符。显示名称和首都有相同字符数的地方。可以使用LENGTH函数来查找字符串中的字符数。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,capital
+from world
+where length<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token operator">=</span>length<span class="token punctuation">(</span>capital<span class="token punctuation">)</span>
+
+length函数用法:
+length<span class="token punctuation">(</span>s<span class="token punctuation">)</span> 返回字符串s中的字符数。
+例：length<span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">)</span> -<span class="token operator">></span> 5 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/11.png" class>
+
+<h1 id="12-Matching-name-and-capital"><a href="#12-Matching-name-and-capital" class="headerlink" title="12.Matching name and capital"></a><mark>12.Matching name and capital</mark></h1><p>The capital of Sweden is Stockholm. Both words start with the letter ‘s’.</p>
+<p>Show the <strong>name</strong> and the <strong>capital</strong> where the first letters of each match. Don’t include countries where the name and the capital are the same word.</p>
+<ul>
+<li><p>You can use the function <strong>LEFT</strong> to isolate the first character.</p>
+</li>
+<li><p>You can use <strong>&lt;&gt;</strong> as the <strong>NOT EQUALS</strong> operator.</p>
+</li>
+</ul>
+<p>Sweden的首都是Stockholm。这两个词都以字母S开头。<br>在每个词的首字母相匹配的地方显示名称和首都，不要包括名称和首都是同一个单词的国家。</p>
+<ul>
+<li><p>可以使用LEFT函数隔离第一个字符。</p>
+</li>
+<li><p>可以使用&lt;&gt;用作不等式运算符。</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name,capital
+from world
+where left<span class="token punctuation">(</span>name,1<span class="token punctuation">)</span><span class="token operator">=</span>left<span class="token punctuation">(</span>capital,1<span class="token punctuation">)</span> and name<span class="token operator">&lt;</span><span class="token operator">></span>capital
+
+1、left函数用法:
+left<span class="token punctuation">(</span>s,n<span class="token punctuation">)</span>允许从字符串s的开头提取n个字符。
+例：left<span class="token punctuation">(</span><span class="token string">'hello world'</span>,4<span class="token punctuation">)</span> -<span class="token operator">></span> <span class="token string">'hell'</span>
+2、不等式可以用<span class="token operator">&lt;</span><span class="token operator">></span>或者<span class="token operator">!=</span>表示
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/12.png" class>
+
+<h1 id="13-All-the-vowels"><a href="#13-All-the-vowels" class="headerlink" title="13.All the vowels"></a><mark>13.All the vowels</mark></h1><p><strong>Equatorial Guinea</strong> and <strong>Dominican Republic</strong> have all of the <strong>vowels (a e i o u)</strong> in the name. They don’t count because they have more than one word in the name.</p>
+<p>Find the country that <strong>has all the vowels</strong> <strong>and</strong> <strong>no spaces</strong> in its name.</p>
+<ul>
+<li><p>You can use the phrase name <strong>NOT LIKE ’%a%’</strong> to exclude characters from your results.</p>
+</li>
+<li><p>The query shown misses countries like Bahamas and Belarus because they contain at least one ‘a’.</p>
+</li>
+</ul>
+<p>Equatorial Guinea和Dominican Republic的名称中包含所有元音(aeiou)。它们不计算在内，因为它们的名称中包含多个单词。</p>
+<p>找出名称中所有元音都没有空格的国家。</p>
+<ul>
+<li><p>可以使用not like ‘%a%’的短语名称来从结果中排除字符。</p>
+</li>
+<li><p>显示的查询遗漏了Bahamas和Belarus等国家，因为它们至少包含一个’a’。</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">select</span> name
+from world
+where name like <span class="token string">'%a%'</span> and name like <span class="token string">'%e%'</span> and name like <span class="token string">'%i%'</span> and name like <span class="token string">'%o%'</span> and name like <span class="token string">'%u%'</span> and name not like <span class="token string">'% %'</span>
+
+使用not like <span class="token string">'% %'</span>来排除空格
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/posts/undefined/13.png" class>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">echozt</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://echozt.github.io/posts/d17.html">https://echozt.github.io/posts/d17.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">echozt</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/sqlzoo/">
+                                    <span class="chip bg-color">sqlzoo</span>
+                                </a>
+                            
+                                <a href="/tags/round/">
+                                    <span class="chip bg-color">round</span>
+                                </a>
+                            
+                                <a href="/tags/left/">
+                                    <span class="chip bg-color">left</span>
+                                </a>
+                            
+                                <a href="/tags/like/">
+                                    <span class="chip bg-color">like</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">谢谢大佬的赞赏</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/37a7.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="sqlzoo练习题之select-from-nobel">
+                        
+                        <span class="card-title">sqlzoo练习题之select-from-nobel</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            关于sqlzoo中的select_from_nobel表的练习题~
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-10-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/mysql/" class="post-category">
+                                    mysql
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/sqlzoo/">
+                        <span class="chip bg-color">sqlzoo</span>
+                    </a>
+                    
+                    <a href="/tags/order-by/">
+                        <span class="chip bg-color">order by</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%95%E5%BC%95%E5%8F%B7%E4%BD%BF%E7%94%A8/">
+                        <span class="chip bg-color">单引号使用</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/3411.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Tableau基础图表之环形图2">
+                        
+                        <span class="card-title">Tableau基础图表之环形图2</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            echozt
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('100')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: echozt<br />'
+            + '文章作者: echozt<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022-2024</span>
+            
+            <a href="/about" target="_blank">echozt</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">54.7k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/echozt" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1732973548@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+
+</body>
+
+</html>

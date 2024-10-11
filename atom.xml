@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2024-10-01T06:23:57.373Z</updated>
+  <updated>2024-10-11T02:07:31.791Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -17,11 +17,124 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>sqlzoo练习题之select_within_select</title>
+    <link href="https://echozt.github.io/posts/e9a4.html"/>
+    <id>https://echozt.github.io/posts/e9a4.html</id>
+    <published>2024-10-10T05:02:46.000Z</published>
+    <updated>2024-10-11T02:07:31.791Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于sqlzoo中的子查询的练习题~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://echozt.github.io/categories/mysql/"/>
+    
+    
+    <category term="sqlzoo" scheme="https://echozt.github.io/tags/sqlzoo/"/>
+    
+    <category term="子查询" scheme="https://echozt.github.io/tags/%E5%AD%90%E6%9F%A5%E8%AF%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sqlzoo练习题之the_join_operation</title>
+    <link href="https://echozt.github.io/posts/506e.html"/>
+    <id>https://echozt.github.io/posts/506e.html</id>
+    <published>2024-10-09T07:56:33.000Z</published>
+    <updated>2024-10-11T02:09:35.797Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于sqlzoo中的表连接(join)的练习题~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://echozt.github.io/categories/mysql/"/>
+    
+    
+    <category term="sqlzoo" scheme="https://echozt.github.io/tags/sqlzoo/"/>
+    
+    <category term="表连接" scheme="https://echozt.github.io/tags/%E8%A1%A8%E8%BF%9E%E6%8E%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sqlzoo练习题之sum_and_count</title>
+    <link href="https://echozt.github.io/posts/8c1.html"/>
+    <id>https://echozt.github.io/posts/8c1.html</id>
+    <published>2024-10-08T06:29:16.000Z</published>
+    <updated>2024-10-11T02:09:13.238Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于sqlzoo中的聚合函数的练习题，包含sum、count、max、distinct和order by~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://echozt.github.io/categories/mysql/"/>
+    
+    
+    <category term="sqlzoo" scheme="https://echozt.github.io/tags/sqlzoo/"/>
+    
+    <category term="聚合函数" scheme="https://echozt.github.io/tags/%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0/"/>
+    
+    <category term="group by" scheme="https://echozt.github.io/tags/group-by/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sqlzoo练习题之select-from-nobel</title>
+    <link href="https://echozt.github.io/posts/37a7.html"/>
+    <id>https://echozt.github.io/posts/37a7.html</id>
+    <published>2024-10-07T14:43:55.000Z</published>
+    <updated>2024-10-11T02:08:57.577Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于sqlzoo中的select_from_nobel表的练习题~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://echozt.github.io/categories/mysql/"/>
+    
+    
+    <category term="sqlzoo" scheme="https://echozt.github.io/tags/sqlzoo/"/>
+    
+    <category term="order by" scheme="https://echozt.github.io/tags/order-by/"/>
+    
+    <category term="单引号使用" scheme="https://echozt.github.io/tags/%E5%8D%95%E5%BC%95%E5%8F%B7%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sqlzoo练习题之select_from_world</title>
+    <link href="https://echozt.github.io/posts/d17.html"/>
+    <id>https://echozt.github.io/posts/d17.html</id>
+    <published>2024-10-07T14:13:53.000Z</published>
+    <updated>2024-10-11T02:08:39.717Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于sqlzoo中的select_from_world表的练习题~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://echozt.github.io/categories/mysql/"/>
+    
+    
+    <category term="sqlzoo" scheme="https://echozt.github.io/tags/sqlzoo/"/>
+    
+    <category term="round" scheme="https://echozt.github.io/tags/round/"/>
+    
+    <category term="left" scheme="https://echozt.github.io/tags/left/"/>
+    
+    <category term="like" scheme="https://echozt.github.io/tags/like/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Tableau基础图表之环形图2</title>
     <link href="https://echozt.github.io/posts/3411.html"/>
     <id>https://echozt.github.io/posts/3411.html</id>
     <published>2024-10-01T06:15:07.000Z</published>
-    <updated>2024-10-01T06:23:57.373Z</updated>
+    <updated>2024-10-01T06:24:56.437Z</updated>
     
     
       
@@ -347,121 +460,6 @@
     <category term="反弹shell" scheme="https://echozt.github.io/tags/%E5%8F%8D%E5%BC%B9shell/"/>
     
     <category term="计划任务" scheme="https://echozt.github.io/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>frida+objection绕过SSL Pinning</title>
-    <link href="https://echozt.github.io/posts/7071.html"/>
-    <id>https://echozt.github.io/posts/7071.html</id>
-    <published>2022-11-22T07:58:22.000Z</published>
-    <updated>2024-01-16T03:07:56.756Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;绕过单向认证又多了一种尝试方式呢&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-    <category term="frida" scheme="https://echozt.github.io/tags/frida/"/>
-    
-    <category term="objection" scheme="https://echozt.github.io/tags/objection/"/>
-    
-    <category term="android抓包" scheme="https://echozt.github.io/tags/android%E6%8A%93%E5%8C%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>weblogic SSRF漏洞</title>
-    <link href="https://echozt.github.io/posts/537d.html"/>
-    <id>https://echozt.github.io/posts/537d.html</id>
-    <published>2022-11-09T06:45:33.000Z</published>
-    <updated>2022-12-06T08:47:50.160Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;关于weblogic的ssrf漏洞验证~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="漏洞复现" scheme="https://echozt.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-    
-    <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="weblogic" scheme="https://echozt.github.io/tags/weblogic/"/>
-    
-    <category term="SSRF" scheme="https://echozt.github.io/tags/SSRF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常见文件解析漏洞</title>
-    <link href="https://echozt.github.io/posts/7351.html"/>
-    <id>https://echozt.github.io/posts/7351.html</id>
-    <published>2022-10-25T07:53:54.000Z</published>
-    <updated>2022-10-25T09:11:42.164Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;前段时间在复习文件解析漏洞，有些知识的确得记清呀~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="web漏洞原理总结" scheme="https://echozt.github.io/categories/web%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/"/>
-    
-    
-    <category term="Web漏洞" scheme="https://echozt.github.io/tags/Web%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="文件上传" scheme="https://echozt.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-    <category term="解析漏洞" scheme="https://echozt.github.io/tags/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>log4j2代码执行漏洞</title>
-    <link href="https://echozt.github.io/posts/f6c8.html"/>
-    <id>https://echozt.github.io/posts/f6c8.html</id>
-    <published>2022-10-12T08:36:04.000Z</published>
-    <updated>2024-01-16T03:08:55.359Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;验证网站是否存在log4j2漏洞的方法~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="漏洞复现" scheme="https://echozt.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-    
-    <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="代码执行" scheme="https://echozt.github.io/tags/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
-    
-    <category term="log4j2" scheme="https://echozt.github.io/tags/log4j2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>fastjson反序列化漏洞</title>
-    <link href="https://echozt.github.io/posts/4554.html"/>
-    <id>https://echozt.github.io/posts/4554.html</id>
-    <published>2022-10-12T07:23:47.000Z</published>
-    <updated>2024-01-16T03:07:19.979Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;验证网站是否存在fastjson漏洞的方法~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="漏洞复现" scheme="https://echozt.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-    
-    <category term="框架漏洞" scheme="https://echozt.github.io/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="反序列化" scheme="https://echozt.github.io/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
-    
-    <category term="fastjson" scheme="https://echozt.github.io/tags/fastjson/"/>
     
   </entry>
   
