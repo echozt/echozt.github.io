@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2024-10-11T02:07:31.791Z</updated>
+  <updated>2024-10-11T02:51:17.146Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://echozt.github.io/posts/e9a4.html"/>
     <id>https://echozt.github.io/posts/e9a4.html</id>
     <published>2024-10-10T05:02:46.000Z</published>
-    <updated>2024-10-11T02:07:31.791Z</updated>
+    <updated>2024-10-11T02:51:17.146Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于sqlzoo中的子查询的练习题~&lt;/p&gt;</summary>
@@ -42,7 +42,7 @@
     <link href="https://echozt.github.io/posts/506e.html"/>
     <id>https://echozt.github.io/posts/506e.html</id>
     <published>2024-10-09T07:56:33.000Z</published>
-    <updated>2024-10-11T02:09:35.797Z</updated>
+    <updated>2024-10-11T02:52:05.293Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于sqlzoo中的表连接(join)的练习题~&lt;/p&gt;</summary>
@@ -63,7 +63,7 @@
     <link href="https://echozt.github.io/posts/8c1.html"/>
     <id>https://echozt.github.io/posts/8c1.html</id>
     <published>2024-10-08T06:29:16.000Z</published>
-    <updated>2024-10-11T02:09:13.238Z</updated>
+    <updated>2024-10-11T02:51:42.301Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于sqlzoo中的聚合函数的练习题，包含sum、count、max、distinct和order by~&lt;/p&gt;</summary>
@@ -86,7 +86,7 @@
     <link href="https://echozt.github.io/posts/37a7.html"/>
     <id>https://echozt.github.io/posts/37a7.html</id>
     <published>2024-10-07T14:43:55.000Z</published>
-    <updated>2024-10-11T02:08:57.577Z</updated>
+    <updated>2024-10-11T02:50:13.967Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于sqlzoo中的select_from_nobel表的练习题~&lt;/p&gt;</summary>
@@ -109,7 +109,7 @@
     <link href="https://echozt.github.io/posts/d17.html"/>
     <id>https://echozt.github.io/posts/d17.html</id>
     <published>2024-10-07T14:13:53.000Z</published>
-    <updated>2024-10-11T02:08:39.717Z</updated>
+    <updated>2024-10-11T02:50:44.369Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于sqlzoo中的select_from_world表的练习题~&lt;/p&gt;</summary>
@@ -134,17 +134,10 @@
     <link href="https://echozt.github.io/posts/3411.html"/>
     <id>https://echozt.github.io/posts/3411.html</id>
     <published>2024-10-01T06:15:07.000Z</published>
-    <updated>2024-10-01T06:24:56.437Z</updated>
+    <updated>2024-10-11T02:14:19.523Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;关于tableau的环形图制作方法1&lt;/p&gt;
-&lt;h1 id=&quot;01-总体思路&quot;&gt;&lt;a href=&quot;#01-总体思路&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;关于tableau的环形图制作方法2&lt;/p&gt;</summary>
     
     
     
