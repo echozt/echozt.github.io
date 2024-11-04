@@ -245,14 +245,14 @@
     <link href="https://echozt.github.io/posts/fbfd.html"/>
     <id>https://echozt.github.io/posts/fbfd.html</id>
     <published>2024-09-12T06:44:21.000Z</published>
-    <updated>2024-09-14T03:25:13.781Z</updated>
+    <updated>2024-11-04T08:32:05.113Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于iptables的过滤表的常见命令规则&lt;/p&gt;</summary>
     
     
     
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具使用技巧" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
     <category term="iptables" scheme="https://echozt.github.io/tags/iptables/"/>
@@ -266,14 +266,16 @@
     <link href="https://echozt.github.io/posts/ad17.html"/>
     <id>https://echozt.github.io/posts/ad17.html</id>
     <published>2024-04-11T09:11:10.000Z</published>
-    <updated>2024-04-11T09:17:20.167Z</updated>
+    <updated>2024-11-04T08:40:28.399Z</updated>
     
     
     <summary type="html">&lt;p&gt;有时候呢，有些app在模拟器打不开，只能使用本机，所以需要拦截到本机的app数据。&lt;/p&gt;</summary>
     
     
     
-    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    <category term="渗透测试" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="Android渗透测试" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/Android%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
     
     <category term="抓包" scheme="https://echozt.github.io/tags/%E6%8A%93%E5%8C%85/"/>
@@ -285,14 +287,14 @@
     <link href="https://echozt.github.io/posts/9828.html"/>
     <id>https://echozt.github.io/posts/9828.html</id>
     <published>2024-02-21T07:43:02.000Z</published>
-    <updated>2024-02-21T07:56:17.678Z</updated>
+    <updated>2024-11-04T08:32:57.887Z</updated>
     
     
     <summary type="html">&lt;p&gt;若有的客户端不支持直接设置代理，则可通过proxifier来拦截其数据包。&lt;/p&gt;</summary>
     
     
     
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具使用技巧" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
     <category term="proxifier" scheme="https://echozt.github.io/tags/proxifier/"/>
@@ -308,14 +310,14 @@
     <link href="https://echozt.github.io/posts/5e15.html"/>
     <id>https://echozt.github.io/posts/5e15.html</id>
     <published>2024-01-16T02:08:28.000Z</published>
-    <updated>2024-01-16T02:44:25.927Z</updated>
+    <updated>2024-11-04T08:30:27.551Z</updated>
     
     
     <summary type="html">&lt;p&gt;docker是个好容器，本文说明它在Ubuntu系统上的安装运行。&lt;/p&gt;</summary>
     
     
     
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具使用技巧" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
     <category term="docker desktop" scheme="https://echozt.github.io/tags/docker-desktop/"/>
@@ -331,14 +333,14 @@
     <link href="https://echozt.github.io/posts/4684.html"/>
     <id>https://echozt.github.io/posts/4684.html</id>
     <published>2024-01-11T08:48:50.000Z</published>
-    <updated>2024-01-16T03:29:11.175Z</updated>
+    <updated>2024-11-04T08:29:34.701Z</updated>
     
     
     <summary type="html">&lt;p&gt;对于微信小程序包的解密与反编译&lt;/p&gt;</summary>
     
     
     
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具使用技巧" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
     <category term="反编译" scheme="https://echozt.github.io/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
@@ -350,14 +352,14 @@
     <link href="https://echozt.github.io/posts/5b49.html"/>
     <id>https://echozt.github.io/posts/5b49.html</id>
     <published>2024-01-02T01:26:39.000Z</published>
-    <updated>2024-01-16T03:30:37.266Z</updated>
+    <updated>2024-11-04T08:30:17.439Z</updated>
     
     
     <summary type="html">&lt;p&gt;扫描网站使用的jquery库，是否为具有已知漏洞的版本。&lt;/p&gt;</summary>
     
     
     
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具使用技巧" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
     <category term="retire.js" scheme="https://echozt.github.io/tags/retire-js/"/>
@@ -371,7 +373,7 @@
     <link href="https://echozt.github.io/posts/2a81.html"/>
     <id>https://echozt.github.io/posts/2a81.html</id>
     <published>2023-12-13T01:47:42.000Z</published>
-    <updated>2024-01-16T03:28:45.397Z</updated>
+    <updated>2024-11-04T08:29:52.035Z</updated>
     
     
     <summary type="html">&lt;!--好像23年都没有发过文章了，今年都快结束啦，忙忙碌碌，还是把我的博客慢慢捡起来吧--&gt;
@@ -382,7 +384,7 @@
     
     
     
-    <category term="工具" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具使用技巧" scheme="https://echozt.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
     <category term="hydra" scheme="https://echozt.github.io/tags/hydra/"/>
@@ -421,14 +423,16 @@
     <link href="https://echozt.github.io/posts/7e0e.html"/>
     <id>https://echozt.github.io/posts/7e0e.html</id>
     <published>2022-12-06T08:18:17.000Z</published>
-    <updated>2024-01-16T03:15:31.080Z</updated>
+    <updated>2024-11-04T08:39:13.536Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于rsync服务未授权漏洞的几种利用方式~~&lt;/p&gt;</summary>
     
     
     
-    <category term="漏洞复现" scheme="https://echozt.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    <category term="渗透测试" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="漏洞复现" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
     <category term="未授权访问" scheme="https://echozt.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/"/>
@@ -446,14 +450,16 @@
     <link href="https://echozt.github.io/posts/192.html"/>
     <id>https://echozt.github.io/posts/192.html</id>
     <published>2022-12-02T06:22:08.000Z</published>
-    <updated>2024-01-16T03:27:36.824Z</updated>
+    <updated>2024-11-04T08:42:06.249Z</updated>
     
     
     <summary type="html">&lt;p&gt;关于在kali和Ubuntu测试反弹shell和利用计划任务进行反弹shell~~&lt;/p&gt;</summary>
     
     
     
-    <category term="内网渗透" scheme="https://echozt.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
+    <category term="渗透测试" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="内网渗透" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
     
     
     <category term="反弹shell" scheme="https://echozt.github.io/tags/%E5%8F%8D%E5%BC%B9shell/"/>
