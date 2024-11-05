@@ -329,11 +329,11 @@
   </entry>
   
   <entry>
-    <title>关于微信小程序的反编译</title>
+    <title>关于微信小程序的解密与反编译工具</title>
     <link href="https://echozt.github.io/posts/4684.html"/>
     <id>https://echozt.github.io/posts/4684.html</id>
     <published>2024-01-11T08:48:50.000Z</published>
-    <updated>2024-11-04T08:29:34.701Z</updated>
+    <updated>2024-11-05T07:15:38.924Z</updated>
     
     
     <summary type="html">&lt;p&gt;对于微信小程序包的解密与反编译&lt;/p&gt;</summary>
@@ -348,11 +348,11 @@
   </entry>
   
   <entry>
-    <title>验证已知漏洞的jquery库</title>
+    <title>验证已知漏洞的jquery库插件</title>
     <link href="https://echozt.github.io/posts/5b49.html"/>
     <id>https://echozt.github.io/posts/5b49.html</id>
     <published>2024-01-02T01:26:39.000Z</published>
-    <updated>2024-11-04T08:30:17.439Z</updated>
+    <updated>2024-11-05T07:19:32.391Z</updated>
     
     
     <summary type="html">&lt;p&gt;扫描网站使用的jquery库，是否为具有已知漏洞的版本。&lt;/p&gt;</summary>
