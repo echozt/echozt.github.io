@@ -1,611 +1,254 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#ccccff">
-  <meta name="author" content="echozt">
-  <meta name="keywords" content="网络安全，计算机，渗透">
-  
-    <meta name="description" content="这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>bodgeit靶场 | echozt</title><meta name="author" content="echozt"><meta name="copyright" content="echozt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bodgeit靶场">
 <meta property="og:url" content="https://echozt.github.io/posts/1d0a.html">
 <meta property="og:site_name" content="echozt">
 <meta property="og:description" content="这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/0.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/1.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/1_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/1_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/1_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/1_5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/2_1.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/2_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/2_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/2_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/2_5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/2_6.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/3_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/4_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/4_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/4_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/5.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/5_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/5_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/6.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/6_2.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/6_3.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/6_4.png">
-<meta property="og:image" content="https://echozt.github.io/posts/1d0a/6_5.png">
+<meta property="og:image" content="https://echozt.github.io/img/featureimages/1.jpg">
 <meta property="article:published_time" content="2022-02-26T14:37:08.000Z">
 <meta property="article:modified_time" content="2024-11-04T08:40:57.049Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="bodgeit">
 <meta property="article:tag" content="靶场">
 <meta property="article:tag" content="Web漏洞">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://echozt.github.io/posts/1d0a/0.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://echozt.github.io/img/featureimages/1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://echozt.github.io/posts/1d0a.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
-  
-  <title>bodgeit靶场 - echozt</title>
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
-
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"echozt.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>echozt&#39;s blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default2.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="bodgeit靶场">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-author" aria-hidden="true"></i>
-      echozt
-    </span>
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-26 22:37" pubdate>
-        2022年2月26日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1.8k 字
-    </span>
-  
-
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
       
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">bodgeit靶场</h1>
-            
-            <div class="markdown-body">
-              <p>这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。</p>
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'bodgeit靶场',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-04 16:40:57'
+}</script><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/featureimages/1.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">echozt</span></a><a class="nav-page-title" href="/"><span class="site-name">bodgeit靶场</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">bodgeit靶场</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-26T14:37:08.000Z" title="发表于 2022-02-26 22:37:08">2022-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-04T08:40:57.049Z" title="更新于 2024-11-04 16:40:57">2024-11-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/">综合靶场</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>这两天在学长的引导下，我把bodgeit靶场练习了一下。以下是我练习的一些关卡。</p>
 <span id="more"></span>
 
 <p>在About Us中的Scoring page中可以查看关卡：</p>
-<img src="/posts/1d0a/0.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/0.png" class>
 
 <h1 id="1、利用注入漏洞万能密码登录账号"><a href="#1、利用注入漏洞万能密码登录账号" class="headerlink" title="1、利用注入漏洞万能密码登录账号"></a>1、利用注入漏洞万能密码登录账号</h1><p>尝试构造万能密码：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">test@thebodgeitstore.com<span class="token string">' or '</span>1<span class="token string">'='</span>1<span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/1d0a/1.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/1.png" class>
 
 <p>发现登录成功：</p>
-<img src="/posts/1d0a/1_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/1_2.png" class>
 
 <p>可以查看一下源代码，在login.jsp中，</p>
-<img src="/posts/1d0a/1_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/1_3.png" class>
 
 <p>其余两个用户也构造同样的万能密码：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">user1@thebodgeitstore.com<span class="token string">' or '</span>1<span class="token string">'='</span>1<span class="token comment" spellcheck="true">#</span>
 
 admin@thebodgeitstore.com<span class="token string">' or '</span>1<span class="token string">'='</span>1<span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/1d0a/1_4.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/1_4.png" class>
 
-<img src="/posts/1d0a/1_5.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/1_5.png" class>
 
 <h1 id="2、xss漏洞"><a href="#2、xss漏洞" class="headerlink" title="2、xss漏洞"></a>2、xss漏洞</h1><h2 id="（1）反射型XSS"><a href="#（1）反射型XSS" class="headerlink" title="（1）反射型XSS"></a>（1）反射型XSS</h2><p>发现search模块有个搜索框，尝试使用xss构造。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>script<span class="token operator">></span>alert<span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/1d0a/2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/2.png" class>
 
 <p>成功出现弹窗，说明存在xss漏洞。</p>
-<img src="/posts/1d0a/2_1.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/2_1.png" class>
 
 <h2 id="（2）存储型XSS"><a href="#（2）存储型XSS" class="headerlink" title="（2）存储型XSS"></a>（2）存储型XSS</h2><p>既然发现有反射型XSS漏洞，再找找存储型XSS。在Contact Us模块还有一个输入框。先尝试一下：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>script<span class="token operator">></span>alert<span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>发现屏蔽掉了一些关键字：</p>
-<img src="/posts/1d0a/2_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/2_2.png" class>
 
 <p>可能是对某些关键字进行了过滤，再尝试一下大小写绕过：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>ScRipt<span class="token operator">></span>alert<span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>/ScRipt<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>发现成功啦！</p>
-<img src="/posts/1d0a/2_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/2_3.png" class>
 
 <p>此时，查看一下源码，发现的确是对<script>和</script>进行特殊处理：</p>
-<img src="/posts/1d0a/2_4.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/2_4.png" class>
 
 <p>在注册处还存在一个xss，</p>
 <pre class="line-numbers language-bash"><code class="language-bash">注册账号：test@qq.com<span class="token operator">&lt;</span>script<span class="token operator">></span>alert<span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
 
 密码：12345
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/1d0a/2_5.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/2_5.png" class>
 <p>点击register注册后，会：</p>
-<img src="/posts/1d0a/2_6.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/2_6.png" class>
 
 <h1 id="3、以非管理员用户身份查找隐藏内容"><a href="#3、以非管理员用户身份查找隐藏内容" class="headerlink" title="3、以非管理员用户身份查找隐藏内容"></a>3、以非管理员用户身份查找隐藏内容</h1><p>在普通用户页面，查看源代码，发现有个被注释掉的超链接Admin,而它的页面对应为admin.jsp，有可能是后台</p>
-<img src="/posts/1d0a/3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/3.png" class>
 
 <p>直接在网址输入即可访问，的确为后台：</p>
-<img src="/posts/1d0a/3_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/3_2.png" class>
 
 <h1 id="4、访问其他人的购物篮"><a href="#4、访问其他人的购物篮" class="headerlink" title="4、访问其他人的购物篮"></a>4、访问其他人的购物篮</h1><p>通过burp，修改b_id值，就可以越权访问其他人的购物篮。 其他人的BasketId在我们之前发现的admin后台处可以直接查看：</p>
-<img src="/posts/1d0a/4.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/4.png" class>
 
-<p>这里我们登录<a href="mailto:&#x74;&#x65;&#x73;&#x74;&#64;&#x74;&#x68;&#101;&#98;&#111;&#100;&#103;&#101;&#x69;&#x74;&#x73;&#x74;&#111;&#114;&#x65;&#46;&#x63;&#111;&#x6d;">&#x74;&#x65;&#x73;&#x74;&#64;&#x74;&#x68;&#101;&#98;&#111;&#100;&#103;&#101;&#x69;&#x74;&#x73;&#x74;&#111;&#114;&#x65;&#46;&#x63;&#111;&#x6d;</a>这个账号，点击Your Basket界面，并提交到burp</p>
-<img src="/posts/1d0a/4_2.png" srcset="/img/loading.gif" lazyload class>
+<p>这里我们登录<a href="mailto:&#x74;&#x65;&#115;&#x74;&#x40;&#x74;&#104;&#x65;&#x62;&#x6f;&#x64;&#x67;&#x65;&#105;&#x74;&#115;&#116;&#111;&#114;&#x65;&#46;&#x63;&#111;&#x6d;">&#x74;&#x65;&#115;&#x74;&#x40;&#x74;&#104;&#x65;&#x62;&#x6f;&#x64;&#x67;&#x65;&#105;&#x74;&#115;&#116;&#111;&#114;&#x65;&#46;&#x63;&#111;&#x6d;</a>这个账号，点击Your Basket界面，并提交到burp</p>
+<img src="/posts/1d0a/4_2.png" class>
 
-<p>这里我们将b_id值改为10，即查看<a href="mailto:&#116;&#x65;&#115;&#x74;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#116;&#x65;&#115;&#x74;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;</a>的购物篮，点击发送：</p>
-<img src="/posts/1d0a/4_3.png" srcset="/img/loading.gif" lazyload class>
+<p>这里我们将b_id值改为10，即查看<a href="mailto:&#x74;&#101;&#x73;&#x74;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#x74;&#101;&#x73;&#x74;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a>的购物篮，点击发送：</p>
+<img src="/posts/1d0a/4_3.png" class>
 
-<p>可以看到，此时，已经出现了<a href="mailto:&#116;&#101;&#x73;&#x74;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#116;&#101;&#x73;&#x74;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;</a>的购物篮</p>
-<img src="/posts/1d0a/4_4.png" srcset="/img/loading.gif" lazyload class>
+<p>可以看到，此时，已经出现了<a href="mailto:&#x74;&#101;&#115;&#x74;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;">&#x74;&#101;&#115;&#x74;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;</a>的购物篮</p>
+<img src="/posts/1d0a/4_4.png" class>
 
 <h1 id="5、让商店欠你钱"><a href="#5、让商店欠你钱" class="headerlink" title="5、让商店欠你钱"></a>5、让商店欠你钱</h1><p>登录一个普通账号，在Your Basket界面，点击Update Basket，并用burp进行抓取</p>
-<img src="/posts/1d0a/5.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/5.png" class>
 
 <p>直接修改quantity的值，将其变成负数:</p>
-<img src="/posts/1d0a/5_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/5_2.png" class>
 
 <p>然后再发送回来，就可以让数量变成负数，此时的价格当然也变成了负，现在商店要给你付钱啦哈哈哈。</p>
-<img src="/posts/1d0a/5_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/5_3.png" class>
 
-<h1 id="6、CSRF漏洞"><a href="#6、CSRF漏洞" class="headerlink" title="6、CSRF漏洞"></a>6、CSRF漏洞</h1><p>修改密码处有个CSRF漏洞。 登录账号<a href="mailto:&#116;&#101;&#x73;&#116;&#64;&#116;&#104;&#x65;&#98;&#111;&#100;&#103;&#x65;&#x69;&#116;&#x73;&#116;&#x6f;&#114;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#116;&#101;&#x73;&#116;&#64;&#116;&#104;&#x65;&#98;&#111;&#100;&#103;&#x65;&#x69;&#116;&#x73;&#116;&#x6f;&#114;&#x65;&#x2e;&#x63;&#x6f;&#109;</a>，在修改密码界面，修改密码：</p>
-<img src="/posts/1d0a/6.png" srcset="/img/loading.gif" lazyload class>
+<h1 id="6、CSRF漏洞"><a href="#6、CSRF漏洞" class="headerlink" title="6、CSRF漏洞"></a>6、CSRF漏洞</h1><p>修改密码处有个CSRF漏洞。 登录账号<a href="mailto:&#116;&#x65;&#115;&#x74;&#64;&#x74;&#x68;&#x65;&#98;&#x6f;&#x64;&#103;&#101;&#x69;&#116;&#115;&#x74;&#x6f;&#x72;&#101;&#46;&#x63;&#x6f;&#x6d;">&#116;&#x65;&#115;&#x74;&#64;&#x74;&#x68;&#x65;&#98;&#x6f;&#x64;&#103;&#101;&#x69;&#116;&#115;&#x74;&#x6f;&#x72;&#101;&#46;&#x63;&#x6f;&#x6d;</a>，在修改密码界面，修改密码：</p>
+<img src="/posts/1d0a/6.png" class>
 
 <p>提交并使用burp抓包，然后选择在burp中右键选择相关工具的CSRF PoC生成：</p>
-<img src="/posts/1d0a/6_2.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/6_2.png" class>
 
 <p>把POST改为GET:</p>
-<img src="/posts/1d0a/6_3.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/6_3.png" class>
 
 <p>然后选择用浏览器测试，复制地址：</p>
-<img src="/posts/1d0a/6_4.png" srcset="/img/loading.gif" lazyload class>
+<img src="/posts/1d0a/6_4.png" class>
 
-<p>将复制的地址，先放到浏览器，然后登录另一个账号<a href="mailto:&#x75;&#x73;&#101;&#114;&#x31;&#x40;&#x74;&#104;&#x65;&#98;&#111;&#x64;&#103;&#x65;&#x69;&#116;&#x73;&#116;&#111;&#x72;&#101;&#46;&#99;&#111;&#109;">&#x75;&#x73;&#101;&#114;&#x31;&#x40;&#x74;&#104;&#x65;&#98;&#111;&#x64;&#103;&#x65;&#x69;&#116;&#x73;&#116;&#111;&#x72;&#101;&#46;&#99;&#111;&#109;</a>，此时点击刚刚生成的地址，会发现user1的密码被修改了。</p>
-<img src="/posts/1d0a/6_5.png" srcset="/img/loading.gif" lazyload class>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/">综合靶场</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/bodgeit/">bodgeit</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/posts/1702.html">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">upload文件上传靶场</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/posts/12eb.html">
-                        <span class="hidden-mobile">ms12-020-导致对方蓝屏</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-</body>
-</html>
+<p>将复制的地址，先放到浏览器，然后登录另一个账号<a href="mailto:&#x75;&#115;&#x65;&#x72;&#49;&#x40;&#116;&#104;&#101;&#x62;&#111;&#x64;&#103;&#x65;&#x69;&#116;&#115;&#x74;&#x6f;&#114;&#101;&#46;&#99;&#111;&#109;">&#x75;&#115;&#x65;&#x72;&#49;&#x40;&#116;&#104;&#101;&#x62;&#111;&#x64;&#103;&#x65;&#x69;&#116;&#115;&#x74;&#x6f;&#114;&#101;&#46;&#99;&#111;&#109;</a>，此时点击刚刚生成的地址，会发现user1的密码被修改了。</p>
+<img src="/posts/1d0a/6_5.png" class>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://echozt.github.io">echozt</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://echozt.github.io/posts/1d0a.html">https://echozt.github.io/posts/1d0a.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://echozt.github.io" target="_blank">echozt</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/bodgeit/">bodgeit</a><a class="post-meta__tags" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a><a class="post-meta__tags" href="/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a></div><div class="post-share"><div class="social-share" data-image="/img/featureimages/1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/posts/1702.html" title="upload文件上传靶场"><img class="cover" src="/img/featureimages/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">upload文件上传靶场</div></div></a><a class="next-post pull-right" href="/posts/12eb.html" title="ms12-020-导致对方蓝屏"><img class="cover" src="/img/featureimages/3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ms12-020-导致对方蓝屏</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/posts/8409.html" title="dvwa靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-07</div><div class="title">dvwa靶场</div></div></a><a href="/posts/6011.html" title="pikachu靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-23</div><div class="title">pikachu靶场</div></div></a><a href="/posts/fb8a.html" title="sqli靶场(23~37关)"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">sqli靶场(23~37关)</div></div></a><a href="/posts/bb32.html" title="sqli靶场(1~22关)"><img class="cover" src="/img/featureimages/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-08</div><div class="title">sqli靶场(1~22关)</div></div></a><a href="/posts/1702.html" title="upload文件上传靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">upload文件上传靶场</div></div></a><a href="/posts/84ce.html" title="xss靶场"><img class="cover" src="/img/featureimages/2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-28</div><div class="title">xss靶场</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">echozt</div><div class="author-info-description">分享知识，记录生活</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/echozt"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E5%88%A9%E7%94%A8%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">1、利用注入漏洞万能密码登录账号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81xss%E6%BC%8F%E6%B4%9E"><span class="toc-number">2.</span> <span class="toc-text">2、xss漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%8F%8D%E5%B0%84%E5%9E%8BXSS"><span class="toc-number">2.1.</span> <span class="toc-text">（1）反射型XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%AD%98%E5%82%A8%E5%9E%8BXSS"><span class="toc-number">2.2.</span> <span class="toc-text">（2）存储型XSS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E4%BB%A5%E9%9D%9E%E7%AE%A1%E7%90%86%E5%91%98%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%9F%A5%E6%89%BE%E9%9A%90%E8%97%8F%E5%86%85%E5%AE%B9"><span class="toc-number">3.</span> <span class="toc-text">3、以非管理员用户身份查找隐藏内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E8%AE%BF%E9%97%AE%E5%85%B6%E4%BB%96%E4%BA%BA%E7%9A%84%E8%B4%AD%E7%89%A9%E7%AF%AE"><span class="toc-number">4.</span> <span class="toc-text">4、访问其他人的购物篮</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E8%AE%A9%E5%95%86%E5%BA%97%E6%AC%A0%E4%BD%A0%E9%92%B1"><span class="toc-number">5.</span> <span class="toc-text">5、让商店欠你钱</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E3%80%81CSRF%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.</span> <span class="toc-text">6、CSRF漏洞</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer.png);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By echozt</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
