@@ -1,189 +1,325 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>upload文件上传靶场 | echozt</title><meta name="author" content="echozt"><meta name="copyright" content="echozt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ccccff">
+  <meta name="author" content="echozt">
+  <meta name="keywords" content="网络安全，计算机，渗透">
+  
+    <meta name="description" content="这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="upload文件上传靶场">
 <meta property="og:url" content="https://echozt.github.io/posts/1702.html">
 <meta property="og:site_name" content="echozt">
 <meta property="og:description" content="这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/img/featureimages/4.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/1_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/2_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/2_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/3_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/4_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/4_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/6_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/9_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/10.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/11.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/12.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/12_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/12_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/13.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/13_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/14.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/14_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/14_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/14_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/14_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/15.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/16.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/16_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/17.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/17_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/17_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/17_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/18.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/18_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/18_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/18_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/19.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/19_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/19_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/20.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/20_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/21.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/21_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/1702/22.png">
 <meta property="article:published_time" content="2022-03-26T05:23:40.000Z">
 <meta property="article:modified_time" content="2024-11-04T08:37:17.391Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="靶场">
 <meta property="article:tag" content="Web漏洞">
 <meta property="article:tag" content="upload">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://echozt.github.io/img/featureimages/4.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://echozt.github.io/posts/1702.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        if (name && globalFn[key][name]) return
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://echozt.github.io/posts/1702/1.png">
   
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
   
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: undefined,
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'upload文件上传靶场',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2024-11-04 16:37:17'
-}</script><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
+  <title>upload文件上传靶场 - echozt</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"echozt.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/featureimages/4.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">echozt</span></a><a class="nav-page-title" href="/"><span class="site-name">upload文件上传靶场</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">upload文件上传靶场</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T05:23:40.000Z" title="发表于 2022-03-26 13:23:40">2022-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-04T08:37:17.391Z" title="更新于 2024-11-04 16:37:17">2024-11-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/">专项靶场</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。<span id="more"></span>文章最后还有一张我对于文件上传漏洞的总结哦。</p>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>echozt&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="upload文件上传靶场">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      echozt
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-26 13:23" pubdate>
+        2022年3月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.8k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">upload文件上传靶场</h1>
+            
+            <div class="markdown-body">
+              <p>这段时间看了一下文件上传漏洞的知识点，然后把upload的靶场打完了，记录了一下过关的路程。<span id="more"></span>文章最后还有一张我对于文件上传漏洞的总结哦。</p>
 <!--more-->
 
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我用的这个文件上传的靶场，是c0ny1的upload-labs。下载地址贴一下：<a target="_blank" rel="noopener" href="https://github.com/c0ny1/upload-labs">https://github.com/c0ny1/upload-labs</a></p>
 <p>听我学长的话，咱下载完成一个东西后，先看看它的readme文档或者其他要求的文档。</p>
 <p>这个靶场的php环境推荐5.2.17，那我就乖乖把我的php调到这个版本，然后开始打靶场罗。</p>
 <h1 id="1、PASS-01——js绕过"><a href="#1、PASS-01——js绕过" class="headerlink" title="1、PASS-01——js绕过"></a>1、PASS-01——js绕过</h1><p>上传php后缀文件时，弹出不允许上传，查看源代码，发现这是前端js拦截。</p>
-<img src="/posts/1702/1.png" class>
+<img src="/posts/1702/1.png" srcset="/img/loading.gif" lazyload class>
 
 <p>那就先上传一个正常的11.jpg，然后用burp抓包将11.jpg改成22.php，然后将图片的内容改成想要的PHP文件内容就可以啦。修改点击发送，发现已经上传成功啦。</p>
-<img src="/posts/1702/1_2.png" class>
+<img src="/posts/1702/1_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="2、PASS-02——content-type检测绕过"><a href="#2、PASS-02——content-type检测绕过" class="headerlink" title="2、PASS-02——content-type检测绕过"></a>2、PASS-02——content-type检测绕过</h1><p>上传2.php时，提示文件类型不正确，查看源码，发现对content-type做了限制。</p>
 <p>那就先上传2.php，然后用burp抓包，将content-type改成其中一个合法的就行。</p>
 <p>抓包获取到的：</p>
-<img src="/posts/1702/2.png" class>
+<img src="/posts/1702/2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>修改成合法的（image/jpeg或image/png或image/gif）：</p>
-<img src="/posts/1702/2_2.png" class>
+<img src="/posts/1702/2_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>上传成功：</p>
-<img src="/posts/1702/2_3.png" class>
+<img src="/posts/1702/2_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="3、PASS-03——其他后缀名绕过"><a href="#3、PASS-03——其他后缀名绕过" class="headerlink" title="3、PASS-03——其他后缀名绕过"></a>3、PASS-03——其他后缀名绕过</h1><p>上传2.php,发现出现提示信息：</p>
-<img src="/posts/1702/3.png" class>
+<img src="/posts/1702/3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>这很有可能是设置了黑名单，查看一下源代码。</p>
 <p>既然源代码中只设置了这几种可执行后缀的黑名单，那就直接尝试上传其他可执行后缀的文件</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$deny_ext</span> <span class="token operator">=</span> array<span class="token punctuation">(</span><span class="token string">'.asp'</span>,<span class="token string">'.aspx'</span>,<span class="token string">'.php'</span>,<span class="token string">'.jsp'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>上传2.php3文件，抓包，可显示图片路径，成功上传：</p>
-<img src="/posts/1702/3_2.png" class>
+<img src="/posts/1702/3_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="4、PASS-04——-htaccess解析绕过"><a href="#4、PASS-04——-htaccess解析绕过" class="headerlink" title="4、PASS-04——.htaccess解析绕过"></a>4、PASS-04——.htaccess解析绕过</h1><p>上传php文件，查看源代码，发现还是设置了黑名单，只是这次好像把能禁用的后缀都禁用掉了：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$deny_ext</span> <span class="token operator">=</span> array<span class="token punctuation">(</span><span class="token string">".php"</span>,<span class="token string">".php5"</span>,<span class="token string">".php4"</span>,<span class="token string">".php3"</span>,<span class="token string">".php2"</span>,<span class="token string">".php1"</span>,<span class="token string">".html"</span>,<span class="token string">".htm"</span>,<span class="token string">".phtml"</span>,<span class="token string">".pht"</span>,<span class="token string">".pHp"</span>,<span class="token string">".pHp5"</span>,<span class="token string">".pHp4"</span>,<span class="token string">".pHp3"</span>,<span class="token string">".pHp2"</span>,<span class="token string">".pHp1"</span>,<span class="token string">".Html"</span>,<span class="token string">".Htm"</span>,<span class="token string">".pHtml"</span>,<span class="token string">".jsp"</span>,<span class="token string">".jspa"</span>,<span class="token string">".jspx"</span>,<span class="token string">".jsw"</span>,<span class="token string">".jsv"</span>,<span class="token string">".jspf"</span>,<span class="token string">".jtml"</span>,<span class="token string">".jSp"</span>,<span class="token string">".jSpx"</span>,<span class="token string">".jSpa"</span>,<span class="token string">".jSw"</span>,<span class="token string">".jSv"</span>,<span class="token string">".jSpf"</span>,<span class="token string">".jHtml"</span>,<span class="token string">".asp"</span>,<span class="token string">".aspx"</span>,<span class="token string">".asa"</span>,<span class="token string">".asax"</span>,<span class="token string">".ascx"</span>,<span class="token string">".ashx"</span>,<span class="token string">".asmx"</span>,<span class="token string">".cer"</span>,<span class="token string">".aSp"</span>,<span class="token string">".aSpx"</span>,<span class="token string">".aSa"</span>,<span class="token string">".aSax"</span>,<span class="token string">".aScx"</span>,<span class="token string">".aShx"</span>,<span class="token string">".aSmx"</span>,<span class="token string">".cEr"</span>,<span class="token string">".sWf"</span>,<span class="token string">".swf"</span>,<span class="token string">".ini"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -194,13 +330,13 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>(代码意思：无论上传哪种类型的文件，他就会被解析为.php)</p>
 <p>所以，我们先上传.htaccess文件：</p>
-<img src="/posts/1702/4.png" class>
+<img src="/posts/1702/4.png" srcset="/img/loading.gif" lazyload class>
 
 <p>此时，再上传一张正常的jpg图片，利用Burp抓包，将1.jpg图片的内容替换成php代码，点击发送：</p>
-<img src="/posts/1702/4_2.png" class>
+<img src="/posts/1702/4_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>此时，访问1.jpg就会转换成php文件：</p>
-<img src="/posts/1702/4_3.png" class>
+<img src="/posts/1702/4_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="5、PASS-05——点空格点绕过"><a href="#5、PASS-05——点空格点绕过" class="headerlink" title="5、PASS-05——点空格点绕过"></a>5、PASS-05——点空格点绕过</h1><p>上传一个php代码，显示此文件类型不允许上传。查看源代码，黑名单限制，这题把.htaccess后缀也限制了。感觉都被限制了呀，但好像那些限制条件都只限制了一次，先去除文件后缀点再去除空格。若此时设置为文件名点空格点（即2.php. .），删掉一个点一个空格，还剩下2.php.</p>
 <pre class="line-numbers language-bash"><code class="language-bash"> <span class="token variable">$file_name</span> <span class="token operator">=</span> deldot<span class="token punctuation">(</span><span class="token variable">$file_name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>//删除文件名末尾的点
@@ -214,40 +350,40 @@
  <span class="token variable">$file_ext</span> <span class="token operator">=</span> trim<span class="token punctuation">(</span><span class="token variable">$file_ext</span><span class="token punctuation">)</span><span class="token punctuation">;</span> //首尾去空
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Burp抓包，修改2.php为2.php. .文件成功上传:</p>
-<img src="/posts/1702/5.png" class>
+<img src="/posts/1702/5.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="6、PASS-06——大小写绕过"><a href="#6、PASS-06——大小写绕过" class="headerlink" title="6、PASS-06——大小写绕过"></a>6、PASS-06——大小写绕过</h1><p>上传php文件不被允许上传，查看源代码，仔细观察，发现这题居然没有设置大小写转换，那我就直接尝试大小写绕过啦。其实PASS-05的思路这题同样适用。</p>
 <p>抓包，修改2.php为2.Php，成功上传：</p>
-<img src="/posts/1702/6.png" class>
+<img src="/posts/1702/6.png" srcset="/img/loading.gif" lazyload class>
 
-<img src="/posts/1702/6_2.png" class>
+<img src="/posts/1702/6_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="7、PASS-07——空格绕过"><a href="#7、PASS-07——空格绕过" class="headerlink" title="7、PASS-07——空格绕过"></a>7、PASS-07——空格绕过</h1><p>php文件不允许上传，我们还是来看源代码吧，一看没有写去掉末尾空格的代码呀，那就直接空格绕过上传咯。Burp抓包，将2.php修改成2.php 发现成功上传</p>
-<img src="/posts/1702/7.png" class>
+<img src="/posts/1702/7.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="8、PASS-08——点绕过"><a href="#8、PASS-08——点绕过" class="headerlink" title="8、PASS-08——点绕过"></a>8、PASS-08——点绕过</h1><p>直接上源代码，发现这题没有设置删除文件末尾的点的代码，那就在文件后面加点绕过啦。</p>
 <p>这里点绕过的原理其实是利用windows的特性，在windows下，2.php.和2.php的效果是一样的。</p>
 <p>Burp抓包，将2.php修改成2.php.成功上传。</p>
-<img src="/posts/1702/8.png" class>
+<img src="/posts/1702/8.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="9、PASS-09——-DATA绕过上传"><a href="#9、PASS-09——-DATA绕过上传" class="headerlink" title="9、PASS-09——::$DATA绕过上传"></a>9、PASS-09——::$DATA绕过上传</h1><p>查看源代码，发现这里没有去除字符串::$DATA的代码，于是我们可以使用::$DATA绕过上传。</p>
 <p>Burp抓包，将2.php修改成2.php::$DATA，发现成功上传</p>
-<img src="/posts/1702/9.png" class>
+<img src="/posts/1702/9.png" srcset="/img/loading.gif" lazyload class>
 
-<img src="/posts/1702/9_2.png" class>
+<img src="/posts/1702/9_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="10、PASS-10——点空格点绕过"><a href="#10、PASS-10——点空格点绕过" class="headerlink" title="10、PASS-10——点空格点绕过"></a>10、PASS-10——点空格点绕过</h1><p>这关的源代码和第五关一样，所以采用点空格点就能绕过。</p>
 <p>Burp抓包，将2.php修改为2.php. .成功上传</p>
-<img src="/posts/1702/10.png" class>
+<img src="/posts/1702/10.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="11、PASS-11——双写绕过"><a href="#11、PASS-11——双写绕过" class="headerlink" title="11、PASS-11——双写绕过"></a>11、PASS-11——双写绕过</h1><p>查看源代码，发现将图片的后缀用空白代替了。这时可以双写后缀名绕过。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"> <span class="token variable">$file_name</span> <span class="token operator">=</span> str_ireplace<span class="token punctuation">(</span><span class="token variable">$deny_ext</span>,<span class="token string">""</span>, <span class="token variable">$file_name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>用burp抓包，将2.php修改成2.pphphp成功上传</p>
-<img src="/posts/1702/11.png" class>
+<img src="/posts/1702/11.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="12、PASS-12——目录可控-00截断绕过（GET）"><a href="#12、PASS-12——目录可控-00截断绕过（GET）" class="headerlink" title="12、PASS-12——目录可控%00截断绕过（GET）"></a>12、PASS-12——目录可控%00截断绕过（GET）</h1><p>上传一个php文件，出现提示信息：</p>
-<img src="/posts/1702/12.png" class>
+<img src="/posts/1702/12.png" srcset="/img/loading.gif" lazyload class>
 
 <p>说明可能设置了白名单，查看源代码：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$ext_arr</span> <span class="token operator">=</span> array<span class="token punctuation">(</span><span class="token string">'jpg'</span>,<span class="token string">'png'</span>,<span class="token string">'gif'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -258,19 +394,19 @@
 
 条件2：要将magic_quotes_gpc关闭
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/1702/12_2.png" class>
+<img src="/posts/1702/12_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>上传1.jpg，burp抓包，将save_path=../upload/修改为save_path=../upload/2.php%00，并且将jpg图片内容改为php内容，这样就相当于上传了2.php，并对后面的图片1.jpg进行了截断，成功上传</p>
-<img src="/posts/1702/12_3.png" class>
+<img src="/posts/1702/12_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="13、PASS-13——目录可控-00截断绕过（POST）"><a href="#13、PASS-13——目录可控-00截断绕过（POST）" class="headerlink" title="13、PASS-13——目录可控%00截断绕过（POST）"></a>13、PASS-13——目录可控%00截断绕过（POST）</h1><p>上传一个php文件，也显示只允许上传.jpg|.png|.gif类型文件。应该也是设置了白名单，查看源代码。这题的代码好像跟PASS-12差不多耶，先抓包看看，发现明显不同，上一题中的save_path路径以GET方式直接显示出来了，这里的save_path明显是POST方式。所以我们可以用POST方式的%00截断绕过。</p>
 <p>两者的区别就是GET会自行解码，POST不会自行解码，所以POST方式的需要我们手动将%00经过decoode进行解码。</p>
 <p>上传正常的jpg图片，Burp抓包，将../upload/修改为../upload/2.php%00，将jpg图片内容改为php内容，</p>
 <p>然后选中%00按如下方式进行decode，解码成功之后%00会看不见，实际存在。</p>
-<img src="/posts/1702/13.png" class>
+<img src="/posts/1702/13.png" srcset="/img/loading.gif" lazyload class>
 
 <p>修改完成之后，点击发送，文件上传成功：</p>
-<img src="/posts/1702/13_2.png" class>
+<img src="/posts/1702/13_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="14、PASS-14——图片马绕过"><a href="#14、PASS-14——图片马绕过" class="headerlink" title="14、PASS-14——图片马绕过"></a>14、PASS-14——图片马绕过</h1><p>本题要求：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">上传图片马到服务器。
@@ -288,18 +424,18 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>生成包含webshell的3.jpg，直接上传3.jpg。</p>
 <p>本题直接说明存在文件上传漏洞：</p>
-<img src="/posts/1702/14.png" class>
+<img src="/posts/1702/14.png" srcset="/img/loading.gif" lazyload class>
 
 <p>于是，上传之后，抓包，查看文件路径，</p>
-<img src="/posts/1702/14_2.png" class>
+<img src="/posts/1702/14_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>访问：</p>
-<img src="/posts/1702/14_3.png" class>
+<img src="/posts/1702/14_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>.png和.gif的后缀按照同样的方法制作图片马，并上传，能够成功访问：</p>
-<img src="/posts/1702/14_4.png" class>
+<img src="/posts/1702/14_4.png" srcset="/img/loading.gif" lazyload class>
 
-<img src="/posts/1702/14_5.png" class>
+<img src="/posts/1702/14_5.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="15、PASS-15——getimagesize-图片马绕过"><a href="#15、PASS-15——getimagesize-图片马绕过" class="headerlink" title="15、PASS-15——getimagesize()图片马绕过"></a>15、PASS-15——getimagesize()图片马绕过</h1><p>本关卡要求和上一关一样，首先查看源代码，发现有：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"> <span class="token variable">$info</span> <span class="token operator">=</span> getimagesize<span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -313,17 +449,17 @@ copy 1.png/b+2.php/a 3.png
 copy 1.gif/b+2.php/a 3.gif
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>分别上传，使用文件包含漏洞访问上传的图片马中的恶意代码：</p>
-<img src="/posts/1702/15.png" class>
+<img src="/posts/1702/15.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="16、PASS-16——exif-imagetype-图片马绕过"><a href="#16、PASS-16——exif-imagetype-图片马绕过" class="headerlink" title="16、PASS-16——exif_imagetype()图片马绕过"></a>16、PASS-16——exif_imagetype()图片马绕过</h1><p>查看源码，exif_imagetype() 读取一个图像的第一个字节并检查其签名。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$image_type</span> <span class="token operator">=</span> exif_imagetype<span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>本题需要开启php_exif模块</p>
-<img src="/posts/1702/16.png" class>
+<img src="/posts/1702/16.png" srcset="/img/loading.gif" lazyload class>
 
 <p>解题过程跟PASS-14和PASS-15一样，利用图片马上传绕过。</p>
 <p>使用文件包含漏洞访问上传的图片马中的恶意代码：</p>
-<img src="/posts/1702/16_2.png" class>
+<img src="/posts/1702/16_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="17、PASS-17——图片二次渲染绕过"><a href="#17、PASS-17——图片二次渲染绕过" class="headerlink" title="17、PASS-17——图片二次渲染绕过"></a>17、PASS-17——图片二次渲染绕过</h1><p>查看源码，发现图片经过了二次渲染。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$im</span> <span class="token operator">=</span> imagecreatefromjpeg<span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -333,16 +469,16 @@ copy 1.gif/b+2.php/a 3.gif
 <pre class="line-numbers language-bash"><code class="language-bash">原理大致就是先上传一张正常的gif图片，将经过二次渲染的图片下载下来。然后利用工具找到两张图片渲染前后相同的部分，在相同部分写入webshell，再上传，即可成功绕过二次渲染。
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>具体步骤，首先，先上传一张正常的图片2.gif，将生成的32421.gif与原来的2.gif进行对比，查找渲染前后没有变化的部分。用一个可以查看十六进制的工具，我用的是winhex，将两张图片放进去，然后在查看处选择同步和比较。</p>
-<img src="/posts/1702/17.png" class>
+<img src="/posts/1702/17.png" srcset="/img/loading.gif" lazyload class>
 
 <p>这种白色的都是相同的，黑色部分则是不相同的。</p>
-<img src="/posts/1702/17_2.png" class>
+<img src="/posts/1702/17_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>只需要在2.gif的白色部分，即相同部分，插入恶意代码即可。</p>
-<img src="/posts/1702/17_3.png" class>
+<img src="/posts/1702/17_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>将其另存为22.gif，然后上传到服务器。利用文件包含漏洞即可绕过二次渲染。</p>
-<img src="/posts/1702/17_4.png" class>
+<img src="/posts/1702/17_4.png" srcset="/img/loading.gif" lazyload class>
 
 <p>至于jpg和png的，用上面这种方法是不行的，你会发现当你在比较渲染前后图片相同位置时，都是一些断断速速的点，根本插不进去的。这里具体的实现还是要利用一些写的脚本，将webshell插入进去。具体实现可以参考[这篇文章](<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2657">upload-labs之pass 16详细分析 - 先知社区 (aliyun.com)</a>)</p>
 <h1 id="18、PASS-18——条件竞争绕过"><a href="#18、PASS-18——条件竞争绕过" class="headerlink" title="18、PASS-18——条件竞争绕过"></a>18、PASS-18——条件竞争绕过</h1><p>查看源代码，发现本关卡是先将图片上传到服务器，再判断文件后缀是否在白名单，在则重命名，不在则删除。</p>
@@ -359,36 +495,36 @@ copy 1.gif/b+2.php/a 3.gif
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>那我们就可以利用条件竞争来绕过。看看谁比谁快（bushi）。如果我们在上传上去的一瞬间访问这个文件，那他就不能对这个文件删除。这就相当于我们打开了一个文件，然后再去删除这个文件，就会提示这个文件在另一程序中打开无法删除。</p>
 <p>上传一个2.php文件，burp抓包，将其发送给测试器Intruder，在position处清除负载。在payloads选择没有负载（Null payloads）,有效载荷选项（payload options）选择无限期地重复（continue indefinitely）。在options处将线程数调高一点，如20。</p>
-<img src="/posts/1702/18.png" class>
+<img src="/posts/1702/18.png" srcset="/img/loading.gif" lazyload class>
 
-<img src="/posts/1702/18_2.png" class>
+<img src="/posts/1702/18_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>点击攻击，这边在不停的上传：</p>
-<img src="/posts/1702/18_3.png" class>
+<img src="/posts/1702/18_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>我们打开另一个浏览器，访问2.php的路径，找不到我就一直访问，总有你还没来得及删掉的时候吧，然后我第二次就直接访问到啦：</p>
-<img src="/posts/1702/18_4.png" class>
+<img src="/posts/1702/18_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="19、PASS-19——条件竞争绕过"><a href="#19、PASS-19——条件竞争绕过" class="headerlink" title="19、PASS-19——条件竞争绕过"></a>19、PASS-19——条件竞争绕过</h1><p>查看源代码，这关是检查了后缀名，然后上传，然后再进行二次渲染。所以我们只能上传图片马，然后配合解析漏洞（即访问地址加上include.php?file）即可成功绕过。</p>
 <p>这题的上传路径有点问题，没有上传到upload/upload目录下，所以我们先打开PASS-19的myupload.php修改一下路径：</p>
-<img src="/posts/1702/19.png" class>
+<img src="/posts/1702/19.png" srcset="/img/loading.gif" lazyload class>
 
 <p>先制作一张包含恶意代码的图片马：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">copy 1.jpg/b+2/php/a 3.jpg
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后上传3.jpg，并用burp抓包，其他操作跟PASS-18一样，发送到测试器，对它不断进行上传。</p>
-<img src="/posts/1702/19_2.png" class>
+<img src="/posts/1702/19_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>然后打开另一浏览器，不断访问图片地址(<a target="_blank" rel="noopener" href="http://192.168.56.1:8099/upload/include.php?file=upload/3.jpg">http://192.168.56.1:8099/upload/include.php?file=upload/3.jpg</a>)</p>
-<img src="/posts/1702/19_3.png" class>
+<img src="/posts/1702/19_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="20、PASS-20——-绕过"><a href="#20、PASS-20——-绕过" class="headerlink" title="20、PASS-20——/.绕过"></a>20、PASS-20——/.绕过</h1><p>查看源代码，本题是设置了一个黑名单，然后发现有一个move_uploaded_file()函数。这个函数有个特性，就是会忽略文件末尾的 /.   (或者用.也可以)</p>
 <p>也就是说，我们先上传一张正常的图片1.jpg，然后用burp抓包，将upload-19.jpg改为2.php/.此时会上传2.php文件，并自动忽略/.后面的内容，即忽略1.jpg</p>
-<img src="/posts/1702/20.png" class>
+<img src="/posts/1702/20.png" srcset="/img/loading.gif" lazyload class>
 
 <p>还有一个方法。这个函数的img_path是由post参数的save_name控制的。所以可以利用POST方式的%00截断。</p>
 <p>先上传一张正常的图片1.jpg,并用burp抓包，找到save_name,将upload-19.jpg改为2.php%00,并将%00进行url的decode，上传成功</p>
-<img src="/posts/1702/20_2.png" class>
+<img src="/posts/1702/20_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="21、PASS-21——数组绕过"><a href="#21、PASS-21——数组绕过" class="headerlink" title="21、PASS-21——数组绕过"></a>21、PASS-21——数组绕过</h1><p>查看源码，如果是数组的话就不会检查后缀。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>in_array<span class="token punctuation">(</span><span class="token variable">$ext</span>, <span class="token variable">$allow_suffix</span><span class="token punctuation">))</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
@@ -401,11 +537,253 @@ copy 1.gif/b+2.php/a 3.gif
 <p>那就可以利用数组绕过。</p>
 <p>在这里，数组的下标不能相邻就行，比如第一个数组下标为0，第二个就要大于1，才不会被拼接起来。</p>
 <p>首先，构造表单，能够数组上传，然后上传一张正常的照片1.jpg</p>
-<img src="/posts/1702/21.png" class>
+<img src="/posts/1702/21.png" srcset="/img/loading.gif" lazyload class>
 
 <p>Burp抓包，点击发送，成功上传</p>
-<img src="/posts/1702/21_2.png" class>
+<img src="/posts/1702/21_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="22、总结"><a href="#22、总结" class="headerlink" title="22、总结"></a>22、总结</h1><p>最后，放上一张关于文件上传漏洞的总结图</p>
-<img src="/posts/1702/22.png" class>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://echozt.github.io">echozt</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://echozt.github.io/posts/1702.html">https://echozt.github.io/posts/1702.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://echozt.github.io" target="_blank">echozt</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a><a class="post-meta__tags" href="/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a><a class="post-meta__tags" href="/tags/upload/">upload</a></div><div class="post-share"><div class="social-share" data-image="/img/featureimages/4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/posts/bb32.html" title="sqli靶场(1~22关)"><img class="cover" src="/img/featureimages/5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">sqli靶场(1~22关)</div></div></a><a class="next-post pull-right" href="/posts/1d0a.html" title="bodgeit靶场"><img class="cover" src="/img/featureimages/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">bodgeit靶场</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/posts/1d0a.html" title="bodgeit靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-26</div><div class="title">bodgeit靶场</div></div></a><a href="/posts/8409.html" title="dvwa靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-07</div><div class="title">dvwa靶场</div></div></a><a href="/posts/bb32.html" title="sqli靶场(1~22关)"><img class="cover" src="/img/featureimages/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-08</div><div class="title">sqli靶场(1~22关)</div></div></a><a href="/posts/fb8a.html" title="sqli靶场(23~37关)"><img class="cover" src="/img/featureimages/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">sqli靶场(23~37关)</div></div></a><a href="/posts/6011.html" title="pikachu靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-23</div><div class="title">pikachu靶场</div></div></a><a href="/posts/84ce.html" title="xss靶场"><img class="cover" src="/img/featureimages/0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-28</div><div class="title">xss靶场</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">echozt</div><div class="author-info-description">分享知识，记录生活</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/echozt"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81PASS-01%E2%80%94%E2%80%94js%E7%BB%95%E8%BF%87"><span class="toc-number">2.</span> <span class="toc-text">1、PASS-01——js绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81PASS-02%E2%80%94%E2%80%94content-type%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87"><span class="toc-number">3.</span> <span class="toc-text">2、PASS-02——content-type检测绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81PASS-03%E2%80%94%E2%80%94%E5%85%B6%E4%BB%96%E5%90%8E%E7%BC%80%E5%90%8D%E7%BB%95%E8%BF%87"><span class="toc-number">4.</span> <span class="toc-text">3、PASS-03——其他后缀名绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81PASS-04%E2%80%94%E2%80%94-htaccess%E8%A7%A3%E6%9E%90%E7%BB%95%E8%BF%87"><span class="toc-number">5.</span> <span class="toc-text">4、PASS-04——.htaccess解析绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81PASS-05%E2%80%94%E2%80%94%E7%82%B9%E7%A9%BA%E6%A0%BC%E7%82%B9%E7%BB%95%E8%BF%87"><span class="toc-number">6.</span> <span class="toc-text">5、PASS-05——点空格点绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E3%80%81PASS-06%E2%80%94%E2%80%94%E5%A4%A7%E5%B0%8F%E5%86%99%E7%BB%95%E8%BF%87"><span class="toc-number">7.</span> <span class="toc-text">6、PASS-06——大小写绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7%E3%80%81PASS-07%E2%80%94%E2%80%94%E7%A9%BA%E6%A0%BC%E7%BB%95%E8%BF%87"><span class="toc-number">8.</span> <span class="toc-text">7、PASS-07——空格绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8%E3%80%81PASS-08%E2%80%94%E2%80%94%E7%82%B9%E7%BB%95%E8%BF%87"><span class="toc-number">9.</span> <span class="toc-text">8、PASS-08——点绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9%E3%80%81PASS-09%E2%80%94%E2%80%94-DATA%E7%BB%95%E8%BF%87%E4%B8%8A%E4%BC%A0"><span class="toc-number">10.</span> <span class="toc-text">9、PASS-09——::$DATA绕过上传</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10%E3%80%81PASS-10%E2%80%94%E2%80%94%E7%82%B9%E7%A9%BA%E6%A0%BC%E7%82%B9%E7%BB%95%E8%BF%87"><span class="toc-number">11.</span> <span class="toc-text">10、PASS-10——点空格点绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11%E3%80%81PASS-11%E2%80%94%E2%80%94%E5%8F%8C%E5%86%99%E7%BB%95%E8%BF%87"><span class="toc-number">12.</span> <span class="toc-text">11、PASS-11——双写绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12%E3%80%81PASS-12%E2%80%94%E2%80%94%E7%9B%AE%E5%BD%95%E5%8F%AF%E6%8E%A7-00%E6%88%AA%E6%96%AD%E7%BB%95%E8%BF%87%EF%BC%88GET%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">12、PASS-12——目录可控%00截断绕过（GET）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13%E3%80%81PASS-13%E2%80%94%E2%80%94%E7%9B%AE%E5%BD%95%E5%8F%AF%E6%8E%A7-00%E6%88%AA%E6%96%AD%E7%BB%95%E8%BF%87%EF%BC%88POST%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">13、PASS-13——目录可控%00截断绕过（POST）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14%E3%80%81PASS-14%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E9%A9%AC%E7%BB%95%E8%BF%87"><span class="toc-number">15.</span> <span class="toc-text">14、PASS-14——图片马绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15%E3%80%81PASS-15%E2%80%94%E2%80%94getimagesize-%E5%9B%BE%E7%89%87%E9%A9%AC%E7%BB%95%E8%BF%87"><span class="toc-number">16.</span> <span class="toc-text">15、PASS-15——getimagesize()图片马绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16%E3%80%81PASS-16%E2%80%94%E2%80%94exif-imagetype-%E5%9B%BE%E7%89%87%E9%A9%AC%E7%BB%95%E8%BF%87"><span class="toc-number">17.</span> <span class="toc-text">16、PASS-16——exif_imagetype()图片马绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17%E3%80%81PASS-17%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87"><span class="toc-number">18.</span> <span class="toc-text">17、PASS-17——图片二次渲染绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18%E3%80%81PASS-18%E2%80%94%E2%80%94%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89%E7%BB%95%E8%BF%87"><span class="toc-number">19.</span> <span class="toc-text">18、PASS-18——条件竞争绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19%E3%80%81PASS-19%E2%80%94%E2%80%94%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89%E7%BB%95%E8%BF%87"><span class="toc-number">20.</span> <span class="toc-text">19、PASS-19——条件竞争绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#20%E3%80%81PASS-20%E2%80%94%E2%80%94-%E7%BB%95%E8%BF%87"><span class="toc-number">21.</span> <span class="toc-text">20、PASS-20——&#x2F;.绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#21%E3%80%81PASS-21%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87"><span class="toc-number">22.</span> <span class="toc-text">21、PASS-21——数组绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#22%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">23.</span> <span class="toc-text">22、总结</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer.png);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By echozt</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+<img src="/posts/1702/22.png" srcset="/img/loading.gif" lazyload class>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/">专项靶场</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a>
+                    
+                      <a class="hover-with-bg" href="/tags/upload/">upload</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/bb32.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">sqli靶场(1~22关)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1d0a.html">
+                        <span class="hidden-mobile">bodgeit靶场</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

