@@ -6,7 +6,7 @@
   <link href="https://echozt.github.io/atom.xml" rel="self"/>
   
   <link href="https://echozt.github.io/"/>
-  <updated>2024-10-11T02:51:17.146Z</updated>
+  <updated>2024-11-08T09:13:09.617Z</updated>
   <id>https://echozt.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网络流量分析1</title>
+    <link href="https://echozt.github.io/posts/ec70.html"/>
+    <id>https://echozt.github.io/posts/ec70.html</id>
+    <published>2024-11-08T08:24:15.000Z</published>
+    <updated>2024-11-08T09:13:09.617Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;关于墨者学院靶场的练习题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;环境：墨者学院——在线靶场——电子数据取证——电子数据取证-流量分析(第1题)&lt;/p&gt;
+&lt;p&gt;背景介绍：某web安全工程师在网络中捕获到一段可疑流量，发现有人将机密数据隐藏在图片中传输了出去，你能分析出其中的</summary>
+        
+      
+    
+    
+    
+    <category term="电子数据取证" scheme="https://echozt.github.io/categories/%E7%94%B5%E5%AD%90%E6%95%B0%E6%8D%AE%E5%8F%96%E8%AF%81/"/>
+    
+    
+    <category term="流量分析" scheme="https://echozt.github.io/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
+    
+    <category term="wireshark" scheme="https://echozt.github.io/tags/wireshark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux日志分析1</title>
+    <link href="https://echozt.github.io/posts/eaeb.html"/>
+    <id>https://echozt.github.io/posts/eaeb.html</id>
+    <published>2024-11-08T07:41:58.000Z</published>
+    <updated>2024-11-08T08:01:12.001Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于墨者学院靶场的练习题&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="电子数据取证" scheme="https://echozt.github.io/categories/%E7%94%B5%E5%AD%90%E6%95%B0%E6%8D%AE%E5%8F%96%E8%AF%81/"/>
+    
+    
+    <category term="日志分析" scheme="https://echozt.github.io/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
+    
+    <category term="正则表达式" scheme="https://echozt.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>sqlzoo练习题之select_within_select</title>
@@ -415,56 +466,6 @@
     
     <category term="零碎" scheme="https://echozt.github.io/categories/%E9%9B%B6%E7%A2%8E/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>rsync未授权访问漏洞利用</title>
-    <link href="https://echozt.github.io/posts/7e0e.html"/>
-    <id>https://echozt.github.io/posts/7e0e.html</id>
-    <published>2022-12-06T08:18:17.000Z</published>
-    <updated>2024-11-04T08:39:13.536Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;关于rsync服务未授权漏洞的几种利用方式~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="渗透测试" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    <category term="漏洞复现" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-    
-    <category term="未授权访问" scheme="https://echozt.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/"/>
-    
-    <category term="任意文件上传" scheme="https://echozt.github.io/tags/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-    <category term="任意文件下载" scheme="https://echozt.github.io/tags/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/"/>
-    
-    <category term="计划任务反弹shell" scheme="https://echozt.github.io/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%8F%8D%E5%BC%B9shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>反弹shell与计划任务</title>
-    <link href="https://echozt.github.io/posts/192.html"/>
-    <id>https://echozt.github.io/posts/192.html</id>
-    <published>2022-12-02T06:22:08.000Z</published>
-    <updated>2024-11-04T08:42:06.249Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;关于在kali和Ubuntu测试反弹shell和利用计划任务进行反弹shell~~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="渗透测试" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    <category term="内网渗透" scheme="https://echozt.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
-    
-    
-    <category term="反弹shell" scheme="https://echozt.github.io/tags/%E5%8F%8D%E5%BC%B9shell/"/>
-    
-    <category term="计划任务" scheme="https://echozt.github.io/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
